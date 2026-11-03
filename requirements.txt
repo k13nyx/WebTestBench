@@ -4,3 +4,5 @@ openpyxl
 selenium
 seaborn
 claude-agent-sdk
+pyyaml
+matplotlib
