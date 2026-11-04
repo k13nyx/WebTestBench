@@ -1,6 +1,7 @@
 import os
 import copy
 import json
+import platform
 import re
 import sys
 import time
@@ -32,7 +33,8 @@ class BaseAgent:
         api_config: APIConfig,
         output_dir: str | Path,
         server_url: str,
-        local_project_dir: str | Path,
+        # None is legitimate: server_deploy treats it as "no local app" (online URL).
+        local_project_dir: Optional[str | Path],
         event_log_stream: Optional[Any] = None,
     ) -> None:
         self.instruction = instruction
@@ -146,6 +148,13 @@ class BaseAgent:
         parsed_url = urlparse(self.server_url)
         port = parsed_url.port
 
+        if port is None or not (1024 <= port <= 65535):
+            self._mark_stage(
+                stage=stage, status="error",
+                message=f"{stage}: {self.server_url} has no usable port ({port}); cannot start a dev server",
+            )
+            return False
+
         self._kill_exist_port(port)
         self._deploy_local_server(port)
 
@@ -170,12 +179,15 @@ class BaseAgent:
     
     def _deploy_local_server(self, port: int, stage: str = "server_deploy"):
         """Start dev server in background on the given port and wait until it responds."""
+        if not self.local_project_dir:
+            raise FileNotFoundError("local_project_dir is not set; cannot deploy a dev server")
+
         project_dir = Path(self.local_project_dir)
         if not project_dir.exists():
             raise FileNotFoundError(f"local_project_dir not found: {project_dir}")
         
-        self._mark_stage(stage=stage, message=f"📦 Installing dependencies (npm install) in {project_dir} ...")
-        subprocess.run(["npm", "install"], cwd=str(project_dir), check=True)
+        self._check_disk_space(project_dir, stage=stage)
+        self._install_dependencies(project_dir, stage=stage)
 
         log_path = self.output_dir / "dev_server.log"
         self._mark_stage(stage=stage, message=f"🚀 Starting dev server on port {port} (log: {log_path}) ...")
@@ -188,6 +200,12 @@ class BaseAgent:
         
         # step 3: wait for server to respond
         print("⏳ Waiting for server to start...")
+        self._emit_event(
+            type_name="server_wait", stage=stage, status="running",
+            message=f"waiting up to {20 + 60}s for {self.server_url}",
+            payload=dict(url=self.server_url, log=str(log_path)),
+        )
+        started = time.time()
         time.sleep(20)
         for _ in range(60):  # 60 sec
             time.sleep(1)
@@ -197,13 +215,97 @@ class BaseAgent:
                     capture_output=True, timeout=2
                 )
                 if response.returncode == 0:
-                    self._mark_stage(stage=stage, status="complete", message=f"✅ Server is ready at {self.server_url}")
+                    elapsed = round(time.time() - started, 1)
+                    self._mark_stage(stage=stage, status="complete", message=f"✅ Server is ready at {self.server_url} ({elapsed}s)")
                     self._mark_stage(stage=stage, message=f"✅ Dev server started (PID: {self.dev_server_process.pid})")
                     return True
-            except:
+            except Exception:
                 continue
-        
-        raise RuntimeError(f"Dev server failed to start within 60s. See log: {log_path}")
+
+        tail = self._tail_file(log_path)
+        self._emit_event(
+            type_name="server_timeout", stage=stage, status="error",
+            message="dev server did not answer within 80s",
+            payload=dict(
+                url=self.server_url, seconds=round(time.time() - started, 1),
+                dev_server_log_tail=tail
+            ),
+        )
+        raise RuntimeError(f"Dev server failed to start within 80s. See log: {log_path}")
+
+    # ------------------------------------------------------------------ #
+    # Deployment diagnostics
+    # ------------------------------------------------------------------ #
+
+    @staticmethod
+    def _tail_file(path: Path, limit: int = 25) -> str:
+        """Last `limit` lines of a log file, or '' when unreadable."""
+        try:
+            text = Path(path).read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            return ""
+        return "\n".join(text.splitlines()[-limit:])
+
+    def _check_disk_space(self, path: Path, stage: str, need_gb: float = 3.0) -> None:
+        """Report free space before npm writes ~500 MB; loud when it is about to fail."""
+        try:
+            usage = shutil.disk_usage(str(path))
+        except OSError as exc:
+            self._emit_event(
+                type_name="disk_space", stage=stage, status="error",
+                message=f"unable to read disk usage for {path}: {exc}"
+            )
+            return
+
+        free_gb = round(usage.free / 1e9, 2)
+        payload = dict(path=str(path), free_gb=free_gb, total_gb=round(usage.total / 1e9, 2))
+        if free_gb < need_gb:
+            # status stays "running": _emit_event(status="error") latches the stage
+            # as failed in session_meta.json, and npm may still succeed.
+            payload["warning"] = True
+            self._emit_event(
+                type_name="disk_space", stage=stage, status="running",
+                message=f"⚠️ only {free_gb} GB free on {path} - npm install needs ~{need_gb:.0f} GB and may hang",
+                payload=payload,
+            )
+        else:
+            self._emit_event(
+                type_name="disk_space", stage=stage, status="running",
+                message=f"{free_gb} GB free on {path}", payload=payload
+            )
+
+    def _install_dependencies(self, project_dir: Path, stage: str) -> None:
+        """Run `npm install` and record its output, so ENOSPC/network errors are in the log."""
+        self._mark_stage(stage=stage, message=f"📦 Installing dependencies (npm install) in {project_dir} ...")
+        started = time.time()
+        result = subprocess.run(
+            ["npm", "install"], cwd=str(project_dir),
+            capture_output=True, text=True, errors="replace",
+        )
+
+        seconds = round(time.time() - started, 1)
+        combined = (result.stdout or "") + (result.stderr or "")
+        tail = "\n".join(combined.strip().splitlines()[-25:])
+        payload = dict(
+            cmd="npm install", cwd=str(project_dir),
+            seconds=seconds, exit_code=result.returncode,
+            output_tail=tail
+        )
+
+        if result.returncode != 0:
+            self._emit_event(
+                type_name="dependency_install", stage=stage, status="error",
+                message=f"npm install failed (exit {result.returncode}) after {seconds}s",
+                payload=payload,
+            )
+            raise RuntimeError(
+                f"npm install failed in {project_dir} (exit {result.returncode}): {tail[-400:]}"
+            )
+
+        self._emit_event(
+            type_name="dependency_install", stage=stage, status="complete",
+            message=f"npm install finished in {seconds}s", payload=payload,
+        )
 
     def kill_local_server(self) -> None:
         """Cleanup for local dev server."""
@@ -215,6 +317,26 @@ class BaseAgent:
     # ------------------------------------------------------------------ #
     # Helpers
     # ------------------------------------------------------------------ #
+
+    _ENVIRONMENT: Optional[dict] = None
+
+    @classmethod
+    def _environment_info(cls) -> dict:
+        """Tool versions, probed once per process (`--version` is not free)."""
+        if cls._ENVIRONMENT is None:
+            info: Dict[str, Any] = {
+                "python": platform.python_version(),
+                "platform": platform.platform(),
+            }
+            for tool in ("node", "npm", "claude"):
+                try:
+                    proc = subprocess.run([tool, "--version"], capture_output=True, text=True, timeout=10)
+                    text = (proc.stdout or proc.stderr or "").strip()
+                    info[tool] = text.splitlines()[0] if text else "unknown"
+                except Exception:
+                    info[tool] = "missing"
+            cls._ENVIRONMENT = info
+        return dict(cls._ENVIRONMENT)
 
     def _log_instruction(self) -> None:
         """Persist and display the input instruction for traceability."""
@@ -229,10 +351,6 @@ class BaseAgent:
             self._emit_file_event(stage, file_path)
             return True
         return False
-
-    def _handle_message(self, message, stage: str):
-        """Emit structured events while streaming assistant messages and tool usage."""
-        pass
 
     def _mark_stage(self, stage: str, status: Optional[StageStatus] = None, message: Optional[str] = None) -> None:
         """Emit structured stage updates."""

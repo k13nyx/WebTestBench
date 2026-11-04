@@ -1,6 +1,7 @@
 import os
 import json
 import time
+import traceback
 from pathlib import Path
 from typing import Any, Callable, Optional, Dict, List
 from dataclasses import asdict
@@ -70,12 +71,36 @@ class ClaudeCodeWebTester(BaseAgent):
         ]
 
         success = True
+        error_message: Optional[str] = None
+        error_exc: Optional[BaseException] = None
+        self._emit_event(
+            type_name="configuration", stage="start", status="running",
+            message=f"{self.api_config.model} on {self.server_url}",
+            payload=dict(
+                **self._environment_info(),
+                model=self.api_config.model,
+                base_url=self.api_config.base_url,
+                server_url=self.server_url,
+                project_dir=(str(self.local_project_dir) if self.local_project_dir else None),
+                output_dir=str(self.output_dir),
+            ),
+        )
+
         try:
             for stage_callable in stage_sequence:
                 stage_result = await stage_callable()
                 if stage_result is False:
                     success = False
                     break
+        except Exception as exc:
+            success = False
+            error_exc = exc
+            error_message = f"{type(exc).__name__}: {exc}"
+            self._emit_event(
+                type_name="task_error", stage=self.current_stage or "unknown", status="error",
+                message=error_message,
+                payload=dict(exception=type(exc).__name__, traceback=traceback.format_exc()),
+            )
         finally:
             end_ts = time.time()
             duration = end_ts - start_ts
@@ -89,8 +114,12 @@ class ClaudeCodeWebTester(BaseAgent):
                 start_time=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(start_ts)),
                 end_time=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(end_ts)),
                 duration=time.strftime("%H:%M:%S", time.gmtime(int(round(duration or 0)))),
+                error=error_message,
             )
         )
+        if error_exc is not None:
+            raise error_exc
+
         return success
 
     async def checklist_generation(self) -> bool:
@@ -104,14 +133,22 @@ class ClaudeCodeWebTester(BaseAgent):
         self._write_stage_success(stage, True)
         self._mark_stage(stage=stage, status="running", message="🚀 Checklist Generation ...")
         prompt = USER_PROMPT["checklist_generation"].substitute(instruction=self.instruction)
-        self.event_log_stream.write(f"{'-'*20} USER PROMPT {'-'*20}\n{prompt}\n{'-'*50}\n")
+        self._emit_event(
+            type_name="user_prompt", stage=stage, status="running",
+            message=prompt, payload={"chars": len(prompt)},
+        )
         options = self._get_chat_agent_options(max_turns=5)
 
+        result_message = ""
         async for message in query(prompt=prompt, options=options):
             self._log_session_id(message, session_name=stage, stage=stage, prompt=prompt)
             self._handle_message(message, stage=stage)
             if isinstance(message, ResultMessage):
                 result_message = message.result
+        self._emit_event(
+            type_name="chat_completion", stage=stage, status="running",
+            message=result_message, payload={"chars": len(result_message)},
+        )
 
         final_result, from_result_message = self._extract_final_result(result_message, stage=stage)
         self._record_final_result_source(stage, from_result_message)
@@ -147,15 +184,25 @@ class ClaudeCodeWebTester(BaseAgent):
         prompt = USER_PROMPT["defect_detection"].substitute(
             instruction=self.instruction, server_url=self.server_url, checklist=checklist_md,
         )
+        self._emit_event(
+            type_name="user_prompt", stage=stage, status="running",
+            message=prompt, payload={"chars": len(prompt)},
+        )
         options = self._get_browser_agent_options(max_turns=self.max_turns)
 
+        result_message = ""
+        num_turns = 0
         async for message in query(prompt=prompt, options=options):
             self._log_session_id(message, session_name=stage, stage=stage, prompt=prompt)
             self._handle_message(message, stage=stage)
             if isinstance(message, ResultMessage):
                 result_message = message.result
                 num_turns = message.num_turns
-        
+        self._emit_event(
+            type_name="chat_completion", stage=stage, status="running",
+            message=result_message, payload={"chars": len(result_message), "num_turns": num_turns},
+        )
+
         if num_turns > self.max_turns:
             self.write_markdown(target_file, "")
             self.write_markdown(self.result_extracted_path, "")
@@ -193,13 +240,19 @@ class ClaudeCodeWebTester(BaseAgent):
                 session_entry.update(extra_meta)
 
             session_meta[session_name] = session_entry
-            self.session_meta_path.write_text(json.dumps(session_meta, ensure_ascii=False, indent=2), encoding="utf-8")
+            self.session_meta_path.write_text(
+                json.dumps(session_meta, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
 
             self._emit_event(
-                type_name="log_session_id", stage=stage, payload=dict(session_id=session_id, extra_meta=extra_meta)
+                type_name="log_session_id", stage=stage,
+                payload=dict(
+                    session_id=session_id,
+                    extra_meta=extra_meta
+                )
             )
     
-    def _handle_message(self, message, stage: str):
+    def _handle_message(self, message, stage: str) -> str:
         """Emit structured events while streaming assistant messages and tool usage."""
         self._record_message_count(message, stage=stage)
 
@@ -239,6 +292,24 @@ class ClaudeCodeWebTester(BaseAgent):
         
         elif isinstance(message, ResultMessage):
             print("Result message received.")
+            usage = message.usage or {}
+            self._emit_event(
+                type_name="api_usage",
+                stage=stage,
+                status="running",
+                message=(
+                    f"{message.num_turns} turns, "
+                    f"{usage.get('input_tokens', 0)} in / {usage.get('output_tokens', 0)} out, "
+                    f"${message.total_cost_usd}"
+                ),
+                payload=dict(
+                    num_turns=message.num_turns,
+                    cost_usd=message.total_cost_usd,
+                    prompt_tokens=usage.get("input_tokens", 0),
+                    output_tokens=usage.get("output_tokens", 0),
+                    usage=usage,
+                ),
+            )
             self._emit_event(
                 type_name="message",
                 stage=stage,
@@ -387,7 +458,7 @@ class ClaudeCodeWebTester(BaseAgent):
     ) -> ClaudeAgentOptions:
         return ClaudeAgentOptions(
             system_prompt=system_prompt,
-            allowed_tools=None,
+            allowed_tools=[],
             model=self.api_config.model,
             max_turns=max_turns,
             max_buffer_size=max_buffer_size,
