@@ -1,24 +1,5 @@
 #!/usr/bin/env python3
-"""WebTestBench runner + score-vs-price report, in one file.
-
-Two modes:
-
-  report mode (default)
-      Rebuilds the tables from artifacts that already exist. Reads nothing else:
-          outputs/<version>/<index>/score.json         # coverage/precision/recall/f1
-          outputs/<version>/<index>/session_meta.json  # token usage, reported cost
-      and emits:
-          outputs/benchmark.jsonl       # one line per (version, task)
-          outputs/score_vs_price.csv    # one row per model: score vs $/1M tokens
-          outputs/score_vs_price.xlsx   # same table as a spreadsheet
-          outputs/score_vs_price.png    # scatter plot
-
-  sweep mode (`--run`)
-      Runs, for each model in models.yml:
-          1. eval/run_agent.py  (JOBS shards of the dataset, in parallel)
-          2. eval/scoring.py    (LLM judge matches predictions to gold items)
-      then builds the reports above. Tasks already finished are skipped, so
-      re-running the same command resumes a crashed sweep.
+"""WebTestBench runner + score-vs-price report.
 
 Credentials come from the environment, never from this file:
     OPENROUTER_API_KEY or ANTHROPIC_AUTH_TOKEN   -> API key
@@ -34,6 +15,24 @@ Examples:
 models.yml is read from this file's directory. The dataset and the web apps both
 come from --data-root (default ./data/WebTestBench, what process/download_dataset.py
 fills in).
+
+Output:
+    report mode (default)
+        Rebuilds the tables from artifacts that already exist. Reads nothing else:
+            outputs/<version>/<index>/score.json         # coverage/precision/recall/f1
+            outputs/<version>/<index>/session_meta.json  # token usage, reported cost
+        and emits:
+            outputs/benchmark.jsonl       # one line per (version, task)
+            outputs/score_vs_price.csv    # one row per model: score vs $/1M tokens
+            outputs/score_vs_price.xlsx   # same table as a spreadsheet
+            outputs/score_vs_price.png    # scatter plot
+
+Cost precedence per task (see the cost_source column):
+    openrouter_api          usage.cost reported by OpenRouter
+    claude_code_estimate    total_cost_usd from the Claude Code run
+                            (a LOCAL calculation; do not read it as a bill)
+    price_table_estimate    tokens x price_in/price_out from models.yml
+    unavailable             no prices and no tokens
 """
 from __future__ import annotations
 
@@ -101,7 +100,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--output-root", default="./outputs", help="artifacts, logs, work dir and reports")
 
     # report
-    p.add_argument("--cost-mode", choices=("auto", "sdk", "price_table"), default="auto", help="cost source: auto (SDK if present, else price table) or price_table")
+    p.add_argument("--cost-mode", choices=("auto", "sdk", "price_table"), default="auto", help="cost source: auto (openrouter_api > claude_code_estimate > price_table), sdk, or price_table")
     return p.parse_args()
 
 
@@ -151,6 +150,7 @@ def _session_totals(session_meta: dict) -> Dict[str, float]:
         "cache_read_tokens": 0.0,
         "cache_creation_tokens": 0.0,
         "sdk_cost_usd": 0.0,
+        "api_cost_usd": 0.0,
         "num_turns": 0.0
     }
 
@@ -171,7 +171,9 @@ def _session_totals(session_meta: dict) -> Dict[str, float]:
                 continue
 
             low = str(name).lower()
-            if "cache_read" in low:
+            if "cost" in low:  # OpenRouter returns usage.cost; use it when present
+                totals["api_cost_usd"] += float(value)
+            elif "cache_read" in low:
                 totals["cache_read_tokens"] += float(value)
             elif "cache_creation" in low or "cache_write" in low:
                 totals["cache_creation_tokens"] += float(value)
@@ -182,19 +184,41 @@ def _session_totals(session_meta: dict) -> Dict[str, float]:
 
     return totals
 
-def collect_task(version_dir: Path, task_dir: Path, model: dict, cost_mode: str = "auto") -> Optional[dict]:
+def _result_bytes(task_dir: Path) -> int:
+    """Bytes of result_extracted.md, or 0 when absent. The one definition of "has result"."""
+    path = task_dir / "result_extracted.md"
+    return path.stat().st_size if path.exists() else 0
+
+def collect_task(
+    version_dir: Path,
+    task_dir: Path,
+    model: dict,
+    cost_mode: str = "auto",
+    gold_items: Optional[int] = None
+) -> Optional[dict]:
     score = _read_json(task_dir / "score.json") or {}
     session = _read_json(task_dir / "session_meta.json") or {}
     if not score and not session:
         return None
 
     overall = score.get("overall") or {}
-    
+    match_info = _read_json(task_dir / "score_match_ids.json") or {}
+    checklist_path = task_dir / "checklist.md"
+
+    # binary on purpose: an error, a timeout and a model that could not handle the
+    # input all count as "empty"; only produced test output counts as a result
+    result_bytes = _result_bytes(task_dir)
+    status = "has_result" if result_bytes else "empty"
+
+    checklist_text = checklist_path.read_text(encoding="utf-8") if checklist_path.exists() else ""
+    checklist_items = sum(1 for line in checklist_text.splitlines() if line.startswith("- ["))
+
     totals = _session_totals(session)
     prompt_tokens = int(
         totals["prompt_tokens"] + totals["cache_read_tokens"] + totals["cache_creation_tokens"]
     )
     output_tokens = int(totals["output_tokens"])
+    api_cost = totals["api_cost_usd"]
     sdk_cost = totals["sdk_cost_usd"]
 
     price_in = model.get("price_in")
@@ -203,10 +227,16 @@ def collect_task(version_dir: Path, task_dir: Path, model: dict, cost_mode: str 
     if price_in is not None and price_out is not None:
         est_cost = prompt_tokens / 1_000_000 * price_in + output_tokens / 1_000_000 * price_out
 
+    # Precedence: what OpenRouter billed > what Claude Code estimated > the
+    # models.yml price table. Today session_meta.json only carries the middle one
+    # (a local calculation, 0 for models Claude Code cannot price), so expect
+    # price_table_estimate unless you record usage.cost yourself.
     if cost_mode == "price_table" and est_cost is not None:
         cost, cost_source = est_cost, "price_table_estimate"
+    elif api_cost > 0:
+        cost, cost_source = api_cost, "openrouter_api"
     elif cost_mode == "sdk" or sdk_cost > 0:
-        cost, cost_source = sdk_cost, "sdk"
+        cost, cost_source = sdk_cost, "claude_code_estimate"
     elif est_cost is not None:
         cost, cost_source = est_cost, "price_table_estimate"
     else:
@@ -217,13 +247,16 @@ def collect_task(version_dir: Path, task_dir: Path, model: dict, cost_mode: str 
         "model": model.get("model_id"),
         "model_key": model.get("key"),
         "index": task_dir.name,
-        "status": "done" if (task_dir / "result_extracted.md").exists() else "missing_result",
+        "status": status,
+        "result_bytes": result_bytes,
+        "gold_items": gold_items,
+        "checklist_items": checklist_items,
+        "scored_from": match_info.get("source"),
         "coverage": overall.get("coverage"),
         "precision": overall.get("precision"),
         "recall": overall.get("recall"),
         "f1": overall.get("f1"),
         "num_pred_item": overall.get("num_pred_item"),
-        "missing_result": bool(overall.get("missing_result", False)),
         "prompt_tokens": prompt_tokens,
         "output_tokens": output_tokens,
         "cache_read_tokens": int(totals["cache_read_tokens"]),
@@ -254,6 +287,18 @@ def aggregate(version: str, rows: List[dict], model: dict, total_tasks: Optional
     means = {k: _mean(r[k] for r in scored) for k in ("coverage", "precision", "recall", "f1")}
     f1 = means["f1"]
     blended = round(cost / tokens * 1_000_000, 4) if tokens and cost else None
+
+    # reliability: was each score actually derived from test output?
+    from_result = sum(1 for r in scored if r["scored_from"] == "result")
+    from_checklist = sum(1 for r in scored if r["scored_from"] == "checklist")
+    weighted = [
+        (r["coverage"], r["gold_items"])
+        for r in scored
+        if r["coverage"] is not None and r["gold_items"]
+    ]
+    gold_scored = sum(g for _, g in weighted)
+    coverage_weighted = round(sum(c * g for c, g in weighted) / gold_scored, 4) if gold_scored else None
+
     return {
         "version": version,
         "model": model.get("model_id"),
@@ -261,7 +306,15 @@ def aggregate(version: str, rows: List[dict], model: dict, total_tasks: Optional
         "tasks_attempted": len(rows),
         "tasks_scored": len(scored),
         "tasks_total": total_tasks,
-        "missing_result": sum(1 for r in rows if r["status"] != "done"),
+        "tasks_has_result": sum(1 for r in rows if r["status"] == "has_result"),
+        "tasks_empty": sum(1 for r in rows if r["status"] == "empty"),
+        "tasks_scored_from_result": from_result,
+        "tasks_scored_from_checklist": from_checklist,
+        "scored_from_result_ratio": round(from_result / len(scored), 4) if scored else None,
+        "gold_items_total": gold_scored,
+        "pred_items_total": _total(rows, "num_pred_item"),
+        "checklist_items_total": _total(rows, "checklist_items"),
+        "coverage_weighted": coverage_weighted,
         **means,
         "avg_num_pred_item": _mean(r["num_pred_item"] for r in scored),
         "prompt_tokens": _total(rows, "prompt_tokens"),
@@ -635,12 +688,12 @@ class Sweep:
 
     # -- progress -------------------------------------------------------
     def finished_tasks(self) -> int:
-        """Count tasks that already produced result_extracted.md, across all model dirs."""
+        """Count tasks that actually produced test output, across all model dirs."""
         total = 0
         for version_dir in self.output_root.iterdir():
             if not version_dir.is_dir() or version_dir.name in ("logs", "work"):
                 continue
-            total += sum(1 for d in version_dir.iterdir() if (d / "result_extracted.md").exists())
+            total += sum(1 for d in version_dir.iterdir() if _result_bytes(d))
         return total
 
     def heartbeat(self, stop: threading.Event, models_total: int) -> None:
@@ -749,11 +802,19 @@ def build_report(
 
     models = load_models(Path(models_yml))
 
+    # gold item counts come from the dataset; without it, gold_items stays empty
+    gold_counts: Dict[str, int] = {}
     total_tasks = None
     if dataset_path is not None and Path(dataset_path).exists():
-        total_tasks = sum(
-            1 for line in Path(dataset_path).read_text(encoding="utf-8").splitlines() if line.strip()
-        )
+        records = []
+        for line in Path(dataset_path).read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                try:
+                    records.append(json.loads(line))
+                except Exception:
+                    continue
+        total_tasks = len(records)
+        gold_counts = {str(r.get("index", "")): len(r.get("checklist") or []) for r in records}
 
     jsonl_out = output_root / "benchmark.jsonl"
     csv_out = output_root / "score_vs_price.csv"
@@ -768,7 +829,8 @@ def build_report(
         model = models.get(short, {"key": short, "model_id": short})
         rows = []
         for task_dir in sorted(d for d in version_dir.iterdir() if d.is_dir()):
-            row = collect_task(version_dir, task_dir, model, cost_mode=cost_mode)
+            row = collect_task(version_dir, task_dir, model, cost_mode=cost_mode,
+                               gold_items=gold_counts.get(task_dir.name))
             if row:
                 rows.append(row)
         if not rows:
@@ -796,7 +858,9 @@ def build_report(
     if verbose:
         for r in agg:
             print(f"{r['model']:<32} f1={fmt(r['f1'], 4):>7}  $/1M={fmt(r['usd_per_1m_blended'], 4):>8}"
-                  f"  total$={fmt(r['cost_usd'], 4):>9}  tasks={r['tasks_scored']}")
+                  f"  total$={fmt(r['cost_usd'], 4):>9}  tasks={r['tasks_scored']}"
+                  f"  empty={r['tasks_empty']}  from_ckl={r['tasks_scored_from_checklist']}"
+                  f"  items={r['pred_items_total']}/{r['gold_items_total']}")
     return agg
 
 
