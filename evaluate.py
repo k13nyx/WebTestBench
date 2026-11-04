@@ -93,7 +93,7 @@ def parse_args() -> argparse.Namespace:
     # parallelism
     p.add_argument("--jobs", type=int, default=min(8, os.cpu_count() or 8), help="dataset shards per model (default: min(8, cpus))")
     p.add_argument("--parallel-models", type=int, default=1, help="models in flight at once")
-    p.add_argument("--judge-model", default=os.environ.get("JUDGE_MODEL", "google/gemini-3.8-flash"), help="model used by eval/scoring.py to match items to gold")
+    p.add_argument("--judge-model", default=os.environ.get("JUDGE_MODEL", "qwen/qwen3.5-27b"), help="model used by eval/scoring.py to match items to gold")
 
     # paths (models.yml is expected next to this file)
     p.add_argument("--data-root", default="./data/WebTestBench", help="holds WebTestBench.jsonl and web_applications/")
