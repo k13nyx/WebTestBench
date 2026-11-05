@@ -7,6 +7,8 @@ import sys
 import time
 import subprocess
 import shutil
+import urllib.error
+import urllib.request
 from urllib.parse import urlparse
 from dataclasses import dataclass
 from pathlib import Path
@@ -25,7 +27,34 @@ class APIConfig:
 StageStatus = Literal["running", "complete", "skip", "error"]
 
 
+class DependencyInstallFailed(RuntimeError):
+    """`npm install` failed; not worth retrying within the same deploy stage."""
+
+
+def _env_number(name: str, default: Any, cast: type = float) -> Any:
+    """Read a numeric env override; a typo must not break importing this module."""
+    raw = os.environ.get(name)
+    if raw is None or not str(raw).strip():
+        return default
+
+    try:
+        return cast(raw)
+    except (TypeError, ValueError):
+        print_red(f"Ignoring non-numeric {name}={raw!r}; using {default}")
+        return default
+
+
 class BaseAgent:
+    # A cold Vite start pre-bundles its dependencies before it binds its port, which
+    # is slow. The budget is generous and overridable instead of a hardcoded 80s.
+    SERVER_TIMEOUT: float = _env_number("WEBTESTBENCH_SERVER_TIMEOUT", 300.0)
+    SERVER_POLL: float = 0.5
+    SERVER_PROGRESS_INTERVAL: float = 15.0
+    SERVER_DEPLOY_ATTEMPTS: int = _env_number("WEBTESTBENCH_SERVER_ATTEMPTS", 3, int)
+    SERVER_RETRY_DELAY_S: float = _env_number("WEBTESTBENCH_SERVER_RETRY_DELAY", 30.0)
+    # Wall-clock cap for the whole deploy stage, so a hopeless app cannot cost
+    # attempts x budget.
+    SERVER_TOTAL_BUDGET_S: float = _env_number("WEBTESTBENCH_DEPLOY_BUDGET", 900.0)
 
     def __init__(
         self,
@@ -53,6 +82,9 @@ class BaseAgent:
         self.result_path = self.output_dir / "result.md"
         self.result_extracted_path = self.output_dir / "result_extracted.md"
         self.session_meta_path = self.output_dir / "session_meta.json"
+
+        self.dev_server_process: Optional[subprocess.Popen] = None
+        self._dev_server_log_handle: Optional[Any] = None
     
     async def extract_result_file(self) -> bool:
         stage = "result_extract"
@@ -156,9 +188,53 @@ class BaseAgent:
             return False
 
         self._kill_exist_port(port)
-        self._deploy_local_server(port)
+        self._deploy_with_retry(port, stage=stage)
 
         return True
+
+    def _deploy_with_retry(self, port: int, stage: str = "server_deploy") -> None:
+        """
+        Deploy the dev server, with retry on failure.
+        Waiting for the burst to pass and retrying is cheaper than losing the record.
+        """
+        attempts = max(1, self.SERVER_DEPLOY_ATTEMPTS)
+        started = time.time()
+
+        for attempt in range(1, attempts + 1):
+            final_attempt = attempt >= attempts
+            try:
+                self._deploy_local_server(port, stage=stage, final_attempt=final_attempt)
+                # Intermediate attempts report status "running", but be explicit: a
+                # retried deploy that did start must not stay recorded as failed.
+                self._write_stage_success(stage, True, force=True)
+                return
+
+            except (DependencyInstallFailed, FileNotFoundError):
+                raise  # deterministic: another attempt cannot change the outcome
+
+            except Exception as exc:
+                if final_attempt:
+                    raise
+
+                elapsed = time.time() - started
+                if elapsed + self.SERVER_RETRY_DELAY_S > self.SERVER_TOTAL_BUDGET_S:
+                    raise RuntimeError(
+                        f"{exc} (deploy budget {self.SERVER_TOTAL_BUDGET_S:.0f}s exhausted after {elapsed:.0f}s)"
+                    ) from exc
+
+                delay = self.SERVER_RETRY_DELAY_S
+                self._emit_event(
+                    type_name="server_retry", stage=stage, status="running",
+                    message=f"dev server attempt {attempt}/{attempts} failed ({type(exc).__name__}); retrying in {delay:.0f}s",
+                    payload=dict(
+                        attempt=attempt, attempts=attempts, delay_s=delay, error=str(exc),
+                    ),
+                )
+                self._stop_dev_server_process()
+                self._kill_exist_port(port, stage=stage)
+                time.sleep(delay)
+
+        raise RuntimeError(f"dev server for port {port} could not be deployed")  # unreachable
 
     def _kill_exist_port(self, port: int, stage: str = "server_deploy") -> None:
         """Kill old dev server process on the given port if it exist."""
@@ -175,9 +251,28 @@ class BaseAgent:
                 self._mark_stage(stage=stage, message=f"✅ No process found on port {port}.")
                 pass  # It's okay if nothing was running on the port
         except Exception as e:
-            self._mark_stage(stage=stage, status="error", message=f"Failed to kill old server process: {e}")
+            # Best effort: cleanup must never fail a stage that then succeeds.
+            self._mark_stage(stage=stage, message=f"⚠️ Could not inspect port {port}: {e}")
+
+        # A Vite server only binds its port after pre-bundling its deps, so it is
+        # invisible to the lookup above while it keeps a core (and later the port)
+        # busy. Sweep by command line as well; `[ ]` keeps the pattern from matching
+        # its own command line and the port makes it specific to this record.
+        try:
+            sweep = subprocess.run(
+                ["pkill", "-9", "-f", f"vite[ ]--port[ ]{port}"],
+                capture_output=True, text=True,
+            )
+        except FileNotFoundError:
+            return  # pkill not installed: the port lookup above is all we can do
+        except Exception as e:
+            self._mark_stage(stage=stage, message=f"⚠️ Command-line sweep skipped: {e}")
+            return
+
+        if sweep.returncode == 0:
+            self._mark_stage(stage=stage, message=f"🧹 Killed stale dev server still starting up for port {port}.")
     
-    def _deploy_local_server(self, port: int, stage: str = "server_deploy"):
+    def _deploy_local_server(self, port: int, stage: str = "server_deploy", final_attempt: bool = True):
         """Start dev server in background on the given port and wait until it responds."""
         if not self.local_project_dir:
             raise FileNotFoundError("local_project_dir is not set; cannot deploy a dev server")
@@ -189,49 +284,199 @@ class BaseAgent:
         self._check_disk_space(project_dir, stage=stage)
         self._install_dependencies(project_dir, stage=stage)
 
+        # session_meta.json only ever ANDs stage_success, so an intermediate attempt
+        # reports "running": the retry that succeeds must leave the stage successful.
+        failure_status: StageStatus = "error" if final_attempt else "running"
+
         log_path = self.output_dir / "dev_server.log"
+        cmd = self._dev_server_command(project_dir, port)
         self._mark_stage(stage=stage, message=f"🚀 Starting dev server on port {port} (log: {log_path}) ...")
 
         self._dev_server_log_handle = open(log_path, "w", encoding="utf-8")
         self.dev_server_process = subprocess.Popen(
-            ["npm", "run", "dev", "--", "--port", str(port)],
-            cwd=str(project_dir), stdout=self._dev_server_log_handle, stderr=subprocess.STDOUT, preexec_fn=os.setsid,
+            cmd, cwd=str(project_dir),
+            stdout=self._dev_server_log_handle, stderr=subprocess.STDOUT, preexec_fn=os.setsid,
         )
-        
+
         # step 3: wait for server to respond
+        wait_s = self.SERVER_TIMEOUT
+        probe_urls = [self.server_url]
+        for extra in (f"http://127.0.0.1:{port}/", f"http://[::1]:{port}/"):
+            if extra not in probe_urls:
+                probe_urls.append(extra)
+
         print("⏳ Waiting for server to start...")
         self._emit_event(
             type_name="server_wait", stage=stage, status="running",
-            message=f"waiting up to {20 + 60}s for {self.server_url}",
-            payload=dict(url=self.server_url, log=str(log_path)),
+            message=f"waiting up to {wait_s:.0f}s for {self.server_url}",
+            payload=dict(
+                url=self.server_url, log=str(log_path), timeout_s=wait_s,
+                command=" ".join(cmd), probe_urls=list(probe_urls),
+            ),
         )
         started = time.time()
-        time.sleep(20)
-        for _ in range(60):  # 60 sec
-            time.sleep(1)
-            try:
-                response = subprocess.run(
-                    ["curl", "-s", self.server_url],
-                    capture_output=True, timeout=2
+        next_progress = started + self.SERVER_PROGRESS_INTERVAL
+
+        while True:
+            # Fail fast when the dev server already died (bad config, port taken with
+            # --strictPort, missing script); waiting the full budget hides that.
+            exit_code = self.dev_server_process.poll()
+            if exit_code is not None:
+                tail = self._tail_file(log_path)
+                self._stop_dev_server_process()
+                self._emit_event(
+                    type_name="server_exit", stage=stage, status=failure_status,
+                    message=f"dev server exited before listening (exit {exit_code})",
+                    payload=dict(
+                        url=self.server_url, exit_code=exit_code, command=" ".join(cmd),
+                        dev_server_log_tail=tail,
+                    ),
                 )
-                if response.returncode == 0:
+                raise RuntimeError(
+                    f"Dev server exited (exit {exit_code}) before answering on {self.server_url}. "
+                    f"See log: {log_path}"
+                )
+
+            for probe_url in probe_urls:
+                if self._probe_url(probe_url):
                     elapsed = round(time.time() - started, 1)
                     self._mark_stage(stage=stage, status="complete", message=f"✅ Server is ready at {self.server_url} ({elapsed}s)")
                     self._mark_stage(stage=stage, message=f"✅ Dev server started (PID: {self.dev_server_process.pid})")
                     return True
-            except Exception:
-                continue
+
+            elapsed = time.time() - started
+            if elapsed >= wait_s:
+                break
+            if time.time() >= next_progress:
+                next_progress = time.time() + self.SERVER_PROGRESS_INTERVAL
+                last_line = (self._tail_file(log_path, limit=1) or "<no output>").strip()
+                self._mark_stage(
+                    stage=stage,
+                    message=f"⏳ still waiting for {self.server_url} ({elapsed:.0f}s/{wait_s:.0f}s, last log line: {last_line})",
+                )
+            time.sleep(self.SERVER_POLL)
 
         tail = self._tail_file(log_path)
+        elapsed = round(time.time() - started, 1)
+        self._stop_dev_server_process()
+
         self._emit_event(
-            type_name="server_timeout", stage=stage, status="error",
-            message="dev server did not answer within 80s",
+            type_name="server_timeout", stage=stage, status=failure_status,
+            message=f"dev server did not answer within {wait_s:.0f}s",
             payload=dict(
-                url=self.server_url, seconds=round(time.time() - started, 1),
+                url=self.server_url, seconds=elapsed, command=" ".join(cmd),
+                expected_port=port, log_reported_port=self._log_reported_port(log_path),
+                hint=self._deploy_timeout_hint(log_path, port),
                 dev_server_log_tail=tail
             ),
         )
-        raise RuntimeError(f"Dev server failed to start within 80s. See log: {log_path}")
+        raise RuntimeError(
+            f"Dev server failed to start within {wait_s:.0f}s ({elapsed}s). "
+            f"{self._deploy_timeout_hint(log_path, port)} See log: {log_path}"
+        )
+
+    def _dev_server_command(self, project_dir: Path, port: int) -> list:
+        """`npm run dev` plus the port flag, with Vite-only extras when applicable.
+
+        `--strictPort` makes Vite fail instead of silently shifting to another port,
+        which would leave the pipeline polling a URL nothing listens on.
+        """
+        cmd = ["npm", "run", "dev", "--", "--port", str(port)]
+        if "vite" in self._dev_script(project_dir).lower():
+            cmd.append("--strictPort")
+
+        return cmd
+
+    @staticmethod
+    def _dev_script(project_dir: Path) -> str:
+        """`scripts.dev` from package.json, or '' when it cannot be read."""
+        try:
+            package = json.loads((project_dir / "package.json").read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return ""
+
+        return str((package.get("scripts") or {}).get("dev", "") or "")
+
+    @staticmethod
+    def _probe_url(url: str, timeout: float = 1.5) -> bool:
+        """True when something answers HTTP on `url`; any status code counts.
+
+        Proxies are bypassed so an http_proxy env var cannot turn a local readiness
+        probe into a misleading failure.
+        """
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+        try:
+            with opener.open(url, timeout=timeout):
+                return True
+        except urllib.error.HTTPError:
+            return True
+        except Exception:
+            return False
+
+    @staticmethod
+    def _log_reported_port(path: Path) -> Optional[int]:
+        """Last `localhost:<port>` port printed by the dev server, if any."""
+        try:
+            text = Path(path).read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            return None
+
+        ports = re.findall(r"localhost:(\d{2,5})", text)
+        return int(ports[-1]) if ports else None
+
+    def _deploy_timeout_hint(self, log_path: Path, port: int) -> str:
+        """Actionable one-liner explaining the most likely cause of a timeout."""
+        reported = self._log_reported_port(log_path)
+        if reported is not None and reported != port:
+            return f"Dev server is listening on port {reported}, not {port}; align server_url with the chosen port."
+
+        if "Re-optimizing dependencies" in self._tail_file(log_path, limit=200):
+            return (
+                "Vite was still pre-bundling dependencies (slow on /mnt/c under WSL2); "
+                "raise WEBTESTBENCH_SERVER_TIMEOUT or delete node_modules/.vite to re-warm it."
+            )
+
+        return "Check dev_server.log for build errors or a port conflict."
+
+    def _stop_dev_server_process(self) -> None:
+        """Kill the spawned dev server process group and close its log handle.
+
+        A port-only kill misses a server that is still pre-bundling deps and not
+        listening yet, which leaves an orphan competing with the next run.
+        """
+        self._kill_process_group(self.dev_server_process)
+        self.dev_server_process = None
+
+        handle = self._dev_server_log_handle
+        if handle is not None:
+            try:
+                handle.close()
+            except Exception:
+                pass
+        self._dev_server_log_handle = None
+
+    @staticmethod
+    def _kill_process_group(proc: Optional[subprocess.Popen]) -> None:
+        """Best-effort kill of a Popen started with `preexec_fn=os.setsid`.
+
+        The process group id equals the pid, so a negative target also takes down
+        the npm/vite/esbuild children instead of only the shell we spawned.
+        """
+        if proc is None or proc.poll() is not None:
+            return
+
+        try:
+            subprocess.run(f"kill -9 -{proc.pid}", shell=True, capture_output=True)
+        except Exception:
+            try:
+                proc.kill()
+            except Exception:
+                pass
+
+        try:
+            proc.wait(timeout=10)
+        except Exception:
+            pass
 
     # ------------------------------------------------------------------ #
     # Deployment diagnostics
@@ -298,7 +543,7 @@ class BaseAgent:
                 message=f"npm install failed (exit {result.returncode}) after {seconds}s",
                 payload=payload,
             )
-            raise RuntimeError(
+            raise DependencyInstallFailed(
                 f"npm install failed in {project_dir} (exit {result.returncode}): {tail[-400:]}"
             )
 
@@ -309,10 +554,15 @@ class BaseAgent:
 
     def kill_local_server(self) -> None:
         """Cleanup for local dev server."""
+        self._stop_dev_server_process()
         if not self.server_url.startswith("http://localhost"):
             return
 
-        self._kill_exist_port(urlparse(self.server_url).port, stage="server_cleanup")
+        port = urlparse(self.server_url).port
+        if port is None:
+            return
+
+        self._kill_exist_port(port, stage="server_cleanup")
 
     # ------------------------------------------------------------------ #
     # Helpers
@@ -435,7 +685,7 @@ class BaseAgent:
             payload={"file": {"name": path.name, "path": str(path), "content": content}},
         )
 
-    def _write_stage_success(self, stage: str, success: bool) -> None:
+    def _write_stage_success(self, stage: str, success: bool, force: bool = False) -> None:
         session_meta: Dict[str, Any] = {}
         if self.session_meta_path.exists():
             try:
@@ -449,7 +699,10 @@ class BaseAgent:
         if not isinstance(stage_success, dict):
             stage_success = {}
         current_value = stage_success.get(stage)
-        if isinstance(current_value, bool):
+        if force:
+            # Only for a stage that is re-run and ends successfully (deploy retry).
+            stage_success[stage] = bool(success)
+        elif isinstance(current_value, bool):
             stage_success[stage] = current_value and bool(success)
         else:
             stage_success[stage] = bool(success)

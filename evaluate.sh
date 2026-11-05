@@ -4,10 +4,10 @@ cd "$(dirname "$0")"
 
 # ======================================================================
 MODELS=all
-PARALLEL_MODELS=2
+JOBS=10            # dataset shards per model (same idea as scripts/run_webtester_cc_parallel.sh JOBS)
 # ======================================================================
 python evaluate.py \
     --run \
-    --models $MODELS \
-    --parallel-models $PARALLEL_MODELS \
+    --models "$MODELS" \
+    --jobs "$JOBS" \
     "$@"

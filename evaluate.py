@@ -41,7 +41,6 @@ import argparse
 import csv
 import json
 import os
-import shutil
 import subprocess
 import sys
 import threading
@@ -60,11 +59,11 @@ import matplotlib.pyplot as plt  # noqa: E402  (must follow matplotlib.use)
 
 ROOT = Path(__file__).resolve().parent
 
-# Dev servers bind BASE_PORT + slot*stride + int(record_id[-4:]). Override the base
-# only if that range is already busy on your machine.
+# Dev servers bind BASE_PORT + int(record_id[-4:]). Override the base only if that
+# range is already busy on your machine.
 SHARD_RETRIES = 2
 try:
-    BASE_PORT = int(os.environ.get("WEBTESTBENCH_BASE_PORT") or 6000)
+    BASE_PORT = int(os.environ.get("WEBTESTBENCH_BASE_PORT", "6000").strip())
 except ValueError:
     raise SystemExit("WEBTESTBENCH_BASE_PORT must be an integer, e.g. 6000")
 
@@ -91,9 +90,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--limit", type=int, default=0, help="only the first N tasks (smoke test)")
     p.add_argument("--dry-run", action="store_true", help="print the plan, run nothing")
 
-    # parallelism
-    p.add_argument("--jobs", type=int, default=min(8, os.cpu_count() or 8), help="dataset shards per model (default: min(8, cpus))")
-    p.add_argument("--parallel-models", type=int, default=1, help="models in flight at once")
+    # sharding
+    p.add_argument("--jobs", type=int, default=10, help="dataset shards per model (default: 10; each shard runs its own dev server, so lower it on a small machine)")
     p.add_argument("--judge-model", default=os.environ.get("JUDGE_MODEL", "qwen/qwen3.5-27b"), help="model used by eval/scoring.py to match items to gold")
 
     # paths (models.yml is expected next to this file)
@@ -412,8 +410,8 @@ def maybe_plot(path: Path, agg: List[dict]) -> Optional[str]:
 class Sweep:
     def __init__(self, args: argparse.Namespace) -> None:
         self.args = args
-        if args.jobs < 1 or args.parallel_models < 1:
-            raise SystemExit("--jobs and --parallel-models must be >= 1")
+        if args.jobs < 1:
+            raise SystemExit("--jobs must be >= 1")
 
         self.data_root = Path(args.data_root).resolve()
         self.dataset = self.data_root / "WebTestBench.jsonl"
@@ -423,7 +421,7 @@ class Sweep:
         # Everything the run produces lives under one root:
         #   outputs/<version>/...          artifacts
         #   outputs/logs/{eval,scoring}/   logs
-        #   outputs/work/                  shards, project clones
+        #   outputs/work/                  shards
         self.log_root = self.output_root / "logs" / "eval"
         self.work_root = self.output_root / "work"
         self.do_eval = args.only in ("all", "eval")
@@ -450,7 +448,20 @@ class Sweep:
         if args.limit:
             self.records = self.records[: args.limit]
 
-        self.port_stride = self._port_stride()
+        # Ports are BASE_PORT + int(record_id[-4:]); fail here rather than per task.
+        highest = 0
+        for line in self.records:
+            try:
+                rid = str(json.loads(line).get("index", ""))
+            except Exception:
+                continue
+
+            highest = max(highest, int(rid[-4:]) if rid[-4:].isdigit() else 0)
+
+        if highest and BASE_PORT + highest > 65535:
+            raise SystemExit(
+                f"WEBTESTBENCH_BASE_PORT={BASE_PORT} + task offset {highest} exceeds 65535; set it lower."
+            )
 
     # -- environment / dataset ------------------------------------------
     @staticmethod
@@ -471,46 +482,6 @@ class Sweep:
                 '  export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"\n'
                 '  export ANTHROPIC_BASE_URL="https://openrouter.ai/api"'
             )
-
-    def _port_stride(self) -> int:
-        """Ports are BASE_PORT + slot*stride + int(record_id[-4:]), so the stride has to
-        exceed the largest task offset or two concurrent models would collide."""
-        high = 0
-        for line in self.records:
-            try:
-                rid = str(json.loads(line).get("index", ""))
-            except Exception:
-                continue
-            high = max(high, int(rid[-4:]) if rid[-4:].isdigit() else 0)
-
-        stride = (high // 1000 + 1) * 1000
-        parallel = self.args.parallel_models
-        if BASE_PORT + (parallel + 1) * stride - 1 > 65000:
-            raise SystemExit(
-                f"port range would exceed 65000 (base={BASE_PORT} stride={stride} "
-                f"parallel_models={parallel}); set WEBTESTBENCH_BASE_PORT lower."
-            )
-        return stride
-
-    def _clone_projects(self, dest: Path) -> Optional[Path]:
-        """Give one concurrent model its own copy of web_applications.
-
-        Hardlinks are near-instant; a full copy is the fallback. Needed because every
-        task runs `npm install` inside its project directory.
-        """
-        shutil.rmtree(dest, ignore_errors=True)
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        try:
-            shutil.copytree(self.project_root, dest, copy_function=os.link)
-            return dest
-        except Exception:
-            shutil.rmtree(dest, ignore_errors=True)
-            try:
-                shutil.copytree(self.project_root, dest)
-                return dest
-            except Exception as exc:
-                log(f"!!! project clone failed: {exc}")
-                return None
 
     def _append_run_log(self, payload: dict) -> None:
         path = self.output_root / "sweep.jsonl"
@@ -544,44 +515,35 @@ class Sweep:
         return chosen
 
     # -- one model ------------------------------------------------------
-    def run_model(self, key: str, model_id: str, slot: int) -> dict:
+    def run_model(self, key: str, model_id: str) -> dict:
         args = self.args
         version = f"claudecode-{model_id.split('/')[-1]}"
-        base_port = BASE_PORT + slot * self.port_stride
+        base_port = BASE_PORT
         started = time.time()
-        result = {"key": key, "model": model_id, "version": version, "slot": slot,
-                  "base_port": base_port, "status": "ok", "shards_failed": 0, "scoring_rc": None}
+        result = {
+            "key": key,
+            "model": model_id,
+            "version": version,
+            "base_port": base_port,
+            "status": "ok",
+            "shards_failed": 0,
+            "scoring_rc": None
+        }
 
         project_dir = self.project_root
-        # Concurrent models must not run `npm install` in the same app dir; a
-        # hardlink clone is near-instant and isolates them.
-        if args.parallel_models > 1 and self.do_eval:
-            cloned = self._clone_projects(self.work_root / version)
-            if cloned is None:
-                result["status"] = "clone_failed"
-                result["duration_s"] = round(time.time() - started, 1)
-                self._append_run_log(result)
-                return result
+        log(f"[{version}] start  model={model_id}  ports={base_port}+  projects={project_dir}")
 
-            project_dir = cloned
+        if self.do_eval:
+            failed = self.run_eval(version, model_id, base_port, project_dir)
+            result["shards_failed"] = failed
+            if failed:
+                result["status"] = "eval_failed"
 
-        log(f"[{version}] start  model={model_id}  slot={slot}  ports={base_port}+  "
-            f"projects={project_dir}")
-
-        try:
-            if self.do_eval:
-                failed = self.run_eval(version, model_id, base_port, project_dir)
-                result["shards_failed"] = failed
-                if failed:
-                    result["status"] = "eval_failed"
-            if self.do_score:
-                rc = self.run_scoring(version)
-                result["scoring_rc"] = rc
-                if rc != 0 and result["status"] == "ok":
-                    result["status"] = "score_failed"
-        finally:
-            if project_dir != self.project_root:
-                shutil.rmtree(project_dir, ignore_errors=True)
+        if self.do_score:
+            rc = self.run_scoring(version)
+            result["scoring_rc"] = rc
+            if rc != 0 and result["status"] == "ok":
+                result["status"] = "score_failed"
 
         result["duration_s"] = round(time.time() - started, 1)
         log(f"[{version}] {result['status']} in {result['duration_s']}s")
@@ -724,8 +686,10 @@ def run_sweep(args: argparse.Namespace) -> int:
     sweep = Sweep(args)
     todo = sweep.selected()
 
-    log(f"models: {len(todo)}  jobs/model: {args.jobs}  models in flight: {args.parallel_models}  "
-        f"tasks: {len(sweep.records)}  port stride: {sweep.port_stride}")
+    log(
+        f"models: {len(todo)}  jobs/model: {args.jobs}  "
+        f"tasks: {len(sweep.records)}"
+    )
     for key, model_id in todo:
         log(f"  - {key:<24} {model_id}")
 
@@ -745,26 +709,23 @@ def run_sweep(args: argparse.Namespace) -> int:
     threading.Thread(target=sweep.heartbeat, args=(stop, len(todo)), daemon=True).start()
 
     results: List[dict] = []
-    pool: Optional[ThreadPoolExecutor] = None
     try:
-        for start in range(0, len(todo), args.parallel_models):
-            batch = todo[start:start + args.parallel_models]
-            pool = ThreadPoolExecutor(max_workers=len(batch))
-            futures = [
-                pool.submit(sweep.run_model, key, model_id, slot)
-                for slot, (key, model_id) in enumerate(batch)
-            ]
-            for future in futures:
-                results.append(future.result())
-            pool.shutdown(wait=True)
-            pool = None
+        for key, model_id in todo:
+            try:
+                results.append(sweep.run_model(key, model_id))
+            except Exception as exc:  # one model failing must not discard the others
+                log(f"[{key}] {type(exc).__name__}: {exc}")
+                results.append({
+                    "key": key, "model": model_id,
+                    "version": f"claudecode-{model_id.split('/')[-1]}",
+                    "base_port": BASE_PORT, "status": "error",
+                    "shards_failed": 0, "scoring_rc": None, "duration_s": "?",
+                })
     except KeyboardInterrupt:
         log("\ninterrupted: stopping child processes (finished tasks are kept in outputs/)")
         with PROC_LOCK:
             for proc in LIVE_PROCS:
                 proc.terminate()
-        if pool is not None:
-            pool.shutdown(wait=False, cancel_futures=True)
         return 130
     finally:
         stop.set()
