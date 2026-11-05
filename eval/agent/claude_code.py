@@ -340,8 +340,8 @@ class ClaudeCodeWebTester(BaseAgent):
                     "duration_ms": message.duration_ms,
                     "is_error": message.is_error,
                     "num_turns": message.num_turns,
-                    "total_cost_usd": message.total_cost_usd,
                     "token_usage": message.usage,
+                    "model_usage": dict(message.model_usage or {}),
                 }
             )
             session_meta[stage] = stage_entry
