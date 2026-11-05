@@ -11,6 +11,7 @@ Examples:
     python evaluate.py --run --models hy3,glm-5.3 --skip-models gemini-3.8-flash
     python evaluate.py --run --limit 2 --models claude-haiku-5.5   # smoke test
     python evaluate.py --run --only score                 # rescore existing outputs
+    python evaluate.py --run --prewarm --limit 20         # install deps first, then evaluate
 
 models.yml is read from this file's directory. The dataset and the web apps both
 come from --data-root (default ./data/WebTestBench, what process/download_dataset.py
@@ -92,6 +93,7 @@ def parse_args() -> argparse.Namespace:
 
     # sharding
     p.add_argument("--jobs", type=int, default=10, help="dataset shards per model (default: 10; each shard runs its own dev server, so lower it on a small machine)")
+    p.add_argument("--prewarm", action="store_true", help="run npm install once per project, sequentially, before evaluating (makes each task's install a fast no-op)")
     p.add_argument("--judge-model", default=os.environ.get("JUDGE_MODEL", "qwen/qwen3.5-27b"), help="model used by eval/scoring.py to match items to gold")
 
     # paths (models.yml is expected next to this file)
@@ -658,6 +660,40 @@ class Sweep:
         path.write_text("\n".join(self.records) + "\n", encoding="utf-8")
         return path
 
+    # -- prewarm --------------------------------------------------------
+    def prewarm(self) -> int:
+        """Run `npm install` once per project, sequentially, before the sweep.
+
+        Every task installs inside its own project directory during server_deploy;
+        doing it up front, one project at a time, keeps a cold install out of the
+        sharded phase, where several concurrent installs are what fail on a shared
+        (and on this machine, near-full) disk. Idempotent: warm projects report
+        "already warm" and cost a few milliseconds.
+        """
+        cmd = [
+            sys.executable, "process/prewarm_dependencies.py",
+            "--project_root", str(self.project_root),
+        ]
+
+        # With --limit, warm only the projects this run will touch.
+        if self.args.limit:
+            ids = []
+            for line in self.records:
+                try:
+                    rid = str(json.loads(line).get("index") or "")
+                except Exception:
+                    rid = ""
+                if rid:
+                    ids.append(rid)
+            if ids:
+                cmd += ["--only", ",".join(ids)]
+
+        log(f"[prewarm] npm install, one project at a time, under {self.project_root}")
+        rc = subprocess.call(cmd, cwd=str(ROOT))
+        if rc != 0:
+            log(f"[prewarm] exited {rc}; each task will still install on its own")
+        return rc
+
     # -- progress -------------------------------------------------------
     def finished_tasks(self) -> int:
         """Count tasks that actually produced test output, across all model dirs."""
@@ -704,6 +740,9 @@ def run_sweep(args: argparse.Namespace) -> int:
             "run `python process/unzip_web_applications.py` first (or pass --project-root)."
         )
     sweep.output_root.mkdir(parents=True, exist_ok=True)
+
+    if args.prewarm and sweep.do_eval:
+        sweep.prewarm()
 
     stop = threading.Event()
     threading.Thread(target=sweep.heartbeat, args=(stop, len(todo)), daemon=True).start()
