@@ -27,12 +27,13 @@ Output:
             outputs/score_vs_price.xlsx   # same table as a spreadsheet
             outputs/score_vs_price.png    # scatter plot
 
-Cost precedence per task (see the cost_source column):
-    openrouter_api          usage.cost reported by OpenRouter
-    claude_code_estimate    total_cost_usd from the Claude Code run
-                            (a LOCAL calculation; do not read it as a bill)
-    price_table_estimate    tokens x price_in/price_out from models.yml
-    unavailable             no prices and no tokens
+Cost comes from models.yml (see the cost_source column):
+    price_table_estimate    tokens x price_in/price_cache_read/price_out
+    unavailable             models.yml has no prices for this model
+
+Claude Code's own total_cost_usd is deliberately ignored: it prices every model
+with Anthropic's first-party rate cards, so keep models.yml prices updated with
+`python process/refresh_prices.py`.
 """
 from __future__ import annotations
 
@@ -98,9 +99,6 @@ def parse_args() -> argparse.Namespace:
     # paths (models.yml is expected next to this file)
     p.add_argument("--data-root", default="./data/WebTestBench", help="holds WebTestBench.jsonl and web_applications/")
     p.add_argument("--output-root", default="./outputs", help="artifacts, logs, work dir and reports")
-
-    # report
-    p.add_argument("--cost-mode", choices=("auto", "sdk", "price_table"), default="auto", help="cost source: auto (openrouter_api > claude_code_estimate > price_table), sdk, or price_table")
     return p.parse_args()
 
 
@@ -119,6 +117,8 @@ def load_models(models_yml: Path) -> Dict[str, dict]:
             "model_id": str(cfg.get("model_id") or ""),
             "price_in": _as_float(cfg.get("price_in")),
             "price_out": _as_float(cfg.get("price_out")),
+            "price_cache_read": _as_float(cfg.get("price_cache_read")),
+            "price_cache_write": _as_float(cfg.get("price_cache_write")),
         }
         for key, cfg in configs.items()
         if isinstance(cfg, dict)
@@ -143,14 +143,16 @@ def _read_json(path: Path) -> Optional[dict]:
 
 
 def _session_totals(session_meta: dict) -> Dict[str, float]:
-    """Sum token counters, SDK-reported cost and turns over every stage of session_meta.json."""
+    """Sum token counters and turns over every stage of session_meta.json.
+
+    Prefers the CLI's `model_usage` aggregate, which also counts auxiliary calls
+    such as session-title generation; older artifacts only have `token_usage`.
+    """
     totals = {
         "prompt_tokens": 0.0,
         "output_tokens": 0.0,
         "cache_read_tokens": 0.0,
         "cache_creation_tokens": 0.0,
-        "sdk_cost_usd": 0.0,
-        "api_cost_usd": 0.0,
         "num_turns": 0.0
     }
 
@@ -158,8 +160,20 @@ def _session_totals(session_meta: dict) -> Dict[str, float]:
     for entry in stages:
         if not isinstance(entry, dict):
             continue
-        totals["sdk_cost_usd"] += _as_float(entry.get("total_cost_usd")) or 0.0
         totals["num_turns"] += _as_float(entry.get("num_turns")) or 0.0
+
+        models = entry.get("model_usage")
+        if isinstance(models, dict) and models:
+            for model_usage in models.values():
+                if not isinstance(model_usage, dict):
+                    continue
+
+                totals["prompt_tokens"] += _as_float(model_usage.get("inputTokens")) or 0.0
+                totals["output_tokens"] += _as_float(model_usage.get("outputTokens")) or 0.0
+                totals["cache_read_tokens"] += _as_float(model_usage.get("cacheReadInputTokens")) or 0.0
+                totals["cache_creation_tokens"] += _as_float(model_usage.get("cacheCreationInputTokens")) or 0.0
+
+            continue  # don't also add token_usage for this stage
 
         usage = entry.get("token_usage")
         if isinstance(usage, (int, float)):  # a stage that only reports one number
@@ -171,9 +185,9 @@ def _session_totals(session_meta: dict) -> Dict[str, float]:
                 continue
 
             low = str(name).lower()
-            if "cost" in low:  # OpenRouter returns usage.cost; use it when present
-                totals["api_cost_usd"] += float(value)
-            elif "cache_read" in low:
+            if "cost" in low:
+                continue  # prices come from models.yml, never from the run
+            if "cache_read" in low:
                 totals["cache_read_tokens"] += float(value)
             elif "cache_creation" in low or "cache_write" in low:
                 totals["cache_creation_tokens"] += float(value)
@@ -193,7 +207,6 @@ def collect_task(
     version_dir: Path,
     task_dir: Path,
     model: dict,
-    cost_mode: str = "auto",
     gold_items: Optional[int] = None
 ) -> Optional[dict]:
     score = _read_json(task_dir / "score.json") or {}
@@ -218,29 +231,26 @@ def collect_task(
         totals["prompt_tokens"] + totals["cache_read_tokens"] + totals["cache_creation_tokens"]
     )
     output_tokens = int(totals["output_tokens"])
-    api_cost = totals["api_cost_usd"]
-    sdk_cost = totals["sdk_cost_usd"]
 
     price_in = model.get("price_in")
     price_out = model.get("price_out")
-    est_cost = None
-    if price_in is not None and price_out is not None:
-        est_cost = prompt_tokens / 1_000_000 * price_in + output_tokens / 1_000_000 * price_out
+    price_cache = model.get("price_cache_read")
+    price_write = model.get("price_cache_write")
 
-    # Precedence: what OpenRouter billed > what Claude Code estimated > the
-    # models.yml price table. Today session_meta.json only carries the middle one
-    # (a local calculation, 0 for models Claude Code cannot price), so expect
-    # price_table_estimate unless you record usage.cost yourself.
-    if cost_mode == "price_table" and est_cost is not None:
-        cost, cost_source = est_cost, "price_table_estimate"
-    elif api_cost > 0:
-        cost, cost_source = api_cost, "openrouter_api"
-    elif cost_mode == "sdk" or sdk_cost > 0:
-        cost, cost_source = sdk_cost, "claude_code_estimate"
-    elif est_cost is not None:
-        cost, cost_source = est_cost, "price_table_estimate"
-    else:
-        cost, cost_source = None, "unavailable"
+    cost = None
+    if price_in is not None and price_out is not None:
+        # cached tokens bill at their own rates; a model without a published rate
+        # is billed at the input price for that bucket
+        read_rate = price_in if price_cache is None else price_cache
+        write_rate = price_in if price_write is None else price_write
+        cost = (
+            totals["prompt_tokens"] / 1_000_000 * price_in
+            + totals["cache_creation_tokens"] / 1_000_000 * write_rate
+            + totals["cache_read_tokens"] / 1_000_000 * read_rate
+            + output_tokens / 1_000_000 * price_out
+        )
+
+    cost_source = "price_table_estimate" if cost is not None else "unavailable"
 
     return {
         "version": version_dir.name,
@@ -763,7 +773,6 @@ def run_sweep(args: argparse.Namespace) -> int:
         output_root=sweep.output_root,
         models_yml=sweep.models_yml,
         dataset_path=sweep.dataset if not args.limit else sweep._limited_dataset(),
-        cost_mode=args.cost_mode,
         verbose=False,
     )
 
@@ -787,7 +796,6 @@ def build_report(
     output_root: str | Path = "./outputs",
     models_yml: str | Path = "./models.yml",
     dataset_path: str | Path | None = "./data/WebTestBench/WebTestBench.jsonl",
-    cost_mode: str = "auto",
     plot: bool = True,
     verbose: bool = True,
 ) -> List[dict]:
@@ -829,8 +837,10 @@ def build_report(
         model = models.get(short, {"key": short, "model_id": short})
         rows = []
         for task_dir in sorted(d for d in version_dir.iterdir() if d.is_dir()):
-            row = collect_task(version_dir, task_dir, model, cost_mode=cost_mode,
-                               gold_items=gold_counts.get(task_dir.name))
+            row = collect_task(
+                version_dir, task_dir, model,
+                gold_items=gold_counts.get(task_dir.name)
+            )
             if row:
                 rows.append(row)
         if not rows:
@@ -874,7 +884,6 @@ def main() -> int:
         output_root=args.output_root,
         models_yml=ROOT / "models.yml",
         dataset_path=Path(args.data_root) / "WebTestBench.jsonl",
-        cost_mode=args.cost_mode,
     )
     return 0
 
