@@ -44,6 +44,19 @@ def _env_number(name: str, default: Any, cast: type = float) -> Any:
         return default
 
 
+# Hosts that count as "this machine". `0.0.0.0` and `::` are listen wildcards, but
+# a caller may still put them in a URL, and they never mean a page on the internet.
+LOCAL_HOSTS = frozenset({
+    "localhost", "127.0.0.1", "::1", "0.0.0.0", "::", "host.docker.internal",
+})
+
+
+def is_local_url(url: str) -> bool:
+    """True when `url` addresses this machine, i.e. a dev server has to be running for it."""
+    host = (urlparse(url).hostname or "").lower()
+    return host in LOCAL_HOSTS or host.startswith("127.")
+
+
 class BaseAgent:
     # A cold Vite start pre-bundles its dependencies before it binds its port, which
     # is slow. The budget is generous and overridable instead of a hardcoded 80s.
@@ -55,6 +68,9 @@ class BaseAgent:
     # Wall-clock cap for the whole deploy stage, so a hopeless app cannot cost
     # attempts x budget.
     SERVER_TOTAL_BUDGET_S: float = _env_number("WEBTESTBENCH_DEPLOY_BUDGET", 900.0)
+
+    BIND_HOST: str = os.environ.get("WEBTESTBENCH_BIND_HOST", "0.0.0.0").strip() or "0.0.0.0"
+    CONNECT_HOST: str = os.environ.get("WEBTESTBENCH_CONNECT_HOST", "localhost").strip() or "localhost"
 
     def __init__(
         self,
@@ -166,7 +182,7 @@ class BaseAgent:
         - Otherwise install deps and run dev server in background.
         """
         stage = "server_deploy"
-        if not self.server_url.startswith('http://localhost'):
+        if not is_local_url(self.server_url):
             self._mark_stage(stage=stage, status="skip", message=f"⏭️ Skipping {stage}: server_url is an online webpage, skipping server deployment: {self.server_url}")
             return True
 
@@ -379,11 +395,12 @@ class BaseAgent:
         """`npm run dev` plus the port flag, with Vite-only extras when applicable.
 
         `--strictPort` makes Vite fail instead of silently shifting to another port,
-        which would leave the pipeline polling a URL nothing listens on.
+        which would leave the pipeline polling a URL nothing listens on. `--host`
+        only widens the bind address; clients still connect through CONNECT_HOST.
         """
         cmd = ["npm", "run", "dev", "--", "--port", str(port)]
         if "vite" in self._dev_script(project_dir).lower():
-            cmd.append("--strictPort")
+            cmd.extend(["--strictPort", "--host", self.BIND_HOST])
 
         return cmd
 
@@ -555,7 +572,7 @@ class BaseAgent:
     def kill_local_server(self) -> None:
         """Cleanup for local dev server."""
         self._stop_dev_server_process()
-        if not self.server_url.startswith("http://localhost"):
+        if not is_local_url(self.server_url):
             return
 
         port = urlparse(self.server_url).port

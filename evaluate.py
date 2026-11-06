@@ -68,6 +68,19 @@ try:
 except ValueError:
     raise SystemExit("WEBTESTBENCH_BASE_PORT must be an integer, e.g. 6000")
 
+
+BIND_HOST = os.environ.get("WEBTESTBENCH_BIND_HOST", "0.0.0.0").strip() or "0.0.0.0"
+CONNECT_HOST = os.environ.get("WEBTESTBENCH_CONNECT_HOST", "localhost").strip() or "localhost"
+
+# CONNECT_HOST is what the browser visits.
+# It must be a real address; never a wildcard like 0.0.0.0 or ::
+if CONNECT_HOST.strip("[]") in ("0.0.0.0", "::"):
+    raise SystemExit(
+        f"WEBTESTBENCH_CONNECT_HOST={CONNECT_HOST!r} is a listen-only wildcard; "
+        "use a real destination such as localhost (or host.docker.internal)."
+    )
+
+
 PRINT_LOCK = threading.Lock()
 LIVE_PROCS: List[subprocess.Popen] = []
 PROC_LOCK = threading.Lock()
@@ -533,7 +546,10 @@ class Sweep:
         }
 
         project_dir = self.project_root
-        log(f"[{version}] start  model={model_id}  ports={base_port}+  projects={project_dir}")
+        result["bind_host"] = BIND_HOST
+        result["connect_host"] = CONNECT_HOST
+        log(f"[{version}] start  model={model_id}  ports={base_port}+  "
+            f"bind={BIND_HOST}  connect={CONNECT_HOST}  projects={project_dir}")
 
         if self.do_eval:
             failed = self.run_eval(version, model_id, base_port, project_dir)
@@ -724,7 +740,8 @@ def run_sweep(args: argparse.Namespace) -> int:
 
     log(
         f"models: {len(todo)}  jobs/model: {args.jobs}  "
-        f"tasks: {len(sweep.records)}"
+        f"tasks: {len(sweep.records)}  "
+        f"listen={BIND_HOST}  connect={CONNECT_HOST}"
     )
     for key, model_id in todo:
         log(f"  - {key:<24} {model_id}")
