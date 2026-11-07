@@ -30,6 +30,9 @@ StageStatus = Literal["running", "complete", "skip", "error"]
 class DependencyInstallFailed(RuntimeError):
     """`npm install` failed; not worth retrying within the same deploy stage."""
 
+class ToolchainMismatch(RuntimeError):
+    """node/npm resolve outside this OS (e.g. Windows npm through WSL interop)."""
+
 
 def _env_number(name: str, default: Any, cast: type = float) -> Any:
     """Read a numeric env override; a typo must not break importing this module."""
@@ -203,6 +206,12 @@ class BaseAgent:
             )
             return False
 
+        # Immediately fail upon Node toolchain mismatch.
+        problem = self._toolchain_mismatch()
+        if problem:
+            self._mark_stage(stage=stage, status="error", message=f"❌ Node toolchain mismatch: {problem}")
+            return False
+
         self._kill_exist_port(port)
         self._deploy_with_retry(port, stage=stage)
 
@@ -225,7 +234,7 @@ class BaseAgent:
                 self._write_stage_success(stage, True, force=True)
                 return
 
-            except (DependencyInstallFailed, FileNotFoundError):
+            except (DependencyInstallFailed, ToolchainMismatch, FileNotFoundError):
                 raise  # deterministic: another attempt cannot change the outcome
 
             except Exception as exc:
@@ -374,6 +383,10 @@ class BaseAgent:
 
         tail = self._tail_file(log_path)
         elapsed = round(time.time() - started, 1)
+
+        # Read the socket table before killing the process to explain a timeout.
+        listeners = self._port_listeners(port)
+        hint = self._deploy_timeout_hint(log_path, port, listeners)
         self._stop_dev_server_process()
 
         self._emit_event(
@@ -382,13 +395,14 @@ class BaseAgent:
             payload=dict(
                 url=self.server_url, seconds=elapsed, command=" ".join(cmd),
                 expected_port=port, log_reported_port=self._log_reported_port(log_path),
-                hint=self._deploy_timeout_hint(log_path, port),
+                port_listeners=listeners or None, toolchain=self._toolchain_paths(),
+                hint=hint,
                 dev_server_log_tail=tail
             ),
         )
         raise RuntimeError(
             f"Dev server failed to start within {wait_s:.0f}s ({elapsed}s). "
-            f"{self._deploy_timeout_hint(log_path, port)} See log: {log_path}"
+            f"{hint} See log: {log_path}"
         )
 
     def _dev_server_command(self, project_dir: Path, port: int) -> list:
@@ -431,6 +445,23 @@ class BaseAgent:
             return False
 
     @staticmethod
+    def _port_listeners(port: int) -> str:
+        """`ss` rows holding a LISTEN socket on `port`; '' when there is none."""
+        for cmd in (["ss", "-ltnp", f"sport = :{port}"], ["ss", "-ltnp"]):
+            try:
+                proc = subprocess.run(cmd, capture_output=True, text=True, timeout=5)
+            except (OSError, subprocess.SubprocessError):
+                continue
+
+            if proc.returncode != 0:
+                continue
+
+            rows = [line for line in (proc.stdout or "").splitlines() if f":{port}" in line]
+            return "\n".join(rows[:5])
+
+        return ""  # `ss` unavailable: the hint falls back to the log alone
+
+    @staticmethod
     def _log_reported_port(path: Path) -> Optional[int]:
         """Last `localhost:<port>` port printed by the dev server, if any."""
         try:
@@ -441,13 +472,23 @@ class BaseAgent:
         ports = re.findall(r"localhost:(\d{2,5})", text)
         return int(ports[-1]) if ports else None
 
-    def _deploy_timeout_hint(self, log_path: Path, port: int) -> str:
+    def _deploy_timeout_hint(self, log_path: Path, port: int, listeners: Optional[str] = None) -> str:
         """Actionable one-liner explaining the most likely cause of a timeout."""
         reported = self._log_reported_port(log_path)
         if reported is not None and reported != port:
             return f"Dev server is listening on port {reported}, not {port}; align server_url with the chosen port."
 
-        if "Re-optimizing dependencies" in self._tail_file(log_path, limit=200):
+        log_text = self._tail_file(log_path, limit=200)
+        if listeners is None:
+            listeners = self._port_listeners(port)
+        if not listeners and ("Local:" in log_text or "Network:" in log_text):
+            return (
+                f"Nothing is listening on port {port}: "
+                "it bound on a different host/network namespace; install Node.js so "
+                "`node` and `npm` both resolve, then re-run."
+            )
+
+        if "Re-optimizing dependencies" in log_text:
             return (
                 "Vite was still pre-bundling dependencies (slow on /mnt/c under WSL2); "
                 "raise WEBTESTBENCH_SERVER_TIMEOUT or delete node_modules/.vite to re-warm it."
@@ -498,6 +539,30 @@ class BaseAgent:
     # ------------------------------------------------------------------ #
     # Deployment diagnostics
     # ------------------------------------------------------------------ #
+
+    @staticmethod
+    def _toolchain_paths() -> Dict[str, str]:
+        """Resolved `node`/`npm` executables, '' when absent from PATH."""
+        return {tool: (shutil.which(tool) or "") for tool in ("node", "npm")}
+
+    @classmethod
+    def _toolchain_mismatch(cls) -> Optional[str]:
+        """Why `npm run dev` would listen outside this OS, or None when it is fine."""
+        if platform.system() != "Linux":
+            return None
+        if os.environ.get("WEBTESTBENCH_ALLOW_FOREIGN_TOOLCHAIN", "").strip() not in ("", "0"):
+            return None
+
+        node, npm = cls._toolchain_paths().get("node"), cls._toolchain_paths().get("npm")
+        if node or not npm:
+            return None  # both present (fine) or npm missing (fails loudly on its own)
+
+        return (
+            f"`npm` resolves to {npm} but `node` is missing from the Linux PATH, so npm runs a "
+            "non-Linux node and the dev server binds outside this OS. Install Node.js for Linux "
+            "(the one with node+npm, e.g. nvm or https://deb.nodesource.com) and re-run, or set "
+            "WEBTESTBENCH_ALLOW_FOREIGN_TOOLCHAIN=1 to bypass this check."
+        )
 
     @staticmethod
     def _tail_file(path: Path, limit: int = 25) -> str:
@@ -602,7 +667,14 @@ class BaseAgent:
                     info[tool] = text.splitlines()[0] if text else "unknown"
                 except Exception:
                     info[tool] = "missing"
+
+            # Which install is actually used: a Windows `npm` reached through WSL
+            # interop is invisible in `--version` output but explains every timeout.
+            for tool, path in cls._toolchain_paths().items():
+                info[f"{tool}_path"] = path or "not found"
+
             cls._ENVIRONMENT = info
+
         return dict(cls._ENVIRONMENT)
 
     def _log_instruction(self) -> None:
