@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": false,
+    "server_cleanup": true,
+    "finish": false
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "0e6fb740-01b0-4e53-8fdd-08546ef730f2",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a job board webpage where employers can create and manage job listings by entering details like title, description, location, salary range, and required skills. Job seekers should be able to browse all available listings, filter them by industry, location, and employment type, and search by keywords. Each job listing page should display full details and allow job seekers to submit a simple application form with their contact information and a short message. There should also be a basic dashboard for employers to view their posted jobs and see a list of submitted applications for each listing.\n\n# Output (Markdown)\n",
+    "duration_ms": 25294,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 11157,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 1902,
+      "output_tokens_details": {
+        "thinking_tokens": 880
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy3": {
+        "inputTokens": 12819,
+        "outputTokens": 3068,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.140795,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 2036,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 393,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 45,
+      "AssistantMessage": {
+        "total_count": 4,
+        "ThinkingBlock": 1,
+        "TextBlock": 2,
+        "ToolUseBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 1,
+        "ToolResultBlock": 1
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "a5a9cc0b-6301-47a1-8e08-0e97cf793937",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a job board webpage where employers can create and manage job listings by entering details like title, description, location, salary range, and required skills. Job seekers should be able to browse all available listings, filter them by industry, location, and employment type, and search by keywords. Each job listing page should display full details and allow job seekers to submit a simple application form with their contact information and a short message. There should also be a basic dashboard for employers to view their posted jobs and see a list of submitted applications for each listing.\n\n## Application URL\nhttp://localhost:6003/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Employer can create a job listing with all details\n  - Action: Open \"Post a Job\" form, fill Title, Description, Location, Salary Range, Required Skills, and submit.\n  - Expected: New listing appears in the job listings and the employer's dashboard.\n\n- [ ] FT-02: Job seeker can browse all available listings\n  - Action: Navigate to the job board home/listings page.\n  - Expected: A list of all available job listings is displayed.\n\n- [ ] FT-03: Job seeker can filter listings by industry\n  - Action: Select an industry from the \"Industry\" filter and apply.\n  - Expected: Only listings matching the selected industry are shown.\n\n- [ ] FT-04: Job seeker can filter listings by location\n  - Action: Select/enter a location in the \"Location\" filter and apply.\n  - Expected: Only listings matching the selected location are shown.\n\n- [ ] FT-05: Job seeker can filter listings by employment type\n  - Action: Select an employment type (e.g., Full-time) from the filter and apply.\n  - Expected: Only listings matching the selected employment type are shown.\n\n- [ ] FT-06: Job seeker can search listings by keyword\n  - Action: Enter a keyword into the search box and submit.\n  - Expected: Only listings containing the keyword (title/description/skills) are shown.\n\n- [ ] FT-07: Job listing detail page displays full details\n  - Action: Click a listing from the browse list to open its detail page.\n  - Expected: Full details (title, description, location, salary range, required skills, employment type, industry) are displayed.\n\n- [ ] FT-08: Job seeker can submit an application form\n  - Action: On a job listing page, fill the application form (contact info + short message) and submit.\n  - Expected: Application is submitted and recorded under that listing's applications.\n\n- [ ] FT-09: Employer dashboard displays posted jobs\n  - Action: Navigate to the employer dashboard.\n  - Expected: A list of all jobs posted by the employer is displayed.\n\n- [ ] FT-10: Employer dashboard displays submitted applications per listing\n  - Action: Open a posted job from the dashboard.\n  - Expected: The list of submitted applications for that listing is displayed.\n\n- [ ] FT-11: Employer can manage (edit/delete) a job listing\n  - Action: On the dashboard, select edit or delete for a posted listing.\n  - Expected: The listing is updated or removed from listings and dashboard accordingly.\n\n## Constraint\n- [ ] CS-01: Cannot create a job listing with empty required fields\n  - Action: Submit the \"Post a Job\" form with required fields (Title, Description, Location) left empty.\n  - Expected: Submission is blocked and a validation error identifies the missing required fields.\n\n- [ ] CS-02: Cannot submit an application with empty required contact info\n  - Action: Submit the application form leaving required contact info blank.\n  - Expected: Submission is blocked and a validation error identifies the missing required field.\n\n- [ ] CS-03: Salary range must be logically valid\n  - Action: Enter a salary range where minimum is greater than maximum and submit.\n  - Expected: Submission is blocked with a message that the salary range is invalid.\n\n## Interaction\n- [ ] IX-01: Success confirmation after creating a listing\n  - Action: Submit a valid \"Post a Job\" form.\n  - Expected: A success toast/message confirms the listing was created.\n\n- [ ] IX-02: Success confirmation after submitting an application\n  - Action: Submit a valid application form.\n  - Expected: A success toast/message confirms the application was submitted.\n\n- [ ] IX-03: Filters and search update results dynamically\n  - Action: Apply a filter or search and change it without a full page reload.\n  - Expected: The listings list updates immediately to reflect the new criteria.\n\n## Content\n- [ ] CT-01: Job listing detail content is complete and relevant\n  - Action: Open a job listing detail page.\n  - Expected: All displayed text/data (title, description, location, salary, skills) matches the listing's entered details and is relevant to the posting.\n\n- [ ] CT-02: Application form contains only relevant fields\n  - Action: Open the application form on a listing page.\n  - Expected: Form contains only contact information and a short message field (no unrelated fields).\n\n- [ ] CT-03: Default job listings are present for browsing\n  - Action: Open the job board without creating any data.\n  - Expected: Pre-existing default job listings are visible to browse and filter.\n```\n\n# Output\n",
+    "duration_ms": 15882,
+    "is_error": false,
+    "num_turns": 2,
+    "token_usage": {
+      "input_tokens": 16423,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 9728,
+      "output_tokens": 301,
+      "output_tokens_details": {
+        "thinking_tokens": 116
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy3": {
+        "inputTokens": 18976,
+        "outputTokens": 962,
+        "cacheReadInputTokens": 9728,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.123794,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 766,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

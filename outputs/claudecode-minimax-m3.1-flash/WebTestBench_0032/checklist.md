@@ -1,0 +1,93 @@
+# Test Checklist
+
+## Functionality
+- [ ] FT-01: Create a financial goal with a name, target amount, and optional target date
+  - Action: Open the app, click the "Add Goal" button, enter a goal name (e.g. "Emergency Fund"), target amount, and target date, then save.
+  - Expected: The new goal appears in the goals list with its name and target amount, and the goal count increases by one.
+- [ ] FT-02: Create a monthly budget amount for a category
+  - Action: Click "Add Budget" / "Set Budget", pick a category (e.g. "Groceries"), enter a monthly amount, and save.
+  - Expected: The budget is listed against that category and is used in the by-category spending-vs-budget comparison.
+- [ ] FT-03: Log an expense with amount, currency, date, and category
+  - Action: Click "Add Expense", enter a description, amount, select a currency (e.g. EUR), select a date, select a category, and save.
+  - Expected: The expense appears in the expense list showing its date, description, amount, currency, and category.
+- [ ] FT-04: Log an expense in a second currency and have it converted to the primary currency
+  - Action: Note the primary currency, add an expense in a non-primary currency (e.g. USD) with a known amount, then view the expense list and the summary totals.
+  - Expected: The expense is stored with its original currency and also displayed/valued in the primary currency at the current rate (shown amount differs from the entered amount by the conversion).
+- [ ] FT-05: Assign an expense to a goal
+  - Action: Add an expense and select a specific goal from the "Goal" field; then open that goal.
+  - Expected: The expense appears under/within that goal's tracked spending, and the goal's progress reflects it.
+- [ ] FT-06: Change the primary currency and view all summaries in it
+  - Action: Change the primary currency selector to a different currency (e.g. USD), then view the summary/total figures and both charts.
+  - Expected: All summary totals, chart values, and budget comparisons are displayed in the newly selected currency with its symbol/code.
+- [ ] FT-07: Charts show spending versus budget by category
+  - Action: Open the "Budget vs Spending" chart (or the by-category chart) on the dashboard.
+  - Expected: A chart is rendered with one entry per budgeted category, each showing the budget amount and the actual spending for that category.
+- [ ] FT-08: Chart shows spending over time
+  - Action: Open the spending-over-time chart on the dashboard.
+  - Expected: A chart is rendered with spending plotted by time period (e.g. by month/date) using the expenses in the log.
+- [ ] FT-09: Filter the expense list by date range
+  - Action: Set the filter date range to a window containing only some of the default expenses and apply.
+  - Expected: Only expenses whose dates fall inside the selected range remain in the list, and the count matches.
+- [ ] FT-10: Filter the expense list by category
+  - Action: Select a single category in the category filter.
+  - Expected: The list shows only expenses in that category, and every remaining row displays that category.
+- [ ] FT-11: Filter the expense list by goal
+  - Action: Select a single goal in the goal filter.
+  - Expected: The list shows only expenses assigned to that goal, and each remaining row shows that goal.
+
+## Constraint
+- [ ] CS-01: Required fields are enforced when adding an expense
+  - Action: Open "Add Expense", leave description, amount, date, and category blank, and attempt to save.
+  - Expected: Saving is blocked and a validation message identifies each missing required field; no new expense is added.
+- [ ] CS-02: Goal name and target amount are required
+  - Action: Open "Add Goal", submit with an empty name or empty/zero target amount.
+  - Expected: Submission is blocked with a validation message, and no goal is created.
+- [ ] CS-03: Expense amount must be a positive number
+  - Action: Enter an amount of 0 or a negative value in the Add Expense form and save.
+  - Expected: Saving is blocked with a validation message, and no expense with a non-positive amount is recorded.
+- [ ] CS-04: Budget amount must be positive
+  - Action: Enter a zero or negative monthly budget amount and save.
+  - Expected: Saving is blocked with a validation message, and the budget is not updated.
+- [ ] CS-05: A start date later than the end date is rejected
+  - Action: Set the filter date range with a start date after the end date and apply.
+  - Expected: The invalid range is rejected (message shown or range not applied), and the expense list is not left in an inconsistent state.
+- [ ] CS-06: Each expense belongs to exactly one category
+  - Action: Add an expense and inspect the category field and the saved list row.
+  - Expected: Exactly one category is set per expense and only that category is shown for it in the list.
+- [ ] CS-07: Over-budget categories are flagged rather than silently accepted
+  - Action: Log a large expense in a category that has a small monthly budget, then view the by-category comparison.
+  - Expected: That category is visibly marked as over budget (e.g. exceeded indicator / negative remaining shown), and the amount reflects the overspend.
+
+## Interaction
+- [ ] IX-01: Filters update the expense list immediately
+  - Action: Change any one of the date range, category, or goal filters.
+  - Expected: The list re-renders without a page reload and reflects the new filter selection.
+- [ ] IX-02: Filters combine with AND semantics
+  - Action: Set a category filter and a goal filter together, then apply.
+  - Expected: The list shows only expenses matching BOTH the selected category and the selected goal.
+- [ ] IX-03: Clearing filters restores the full expense list
+  - Action: Apply one or more filters, then click "Clear"/"Reset filters".
+  - Expected: All default expenses reappear in the list and the filter controls return to their unfiltered state.
+- [ ] IX-04: Confirmation feedback after creating an expense, goal, or budget
+  - Action: Save an expense, then save a goal, then save a budget.
+  - Expected: Each save shows a visible success confirmation (toast or message) and the relevant list/chart updates without a manual refresh.
+- [ ] IX-05: Primary currency change updates displayed values live
+  - Action: Change the primary currency selector while on the dashboard.
+  - Expected: Summary totals and chart value labels re-render in the new currency without needing to navigate away and back.
+- [ ] IX-06: Chart elements respond to hover/interaction
+  - Action: Hover over a bar, slice, or point in either chart.
+  - Expected: A tooltip or highlight shows the category/period and its value so the user can read exact numbers.
+
+## Content
+- [ ] CT-01: Currency symbols and codes are displayed correctly
+  - Action: View summaries, chart labels, and the expense list for an amount in a non-primary currency.
+  - Expected: Each amount carries the correct symbol or ISO code of its currency and is formatted with the correct number of decimals (e.g. 2 for EUR/USD).
+- [ ] CT-02: Summary and chart content is denominated in the primary currency
+  - Action: Inspect the total spending summary and both charts.
+  - Expected: Every displayed monetary value uses the primary currency's symbol/code and no summary value is left in a non-primary currency.
+- [ ] CT-03: Chart labels and legends are relevant and complete
+  - Action: Inspect the axes, category labels, legend entries, and period labels of both charts.
+  - Expected: Each budgeted category is named in the by-category chart, time periods are named on the over-time chart, and a legend explains spending vs budget.
+- [ ] CT-04: List and goal content shows the correct attributes for each record
+  - Action: Read several rows of the expense list and several entries in the goals list.
+  - Expected: Each expense row shows a non-empty date, description, amount, currency, and category; each goal shows its name and target amount; no row shows "undefined", "null", or "NaN".

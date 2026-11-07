@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "fdc82118-bcaf-49f7-a516-cfd75d6f9aab",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a resume-building webpage where users can create and edit professional resumes using pre-designed templates. Users should be able to enter and organize their information (such as contact details, work experience, education, and skills), choose a template style, and customize basic layout options like section order and headings. The page should let users preview their resume, duplicate or rename versions, and save multiple variations for different job applications. Users should also be able to quickly search and filter their saved resumes by title or date created.\n\n# Output (Markdown)\n",
+    "duration_ms": 8787,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 11000,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 128,
+      "output_tokens": 2194,
+      "output_tokens_details": {
+        "thinking_tokens": 135
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "minimax/minimax-m3.1-flash": {
+        "inputTokens": 12696,
+        "outputTokens": 2207,
+        "cacheReadInputTokens": 256,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.118783,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 135,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "minimax/minimax-m3.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 25,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 4627,
+      "AssistantMessage": {
+        "total_count": 205,
+        "TextBlock": 2,
+        "ToolUseBlock": 121,
+        "ThinkingBlock": 82
+      },
+      "UserMessage": {
+        "total_count": 121,
+        "ToolResultBlock": 121
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "7a425b8e-fde4-4ce2-91ad-77c29fd74784",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a resume-building webpage where users can create and edit professional resumes using pre-designed templates. Users should be able to enter and organize their information (such as contact details, work experience, education, and skills), choose a template style, and customize basic layout options like section order and headings. The page should let users preview their resume, duplicate or rename versions, and save multiple variations for different job applications. Users should also be able to quickly search and filter their saved resumes by title or date created.\n\n## Application URL\nhttp://localhost:6005/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: User can create a new resume from the main page\n  - Action: Click the \"Create New Resume\" / \"New Resume\" button on the resume list or header.\n  - Expected: A blank resume editor opens with a default title (e.g., \"Untitled Resume\") and empty sections for contact details, work experience, education, and skills.\n\n- [ ] FT-02: User can enter contact details and see them reflected in the resume\n  - Action: Fill in name, email, phone, and location fields in the contact details section, then trigger the preview.\n  - Expected: All entered contact values appear in the resume preview in the contact area.\n\n- [ ] FT-03: User can add, edit, and delete a work experience entry\n  - Action: Click \"Add\" in the Work Experience section, fill in job title, company, dates, and description, then edit the entry and finally delete it.\n  - Expected: Each work experience entry appears as a separate item in the editor and in the preview; edits update the preview; deleting removes it from both.\n\n- [ ] FT-04: User can add, edit, and delete an education entry\n  - Action: Add an education item with institution, degree, and graduation year, modify one field, then remove the entry.\n  - Expected: The education entry shows in the editor list and preview, updates after editing, and disappears after deletion.\n\n- [ ] FT-05: User can add, edit, and remove a skill\n  - Action: Add skills one at a time (e.g., \"Python\", \"SQL\"), rename one skill, then delete another skill.\n  - Expected: Skills are listed individually, the renamed skill shows the new text, and the deleted skill no longer appears.\n\n- [ ] FT-06: User can select a different pre-designed template and see the layout change\n  - Action: Open the template/style selector and choose a template other than the current one.\n  - Expected: The resume preview immediately re-renders in the selected template's style (visibly different layout/typography/colors), and the selected template is marked as active.\n\n- [ ] FT-07: User can change the order of resume sections\n  - Action: Use the section ordering controls (move up / move down / drag) to move a section, e.g., place Education above Work Experience.\n  - Expected: The preview renders the sections in the new order and the order persists when the preview is refreshed.\n\n- [ ] FT-08: User can customize section headings\n  - Action: Change a section heading from its default (e.g., \"Work Experience\" to \"Professional Experience\").\n  - Expected: The new heading text is shown in the editor and in the preview for that section only.\n\n- [ ] FT-09: User can preview the resume in a dedicated preview view\n  - Action: Click the \"Preview\" button/tab.\n  - Expected: A read-only, formatted rendering of the resume (single-page view, no editable input fields) is shown containing all saved content.\n\n- [ ] FT-10: User can rename a saved resume version\n  - Action: Use the rename option on a saved resume (e.g., from the list's row menu or a title field) and enter a new title such as \"Acme Corp - Software Engineer\".\n  - Expected: The new title replaces the old one everywhere it is displayed (list, header, preview title) and is persisted after a page reload.\n\n- [ ] FT-11: User can duplicate a saved resume version\n  - Action: Click \"Duplicate\" on an existing saved resume.\n  - Expected: A new copy appears in the saved list with a distinguishable title (e.g., original name + \"Copy\") and identical content, while the original remains unchanged.\n\n- [ ] FT-12: User can save multiple resume variations for different job applications\n  - Action: Create and save two resumes with different titles and content, then view the saved resumes list.\n  - Expected: Both resumes are listed independently and each opens with its own content, template, and layout settings.\n\n- [ ] FT-13: User can search saved resumes by title\n  - Action: Type a keyword that appears in one resume's title but not another's into the search box.\n  - Expected: Only the matching resume (or resumes whose titles contain the keyword) is shown; non-matching resumes are hidden.\n\n- [ ] FT-14: User can filter saved resumes by date created\n  - Action: Use the date filter/sort control to select a date range or a sort-by-date option in the saved resumes list.\n  - Expected: The list is narrowed/ordered according to the selected date criteria, and each listed resume shows a date created value.\n\n## Constraint\n- [ ] CS-01: Required contact fields are validated before saving\n  - Action: Clear or leave empty a required field (e.g., full name / email) and attempt to save the resume.\n  - Expected: Saving is blocked or an inline validation/error message names the missing field, and no invalid resume is stored.\n\n- [ ] CS-02: Invalid email format is rejected\n  - Action: Enter \"not-an-email\" in the email field and attempt to save.\n  - Expected: An email-format validation error is shown and the resume is not saved with the invalid value.\n\n- [ ] CS-03: Resume title is required and must be non-empty\n  - Action: Clear the resume title field and attempt to save or attempt to duplicate the resume.\n  - Expected: The save/duplicate is blocked with a prompt requiring a title.\n\n- [ ] CS-04: Section reorder controls cannot move a section outside the valid list boundaries\n  - Action: Attempt to move the first section up and the last section down using the ordering controls.\n  - Expected: The first section remains first and the last remains last; no duplicate or removed section results.\n\n- [ ] CS-05: Duplicate operation does not overwrite the source resume\n  - Action: Duplicate a resume, then edit the duplicate's title and contact details and save.\n  - Expected: The original resume's title and content are unchanged and it still exists separately in the list.\n\n- [ ] CS-06: Deleting a saved resume requires confirmation and is not performed accidentally\n  - Action: Click \"Delete\" on a saved resume.\n  - Expected: A confirmation prompt appears; cancelling leaves the resume intact, confirming removes it from the list.\n\n- [ ] CS-07: A search/filter with no matching results shows an explicit empty state rather than a blank or broken list\n  - Action: Search for a title keyword that matches no saved resume.\n  - Expected: A clear \"no resumes found\"/empty-state message is displayed and no incorrect resume cards are displayed.\n\n## Interaction\n- [ ] IX-01: Preview updates live as content is edited\n  - Action: Type a new value into any field (e.g., change job title in work experience) while the preview is visible.\n  - Expected: The preview re-renders to show the new value without requiring a manual save or refresh.\n\n- [ ] IX-02: Switching template visibly re-styles the resume and indicates the active selection\n  - Action: Click through two or more template options in the template picker.\n  - Expected: The preview restyles on each click and the currently selected template is highlighted/selected in the picker.\n\n- [ ] IX-03: Add / remove controls provide immediate visual feedback\n  - Action: Click \"Add\" for a work experience entry and click the remove (×) control on that entry.\n  - Expected: A new empty entry appears immediately in the editor list and the removed entry disappears immediately.\n\n- [ ] IX-04: Saving shows a clear success confirmation\n  - Action: Click \"Save\" on the editor.\n  - Expected: A success notification (toast or status message) appears confirming the resume was saved, and it disappears or is dismissible.\n\n- [ ] IX-05: Unsaved-change state is indicated when navigating away from edited content\n  - Action: Edit a field, then attempt to leave the editor or switch resume.\n  - Expected: The app indicates unsaved changes (e.g., dirty-state marker or confirmation prompt) before discarding them.\n\n## Content\n- [ ] CT-01: All section labels and headings are clear and resume-appropriate\n  - Action: Inspect the editor and preview headings (Contact, Work Experience, Education, Skills, plus customizable headings).\n  - Expected: Labels use professional, standard resume terminology with no placeholder lorem-ipsum text, raw field codes, or developer artifacts.\n\n- [ ] CT-02: Preview content matches exactly what the user entered\n  - Action: Enter distinctive values (e.g., email \"qa.probe@example.com\", company \"TestNova Corp\", skill \"Kubernetes\") and open the preview.\n  - Expected: Each distinctive value appears verbatim, spelled as entered, with no truncation, reordering, or placeholder substitution.\n\n- [ ] CT-03: Template choices are displayed with meaningful previews and names\n  - Action: Open the template selection area.\n  - Expected: Each template has a name and a visual preview/thumbnail representing its style, and the number of templates offered is greater than one.\n\n- [ ] CT-04: Empty sections and empty states display helpful text rather than blank areas\n  - Action: View a newly created empty resume and a list with no saved resumes (after filtering to no matches).\n  - Expected: Guidance text (e.g., \"No work experience added yet\") is shown; no unlabeled blank gaps or broken characters appear.\n\n- [ ] CT-05: Saved resume list displays title and date created for each resume\n  - Action: View the saved resumes list.\n  - Expected: Each entry shows its title and a human-readable date created, with no blank or missing metadata.\n```\n\n# Output\n",
+    "duration_ms": 345210,
+    "is_error": false,
+    "num_turns": 122,
+    "token_usage": {
+      "input_tokens": 76666,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 5341696,
+      "output_tokens": 25941,
+      "output_tokens_details": {
+        "thinking_tokens": 14553
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "minimax/minimax-m3.1-flash": {
+        "inputTokens": 79667,
+        "outputTokens": 25951,
+        "cacheReadInputTokens": 5342464,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 3.7183420000000007,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 14553,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "minimax/minimax-m3.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

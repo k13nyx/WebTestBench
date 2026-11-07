@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "d73359dc-7cec-46e4-b088-66b80565c355",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a web-based bookkeeping application where users can track income and expenses, categorize transactions, and view summarized reports such as monthly profit and loss. Users should be able to create and manage simple financial records (like invoices, bills, and payments) and assign them to customizable categories or accounts. The site should provide basic tools to review and adjust entries, filter records by date or category, and see simple dashboards of their financial status. It should also allow users to mark items as tax-related and generate a basic tax summary they can review and print.\n\n# Output (Markdown)\n",
+    "duration_ms": 159704,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2463,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8576,
+      "output_tokens": 6201,
+      "output_tokens_details": {
+        "thinking_tokens": 4838
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy4-preview": {
+        "inputTokens": 2727,
+        "outputTokens": 10565,
+        "cacheReadInputTokens": 9984,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.282752,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 9190,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy4-preview",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 2070,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 6374,
+      "AssistantMessage": {
+        "total_count": 89,
+        "TextBlock": 2,
+        "ToolUseBlock": 44,
+        "ThinkingBlock": 43
+      },
+      "UserMessage": {
+        "total_count": 44,
+        "ToolResultBlock": 44
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "1ec9ee8b-e922-4e39-8528-53e92e0b60dc",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a web-based bookkeeping application where users can track income and expenses, categorize transactions, and view summarized reports such as monthly profit and loss. Users should be able to create and manage simple financial records (like invoices, bills, and payments) and assign them to customizable categories or accounts. The site should provide basic tools to review and adjust entries, filter records by date or category, and see simple dashboards of their financial status. It should also allow users to mark items as tax-related and generate a basic tax summary they can review and print.\n\n## Application URL\nhttp://localhost:6006/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Create an income transaction\n  - Action: Open the new transaction form, enter a description, amount 500, a date in the current month, select type \"Income\", and submit.\n  - Expected: A row appears in the transaction list with type \"Income\", amount 500, and the entered date/description; it is included in income totals.\n- [ ] FT-02: Create an expense transaction\n  - Action: Open the new transaction form, enter a description, amount 200, a date in the current month, select type \"Expense\", and submit.\n  - Expected: A row appears in the transaction list with type \"Expense\" and amount 200; it is included in expense totals.\n- [ ] FT-03: Create invoice, bill, and payment records\n  - Action: Use the record creation control and create one record of each available type (Invoice, Bill, Payment) with valid default values.\n  - Expected: All three are saved, appear in the records list labeled with their type, and each can be opened for viewing/editing.\n- [ ] FT-04: Create a custom category and assign a transaction to it\n  - Action: Open category management, add category \"Test Category\", then edit a default transaction and set its category to \"Test Category\".\n  - Expected: The new category is saved, appears in the category dropdown/filter list, and the edited transaction row displays \"Test Category\".\n- [ ] FT-05: Create a custom account and assign a transaction to it\n  - Action: Open account management, add account \"Test Account\", then edit a default transaction and assign it to \"Test Account\".\n  - Expected: The new account is saved, appears in the account dropdown/filter list, and the edited transaction row displays \"Test Account\".\n- [ ] FT-06: View monthly profit and loss report\n  - Action: Open Reports → Profit & Loss and select the current month.\n  - Expected: The report shows total income, total expenses, and net profit/loss for that month; net equals income minus expenses and matches that month's records.\n- [ ] FT-07: Dashboard shows financial status summary\n  - Action: Navigate to the dashboard and read the summary values after FT-01 and FT-02.\n  - Expected: Dashboard displays total income, total expenses, and net/balance; net equals income minus expenses and reflects the 500 income and 200 expense added.\n- [ ] FT-08: Filter records by date range\n  - Action: Apply the date filter to a narrow range (e.g., one day or one week) that covers only part of the default records.\n  - Expected: Only records whose date falls inside the range are listed; visible count is greater than 0 and less than the unfiltered total.\n- [ ] FT-09: Filter records by category\n  - Action: Select one existing default category in the category filter and apply it.\n  - Expected: Only records assigned to that category are listed; every visible row shows that category.\n- [ ] FT-10: Edit an existing entry\n  - Action: Edit a default transaction, change its amount to 123.45 and its description, and save.\n  - Expected: The row shows the updated amount and description, and dashboard/P&L totals reflect 123.45 instead of the old value.\n- [ ] FT-11: Delete an existing entry\n  - Action: Delete the transaction created in FT-01 and confirm if prompted.\n  - Expected: The row is removed from the list and no longer appears in filtered views or dashboard totals.\n- [ ] FT-12: Mark items as tax-related and generate tax summary\n  - Action: Enable the \"Tax related\" flag on one default income record and one default expense record, then open the Tax Summary report.\n  - Expected: The summary lists exactly those marked records, shows separate totals for tax-related income and expenses, and omits unmarked records.\n\n## Constraint\n- [ ] CS-01: Required fields block saving a transaction\n  - Action: Submit the new transaction form with description, amount, and date all left empty.\n  - Expected: No record is created (list count unchanged), and inline validation messages are shown on each required field.\n- [ ] CS-02: Invalid amounts are rejected\n  - Action: Enter amount \"abc\" and submit; then enter \"-50\" and submit.\n  - Expected: Both submissions are rejected with a validation message and no record containing an invalid amount is saved.\n- [ ] CS-03: Removing the tax-related flag removes the item from the tax summary\n  - Action: Turn off the \"Tax related\" flag on the income record marked in FT-12, then reopen the Tax Summary report.\n  - Expected: That record is no longer listed and its amount is excluded from the summary totals.\n\n## Interaction\n- [ ] IX-01: Confirmation message after saving a record\n  - Action: Create one valid transaction and observe the interface immediately after submitting.\n  - Expected: A confirmation message/toast is displayed (e.g., \"Transaction saved\") without any error state.\n- [ ] IX-02: Dashboard totals update without a page reload\n  - Action: Note the dashboard net total, create an expense of 100, then return to the dashboard without reloading the browser.\n  - Expected: The displayed totals update and net is 100 lower than before; no stale numbers are shown.\n- [ ] IX-03: Print the tax summary\n  - Action: Open the Tax Summary report and click the Print button.\n  - Expected: The browser print preview opens and contains the summary headings and totals in a clean printable layout.\n\n## Content\n- [ ] CT-01: Labels use correct bookkeeping terminology with no placeholder text\n  - Action: Review the main navigation, dashboard, record form labels, and report headings.\n  - Expected: All text uses bookkeeping terms (Income, Expense, Category, Account, Profit & Loss, Tax Summary); no \"Lorem ipsum\", \"TODO\", \"undefined\", or empty labels appear.\n- [ ] CT-02: Currency values are formatted consistently everywhere\n  - Action: Inspect monetary values in the transaction list, dashboard, monthly P&L, and tax summary.\n  - Expected: Every amount shows the same currency symbol and two-decimal format, income and expense are clearly distinguished, and no total displays blank or \"NaN\".\n```\n\n# Output\n",
+    "duration_ms": 364633,
+    "is_error": false,
+    "num_turns": 45,
+    "token_usage": {
+      "input_tokens": 122478,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1769216,
+      "output_tokens": 26337,
+      "output_tokens_details": {
+        "thinking_tokens": 16388
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy4-preview": {
+        "inputTokens": 124072,
+        "outputTokens": 31671,
+        "cacheReadInputTokens": 1770496,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 2.2973830000000004,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 21710,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy4-preview",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

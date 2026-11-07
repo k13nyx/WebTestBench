@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "f505fd50-1f6e-49dd-ae8a-5bebf35ebd88",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a product review website focused on in-depth guides, where I can publish long-form reviews, side‑by‑side comparison articles, and ranked “best of” lists for categories like cameras, monitors, and vacuum cleaners. Each product should have its own detail page with ratings across multiple criteria (for example design, performance, value), a verdict summary, and links to all reviews and comparisons it appears in. Visitors should be able to filter listings by category and price range bands, sort by overall score or date, search across products and articles, and view comparison pages that line up key specs, ratings, and summaries for several products at once.\n\n# Output (Markdown)\n",
+    "duration_ms": 62410,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2463,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8576,
+      "output_tokens": 5770,
+      "output_tokens_details": {
+        "thinking_tokens": 4180
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy4-preview": {
+        "inputTokens": 4155,
+        "outputTokens": 11010,
+        "cacheReadInputTokens": 8576,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.30031299999999994,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 9412,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy4-preview",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 4181,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 4030,
+      "AssistantMessage": {
+        "total_count": 54,
+        "TextBlock": 2,
+        "ToolUseBlock": 27,
+        "ThinkingBlock": 25
+      },
+      "UserMessage": {
+        "total_count": 27,
+        "ToolResultBlock": 27
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "05720346-a7e1-402c-b926-96f9baf4cc29",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a product review website focused on in-depth guides, where I can publish long-form reviews, side‑by‑side comparison articles, and ranked “best of” lists for categories like cameras, monitors, and vacuum cleaners. Each product should have its own detail page with ratings across multiple criteria (for example design, performance, value), a verdict summary, and links to all reviews and comparisons it appears in. Visitors should be able to filter listings by category and price range bands, sort by overall score or date, search across products and articles, and view comparison pages that line up key specs, ratings, and summaries for several products at once.\n\n## Application URL\nhttp://localhost:6017/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n\n- [ ] **FT-01**: Homepage exposes all three content types and all three product categories\n  - Action: From the homepage, locate and click the navigation forReviews, Comparisons, and Best-of Lists, and each of Cameras, Monitors, and Vacuum Cleaners.\n  - Expected: All six destinations load successfully and display a non-empty listing of default content relevant to the clicked type/category.\n\n- [ ] **FT-02**: A long-form review article renders its complete in-depth content\n  - Action: Open any review article from the reviews listing and read to the bottom of the page.\n  - Expected: The article page displays its title, publication date, and full body content (multiple paragraphs/sections — not a truncated excerpt only), with no \"Read more\" dead-end.\n\n- [ ] **FT-03**: \"Best of\" list is ranked and shows an overall score per product\n  - Action: Open a best-of list (e.g., \"Best Cameras\"), then note the rank and score of each entry from top to bottom.\n  - Expected: Products are displayed in explicit ranked order (1, 2, 3…) and every entry shows an overall score value next to/under its name.\n\n- [ ] **FT-04**: Product detail page shows multi-criteria ratings and a verdict summary\n  - Action: Open any product's detail page from a listing, search result, or best-of list.\n  - Expected: The page shows separate ratings for at least Design, Performance, and Value, plus a distinct \"Verdict\" summary section containing prose specific to that product.\n\n- [ ] **FT-05**: Product detail page links to every review it appears in\n  - Action: On a product detail page, note the titles listed in its \"Reviews\" (appears-in) section, then click one link.\n  - Expected: At least one review is listed, and clicking a listed review opens that review article page (title matches the link clicked).\n\n- [ ] **FT-06**: Product detail page links to every comparison it appears in\n  - Action: On a product detail page, note the titles listed in its \"Comparisons\" (appears-in) section, then click one link.\n  - Expected: The section is present and distinct from the Reviews section; clicking a listed comparison opens that comparison page (title matches the link clicked).\n\n- [ ] **FT-07**: Comparison page lines up specs, ratings, and summaries for several products\n  - Action: Open any comparison article and examine the comparison layout across all products it covers.\n  - Expected: Two or more products are shown side by side, with the same set of key spec rows and rating rows aligned per product, and each product column includes a summary.\n\n- [ ] **FT-08**: Listing can be filtered by category\n  - Action: Go to the products/article listing, select the \"Monitors\" category filter, and apply it.\n  - Expected: Only products belonging to Monitors are shown; no Cameras or Vacuum Cleaners products remain visible.\n\n- [ ] **FT-09**: Listing can be filtered by price range band\n  - Action: On the products listing, select one predefined price band (e.g., \"$500–$999\") and apply it.\n  - Expected: Every displayed product's price falls within the selected band; products outside it are not shown.\n\n- [ ] **FT-10**: Listing can be sorted by overall score\n  - Action: On the products listing, select the \"Overall Score\" sort option.\n  - Expected: Products are reordered by overall score (highest first for descending, or lowest first if ascending is selected), and the order differs from the unsorted default unless already coincidental.\n\n- [ ] **FT-11**: Listing can be sorted by date\n  - Action: On the products (or articles) listing, select the \"Date\" sort option.\n  - Expected: Items are reordered by publication date (newest first for descending), and the displayed dates move monotonically in the chosen direction down the list.\n\n- [ ] **FT-12**: Search returns both products and articles\n  - Action: In the site search box, enter a term that appears in default content (e.g., \"Sony\" or \"vacuum\") and submit.\n  - Expected: The results page returns matching items and clearly distinguishes product results from article results (separate sections or labeled result types); both types appear when both match.\n\n## Constraint\n\n- [ ] **CS-01**: Category and price band filters combine rather than override each other\n  - Action: Apply the \"Cameras\" category filter, then additionally apply one price band, without clearing the category.\n  - Expected: Results include only products that are both Cameras and within the selected price band; the category filter stays selected and results are a subset of each filter alone.\n\n- [ ] **CS-02**: A search with no matches shows an explicit no-results state\n  - Action: Search for a nonsense string (e.g., \"zzzzqqq123\") and submit.\n  - Expected: A \"No results\" (or equivalent) message is displayed, no stale results from a previous query remain, and the page does not error out.\n\n- [ ] **CS-03**: Ranked best-of list has no duplicate or skipped ranks\n  - Action: Inspect the full rank sequence of a best-of list and cross-check product names.\n  - Expected: Ranks run consecutively (1, 2, 3, …) with no repeated rank number and no product listed twice.\n\n- [ ] **CS-04**: Overall score is consistent between listing and product detail page\n  - Action: Note a product's overall score in a listing/best-of page, then open that product's detail page and compare.\n  - Expected: The two overall score values are identical; no product displays a blank/missing overall score in either view.\n\n## Interaction\n\n- [ ] **IX-01**: Choosing a sort option visibly reorders the listing and marks it active\n  - Action: Change the sort control from its default to \"Overall Score\", then to \"Date\".\n  - Expected: The listing updates in place each time with the new order, and the currently selected sort option is shown as active/selected in the control.\n\n- [ ] **IX-02**: Applied filters are visibly indicated on the page\n  - Action: Apply a category filter, then apply a price band filter.\n  - Expected: The selected category and price band are each visibly reflected in the interface (checked/selected state, filter chip, or results heading naming them), and each can be removed/cleared to restore the full listing.\n\n## Content\n\n- [ ] **CT-01**: Product listings and detail pages contain real, relevant product data\n  - Action: Review several product cards and two product detail pages from default data.\n  - Expected: Each shows a real product name, a price, and a category matching Cameras/Monitors/Vacuum Cleaners; no placeholder text (\"Lorem ipsum\", \"Product 1\", \"TODO\"), and no broken or missing product images.\n\n- [ ] **CT-02**: All articles contain substantive, on-theme review content\n  - Action: Open one review, one comparison, and one best-of list and inspect their text and media.\n  - Expected: Each displays a non-empty title, date, and body text about cameras, monitors, or vacuum cleaners; no generic stock filler, unrelated topics, or empty sections/spec rows.\n```\n\n# Output\n",
+    "duration_ms": 192830,
+    "is_error": false,
+    "num_turns": 28,
+    "token_usage": {
+      "input_tokens": 99028,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1144000,
+      "output_tokens": 16853,
+      "output_tokens_details": {
+        "thinking_tokens": 10246
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy4-preview": {
+        "inputTokens": 100869,
+        "outputTokens": 23636,
+        "cacheReadInputTokens": 1145280,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.667885,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 17019,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy4-preview",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+# Test Checklist
+
+## Functionality
+- [ ] FT-01: Create a new topic page with a title and body content
+  - Action: Click the "New Page" button, enter a title (e.g., "Machine Learning Basics") and body text, then save.
+  - Expected: The page is created and opens, showing the entered title as the page heading and the body text as page content.
+- [ ] FT-02: Create a nested subpage beneath an existing page
+  - Action: Open an existing default page and use the "Add Subpage" / "New Subpage" action, enter a title and content, then save.
+  - Expected: The subpage is created, opens showing its own title/content, and appears nested under its parent in the navigation tree.
+- [ ] FT-03: View a page's content, tags, outgoing links/citations, and backlinks together
+  - Action: Open any default page from the knowledge base.
+  - Expected: The page displays its content, a Tags section listing its assigned tags, an outgoing section listing pages it links to/cites, and a "Cited by"/backlinks section listing pages that reference it.
+- [ ] FT-04: Create a bidirectional link between two existing pages
+  - Action: From page A, use the link/add-link action to link to existing page B; then open page B.
+  - Expected: Page A lists page B as an outgoing link, and page B lists page A under its backlinks/"Linked from" section.
+- [ ] FT-05: Add a tag to a page and view it on that page
+  - Action: Open a default page, use the tag/add-tag action, select or type an existing tag (or create a new one), then save.
+  - Expected: The tag appears in the page's Tags section and the page is returned when filtering by that tag.
+- [ ] FT-06: Create a citation relationship with a citation note
+  - Action: On an existing page, add a citation to another existing page and enter a note describing the source, then save.
+  - Expected: The citation appears in the page's citations list with the entered note, and the cited page shows this page under its "Cited by" section.
+- [ ] FT-07: Browse the knowledge base through hierarchical navigation
+  - Action: Load the app and expand/collapse nodes in the navigation tree; click a parent node and one of its child nodes.
+  - Expected: Parent nodes expand to reveal their child pages, and clicking any tree entry opens that page with the tree reflecting the hierarchy.
+- [ ] FT-08: Filter pages by title
+  - Action: Open the search/filter control, enter a title keyword matching an existing default page (e.g., a word from its title).
+  - Expected: The result list shows only pages whose titles match the keyword, and each result can be opened.
+- [ ] FT-09: Filter pages by tag
+  - Action: Select or type an existing tag in the tag filter, and confirm the filter.
+  - Expected: The result list shows exactly the pages carrying that tag, and selecting a result opens that page.
+- [ ] FT-10: Search pages by citation note
+  - Action: Enter a word from the note of an existing citation into the search/filter control.
+  - Expected: The result list shows the page whose citation note contains that word, and the matching note is visible in the results or on the opened page.
+- [ ] FT-11: Follow a chain of links or citations to a related page
+  - Action: Start at a default page, click an outgoing link/citation to page B, then from page B click an outgoing link/citation to page C.
+  - Expected: Each click navigates to the corresponding page, so the chain is followed from the first page to page C.
+- [ ] FT-12: Existing default knowledge base pages are listed on load
+  - Action: Open the application without creating any data.
+  - Expected: A list/tree of pre-existing pages is shown, and at least one default page can be opened and displays its content.
+
+## Constraint
+- [ ] CS-01: A page cannot be created without a title
+  - Action: Click "New Page", leave the title field empty, and attempt to save.
+  - Expected: Saving is blocked and a validation message appears indicating the title is required; no empty-titled page is created.
+- [ ] CS-02: Self-links and self-citations are not permitted
+  - Action: Open a page and attempt to link or cite that same page from itself.
+  - Expected: The attempt is rejected or the current page is not selectable as the target; the page never lists itself as an outgoing link or backlink.
+- [ ] CS-03: Citation/link targets must be existing pages
+  - Action: Open the link/citation target picker and attempt to confirm a target that does not exist in the knowledge base.
+  - Expected: The invalid target is rejected or the action cannot be completed; no link/citation to a non-existent page is created.
+- [ ] CS-04: Subpage hierarchy cannot create a circular parent-child relationship
+  - Action: Attempt to set a page as a subpage of one of its own existing descendants.
+  - Expected: The operation is blocked with a validation/constraint message; the hierarchy remains acyclic and both pages keep their original parents.
+- [ ] CS-05: An existing link or citation is not duplicated by repeating the same action
+  - Action: Add the same page as a link/citation to a source page twice.
+  - Expected: The target appears only once in the source page's links/citations list, and the target's backlinks/"Cited by" section shows the source only once.
+- [ ] CS-06: Removing a link or citation updates both sides of the relationship
+  - Action: Delete an existing citation/link from the source page, then open the target page.
+  - Expected: The relationship is gone from the source's list, and the target no longer lists the source under backlinks/"Cited by".
+
+## Interaction
+- [ ] IX-01: Clicking a page title in results or link lists opens that page
+  - Action: Click a page title shown in the search results, a backlinks list, an outgoing-links list, or the navigation tree.
+  - Expected: The clicked page opens, and its title, content, tags, and citation sections are displayed.
+- [ ] IX-02: Clicking a tag in the Tags section filters the knowledge base by that tag
+  - Action: Open a page and click one of the tags in its Tags section.
+  - Expected: The app switches to a filtered result list containing the pages with that tag, and the filter control shows the selected tag.
+- [ ] IX-03: Expanding and collapsing a navigation tree node updates the visible hierarchy
+  - Action: Click the expand control on a parent node with children, then click it again to collapse.
+  - Expected: Child entries become visible when expanded and are hidden when collapsed, without navigating away from the current page.
+- [ ] IX-04: The current page is visibly indicated in the navigation
+  - Action: Open a page that appears in the navigation tree, then navigate to a different page and back.
+  - Expected: The active/current page entry is visually highlighted (e.g., selected style or marker) and the highlight moves when a different page is opened.
+- [ ] IX-05: Search/filter feedback is shown for both matches and no matches
+  - Action: Search for a keyword that matches an existing page, then search for a nonsense string with no match.
+  - Expected: Matching entries are listed for the first query; for the no-match query an explicit "no results"/empty-state message is shown rather than a stale or misleading list.
+- [ ] IX-06: Saving a new or edited page gives clear feedback and updates the view
+  - Action: Create a new page and save it, then edit an existing page's content and save.
+  - Expected: A confirmation (e.g., toast or success message) is shown after saving, and the saved title/content appear in the page view and in the navigation/list.
+
+## Content
+- [ ] CT-01: Page title and body content are displayed exactly as entered
+  - Action: Create a page with a distinctive title and body text, open it, and compare character-for-character.
+  - Expected: The heading equals the entered title and the body equals the entered text with no truncation, reordering, or placeholder text.
+- [ ] CT-02: Tag labels shown on a page match the tags actually assigned
+  - Action: Open a page with tags assigned and compare the tag labels in the Tags section against the assigned tag names.
+  - Expected: Every displayed tag matches an assigned tag, with no extra, missing, or misspelled tag names.
+- [ ] CT-03: Outgoing links/citations list the correct target pages with their notes
+  - Action: Open a page that cites/links other pages and compare each listed entry.
+  - Expected: Each entry names the correct target page and shows the corresponding citation note when one was entered.
+- [ ] CT-04: Backlinks/"Cited by" list the correct source pages
+  - Action: Open a page that is referenced by other pages and inspect the backlinks/"Cited by" section.
+  - Expected: Each listed entry is a page that actually references the open page, and no page missing a relationship to it is listed.
+- [ ] CT-05: Page sections are clearly labelled for tags, citations, and backlinks
+  - Action: Open a default page and read the section headings above the tag list, the outgoing citations/links list, and the backlinks list.
+  - Expected: Each of the three groups has a distinct, descriptive heading (e.g., "Tags", "Cites"/"Links", "Cited by"/"Backlinks") and no group is unlabeled or mislabeled.
+- [ ] CT-06: Navigation tree reflects the actual page hierarchy
+  - Action: Compare the nesting shown in the navigation tree with the parent/subpage relationships of the opened pages.
+  - Expected: Each subpage appears under its actual parent, and the tree contains no orphaned, duplicated, or incorrectly nested entries.

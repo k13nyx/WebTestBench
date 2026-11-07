@@ -1,0 +1,101 @@
+All tests executed. The key finding for CS-01: with **wrong but non-empty** credentials (`fake@nowhere.com` / `wrongpassword`), the app signed in successfully and landed on the dashboard (the hint "Use any email and password to sign in" confirms any credentials are accepted). Blank credentials were correctly rejected ("Please enter both email and password"), but invalid credentials were NOT.
+
+I have now completed all 21 checklist items. Here is the full result.
+
+# Test Result
+
+## Functionality
+- [X] FT-01: User can sign in to the fitness tracker
+  - Action: Enter valid credentials and submit the sign-in form.
+  - Expected: User is authenticated and lands on the tracker dashboard.
+
+- [X] FT-02: User can log a detailed workout with all required fields
+  - Action: Fill in exercise type, intensity, duration, distance, and notes, then submit.
+  - Expected: Workout is saved and confirmed as recorded.
+
+- [X] FT-03: User can set a weekly frequency goal (e.g., "run 3 times a week")
+  - Action: Create a goal of type "times per week" with a target count and submit.
+  - Expected: Goal is saved and shown in the goals list.
+
+- [X] FT-04: User can set a weekly minutes goal (e.g., "exercise 150 minutes per week")
+  - Action: Create a goal of type "minutes per week" with a target value and submit.
+  - Expected: Goal is saved and shown in the goals list.
+
+- [X] FT-05: Recent workouts are displayed in a timeline
+  - Action: Open the timeline/recent workouts view.
+  - Expected: Logged workouts appear in chronological order (most recent first).
+
+- [X] FT-06: Summary view compares logged activity against goals for the current week
+  - Action: Open the summary view and select the current week.
+  - Expected: Progress for each goal is shown versus its weekly target.
+
+- [ ] FT-07: Summary view compares logged activity against goals for the current month
+  - Action: Open the summary view and select the current month.
+  - Expected: Progress for each goal is shown versus its monthly rollup/target.
+  - Bug Report:
+    - Issue: Missing feature — no monthly goal comparison view
+    - Actual: The Goals/Summary area only displays weekly goal progress (e.g., "Run 3 times a week" 2/3 times, "Exercise 150 minutes per week" 223/150 min). There is no section comparing logged activity against goals for the current month. The only "Month" data are stat cards (workout count, distance) which are raw statistics, not goal comparisons, and no month selector exists.
+
+## Constraint
+- [ ] CS-01: Sign-in rejects empty or invalid credentials
+  - Action: Submit the sign-in form with blank or wrong credentials.
+  - Expected: Access is denied and an error message is shown.
+  - Bug Report:
+    - Issue: Authentication accepts invalid (wrong) credentials
+    - Actual: Blank fields are correctly rejected with "Please enter both email and password". However, submitting non-empty but wrong credentials (e.g., fake@nowhere.com / wrongpassword) successfully authenticates and lands on the dashboard. The on-screen hint "Use any email and password to sign in" confirms the app accepts any credentials; invalid/wrong credentials are not denied.
+
+- [X] CS-02: Workout form blocks submission with missing required fields
+  - Action: Submit a workout form leaving required fields (e.g., exercise type, duration) empty.
+  - Expected: Submission is prevented and a validation message identifies the missing fields.
+
+- [X] CS-03: Goal form requires valid positive numeric targets
+  - Action: Submit a goal with zero, negative, or non-numeric values.
+  - Expected: Submission is rejected with a validation message.
+
+- [ ] CS-04: Goals are scoped to a weekly target only
+  - Action: Attempt to set a goal without a weekly scope or with unsupported types.
+  - Expected: Only weekly frequency or weekly minutes goals are accepted.
+  - Bug Report:
+    - Issue: Goals are not restricted to a weekly scope
+    - Actual: The "New Goal" form's Period field offers both "Week" and "Month". Creating a goal with Period = "Month" (e.g., "Exercise 10 times per month") is accepted and saved with a "monthly goal" label and progress bar. Non-weekly (monthly) goals are permitted, so goals are not scoped to weekly-only.
+
+## Interaction
+- [X] IX-01: Success confirmation appears after logging a workout
+  - Action: Submit a valid workout.
+  - Expected: A success toast or message confirms the workout was saved.
+
+- [X] IX-02: Success confirmation appears after setting a goal
+  - Action: Submit a valid goal.
+  - Expected: A success toast or message confirms the goal was saved.
+
+- [X] IX-03: Timeline updates immediately after logging a workout
+  - Action: Log a new workout and view the timeline.
+  - Expected: The new workout appears at the top of the timeline without manual refresh.
+
+## Content
+- [X] CT-01: Timeline displays relevant workout details
+  - Action: Inspect a timeline entry.
+  - Expected: Each entry shows exercise type, intensity, duration, distance, and notes.
+
+- [ ] CT-02: Summary view clearly labels week and month goal comparisons
+  - Action: Open the summary view.
+  - Expected: Sections are clearly labeled "Week" and "Month" with logged vs. goal values.
+  - Bug Report:
+    - Issue: No clearly labeled "Week" and "Month" goal-comparison sections
+    - Actual: There are no sections labeled "Week" and "Month" showing logged-vs-goal values. The Goals section shows only "weekly goal" progress bars, and "Your Stats" has "This Week"/"This Month" cards that display raw statistics (workouts, minutes, distance) rather than logged vs. goal comparisons. No month goal-comparison section exists.
+
+- [X] CT-03: Exercise type options are fitness-relevant
+  - Action: Open the exercise type field on the workout form.
+  - Expected: Options are valid fitness activities (e.g., run, cycle, swim) relevant to a fitness tracker.
+
+---
+
+## Summary
+- **Passed (13):** FT-01, FT-02, FT-03, FT-04, FT-05, FT-06, CS-02, CS-03, IX-01, IX-02, IX-03, CT-01, CT-03
+- **Failed (4):** FT-07, CS-01, CS-04, CT-02
+
+**Notable observations:**
+- The app is a single-page dashboard; there is **no dedicated "Summary" view/route** — the Goals section serves as the weekly goal comparison. Weekly goal progress is shown correctly, but **no monthly goal comparison exists** (FT-07, CT-02 fail).
+- **Sign-in is not secure**: any non-empty email/password combination is accepted (CS-01 fails) — only blank submissions are blocked.
+- **Goals are not weekly-only**: the Period field allows "Month", so monthly goals can be created (CS-04 fails).
+- Workout and goal forms rely on native HTML5 validation (`required`/`min="1"`), which prevents invalid submission (CS-02, CS-03 pass), though messages are browser-native rather than custom in-DOM text.

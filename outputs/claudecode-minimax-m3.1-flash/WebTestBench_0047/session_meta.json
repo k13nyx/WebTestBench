@@ -1,0 +1,91 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": false,
+    "server_cleanup": true,
+    "finish": false
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "a37e38dc-1826-4053-aca2-2bd5e1295825",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a webpage where I can create a decision topic, define comparison criteria, assign a weight to each criterion, and then add multiple options to compare on a single page. For each option, I should be able to enter scores per criterion, see a weighted score automatically calculated, and view a simple ranking of options to help me choose. I should be able to rename, reorder, and remove options and criteria as I refine the decision.\n\n# Output (Markdown)\n",
+    "duration_ms": 14300,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2411,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8704,
+      "output_tokens": 3980,
+      "output_tokens_details": {
+        "thinking_tokens": 2521
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "minimax/minimax-m3.1-flash": {
+        "inputTokens": 2558,
+        "outputTokens": 3991,
+        "cacheReadInputTokens": 10368,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.11774899999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 2521,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "minimax/minimax-m3.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 809,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 11189,
+      "AssistantMessage": {
+        "total_count": 67,
+        "TextBlock": 4,
+        "ToolUseBlock": 34,
+        "ThinkingBlock": 29
+      },
+      "UserMessage": {
+        "total_count": 34,
+        "ToolResultBlock": 34
+      }
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "cfb96742-916d-4878-b582-1203dc71555f",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a webpage where I can create a decision topic, define comparison criteria, assign a weight to each criterion, and then add multiple options to compare on a single page. For each option, I should be able to enter scores per criterion, see a weighted score automatically calculated, and view a simple ranking of options to help me choose. I should be able to rename, reorder, and remove options and criteria as I refine the decision.\n\n## Application URL\nhttp://localhost:6047/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Create a decision topic with a name\n  - Action: Enter a topic name (e.g., \"Choose a laptop\") in the topic field and confirm with the Add/Save button.\n  - Expected: The topic name is accepted, appears as the page heading/section title, and a criteria area is available for the new topic.\n\n- [ ] FT-02: Add multiple comparison criteria to the topic\n  - Action: Add criteria named \"Price\", \"Performance\", and \"Battery\" using the add-criterion control (repeat three times).\n  - Expected: Each new criterion appears as a separate row/column entry with its name, weight field, and score inputs; no entry overwrites another.\n\n- [ ] FT-03: Assign a weight to each criterion\n  - Action: Set weights to 50 for Price, 30 for Performance, and 20 for Battery.\n  - Expected: Each criterion displays its entered weight next to it and the value is retained for use in scoring.\n\n- [ ] FT-04: Add multiple options to compare\n  - Action: Add three options named \"Budget\", \"Mid-range\", and \"Flagship\" (use the app's preloaded options if any exist, otherwise add these).\n  - Expected: All three options appear in the comparison area with a score input per criterion and a score/total field; all are on the same page without navigation.\n\n- [ ] FT-05: Enter scores per criterion for each option\n  - Action: For Budget enter 8/6/10, for Mid-range enter 6/7/7, and for Flagship enter 4/9/5 against Price/Performance/Battery respectively.\n  - Expected: Each entered value stays in its own option × criterion cell; no value bleeds into other rows or columns.\n\n- [ ] FT-06: Weighted score is calculated automatically per option\n  - Action: Observe the weighted score shown for Budget after entering 8, 6, and 10 with weights 50/30/20.\n  - Expected: Budget shows a weighted score of 7.8 (0.5×8 + 0.3×6 + 0.2×10, displayed as 7.8 or 78%) without any manual calculation step or extra button press.\n\n- [ ] FT-07: Ranking of options is displayed\n  - Action: View the ranking area after all scores are entered.\n  - Expected: Options are listed in descending weighted-score order (Flagship 6.3, Budget 7.8 → Budget first, then Mid-range 6.7, then Flagship 6.3) with a rank number/position for each.\n\n- [ ] FT-08: Rename an option\n  - Action: Change the option named \"Budget\" to \"Cheap model\" using its rename/edit control and save.\n  - Expected: The new name appears in the option's score row, in the ranking list, and anywhere else the option is referenced; the old name is gone.\n\n- [ ] FT-09: Rename a criterion\n  - Action: Change the criterion \"Battery\" to \"Battery life\" and save.\n  - Expected: The new name appears as the criterion header/label for all options' score inputs, and its weight and scores remain attached to it.\n\n- [ ] FT-10: Reorder options\n  - Action: Use the move up / move down control on the \"Flagship\" option.\n  - Expected: The option changes position in the comparison list (and its ranking/row position updates accordingly), with the other options keeping their relative order.\n\n- [ ] FT-11: Reorder criteria\n  - Action: Use the move up / move down control on the \"Battery\" criterion.\n  - Expected: The criterion's column/label moves to the new position and all options' scores stay aligned with the correct criterion.\n\n- [ ] FT-12: Remove an option\n  - Action: Click the delete/remove control on the \"Mid-range\" option and confirm.\n  - Expected: The option disappears from the comparison area and from the ranking, its scores are cleared, and the remaining options are re-ranked.\n\n- [ ] FT-13: Remove a criterion\n  - Action: Click the delete/remove control on the \"Performance\" criterion and confirm.\n  - Expected: The criterion and its score column are removed for every option, and weighted scores and the ranking are recalculated from the remaining criteria.\n\n## Constraint\n- [ ] CS-01: Duplicate option names are rejected\n  - Action: Try to add a second option named \"Flagship\" while one already exists.\n  - Expected: The duplicate is either rejected with a visible message or auto-renamed; two distinct rows never share the same name.\n\n- [ ] CS-02: Invalid score input is rejected or clamped\n  - Action: Enter a non-numeric value and an out-of-range value (e.g., 500 and \"-2\") into an option's score field.\n  - Expected: The invalid entry is rejected with a visible error, or clamped to the allowed range; the weighted score and ranking never show NaN, blank, or a negative contribution.\n\n- [ ] CS-03: Removing a criterion leaves no orphaned data\n  - Action: Remove a criterion and inspect every remaining option's score cells and weighted score.\n  - Expected: No empty column, stale value, or leftover score from the deleted criterion remains; each remaining option has exactly one score per surviving criterion.\n\n## Interaction\n- [ ] IX-01: Weighted scores recalculate live when a score changes\n  - Action: Change the Budget option's Price score from 8 to 2 and observe the weighted score and ranking without clicking any save/calculate button.\n  - Expected: The weighted score updates immediately (7.8 → 5.8) and the ranking reorders without a page reload.\n\n- [ ] IX-02: Ranking updates immediately when weights change\n  - Action: Change the Price weight from 50 to 90 and observe the weighted scores and the ranking order.\n  - Expected: Weighted scores and ranking positions update in place immediately, with no stale values left from the previous weights.\n\n## Content\n- [ ] CT-01: Topic title matches what the user entered\n  - Action: Compare the heading/label displayed on the page with the topic name typed in FT-01.\n  - Expected: The displayed title is exactly the entered topic name, with no placeholder, generic \"Untitled\", or truncated text.\n\n- [ ] CT-02: Entered names, weights, scores and ranks are displayed accurately\n  - Action: Compare every visible criterion name, option name, weight value, entered score, weighted score, and rank number against what was typed/expected.\n  - Expected: All text matches exactly (no ellipses, mojibake, off-by-one rank numbering, or weights/score values differing from the entered ones), and no leftover sample/placeholder text remains.\n```\n\n# Output\n"
+  }
+}

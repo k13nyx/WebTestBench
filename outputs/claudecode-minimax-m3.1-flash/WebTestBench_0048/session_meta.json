@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "c36d2248-96a3-4287-9182-17707abd9541",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want an internal website where I can log in, browse a list of company policies and procedures, open a specific item to read it, and then complete a simple confirmation step saying that I’ve read and understood it. I should be able to see which items I’ve already confirmed and which ones are still pending for me.A Confirmation Progress Dashboard is added to the personal center, which uses a doughnut chart to display the proportion of confirmed/pending items, and categorizes and shows the confirmation status by policy type (Administration / Human Resources / Finance / Compliance).Pending items support priority tagging (High / Medium / Low). The system will automatically mark policies subject to a confirmation deadline (e.g., within 3 days) as high-priority and pin them to the top of the list.\n\n# Output (Markdown)\n",
+    "duration_ms": 16911,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2533,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8704,
+      "output_tokens": 3081,
+      "output_tokens_details": {
+        "thinking_tokens": 1833
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "minimax/minimax-m3.1-flash": {
+        "inputTokens": 2870,
+        "outputTokens": 3091,
+        "cacheReadInputTokens": 10240,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.09674499999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1833,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "minimax/minimax-m3.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 77,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 2454,
+      "AssistantMessage": {
+        "total_count": 48,
+        "TextBlock": 2,
+        "ToolUseBlock": 25,
+        "ThinkingBlock": 21
+      },
+      "UserMessage": {
+        "total_count": 25,
+        "ToolResultBlock": 25
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "60ab6a2a-455f-455d-a24e-2e157c3da6eb",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want an internal website where I can log in, browse a list of company policies and procedures, open a specific item to read it, and then complete a simple confirmation step saying that I’ve read and understood it. I should be able to see which items I’ve already confirmed and which ones are still pending for me.A Confirmation Progress Dashboard is added to the personal center, which uses a doughnut chart to display the proportion of confirmed/pending items, and categorizes and shows the confirmation status by policy type (Administration / Human Resources / Finance / Compliance).Pending items support priority tagging (High / Medium / Low). The system will automatically mark policies subject to a confirmation deadline (e.g., within 3 days) as high-priority and pin them to the top of the list.\n\n## Application URL\nhttp://localhost:6048/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: User can log in to the internal policies site with valid credentials\n  - Action: Open the site, enter the default valid username and password in the login form, submit.\n  - Expected: Login succeeds, the user is taken into the policies site and the logged-in user/session is shown (not the login form).\n- [ ] FT-02: User can browse the list of company policies and procedures\n  - Action: After login, view the main policy list.\n  - Expected: A list of the default policies/procedures is displayed, each with its title.\n- [ ] FT-03: User can open a specific policy item and read its content\n  - Action: Click the title/link of any policy item in the list.\n  - Expected: A detail view opens showing that policy's title and full body content.\n- [ ] FT-04: User can complete the read-and-understood confirmation step for a policy\n  - Action: In an open policy's detail view, perform the confirmation action (acknowledging \"I have read and understood\").\n  - Expected: The confirmation is recorded for that policy and the item is recognized as confirmed.\n- [ ] FT-05: User can see which items are already confirmed and which are still pending\n  - Action: Return to the policy list and/or personal center after confirming one item.\n  - Expected: The confirmed policy is shown with a confirmed status and the remaining items are shown as pending for the user.\n- [ ] FT-06: Confirmation Progress Dashboard is reachable from the personal center\n  - Action: Open the personal center and locate the \"Confirmation Progress Dashboard\" entry, then open it.\n  - Expected: The dashboard view loads, linked from the personal center.\n- [ ] FT-07: Dashboard displays a doughnut chart of confirmed vs pending proportion\n  - Action: On the dashboard, locate the progress chart.\n  - Expected: A doughnut (ring) chart is rendered showing the confirmed portion and the pending portion of the user's items.\n- [ ] FT-08: Dashboard categorizes confirmation status by policy type\n  - Action: On the dashboard, inspect the per-type breakdown.\n  - Expected: Confirmation status is shown separately for Administration, Human Resources, Finance, and Compliance categories.\n- [ ] FT-09: Pending items display priority tags\n  - Action: Open the pending items list and inspect a pending policy.\n  - Expected: Each pending item shows a priority tag of High, Medium, or Low.\n\n## Constraint\n- [ ] CS-01: Login rejects invalid credentials\n  - Action: Enter an incorrect username and/or password and submit the login form.\n  - Expected: Login is refused, an error message is shown, and the user stays on the login page with no session created.\n- [ ] CS-02: Confirmation cannot be recorded until the acknowledgement is explicitly given\n  - Action: Open a pending policy and attempt to confirm without ticking/selecting the \"I have read and understood\" acknowledgement.\n  - Expected: The confirm/submit action stays unavailable or is rejected with a prompt to acknowledge; no confirmation is recorded.\n- [ ] CS-03: Policies with a confirmation deadline within 3 days are automatically tagged High priority\n  - Action: Identify a default policy whose confirmation deadline is within 3 days and inspect its priority tag.\n  - Expected: Its priority tag is automatically set to High, with no manual tagging step required.\n- [ ] CS-04: Policies with a near-deadline are pinned to the top of the list\n  - Action: View the policy list and check the ordering of items relative to a deadline-bound policy (e.g., within 3 days).\n  - Expected: The near-deadline policy appears above other pending items at the top of the list.\n- [ ] CS-05: Priority tags apply only to pending items\n  - Action: Inspect the status of a policy that has already been confirmed.\n  - Expected: It shows a confirmed status (not a priority tag), and no pending-only priority labelling contradicts its confirmed state.\n\n## Interaction\n- [ ] IX-01: Confirming a policy gives clear success feedback\n  - Action: Complete the confirmation step on an open policy.\n  - Expected: A visible success confirmation message/toast appears indicating the policy was confirmed.\n- [ ] IX-02: Dashboard updates immediately after a new confirmation\n  - Action: Open the dashboard, note the confirmed/pending figures, then confirm one more pending policy and return to the dashboard.\n  - Expected: The doughnut chart proportions and the per-type confirmed/pending counts reflect the new confirmation.\n- [ ] IX-03: Selecting a policy type on the dashboard shows that type's status\n  - Action: Click a policy type category (Administration / Human Resources / Finance / Compliance) in the dashboard breakdown.\n  - Expected: The status detail for that policy type is shown (e.g., which items are confirmed vs pending in that category).\n\n## Content\n- [ ] CT-01: Policy list entries show accurate identifying information\n  - Action: Inspect each default entry in the policy list.\n  - Expected: Each entry shows its policy title, its policy type (Administration / Human Resources / Finance / Compliance), and its current confirmation status; all text is legible and not truncated or placeholder.\n- [ ] CT-02: Opened policy shows its complete, relevant body content\n  - Action: Open each policy type's policy detail view.\n  - Expected: The view shows the full policy text corresponding to that item (not empty, not another policy's text, not generic placeholder copy).\n- [ ] CT-03: Dashboard labels and legend correctly name confirmed/pending and the policy types\n  - Action: Inspect the doughnut chart legend, segment labels, and per-type breakdown headings.\n  - Expected: The labels explicitly read \"Confirmed\" and \"Pending\", and the breakdown headings use exactly Administration, Human Resources, Finance, and Compliance with correct confirmed/pending counts per type.\n```\n\n# Output\n",
+    "duration_ms": 332542,
+    "is_error": false,
+    "num_turns": 26,
+    "token_usage": {
+      "input_tokens": 72507,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 640000,
+      "output_tokens": 17233,
+      "output_tokens_details": {
+        "thinking_tokens": 9442
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "minimax/minimax-m3.1-flash": {
+        "inputTokens": 73975,
+        "outputTokens": 17341,
+        "cacheReadInputTokens": 641536,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.1241679999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 9539,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "minimax/minimax-m3.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

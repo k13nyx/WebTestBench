@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "a26cb016-2a9e-4bd6-8f44-6cd34709cbd7",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a simple website where I can log my job applications in a personal list. I should be able to add a new application with basic details like company, role, and date, edit or delete entries, and mark each one with a status such as applied, interviewed, or offered. I also want a place to jot down brief notes for each application so I can remember key points.\n\n# Output (Markdown)\n",
+    "duration_ms": 13669,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2460,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8512,
+      "output_tokens": 2218,
+      "output_tokens_details": {
+        "thinking_tokens": 649
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy4-preview": {
+        "inputTokens": 2460,
+        "outputTokens": 2218,
+        "cacheReadInputTokens": 8512,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.072006,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 649,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy4-preview",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 249,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 9358,
+      "AssistantMessage": {
+        "total_count": 40,
+        "TextBlock": 2,
+        "ToolUseBlock": 19,
+        "ThinkingBlock": 19
+      },
+      "UserMessage": {
+        "total_count": 19,
+        "ToolResultBlock": 19
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "a23dff84-6fdc-4a09-ac99-0b1860bb8295",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a simple website where I can log my job applications in a personal list. I should be able to add a new application with basic details like company, role, and date, edit or delete entries, and mark each one with a status such as applied, interviewed, or offered. I also want a place to jot down brief notes for each application so I can remember key points.\n\n## Application URL\nhttp://localhost:6044/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n\n- [ ] FT-01: The application list loads and displays all existing entries with their details\n  - Action: Open the website's main page and observe the list of job applications.\n  - Expected: At least one default entry is visible, and each entry row/card shows a company name, role title, date, and a status. No error or blank page appears.\n\n- [ ] FT-02: User can add a new application with company, role, and date\n  - Action: Click the add button (\"Add Application\" / \"New Application\" / \"+\"), fill in Company = \"Acme Corp\", Role = \"Backend Engineer\", Date = today's date, then submit/save.\n  - Expected: A new entry appears in the list showing \"Acme Corp\", \"Backend Engineer\", and today's date, and it remains visible after a page refresh.\n\n- [ ] FT-03: User can set the status when adding a new application\n  - Action: Add a new application with Company = \"Globex\", Role = \"Designer\", Date = today, Status = \"Interviewed\", then save.\n  - Expected: The new \"Globex\" entry displays the status \"Interviewed\" in the list.\n\n- [ ] FT-04: User can add and view notes for an application\n  - Action: Add a new application with notes text \"Recruiter call on Monday at 10am\", save, then open/view that entry.\n  - Expected: The saved notes text is displayed for that entry exactly as entered (not truncated or lost).\n\n- [ ] FT-05: User can edit an existing application's details\n  - Action: Open a default entry, change its Role to \"Senior Analyst\", then save.\n  - Expected: That entry now displays \"Senior Analyst\" as the role, and the change persists after a page refresh.\n\n- [ ] FT-06: User can change the status of an existing application\n  - Action: Open a default entry whose status is \"Applied\" and change its status to \"Offered\", then save.\n  - Expected: That entry now displays the status \"Offered\" in the list, and the change persists after a page refresh.\n\n- [ ] FT-07: User can delete an application\n  - Action: Note the total number of entries, then delete one default entry and confirm the deletion.\n  - Expected: That entry disappears from the list immediately, the total count decreases by one, and it is still absent after a page refresh.\n\n## Constraint\n\n- [ ] CS-01: Cannot save an application without a company name\n  - Action: Open the add form, leave Company empty, fill Role and Date, then submit.\n  - Expected: The application is not created — no new entry appears in the list and the form stays open with a validation message referencing the company field.\n\n- [ ] CS-02: Cannot save an application without a role\n  - Action: Open the add form, leave Role empty, fill Company and Date, then submit.\n  - Expected: The application is not created, and a validation message referencing the role field is shown.\n\n- [ ] CS-03: Cannot save an application without a date\n  - Action: Open the add form, leave Date empty, fill Company and Role, then submit.\n  - Expected: The application is not created, and a validation message referencing the date field is shown.\n\n- [ ] CS-04: Status is limited to the defined values only\n  - Action: Open the status control on the add form and on an existing entry, and list all selectable status options.\n  - Expected: The only selectable statuses are \"Applied\", \"Interviewed\", and \"Offered\"; no free-text or other status value can be entered or saved.\n\n- [ ] CS-05: Notes are optional when saving an application\n  - Action: Add a new application with Company = \"Initech\", Role = \"QA Engineer\", Date = today, leaving the notes field empty, then save.\n  - Expected: The entry is created successfully and appears in the list; no error is shown about the empty notes field.\n\n- [ ] CS-06: Editing an entry does not create a duplicate entry\n  - Action: Note the total number of entries, edit one entry's company name, and save.\n  - Expected: The total number of entries is unchanged; the edited entry is updated in place rather than a new row/card being added.\n\n- [ ] CS-07: Deletion requires confirmation and can be cancelled\n  - Action: Start deleting an entry, then choose \"Cancel\" / \"No\" in the confirmation prompt.\n  - Expected: The entry remains in the list unchanged, and it is still present after a page refresh.\n\n## Interaction\n\n- [ ] IX-01: The add form opens and closes correctly around a create action\n  - Action: Click the add button, then click \"Save\"/\"Submit\" after filling valid details.\n  - Expected: The add form (or modal/panel) closes and returns to the list view, with the new entry visible.\n\n- [ ] IX-02: Each status is shown as a distinct visual status indicator on every entry\n  - Action: Locate entries with different statuses and compare their status indicators (badge/label/pill).\n  - Expected: Every entry shows a visible status indicator, and entries with \"Applied\", \"Interviewed\", and \"Offered\" use visually distinguishable styling (different color, label, or icon).\n\n- [ ] IX-03: Cancelling an edit discards unsaved changes\n  - Action: Open an entry, change its company name, then click \"Cancel\" instead of saving.\n  - Expected: The form closes and the entry still shows its original company name, unchanged.\n\n- [ ] IX-04: Each entry provides access to its edit, delete, and notes controls\n  - Action: Inspect any entry in the list (hover over or expand it if needed).\n  - Expected: Controls to edit the entry, delete the entry, and view/edit its notes are visible and clickable for that entry.\n\n## Content\n\n- [ ] CT-01: The page is clearly identified as a job application tracker with correctly labeled fields\n  - Action: Read the page heading/title and the labels on the list columns and the add/edit form fields.\n  - Expected: The heading identifies job application tracking (e.g., \"Job Applications\"), and the fields/columns are labeled \"Company\", \"Role\", \"Date\", \"Status\", and \"Notes\" with no placeholder or lorem-ipsum text.\n\n- [ ] CT-02: An informative empty state is shown when the list has no entries\n  - Action: Delete all entries from the list (or view the list in its empty state if it starts empty).\n  - Expected: A message related to job applications is shown (e.g., \"No applications yet\" with guidance to add one) instead of a blank area or an error.\n\n- [ ] CT-03: Dates are displayed in a consistent, readable format\n  - Action: Compare the date shown on at least two different list entries.\n  - Expected: Every date is rendered in the same human-readable format (e.g., \"Nov 8, 2026\" or \"2026-11-08\") with no raw timestamps, \"Invalid Date\", \"NaN\", or \"undefined\" text.\n```\n\n# Output\n",
+    "duration_ms": 228056,
+    "is_error": false,
+    "num_turns": 20,
+    "token_usage": {
+      "input_tokens": 33887,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 472448,
+      "output_tokens": 16558,
+      "output_tokens_details": {
+        "thinking_tokens": 9356
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy4-preview": {
+        "inputTokens": 35608,
+        "outputTokens": 21358,
+        "cacheReadInputTokens": 473792,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.9488860000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 14148,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy4-preview",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+# Test Checklist
+
+## Functionality
+- [ ] FT-01: User can create an income transaction with date, amount, description, category, and account
+  - Action: Open the app, navigate to Transactions, click "Add Transaction", choose type Income, enter date/amount/description, select category and account, save.
+  - Expected: A success confirmation appears and the new income record appears in the transaction list with the entered amount, date, and description.
+- [ ] FT-02: User can create an expense transaction and it is recorded against the selected category/account
+  - Action: Click "Add Transaction", choose type Expense, enter valid date, amount, description, category, account, save.
+  - Expected: The record appears in the list labeled as an expense and is counted as an outflow in totals.
+- [ ] FT-03: User can create an invoice, bill, and payment record of their own type
+  - Action: Open the records section and create one record each of type Invoice, Bill, and Payment with valid amount, date, and counterparty name.
+  - Expected: All three records are saved and listed with their respective types, amounts, and dates.
+- [ ] FT-04: User can assign a record to a category and an account, and the assignment is retained
+  - Action: Create a record and pick a category and account from the dropdowns; then reopen/edit that record.
+  - Expected: The saved record shows the selected category and account, and the reopened form displays them as the current selections.
+- [ ] FT-05: User can create a new custom category and a new account
+  - Action: Open Categories and Accounts management, add a category named "Consulting" and an account named "Business Checking", then save.
+  - Expected: Both new items appear in their lists and are selectable when creating a transaction.
+- [ ] FT-06: User can edit an existing transaction's amount, date, category, and description
+  - Action: Open a saved transaction, change its amount and category, save, and view the list and dashboard.
+  - Expected: The list shows the updated values and the dashboard totals reflect the edited amount, not the original.
+- [ ] FT-07: User can delete a transaction record
+  - Action: Select a saved transaction and use the delete action, confirming the prompt.
+  - Expected: The record disappears from the list and its amount is no longer included in dashboard totals.
+- [ ] FT-08: Monthly profit and loss report shows income, expenses, and net profit for a selected month
+  - Action: Open Reports, select a month from the period selector, and view the Profit & Loss section.
+  - Expected: Income, Expenses, and Net Profit amounts are displayed and match the totals of the transactions in that month.
+- [ ] FT-09: User can filter records by date range
+  - Action: On the transactions/records view, set a from-date and to-date filter and apply.
+  - Expected: Only records dated within the range are listed, and records outside the range are excluded.
+- [ ] FT-10: User can filter records by category
+  - Action: Select a category in the category filter and apply it.
+  - Expected: Only records assigned to that category are listed, and the filter value is shown as active.
+- [ ] FT-11: Dashboard shows a summary of financial status (income, expenses, balance/profit totals)
+  - Action: Open the Dashboard on the default data set.
+  - Expected: Summary cards/totals for income, expenses, and net balance are visible and consistent with the record list totals.
+- [ ] FT-12: User can mark a record as tax-related and the flag is displayed and persisted
+  - Action: Edit a record and enable the tax-related flag, save, then re-open the record.
+  - Expected: The tax-related flag is shown as enabled in the list and remains enabled after re-opening.
+- [ ] FT-13: Tax summary lists only tax-related records with income/expense totals
+  - Action: Open the Tax Summary section and compare its listed records and totals against the records flagged as tax-related.
+  - Expected: Only tax-related records are included, and the summary income and expense totals equal the sum of those records.
+
+## Constraint
+- [ ] CS-01: Cannot save a transaction with a missing required field
+  - Action: Open "Add Transaction", leave amount or date blank (and separately try an empty description if required), and click Save.
+  - Expected: The transaction is not created and an inline validation error identifies the missing field; no new row appears in the list.
+- [ ] CS-02: Cannot save a transaction with a non-positive or non-numeric amount
+  - Action: Enter an amount of 0, then a negative amount, then a non-numeric value, and attempt to save each time.
+  - Expected: Each attempt is rejected with a validation message and no record is created.
+- [ ] CS-03: A transaction cannot be saved without a date
+  - Action: Open "Add Transaction", fill in all fields except the date, and click Save.
+  - Expected: Saving is blocked and the date field is flagged as required.
+- [ ] CS-04: Duplicate record numbers are rejected for invoices and bills
+  - Action: Create an invoice with a specific number, then create another record with the same number and type, and save.
+  - Expected: The second save is rejected with a duplicate/uniqueness message and only one record with that number exists.
+- [ ] CS-05: A record amount cannot exceed the account balance for a payment/bill drawn on that account
+  - Action: Attempt to record a payment from an account with a balance smaller than the payment amount.
+  - Expected: The entry is rejected with a message about insufficient balance and no negative/overdrawn record is created.
+- [ ] CS-06: Category and account names must be unique and non-empty
+  - Action: Try to save a category and an account with a blank name, then with a name that already exists.
+  - Expected: All attempts are rejected with a validation message and no duplicate or unnamed item is created.
+- [ ] CS-07: A category or account in use cannot be deleted
+  - Action: Attempt to delete a category that is assigned to at least one existing transaction.
+  - Expected: Deletion is blocked with a message explaining it is in use, and the category and its transactions remain intact.
+- [ ] CS-08: Non-tax-related records are excluded from the tax summary
+  - Action: Verify a known non-tax-related transaction (tax flag off) is absent from the tax summary while tax-flagged records are present.
+  - Expected: The unflagged transaction does not appear in the tax summary and does not affect its totals.
+- [ ] CS-09: Totals cannot be manipulated by the tax flag
+  - Action: Compare the dashboard/Profit & Loss totals with and without toggling the tax flag on one record.
+  - Expected: Toggling the tax flag changes only tax-summary inclusion; profit and loss totals remain unchanged.
+
+## Interaction
+- [ ] IX-01: Navigation between main sections works from a persistent navigation area
+  - Action: Click each navigation item (Dashboard, Transactions/Records, Reports, Categories, Accounts, Tax Summary).
+  - Expected: Each click loads the corresponding page/view with its expected heading and content, and the active item is indicated.
+- [ ] IX-02: Save actions give immediate visible feedback
+  - Action: Save a transaction, a category, and a new account.
+  - Expected: Each save shows a success message/toast and the newly created item appears in its list without a manual page reload.
+- [ ] IX-03: Validation errors are displayed inline next to the offending field and clear after correction
+  - Action: Submit an empty required field, then enter a valid value and save again.
+  - Expected: The error message appears beside the field, disappears once corrected, and the record saves successfully.
+- [ ] IX-04: Opening and closing the add/edit form works via clear open and cancel actions
+  - Action: Click "Add Transaction" to open the form, then click Cancel; repeat and close the form with the X control.
+  - Expected: The form opens as a visible dialog/panel with a title, and both Cancel and X close it without creating a record.
+- [ ] IX-05: Filters can be applied, cleared, and reflected in the visible result count
+  - Action: Apply a category filter, then clear filters via the reset/clear control.
+  - Expected: The result list updates to the filtered set, the filter chips/selects show the applied values, and clearing restores the full list.
+- [ ] IX-06: Tax summary offers a print action that opens a printable view
+  - Action: Open the Tax Summary and trigger the print/print-report control.
+  - Expected: A print-optimized view or print dialog appears showing the tax summary totals and the tax-related line items.
+- [ ] IX-07: A "no results" state is shown when filters exclude all records
+  - Action: Apply a filter combination that matches no records (e.g., a date range with no transactions).
+  - Expected: An empty-state message such as "No records found" is shown instead of a blank table or an error.
+
+## Content
+- [ ] CT-01: Default data is present and visible on first load
+  - Action: Open the app for the first time and view the transaction list, categories, and accounts.
+  - Expected: Pre-seeded records, categories, and accounts are listed (not an empty application), each with a sensible label and amount.
+- [ ] CT-02: Transaction list displays the required identifying fields for each record
+  - Action: Inspect the columns/cells of any listed transaction.
+  - Expected: Date, description/name, type (income/expense/invoice/bill/payment), category, account, and amount are all shown and populated with meaningful values.
+- [ ] CT-03: Dashboard and report labels use finance-appropriate terminology
+  - Action: Review the wording of dashboard cards, the Profit & Loss report, and the Tax Summary headings.
+  - Expected: Labels such as "Income", "Expenses", "Net Profit", and "Tax Summary" are used and read correctly; no placeholder text (e.g., "Lorem", "Test 1"), untranslated keys, or broken text appears.
+- [ ] CT-04: Currency values are formatted consistently and correctly
+  - Action: Review amounts across the dashboard, list, and reports.
+  - Expected: All monetary values display with the same currency symbol and thousand/decimal separators (e.g., $1,250.00), with no raw or unformatted numbers.
+- [ ] CT-05: Tax summary content reflects only tax-relevant records with matching totals
+  - Action: Open the Tax Summary and verify each listed line item and the printed summary totals.
+  - Expected: Line items are the tax-flagged records with their dates, descriptions, and amounts, and the stated totals equal the sum of those line items.
+- [ ] CT-06: Tax-related indicator is clearly communicated on records
+  - Action: Locate a tax-flagged record in the transaction list.
+  - Expected: A visible "Tax" badge, tag, or label marks the record so its tax status is unambiguous.

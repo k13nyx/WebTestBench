@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "1fba02dd-8ca9-4585-8b85-d9f0ec126dfb",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a webpage where I can create a decision topic, define comparison criteria, assign a weight to each criterion, and then add multiple options to compare on a single page. For each option, I should be able to enter scores per criterion, see a weighted score automatically calculated, and view a simple ranking of options to help me choose. I should be able to rename, reorder, and remove options and criteria as I refine the decision.\n\n# Output (Markdown)\n",
+    "duration_ms": 28427,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 191,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 10944,
+      "output_tokens": 2241,
+      "output_tokens_details": {
+        "thinking_tokens": 1153
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy3": {
+        "inputTokens": 1831,
+        "outputTokens": 3180,
+        "cacheReadInputTokens": 10944,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.09412699999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 2080,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 528,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 9843,
+      "AssistantMessage": {
+        "total_count": 143,
+        "ThinkingBlock": 44,
+        "TextBlock": 41,
+        "ToolUseBlock": 58
+      },
+      "UserMessage": {
+        "total_count": 58,
+        "ToolResultBlock": 58
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "25c70986-e1fa-4e2e-a934-eba0c6a659a0",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a webpage where I can create a decision topic, define comparison criteria, assign a weight to each criterion, and then add multiple options to compare on a single page. For each option, I should be able to enter scores per criterion, see a weighted score automatically calculated, and view a simple ranking of options to help me choose. I should be able to rename, reorder, and remove options and criteria as I refine the decision.\n\n## Application URL\nhttp://localhost:6047/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Create a decision topic\n  - Action: Enter a topic name (e.g., \"Buy a Laptop\") into the topic field and confirm/create it.\n  - Expected: The decision topic is saved and displayed as the page's active decision title.\n\n- [ ] FT-02: Define comparison criteria\n  - Action: Use the add-criteria control to create at least two criteria (e.g., \"Price\", \"Performance\").\n  - Expected: Each new criterion appears in the criteria list/grid on the page.\n\n- [ ] FT-03: Assign a weight to each criterion\n  - Action: Enter a numeric weight value (e.g., 3) for each defined criterion.\n  - Expected: Each criterion displays its assigned weight value.\n\n- [ ] FT-04: Add multiple options on a single page\n  - Action: Use the add-option control to add at least two options (e.g., \"Model A\", \"Model B\").\n  - Expected: All added options appear together on the same page without navigation.\n\n- [ ] FT-05: Enter scores per criterion for each option\n  - Action: For one option, enter a score in the cell corresponding to each criterion.\n  - Expected: Each entered score is stored and displayed in its criterion/option cell.\n\n- [ ] FT-06: View automatically calculated weighted score\n  - Action: With weights and scores entered, view the score area for an option.\n  - Expected: A weighted score (sum of score × weight per criterion) is displayed for the option without manual calculation.\n\n- [ ] FT-07: View a ranking of options\n  - Action: With multiple options scored, view the ranking section.\n  - Expected: Options are listed in ranked order (highest weighted score first) with rank positions shown.\n\n- [ ] FT-08: Rename an option\n  - Action: Edit an option's name field (e.g., change \"Model A\" to \"Model X\") and save.\n  - Expected: The option is displayed under its new name everywhere it appears.\n\n- [ ] FT-09: Reorder options\n  - Action: Move an option up/down using the reorder control (drag or move button).\n  - Expected: The option's position in the list/grid changes accordingly.\n\n- [ ] FT-10: Remove an option\n  - Action: Use the remove control on one option.\n  - Expected: The option and its scores disappear from the page and ranking.\n\n- [ ] FT-11: Rename a criterion\n  - Action: Edit a criterion's name (e.g., change \"Price\" to \"Cost\") and save.\n  - Expected: The criterion is displayed under its new name across all options.\n\n- [ ] FT-12: Reorder criteria\n  - Action: Move a criterion left/right or up/down using the reorder control.\n  - Expected: The criterion's column/position updates and remains aligned with its scores.\n\n- [ ] FT-13: Remove a criterion\n  - Action: Use the remove control on one criterion.\n  - Expected: The criterion and its score column are removed, and weighted scores/ranking recalculate.\n\n## Constraint\n- [ ] CS-01: Decision topic name is required\n  - Action: Attempt to create a decision topic with an empty name field.\n  - Expected: Submission is blocked and a \"name required\" message is shown; no topic is created.\n\n- [ ] CS-02: Criterion weight must be a valid positive number\n  - Action: Enter a non-numeric, zero, or negative value into a criterion weight field.\n  - Expected: The invalid value is rejected (or an error is shown) and not accepted as a weight.\n\n- [ ] CS-03: Option score must be a valid number\n  - Action: Enter a non-numeric value (e.g., text) into a score cell.\n  - Expected: The invalid value is rejected (or an error is shown) and not stored as a score.\n\n## Interaction\n- [ ] IX-01: Weighted score recalculates automatically on input change\n  - Action: Change a score or a criterion weight after scores exist.\n  - Expected: The affected option's weighted score updates immediately without a manual \"calculate\" action.\n\n- [ ] IX-02: Ranking updates automatically on score/weight change\n  - Action: Change a score or weight so that an option's weighted score overtakes another.\n  - Expected: The ranking order updates immediately to reflect the new scores.\n\n## Content\n- [ ] CT-01: Page heading reflects the decision theme\n  - Action: Create a topic named \"Buy a Laptop\" and view the page header.\n  - Expected: The displayed page title/heading matches the created decision topic name.\n\n- [ ] CT-02: All section labels are present and correctly associated\n  - Action: Inspect the page for criteria, options, weights, scores, and ranking areas.\n  - Expected: Each section is clearly labeled and the labels correctly correspond to their data (e.g., score columns map to the right criteria).\n```\n\n# Output\n",
+    "duration_ms": 339547,
+    "is_error": false,
+    "num_turns": 59,
+    "token_usage": {
+      "input_tokens": 125333,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1647808,
+      "output_tokens": 26085,
+      "output_tokens_details": {
+        "thinking_tokens": 20358
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "tencent/hy3": {
+        "inputTokens": 127933,
+        "outputTokens": 27337,
+        "cacheReadInputTokens": 1647808,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 2.146994,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 21598,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "tencent/hy3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+# Test Checklist
+
+## Functionality
+- [ ] FT-01: Visitor can register a new account via sign-up form
+  - Action: Click "Sign up", fill in username/email and password, submit.
+  - Expected: Account is created, user is signed in, and a profile page is shown for the new user.
+- [ ] FT-02: Author can create a post with Markdown content and a title
+  - Action: From the author dashboard click "New Post", enter a title and body containing Markdown syntax (e.g. `# Heading`, `**bold**`, a list), save.
+  - Expected: The post is saved and its title and body appear in the author's post list.
+- [ ] FT-03: Markdown syntax is rendered as formatted content on the post page
+  - Action: Open a post whose body contains Markdown headings, bold text, and lists.
+  - Expected: The post page shows rendered headings/bold/lists, not raw `#`, `**`, or `-` characters.
+- [ ] FT-04: Author can edit an existing post and save the changes
+  - Action: In the author dashboard open an existing post, click "Edit", change the title and body, save, then reopen the post.
+  - Expected: The updated title and body are shown; the previous version is no longer displayed.
+- [ ] FT-05: Published post appears on the author's public profile page
+  - Action: Publish a post, then open the author's public profile page.
+  - Expected: The post title appears in the profile's post list and opens the correct post when clicked.
+- [ ] FT-06: A visitor can open a post detail page and read the full content
+  - Action: From a profile or article list, click any post title.
+  - Expected: A detail page shows the post title, author, full body, and its like/comment counts.
+- [ ] FT-07: A visitor can leave a comment under a post
+  - Action: Open a post, type text into the comment box, submit.
+  - Expected: The comment (with author name and timestamp) appears in the comment list under the post and the comment count increases by 1.
+- [ ] FT-08: A visitor can like a post and the like count updates
+  - Action: Open a post, click the "Like" button, then reload the post.
+  - Expected: Like count increases by 1 and the like state is retained after reload.
+- [ ] FT-09: A visitor can save a post to a personal saved list and remove it
+  - Action: Open a post, click "Save"; open the "Saved" / bookmarks page; then click "Remove" on that post.
+  - Expected: The post appears in the saved list while saved, disappears after removal, and the post's save state is reflected on the post page.
+- [ ] FT-10: Author can view per-tag analytics (views, likes, comments) in the backend
+  - Action: Sign in as an author, open the backend analytics section, and view the tag statistics table.
+  - Expected: Each tag used by that author's posts is listed with page views, like count, and comment count values.
+- [ ] FT-11: Author can generate a tag popularity analysis report
+  - Action: In the backend analytics section click the button to generate a tag popularity report.
+  - Expected: A report is displayed ranking/summarising tags by popularity (e.g. view/like/comment totals and ordering), using the author's own posts.
+- [ ] FT-12: Visitors can filter articles by custom tag and by intelligent tag
+  - Action: On the article list page select a custom tag (e.g. "Technology") and separately select an intelligent tag (e.g. "Python"), and apply the filter each time.
+  - Expected: Only posts carrying the selected custom tag are listed for the first case, and only posts whose extracted keywords include the intelligent tag are listed for the second.
+
+## Constraint
+- [ ] CS-01: Sign-up rejects duplicate usernames and invalid input
+  - Action: Attempt to sign up with a username that already exists, and separately with an empty password or mismatched password confirmation.
+  - Expected: Each attempt is blocked with a visible validation error and no account is created.
+- [ ] CS-02: A post cannot be published without a title and body
+  - Action: In the new/edit post form clear the title (and separately the body) and attempt to save/publish.
+  - Expected: Submission is blocked with an error message and no post is created or published.
+- [ ] CS-03: A user cannot like the same post twice
+  - Action: Click the "Like" button twice on the same post (same signed-in account).
+  - Expected: The count increases only once and the button shows the already-liked state.
+- [ ] CS-04: Comments require a signed-in account and non-empty text
+  - Action: While signed out, open a post and try to comment; then while signed in, submit an empty comment box.
+  - Expected: Signed-out users are prompted to sign in/login, and the empty comment is rejected with a validation message.
+- [ ] CS-05: Intelligent tags are generated from content, not from the author's custom tags
+  - Action: Publish a post with content discussing Python and frontend development, adding only a custom tag such as "Technology"; then view the post's tag list.
+  - Expected: The post shows the author's custom tag plus automatically extracted intelligent tags such as "Python" / "Frontend Development" derived from the body text.
+- [ ] CS-06: Combined tag search requires tags from both dimensions and matches posts having all selected tags
+  - Action: Filter by custom tag "Technology" together with intelligent tag "Python" and apply.
+  - Expected: Only posts having both "Technology" as a custom tag and "Python" as an extracted intelligent tag are listed; a post missing either one is excluded.
+- [ ] CS-07: Only the signed-in user can access and modify their own backend analytics and saved lists
+  - Action: Sign in as user A and try to open user B's backend/analytics view or saved-list URL directly; also try to reach the backend while signed out.
+  - Expected: Access is denied or redirected to sign-in; no other user's analytics or saved items are revealed.
+
+## Interaction
+- [ ] IX-01: Post list filter controls reflect the selected tags and can be cleared
+  - Action: Apply a custom tag filter on the article list, then switch the filter dimension to intelligent tag.
+  - Expected: The active filter is visibly indicated, the result list updates immediately, and a clear/reset control removes the filter and restores the full list.
+- [ ] IX-02: Saved tag groups can be created, applied, and removed
+  - Action: On the article list, select tags "Technology" + "Python", click "Save tag group", name it, save; later apply the saved group from the tag-group list, then delete that group.
+  - Expected: The group appears in the saved groups list, applying it sets the same filters and results, and deleting it removes it from the list.
+- [ ] IX-03: Like and Save buttons show immediate state feedback on the post page
+  - Action: Click "Like" and "Save" on a post and observe the buttons and counters.
+  - Expected: The buttons switch to an active/liked/saved visual state and the like counter updates without a page error or reload.
+- [ ] IX-04: Comment submission gives feedback and the comment box clears
+  - Action: Post a comment under a post and observe the comment area.
+  - Expected: The new comment is appended to the list, the comment count increments, and the comment input is cleared for the next comment.
+- [ ] IX-05: Author dashboard provides navigation to posts, tags, and analytics sections
+  - Action: Sign in as an author and open the backend/dashboard.
+  - Expected: Separate links or tabs exist for managing posts, managing/viewing tags, and viewing tag analytics, and each opens the expected content.
+
+## Content
+- [ ] CT-01: Post detail page shows correct metadata for the post
+  - Action: Open a post and inspect the header area.
+  - Expected: The displayed title, author name, publication date, and tag labels all match the post's actual data.
+- [ ] CT-02: Extracted intelligent tags are meaningful keywords found in the post body
+  - Action: Publish a post about Python and frontend development, then list its intelligent tags.
+  - Expected: The intelligent tags are real terms from the article content (e.g. "Python", "Frontend Development") and are not empty, duplicated, or unrelated placeholder words.
+- [ ] CT-03: Analytics tag list and report contain only the author's own tags and accurate counts
+  - Action: Open the backend tag statistics and the popularity report, and compare with the author's posts.
+  - Expected: Every listed tag belongs to that author, no other author's tags appear, and the view/like/comment numbers match the actual posts.
+- [ ] CT-04: All displayed labels and empty states are relevant to blogging
+  - Action: Review navigation labels, buttons, filter labels, and empty states (e.g. no posts, no saved items, no comments).
+  - Expected: Labels use blogging-related wording (Posts, Comments, Tags, Saved, Likes) and empty states give a meaningful message; no placeholder, lorem-ipsum, or unrelated sample text is shown.
