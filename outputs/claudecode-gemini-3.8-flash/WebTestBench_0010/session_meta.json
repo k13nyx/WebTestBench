@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "393a454b-602b-4b8e-8b62-1f7dbd03fe10",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a web application where users can browse a list of restaurants, view details such as cuisine type and average price, and select a date, time, and party size to reserve a table. The site should let users create and manage their reservations, including viewing upcoming bookings and canceling or modifying them. Users should also be able to submit simple reviews and ratings for restaurants they have visited, and optionally apply basic discount coupons during the reservation process.\n\n# Output (Markdown)\n",
+    "duration_ms": 37884,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 0,
+      "cache_creation_input_tokens": 8920,
+      "cache_read_input_tokens": 8920,
+      "output_tokens": 4196,
+      "output_tokens_details": {
+        "thinking_tokens": 3169
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "provisioned",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 1741,
+        "outputTokens": 4504,
+        "cacheReadInputTokens": 8920,
+        "cacheCreationInputTokens": 8920,
+        "webSearchRequests": 0,
+        "costUSD": 0.18151500000000004,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 3468,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 14,
+      "AssistantMessage": {
+        "total_count": 3,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 98,
+      "AssistantMessage": {
+        "total_count": 198,
+        "ThinkingBlock": 34,
+        "ToolUseBlock": 81,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 81,
+        "ToolResultBlock": 81
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": false,
+    "defect_detection": false
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "82deff62-08e4-47b1-bfb2-c997e22fcac6",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a web application where users can browse a list of restaurants, view details such as cuisine type and average price, and select a date, time, and party size to reserve a table. The site should let users create and manage their reservations, including viewing upcoming bookings and canceling or modifying them. Users should also be able to submit simple reviews and ratings for restaurants they have visited, and optionally apply basic discount coupons during the reservation process.\n\n## Application URL\nhttp://localhost:6010/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Browse restaurant listing\n  - Action: Navigate to the restaurant directory page.\n  - Expected: A list of available default restaurants is displayed with their names and cover images.\n- [ ] FT-02: View restaurant details\n  - Action: Click on any restaurant card from the restaurant list.\n  - Expected: The restaurant details page opens, displaying its cuisine type and average price.\n- [ ] FT-03: Create a table reservation\n  - Action: On the restaurant page, select a valid date, time, and party size, then click \"Reserve Table\".\n  - Expected: The reservation is successfully created, and a booking confirmation is displayed.\n- [ ] FT-04: Apply a valid discount coupon\n  - Action: During table reservation, enter a valid coupon code in the coupon field and click \"Apply\".\n  - Expected: The discount is applied and the updated total or discount amount is reflected in the booking summary.\n- [ ] FT-05: View upcoming reservations\n  - Action: Navigate to the \"My Reservations\" page.\n  - Expected: A list of upcoming bookings is displayed, showing restaurant name, date, time, and party size for each.\n- [ ] FT-06: Modify an existing reservation\n  - Action: Click \"Modify\" on an upcoming booking, change the party size and time slot, then click \"Save Changes\".\n  - Expected: The reservation details update and reflect the new time and party size in the upcoming reservations list.\n- [ ] FT-07: Cancel an existing reservation\n  - Action: Click \"Cancel\" on an upcoming booking and confirm the action.\n  - Expected: The reservation is removed from the upcoming bookings list or marked with status \"Cancelled\".\n- [ ] FT-08: Submit a restaurant review and rating\n  - Action: On a visited restaurant's page, select a star rating, type a comment in the review box, and click \"Submit Review\".\n  - Expected: The review and rating are submitted successfully and appear in the restaurant's reviews section.\n\n## Constraint\n- [ ] CS-01: Block reservation submission with missing fields\n  - Action: Leave the date, time, or party size field blank and click \"Reserve Table\".\n  - Expected: Form submission is blocked, and validation error messages appear for the missing required fields.\n- [ ] CS-02: Prevent booking on past dates\n  - Action: Attempt to select or enter a date prior to today in the reservation date selector.\n  - Expected: Past dates are disabled from selection or an error message prevents form submission.\n- [ ] CS-03: Validate minimum party size\n  - Action: Enter \"0\" or a negative number in the party size field and attempt to reserve.\n  - Expected: Form submission is blocked with an error indicating that party size must be at least 1.\n- [ ] CS-04: Reject invalid coupon codes\n  - Action: Enter an invalid coupon code \"INVALIDCODE\" in the coupon field and click \"Apply\".\n  - Expected: An error message \"Invalid or expired coupon\" appears, and no discount is applied.\n- [ ] CS-05: Prevent review submission without rating\n  - Action: Enter text into the review comment box without selecting any rating stars and click \"Submit Review\".\n  - Expected: Submission is prevented, and an error message prompts the user to select a rating.\n\n## Interaction\n- [ ] IX-01: Cancellation confirmation dialog\n  - Action: Click the \"Cancel Reservation\" button on an active booking.\n  - Expected: A confirmation modal appears asking the user to confirm or dismiss the cancellation before proceeding.\n- [ ] IX-02: Instant price update on coupon application\n  - Action: Enter a valid coupon code and click \"Apply\".\n  - Expected: The price summary dynamically recalculates to display the discount without reloading the page.\n\n## Content\n- [ ] CT-01: Restaurant metadata accuracy\n  - Action: Inspect the information section on a restaurant's detail page.\n  - Expected: The cuisine type (e.g., \"Italian\", \"Japanese\") and average price indicator (e.g., \"$$\" or \"$30-$50 per person\") are clearly visible and formatted correctly.\n- [ ] CT-02: Upcoming booking card information\n  - Action: View an active booking card in \"My Reservations\".\n  - Expected: The card displays complete details including restaurant name, reservation date, time, party size, and booking status.\n- [ ] CT-03: Review entry details\n  - Action: View the restaurant review list after submission.\n  - Expected: Each review item displays the selected star rating, review text, and timestamp or reviewer name.\n```\n\n# Output\n",
+    "duration_ms": 669343,
+    "is_error": false,
+    "num_turns": 82,
+    "token_usage": {
+      "input_tokens": 351129,
+      "cache_creation_input_tokens": 8908,
+      "cache_read_input_tokens": 3607481,
+      "output_tokens": 32552,
+      "output_tokens_details": {
+        "thinking_tokens": 25618
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 353781,
+        "outputTokens": 33113,
+        "cacheReadInputTokens": 3607481,
+        "cacheCreationInputTokens": 8908,
+        "webSearchRequests": 0,
+        "costUSD": 4.456145499999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 26166,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

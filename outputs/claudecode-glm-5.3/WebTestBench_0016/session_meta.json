@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "cb4de513-476a-407c-8e74-087ceb8801ef",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a personal blog where I can regularly publish articles about travel stories, detailed recipes, and self-improvement guides, organize them with categories, tags, and series, and let visitors browse by topic, series, and date, as well as search by keywords or phrases. I’d like the home page to highlight featured and most recent posts, provide an archive by month and year, and show a short preview for each post that links to the full article. Each article page should support comments, simple reactions like “likes,” and related-post suggestions to help readers discover more content.\n\n# Output (Markdown)\n",
+    "duration_ms": 11058,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2395,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 11681,
+      "output_tokens": 2121,
+      "output_tokens_details": {
+        "thinking_tokens": 495
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 2557,
+        "outputTokens": 2272,
+        "cacheReadInputTokens": 13186,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.076178,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 635,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 267,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 3262,
+      "AssistantMessage": {
+        "total_count": 80,
+        "ThinkingBlock": 27,
+        "TextBlock": 27,
+        "ToolUseBlock": 26
+      },
+      "UserMessage": {
+        "total_count": 26,
+        "ToolResultBlock": 26
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "1938355e-b2c0-4f14-a37b-77b869919af6",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a personal blog where I can regularly publish articles about travel stories, detailed recipes, and self-improvement guides, organize them with categories, tags, and series, and let visitors browse by topic, series, and date, as well as search by keywords or phrases. I’d like the home page to highlight featured and most recent posts, provide an archive by month and year, and show a short preview for each post that links to the full article. Each article page should support comments, simple reactions like “likes,” and related-post suggestions to help readers discover more content.\n\n## Application URL\nhttp://localhost:6016/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Home page highlights featured and most recent posts\n  - Action: Open the blog home page and inspect the \"Featured\" section and the \"Recent Posts\" section.\n  - Expected: Both sections are visible and each lists at least one post with title and preview text; featured posts are visually distinguished from recent posts.\n\n- [ ] FT-02: Each post preview links to the full article\n  - Action: On the home page (or any post list), click a post's title or \"Read more\" link shown under its short preview.\n  - Expected: The browser navigates to that post's dedicated article page displaying the full post content, not just the preview.\n\n- [ ] FT-03: Visitor can browse posts by category (topic)\n  - Action: Click a category link (e.g., \"Recipes\") from the navigation menu or a post's category label.\n  - Expected: A category listing page opens showing all posts assigned to that category, each with title and preview.\n\n- [ ] FT-04: Visitor can browse posts by series\n  - Action: Click a series link (e.g., \"Europe Trip 2025\") shown on a post or in navigation.\n  - Expected: A series page opens listing all posts in that series, ordered logically (e.g., by part number or publish date).\n\n- [ ] FT-05: Visitor can browse the archive by month and year\n  - Action: Open the archive page and click a specific month/year entry (e.g., \"October 2026\").\n  - Expected: The archive view lists exactly the posts published in that month/year, each linking to its full article.\n\n- [ ] FT-06: Visitor can search posts by keyword\n  - Action: Type a keyword that exists in post content (e.g., \"pasta\") into the search box and press Enter or click the search button.\n  - Expected: A search results page opens listing every post containing that keyword, each result linking to the full article.\n\n- [ ] FT-07: Visitor can search posts by an exact phrase\n  - Action: Type a multi-word phrase from an article (e.g., \"morning routine\") into the search box and submit.\n  - Expected: Results include posts containing that exact phrase; posts containing only one of the words but not the phrase are not presented as phrase matches.\n\n- [ ] FT-08: Visitor can submit a comment on an article\n  - Action: Open any article page, fill in the comment form (name, email, comment text) with valid data, and click the \"Post Comment\"/\"Submit\" button.\n  - Expected: The comment is successfully saved and displayed in the article's comment section.\n\n- [ ] FT-09: Visitor can like an article\n  - Action: Open any article page and click the \"Like\" button/reaction control.\n  - Expected: The like is recorded; the button reflects the visitor's liked state (e.g., filled/highlighted) after the action.\n\n- [ ] FT-10: Article page shows related-post suggestions\n  - Action: Open any article page and locate the \"Related Posts\" / \"You might also like\" section.\n  - Expected: At least one other post is suggested via a clickable link that navigates to that article, with suggestions sharing the article's category, tags, or series.\n\n- [ ] FT-11: Every post is organized with category, tags, and series metadata\n  - Action: Open several articles and inspect their metadata labels.\n  - Expected: Each post displays at least one category and one or more tags as clickable links; series is shown when the post belongs to one.\n\n## Constraint\n- [ ] CS-01: Comment cannot be submitted with empty required fields\n  - Action: On an article page, leave the comment text (or name) field empty and click \"Post Comment\".\n  - Expected: The comment is not submitted; a validation message (e.g., \"Comment cannot be empty\") is shown and no empty comment appears in the comment list.\n\n- [ ] CS-02: Search with no matching results shows a graceful empty state\n  - Action: Search for a nonsense string (e.g., \"zzqxv123\") in the search box.\n  - Expected: A results page or message stating \"No results found\" is displayed; the page does not crash, and no unrelated posts are listed.\n\n- [ ] CS-03: Empty search query returns no arbitrary results\n  - Action: Leave the search box empty and press Enter or click the search button.\n  - Expected: No search is executed (or all-posts listing is shown with a prompt to enter a keyword); random or incorrect filtering does not occur.\n\n- [ ] CS-04: Category listing contains only posts of that category\n  - Action: Open a category page (e.g., \"Travel\") and check every listed post's category label.\n  - Expected: All listed posts carry that category; no posts from other categories (e.g., Recipes) appear in the list.\n\n## Interaction\n- [ ] IX-01: Like count increments immediately upon clicking \"Like\"\n  - Action: Note the current like count on an article, click \"Like\", and observe the counter.\n  - Expected: The displayed like count increases by exactly 1 without a full page reload.\n\n- [ ] IX-02: Newly submitted comment appears in the comment list immediately\n  - Action: Submit a valid comment on an article and observe the comment section.\n  - Expected: The new comment (with entered name/text and submission timestamp) appears at the top/bottom of the comment list without needing a manual page refresh.\n\n- [ ] IX-03: Archive month/year navigation updates the post list\n  - Action: On the archive page, click one month/year entry, then a different one.\n  - Expected: The post list updates each time to reflect only the newly selected month/year, with the selected period indicated as active.\n\n## Content\n- [ ] CT-01: All blog content matches the stated themes: travel stories, recipes, self-improvement\n  - Action: Review the posts on the home page, category pages, and archive listings.\n  - Expected: Every post title, preview, and full article relates to travel, recipes/cooking, or self-improvement; no off-topic placeholder content (e.g., lorem ipsum or unrelated sample posts) exists.\n\n- [ ] CT-02: Preview text is a genuine short excerpt of the full article\n  - Action: Compare a post's preview on the home/list page with the beginning of its full article page.\n  - Expected: The preview corresponds to the same article (correct title and matching content excerpt), not a mismatched or generic blurb.\n\n- [ ] CT-03: Archive month/year entries match actual post publish dates\n  - Action: Open an article, note its publish date, and verify the corresponding month/year entry in the archive contains that article.\n  - Expected: Every published article appears under the archive entry matching its displayed publish date, and no archive entry lists posts from a different month/year.\n```\n\n# Output\n",
+    "duration_ms": 393517,
+    "is_error": false,
+    "num_turns": 27,
+    "token_usage": {
+      "input_tokens": 39686,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1021760,
+      "output_tokens": 36542,
+      "output_tokens_details": {
+        "thinking_tokens": 26061
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 41377,
+        "outputTokens": 36597,
+        "cacheReadInputTokens": 1023104,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.6333620000000002,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 26104,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

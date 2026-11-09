@@ -1,0 +1,137 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": false,
+    "server_cleanup": true,
+    "finish": false
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "603003bc-d0b6-4546-8b63-f371f5950f21",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a cash flow management dashboard for a small business where I can record recurring and one-off income and expenses, assign them to categories, projects, and payment methods, and mark whether they are paid, pending, or expected. The dashboard should let me filter and sort transactions, see historical cash flow charts, and view simple forecasts of future cash balances based on upcoming expected payments and recurring items. I also want to create custom views for specific business areas (like marketing, operations, or a particular client) so I can quickly switch between them and see tailored summaries.\n\n# Output (Markdown)\n",
+    "duration_ms": 25258,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2391,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 11681,
+      "output_tokens": 3097,
+      "output_tokens_details": {
+        "thinking_tokens": 1697
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 2549,
+        "outputTokens": 3326,
+        "cacheReadInputTokens": 13186,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.10248799999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1914,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 788,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 14025,
+      "AssistantMessage": {
+        "total_count": 274,
+        "ThinkingBlock": 86,
+        "TextBlock": 81,
+        "ToolUseBlock": 107
+      },
+      "UserMessage": {
+        "total_count": 108,
+        "ToolResultBlock": 107,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "9d28fc99-5b8c-44ed-9488-21b86ef50402",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a cash flow management dashboard for a small business where I can record recurring and one-off income and expenses, assign them to categories, projects, and payment methods, and mark whether they are paid, pending, or expected. The dashboard should let me filter and sort transactions, see historical cash flow charts, and view simple forecasts of future cash balances based on upcoming expected payments and recurring items. I also want to create custom views for specific business areas (like marketing, operations, or a particular client) so I can quickly switch between them and see tailored summaries.\n\n## Application URL\nhttp://localhost:6011/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Record a one-off income transaction\n  - Action: Click \"Add Transaction\", select type \"Income\", enter description \"Website redesign invoice\", amount (e.g., 1500), today's date, a category, a project, a payment method, and status \"Paid\"; save.\n  - Expected: New transaction appears in the transaction list showing the entered amount, date, category, project, payment method, and status.\n\n- [ ] FT-02: Record a one-off expense transaction\n  - Action: Click \"Add Transaction\", select type \"Expense\", fill in amount, date, category, project, payment method, status \"Pending\"; save.\n  - Expected: Expense appears in the list with the entered values and is reflected in the dashboard expense totals.\n\n- [ ] FT-03: Record a recurring item\n  - Action: Click \"Add Transaction\", enable \"Recurring\", set frequency (e.g., monthly), fill amount/category/payment method; save.\n  - Expected: Item is saved with a recurrence indicator and generates/preview future occurrences per the schedule.\n\n- [ ] FT-04: Change a transaction's status\n  - Action: Open an existing \"Expected\" transaction from the list, change status to \"Paid\", save.\n  - Expected: Status shows \"Paid\" in the list, and the dashboard totals/counts update to include it as paid.\n\n- [ ] FT-05: Filter transactions\n  - Action: Apply a category filter (e.g., \"Rent\") and a status filter (e.g., \"Pending\") on the transaction list.\n  - Expected: Only transactions matching both filters are shown; clearing filters restores the full list.\n\n- [ ] FT-06: Sort transactions\n  - Action: Click the amount column header (or sort control) to sort ascending, then descending.\n  - Expected: List reorders correctly by amount in both directions; toggling by date also orders chronologically.\n\n- [ ] FT-07: View historical cash flow chart\n  - Action: Navigate to the cash flow chart/section and select a historical period (e.g., last 6 months).\n  - Expected: Chart renders income vs. expenses over past periods, consistent with the recorded/default transactions.\n\n- [ ] FT-08: View future cash balance forecast\n  - Action: Open the forecast view (e.g., \"Forecast\" tab).\n  - Expected: A projected future balance is shown for upcoming periods, calculated from expected/pending payments and recurring items.\n\n- [ ] FT-09: Create a custom view\n  - Action: Use \"Create View\" (or equivalent), name it \"Marketing\", set filters to the marketing category/project, save.\n  - Expected: \"Marketing\" appears in the view list and opening it shows only marketing transactions with a matching summary.\n\n- [ ] FT-10: Switch between custom views\n  - Action: Switch from \"Marketing\" to another saved view (e.g., \"Operations\"), then back.\n  - Expected: Each switch shows that view's own filtered transactions and tailored summary (income, expenses, balance) with no carry-over of the previous view's data.\n\n## Constraint\n- [ ] CS-01: Required fields enforced on transaction form\n  - Action: Open \"Add Transaction\", leave amount and description empty, click Save.\n  - Expected: Form is rejected with a validation message; no transaction is added to the list.\n\n- [ ] CS-02: Invalid amount rejected\n  - Action: Enter a non-numeric or negative amount (e.g., \"abc\" or -50) in the amount field and save.\n  - Expected: Save is blocked with an error; no transaction is created.\n\n- [ ] CS-03: Duplicate custom view name rejected\n  - Action: Attempt to create a new custom view named identically to an existing one (e.g., \"Marketing\").\n  - Expected: Creation is blocked with an error message; no duplicate view is added.\n\n- [ ] CS-04: Summary totals match underlying transactions\n  - Action: Compare the dashboard's income, expense, and balance figures against the sum of the visible/default transaction list.\n  - Expected: Summary totals equal the sum of the listed transactions (no mismatch or missing entries).\n\n## Interaction\n- [ ] IX-01: Confirmation on saving a transaction\n  - Action: Save a valid transaction.\n  - Expected: A success toast/message appears (e.g., \"Transaction saved\") and the form closes or resets.\n\n- [ ] IX-02: Filter updates list immediately\n  - Action: Apply a filter on the transactions list.\n  - Expected: The list updates instantly without a full page reload; filter control shows the active selection.\n\n- [ ] IX-03: Chart tooltip on hover\n  - Action: Hover over a point/bar in the historical cash flow chart.\n  - Expected: Tooltip shows the period's income, expense, and/or net value for that point.\n\n- [ ] IX-04: View switching updates summary instantly\n  - Action: Click between two saved views using the view switcher.\n  - Expected: Summary numbers and chart refresh immediately to reflect the selected view.\n\n## Content\n- [ ] CT-01: Transaction list shows all key attributes\n  - Action: Inspect the default transactions list.\n  - Expected: Each row displays date, description, category, project, payment method, amount, status, and a paid/pending/expected indicator that matches its data.\n\n- [ ] CT-02: Default data is relevant to small-business finance\n  - Action: Review default categories, payment methods, and sample transactions.\n  - Expected: Content is business-cash-flow themed (e.g., categories like Rent, Software, Client Payments; methods like Bank Transfer, Credit Card) with no unrelated placeholder data.\n\n- [ ] CT-03: Chart labels and legends are clear and relevant\n  - Action: Inspect the historical chart and forecast chart labels, axes, and legends.\n  - Expected: Income and expense series are clearly labeled and distinguished; forecast chart shows future periods labeled with upcoming dates.\n```\n\n# Output\n",
+    "duration_ms": 868580,
+    "is_error": false,
+    "num_turns": 109,
+    "token_usage": {
+      "input_tokens": 416385,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 7655616,
+      "output_tokens": 51966,
+      "output_tokens_details": {
+        "thinking_tokens": 37943
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 419159,
+        "outputTokens": 58078,
+        "cacheReadInputTokens": 7819136,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 7.457313,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 37945,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

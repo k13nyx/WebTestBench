@@ -1,0 +1,96 @@
+# Test Result
+
+## Functionality
+- [X] FT-01: Complete student profile setup
+  - Action: Navigate to profile settings, enter values for subjects, current level, and preferred study times, then click "Save Profile".
+  - Expected: Profile details are saved and display the entered subjects, level, and study time preferences.
+- [X] FT-02: Designate profile as mentor
+  - Action: In profile settings, toggle the "Register as Mentor" option to enabled and click "Save Profile".
+  - Expected: Profile is updated with a distinct "Mentor" status indicator.
+- [X] FT-03: Create a topic-focused study group
+  - Action: Click "Create Study Group", fill in the group name, select a topic (e.g., "Calculus"), and click "Submit".
+  - Expected: The new study group is created and appears in the user's active groups list.
+- [X] FT-04: Join an existing study group
+  - Action: Browse the study group directory, select an open group, and click "Join Group".
+  - Expected: User is added to the group roster and gains access to the group's dashboard.
+- [ ] FT-05: Invite a mentor to a study group
+  - Action: Inside the group's member management tab, search for a mentor profile and click "Send Invite".
+  - Expected: An invitation is sent and listed under the group's "Pending Invitations" section.
+  - Bug Report:
+    - Issue: Missing Mentor Search and Pending Invitations Section
+    - Actual: Inside the group's member management tab ("Members"), there is no mentor search input or invitation controls. While an "Invite Mentor" button exists in the group header opening a selection modal, sending an invitation does not list it under any "Pending Invitations" section within the group (no such section exists in the group dashboard).
+- [ ] FT-06: Add content to a labeled section in the shared space
+  - Action: In the group's shared space, choose a section (e.g., "Notes"), enter title and text, and click "Upload Content".
+  - Expected: Content item is published and displayed strictly under the selected section category.
+  - Bug Report:
+    - Issue: Unpartitioned Shared Space Layout and Incorrect Action Control
+    - Actual: The shared space does not provide dedicated labeled section containers (such as "Notes", "Outlines", or "Reading Summaries"). Content is added via an "Add Note" button (not "Upload Content") and is rendered into an unpartitioned card grid sorted by pin and recommendation status rather than organized strictly under labeled section category headers.
+- [X] FT-07: Post questions and answers in discussion area
+  - Action: Enter a question into the discussion text box, click "Post Question", then type a response under it and click "Reply".
+  - Expected: The question appears in the group feed and the reply renders directly beneath the question.
+- [X] FT-08: Schedule an upcoming group study session
+  - Action: Open the group scheduler, select a date and time slot using the time selector, enter a title, and click "Schedule Session".
+  - Expected: The study session is scheduled and appears in the group's upcoming sessions list.
+- [ ] FT-09: RSVP to a scheduled study session
+  - Action: Locate an upcoming study session and click the "RSVP Attend" button.
+  - Expected: The user's profile is added to the public "Attending Members" list for that session.
+  - Bug Report:
+    - Issue: Missing Public Attending Members List
+    - Actual: The RSVP action button is labeled "Attending" rather than "RSVP Attend". Clicking it updates a numeric count ("1 attending"), but does not add the user to or display any public "Attending Members" list showing attendee profiles or names.
+- [ ] FT-10: Mentor pins an important discussion post
+  - Action: Log in as a mentor, open the dropdown menu on any discussion post, and click "Pin Post".
+  - Expected: The post is moved to and locked inside the "Pinned Posts" section at the top of the discussion board.
+  - Bug Report:
+    - Issue: Missing Dropdown Menu and Missing Pinned Posts Section
+    - Actual: Discussion cards do not have a dropdown menu (pinning is handled via an inline icon button). Clicking the pin icon sorts the item to the top of the general feed, but does not move or lock it inside any dedicated "Pinned Posts" section header or container.
+- [ ] FT-11: Mentor highlights a recommended resource
+  - Action: Log in as a mentor, select a resource item in the shared space, and click "Mark as Recommended".
+  - Expected: The resource displays a visible "Mentor Recommended" highlight badge.
+  - Bug Report:
+    - Issue: Missing "Mark as Recommended" Action and Missing Badge
+    - Actual: There is no button labeled "Mark as Recommended" (only an unlabeled Star icon button). Toggling it applies an accent color to a Star icon, but does not display any visible "Mentor Recommended" highlight badge text.
+
+## Constraint
+- [X] CS-01: Restrict mentor actions from standard student members
+  - Action: Log in as a standard student member and view discussion posts and shared resources.
+  - Expected: "Pin Post" and "Mark as Recommended" action buttons are completely hidden or disabled.
+- [ ] CS-02: Require mandatory profile setup fields
+  - Action: Clear the "Subjects", "Current Level", and "Preferred Study Times" fields and click "Save Profile".
+  - Expected: Submission is prevented and inline validation error messages appear for each required field.
+  - Bug Report:
+    - Issue: Missing Mandatory Field Validation
+    - Actual: Deselecting all subjects and clearing all preferred study times does not prevent submission. Clicking "Save Changes" / "Save Availability" successfully saves with empty fields, showing a "Profile updated" toast without any inline validation error messages.
+- [ ] CS-03: Prevent scheduling study sessions in the past
+  - Action: Attempt to select a past date and time in the session time selector and click "Schedule Session".
+  - Expected: Past date/time values are disabled for selection, or submission is blocked with an error message.
+  - Bug Report:
+    - Issue: Unenforced Past Date/Time Form Validation
+    - Actual: Submitting past dates (e.g., 2025-01-01) or past times for today's date (e.g., 01:00) is neither blocked nor rejected by application validation; submission completes successfully with a "Session scheduled!" toast without displaying any error message.
+
+## Interaction
+- [ ] IX-01: Display member availability in scheduling time selector
+  - Action: Hover over or click an individual time slot within the study session time selector.
+  - Expected: A popover panel displays the names of group members whose preferred study times match that slot.
+  - Bug Report:
+    - Issue: Missing Member Availability Popover
+    - Actual: The scheduler uses standard HTML5 time inputs (`<input type="time">`) without discrete interactive time slots. Hovering or clicking does not display any popover panel showing matching group member availability.
+- [ ] IX-02: Toggle RSVP status dynamically
+  - Action: Click "Cancel RSVP" on a previously confirmed session.
+  - Expected: The button text immediately changes to "RSVP Attend" and the user's name is removed from the attendee list without a page refresh.
+  - Bug Report:
+    - Issue: Missing Cancel RSVP Dynamic Button Toggle
+    - Actual: There is no "Cancel RSVP" button (options are "Attending", "Maybe", and "Can't make it"). Selecting "Can't make it" updates the counter to "0 attending", but never changes any button label to "RSVP Attend", and there is no attendee list of names from which the user is removed.
+
+## Content
+- [ ] CT-01: Verify default shared space labeled section headers
+  - Action: Open the shared space tab in any study group.
+  - Expected: Dedicated section headers for "Notes", "Outlines", and "Reading Summaries" are clearly displayed.
+  - Bug Report:
+    - Issue: Missing Dedicated Section Headers
+    - Actual: The shared space tab ("Notes") lacks dedicated section headers for "Notes", "Outlines", and "Reading Summaries". Content is displayed in a flat grid with category badges rather than structured under dedicated section headers.
+- [ ] CT-02: Verify topic category tags in group discovery
+  - Action: Navigate to the study group search and discovery catalog.
+  - Expected: Topic filter tags for academic subjects including "Calculus", "Biology", and "Literature" are present and selectable.
+  - Bug Report:
+    - Issue: Missing Topic Category Tag for Calculus
+    - Actual: The discovery catalog uses a single dropdown select rather than selectable topic category tags/pills, and "Calculus" is not present as a selectable topic filter option (the options only include broad categories like Mathematics, Biology, and Literature).

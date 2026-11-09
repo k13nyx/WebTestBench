@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "56a9ca53-e66b-4267-8fd2-556e7993e82b",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a webpage where property owners can create and manage listings for short-term rentals by entering details like location, description, amenities, photos (as image URLs), and nightly price. Travelers should be able to browse all available properties in a list, filter them by price range, number of guests, and type of property, and sort results by price or rating. Each listing should have its own detail page where visitors can read the full description, see basic reviews, and check available dates. Travelers should be able to submit a simple booking request form for chosen dates, and owners should be able to view and update the status of these requests.\n\n# Output (Markdown)\n",
+    "duration_ms": 10651,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 14060,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 1411,
+      "output_tokens_details": {
+        "thinking_tokens": 28
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3-flash": {
+        "inputTokens": 15738,
+        "outputTokens": 1423,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.114265,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 29,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 12,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 6259,
+      "AssistantMessage": {
+        "total_count": 189,
+        "ThinkingBlock": 62,
+        "TextBlock": 59,
+        "ToolUseBlock": 68
+      },
+      "UserMessage": {
+        "total_count": 68,
+        "ToolResultBlock": 68
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "db8e4b57-8bb1-47d6-b8d8-a559c778c990",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a webpage where property owners can create and manage listings for short-term rentals by entering details like location, description, amenities, photos (as image URLs), and nightly price. Travelers should be able to browse all available properties in a list, filter them by price range, number of guests, and type of property, and sort results by price or rating. Each listing should have its own detail page where visitors can read the full description, see basic reviews, and check available dates. Travelers should be able to submit a simple booking request form for chosen dates, and owners should be able to view and update the status of these requests.\n\n## Application URL\nhttp://localhost:6009/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Owner can create a new listing\n  - Action: Open the \"Create Listing\" form, enter location, description, amenities, at least one image URL, a property type, max guests, and a nightly price (e.g., \"120\"), then submit.\n  - Expected: The listing is saved successfully and appears in the listings/browse view with the entered details.\n- [ ] FT-02: Owner can edit an existing listing\n  - Action: Open one of the owner's existing listings, change the nightly price (e.g., to \"150\"), and save.\n  - Expected: The detail page and list view show the updated price of \"150\" per night.\n- [ ] FT-03: Traveler can view listing detail page\n  - Action: Click any property card in the browse list.\n  - Expected: A detail page opens showing the full description, amenities, photos, property type, max guests, nightly price, and location.\n- [ ] FT-04: Reviews are visible on the detail page\n  - Action: Open the detail page of a property that has reviews.\n  - Expected: Basic reviews are displayed, each showing the reviewer name/comment and a star rating.\n- [ ] FT-05: Available dates are visible on the detail page\n  - Action: Open the detail page of a property.\n  - Expected: The page shows the property's available (bookable) date range(s) or calendar.\n- [ ] FT-06: Traveler can submit a booking request\n  - Action: On a detail page, select/check-in and check-out dates within the available range and submit the booking request form with a guest count within the property's capacity.\n  - Expected: The booking request is submitted successfully and a confirmation (message/toast/status) is shown.\n- [ ] FT-07: Owner can view incoming booking requests\n  - Action: Open the owner's booking request management view.\n  - Expected: The request submitted in FT-06 is listed, showing the property, dates, and guests.\n- [ ] FT-08: Owner can update a booking request status\n  - Action: In the owner's request view, change the status of the submitted request (e.g., to \"Approved\" or \"Declined\") using the provided control.\n  - Expected: The status is updated and the new status is displayed for that request.\n- [ ] FT-09: Filter by price range\n  - Action: In the browse list, set a price range filter (e.g., min 100, max 200) and apply.\n  - Expected: Only properties with nightly prices within 100–200 are shown; all others are excluded.\n- [ ] FT-10: Filter by number of guests\n  - Action: Set the guest filter to a value (e.g., 4 guests) and apply.\n  - Expected: Only properties that can accommodate at least 4 guests are shown.\n- [ ] FT-11: Filter by property type\n  - Action: Select one property type (e.g., \"Apartment\") from the type filter and apply.\n  - Expected: Only properties of that type are shown.\n- [ ] FT-12: Sort results by price\n  - Action: With results shown, choose \"Sort by price\" (lowest first).\n  - Expected: The list is reordered so the cheapest property appears first.\n- [ ] FT-13: Sort results by rating\n  - Action: Choose \"Sort by rating\" (highest first).\n  - Expected: The list is reordered so the highest-rated property appears first.\n\n## Constraint\n- [ ] CS-01: Cannot create a listing with missing required fields\n  - Action: Open the create-listing form, leave required fields (e.g., location or price) empty, and submit.\n  - Expected: Submission is blocked and a validation error is shown; no listing is created.\n- [ ] CS-02: Nightly price must be a valid positive number\n  - Action: Enter an invalid price (e.g., \"0\", \"-50\", or \"abc\") in the create/edit form and submit.\n  - Expected: Submission is rejected with a clear validation message.\n- [ ] CS-03: Booking with check-out date not after check-in is blocked\n  - Action: In the booking form, select a check-out date equal to or before the check-in date and submit.\n  - Expected: Submission is rejected with an error message; no request is created.\n- [ ] CS-04: Booking for more guests than property capacity is blocked\n  - Action: Submit a booking request with a guest count exceeding the property's maximum guests (e.g., 10 guests for a 4-guest property).\n  - Expected: Submission is rejected with an error message.\n- [ ] CS-05: Booking dates outside available dates are blocked\n  - Action: Submit a booking request with dates outside the property's shown available date range.\n  - Expected: Submission is rejected with an error message.\n- [ ] CS-06: Image URLs must be valid\n  - Action: Enter an empty or malformed image URL in the listing form and submit.\n  - Expected: Submission is rejected with a validation error, or the invalid entry is not accepted as a photo.\n\n## Interaction\n- [ ] IX-01: Filters update the visible list immediately\n  - Action: Apply or clear a filter (e.g., property type) and observe the list.\n  - Expected: The list updates dynamically (or after clicking \"Apply\") without requiring a full page reload, and a \"no results\" state appears when nothing matches.\n- [ ] IX-02: Feedback after submitting a booking request\n  - Action: Submit a valid booking request.\n  - Expected: A visible success confirmation (message/toast) appears after submission.\n\n## Content\n- [ ] CT-01: Listing images render as property photos\n  - Action: Open the browse list and a detail page.\n  - Expected: Every displayed image loads successfully (no broken-image icons) and depicts the property/accommodation theme.\n- [ ] CT-02: Listing details are complete and relevant\n  - Action: Open each default listing's detail page.\n  - Expected: Each shows non-empty location, description, amenities, property type, nightly price, and guest capacity that match the listing's theme.\n\n*(20 items total: 13 FT, 6 CS, 2 IX, 2 CT — with IX-02 duplicating the confirmation aspect of FT-06 kept distinct as UX feedback; if a strict 20-item cap is required, merge IX-02 into FT-06.)*\n```\n\n# Output\n",
+    "duration_ms": 315432,
+    "is_error": false,
+    "num_turns": 69,
+    "token_usage": {
+      "input_tokens": 133325,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 2921920,
+      "output_tokens": 35133,
+      "output_tokens_details": {
+        "thinking_tokens": 18134
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3-flash": {
+        "inputTokens": 136277,
+        "outputTokens": 35209,
+        "cacheReadInputTokens": 2921920,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 3.02257,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 18198,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

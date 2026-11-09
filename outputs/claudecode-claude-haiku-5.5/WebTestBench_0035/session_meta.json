@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "7bf6b541-8f5d-4ba0-adb9-4ad0924668cb",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a website where companies can set up simple virtual booths for an online trade show. Each booth should have a page where they can add their logo, a short company description, a list of products or services, and some images or videos. Attendees should be able to browse all booths, click into a booth to read more, and send a basic text message to the booth to ask questions.\n\n# Output (Markdown)\n",
+    "duration_ms": 21371,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 5261,
+      "cache_read_input_tokens": 11381,
+      "output_tokens": 4323,
+      "output_tokens_details": {
+        "thinking_tokens": 2388
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 5261
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "anthropic/claude-haiku-5.5": {
+        "inputTokens": 2527,
+        "outputTokens": 4342,
+        "cacheReadInputTokens": 11381,
+        "cacheCreationInputTokens": 5261,
+        "webSearchRequests": 0,
+        "costUSD": 0.003195135,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 2388,
+        "cacheCreationEphemeral5mInputTokens": 5261,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-haiku-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 1,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 1,
+      "AssistantMessage": {
+        "total_count": 63,
+        "ThinkingBlock": 17,
+        "TextBlock": 17,
+        "ToolUseBlock": 29
+      },
+      "UserMessage": {
+        "total_count": 29,
+        "ToolResultBlock": 29
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "8853d4e5-068a-4cb7-964b-6e7bf87be2e9",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a website where companies can set up simple virtual booths for an online trade show. Each booth should have a page where they can add their logo, a short company description, a list of products or services, and some images or videos. Attendees should be able to browse all booths, click into a booth to read more, and send a basic text message to the booth to ask questions.\n\n## Application URL\nhttp://localhost:6035/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Attendee can view all booths on the booth listing page.\n  - Action: Open the trade show home page and click \"Booths\" (or the equivalent listing link).\n  - Expected: Every default booth appears as a card showing its company name and logo.\n- [ ] FT-02: Attendee can open a booth to read its details.\n  - Action: Click the name or card of any default booth.\n  - Expected: The booth page opens and shows the logo, company name, description, products/services list, and image/video section.\n- [ ] FT-03: Booth owner can change the booth logo.\n  - Action: Log in as the owner of a default booth, open \"Edit Booth,\" upload a new valid image in the \"Logo\" field, and click \"Save.\"\n  - Expected: The new logo appears on the booth page and on the booth listing card.\n- [ ] FT-04: Booth owner can edit the description and products/services list.\n  - Action: Log in as a booth owner, open \"Edit Booth,\" change the text in \"Description\" and add one item to \"Products/Services,\" then click \"Save.\"\n  - Expected: The updated description and new list item appear on the booth page.\n- [ ] FT-05: Booth owner can add images and videos to the booth.\n  - Action: Log in as a booth owner, open \"Edit Booth,\" upload one image and one video in the \"Media\" section, then click \"Save.\"\n  - Expected: Both files appear in the booth's media section on the booth page.\n- [ ] FT-06: Attendee can send a text message to a booth, and the owner receives it.\n  - Action: On a booth page, type \"What are your pricing options?\" in the message box and click \"Send.\" Then log in as that booth's owner and open \"Messages.\"\n  - Expected: The message is accepted, and the owner's Messages list shows the exact text and sender.\n\n## Constraint\n- [ ] CS-01: Empty messages cannot be sent.\n  - Action: On a booth page, leave the message box blank and click \"Send.\"\n  - Expected: The message is not sent, and the message \"Message cannot be empty\" appears. No entry is added to the owner's Messages.\n- [ ] CS-02: A company cannot edit another company's booth.\n  - Action: Log in as the owner of Booth A, then enter the edit URL of Booth B in the address bar (or try to access \"Edit Booth\" for Booth B).\n  - Expected: Access is denied with an \"Access denied\" or \"Not authorized\" message, and Booth B's form does not open.\n- [ ] CS-03: Logo upload rejects non-image files.\n  - Action: Log in as a booth owner, open \"Edit Booth,\" attempt to upload a .txt or .pdf file in the \"Logo\" field, and click \"Save.\"\n  - Expected: The upload is rejected with an error such as \"Logo must be an image file,\" and the previous logo remains on the booth page.\n- [ ] CS-04: Media upload rejects unsupported file types.\n  - Action: Log in as a booth owner, open \"Edit Booth,\" attempt to upload a .docx or .exe file in the \"Media\" section, and click \"Save.\"\n  - Expected: The file is rejected with an error such as \"Unsupported file type,\" and it does not appear in the booth's media section.\n- [ ] CS-05: Invalid booth URLs show an error page.\n  - Action: Enter a booth page address for a booth that does not exist (e.g., /booths/does-not-exist) in the address bar.\n  - Expected: A \"Booth not found\" message appears, and no booth details are displayed.\n\n## Interaction\n- [ ] IX-01: Sending a message gives confirmation and clears the field.\n  - Action: On a booth page, type \"Do you ship internationally?\" in the message box and click \"Send.\"\n  - Expected: A \"Message sent\" confirmation appears, and the message box is empty.\n- [ ] IX-02: Booth cards respond to hovering.\n  - Action: On the booth listing page, move the mouse over any booth card.\n  - Expected: The card is visually highlighted, and the cursor changes to a pointer.\n- [ ] IX-03: Media items open and play correctly.\n  - Action: On a booth page, click an image in the media section, then close it with the close button. Click a video.\n  - Expected: The image opens in an enlarged view and closes with the close button. The video starts playing and shows playback controls.\n- [ ] IX-04: Saving booth edits gives confirmation.\n  - Action: Log in as a booth owner, change any field in \"Edit Booth,\" and click \"Save.\"\n  - Expected: A \"Booth saved\" confirmation appears, and the booth page reflects the change.\n\n## Content\n- [ ] CT-01: All default booth logos and media load.\n  - Action: Open the booth listing page, then open each default booth page.\n  - Expected: All logos, images, and videos display without broken-image icons or playback errors.\n- [ ] CT-02: Each booth appears once in the listing with matching details.\n  - Action: Compare the booth listing card for each default booth with its booth page.\n  - Expected: Each booth appears exactly once, and the card's company name and logo match the booth page.\n- [ ] CT-03: Booth pages contain no placeholder or test text.\n  - Action: Read the company name, description, and products/services on every default booth page.\n  - Expected: No placeholder text such as \"Lorem ipsum,\" \"TBD,\" \"test,\" or \"sample\" appears.\n- [ ] CT-04: Booth media is relevant to the company.\n  - Action: On each default booth page, compare the images and videos with the company's listed products or services.\n  - Expected: Each image and video clearly relates to that company's products or services.\n- [ ] CT-05: Booth descriptions are relevant to a trade show exhibitor.\n  - Action: Read the description on each default booth page.\n  - Expected: Each description describes the company or its offerings, and does not contain unrelated content.\n```\n\n# Output\n",
+    "duration_ms": 98769,
+    "is_error": false,
+    "num_turns": 30,
+    "token_usage": {
+      "input_tokens": 46,
+      "cache_creation_input_tokens": 51069,
+      "cache_read_input_tokens": 936058,
+      "output_tokens": 14545,
+      "output_tokens_details": {
+        "thinking_tokens": 7221
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 51069
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "anthropic/claude-haiku-5.5": {
+        "inputTokens": 4342,
+        "outputTokens": 14565,
+        "cacheReadInputTokens": 936058,
+        "cacheCreationInputTokens": 51069,
+        "webSearchRequests": 0,
+        "costUSD": 0.023460905,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 7221,
+        "cacheCreationEphemeral5mInputTokens": 51069,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-haiku-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  }
+}

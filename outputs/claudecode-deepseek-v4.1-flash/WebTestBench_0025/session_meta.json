@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "753f7c91-63bf-4be6-9ef6-bc27eed14edc",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a creative prompt generator webpage where I can choose from predefined categories like short stories, poetry, character sketches, fantasy landscapes, and brainstorming topics. After choosing a category, I can generate a random prompt, mark prompts as favorites, and see a simple history of the prompts I’ve viewed in this visit so I can revisit them easily.I can customize, add, modify, and delete categories.\n\n# Output (Markdown)\n",
+    "duration_ms": 5055,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2580,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8704,
+      "output_tokens": 1684,
+      "output_tokens_details": {
+        "thinking_tokens": 536
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "deepseek/deepseek-v4.1-flash": {
+        "inputTokens": 2958,
+        "outputTokens": 1835,
+        "cacheReadInputTokens": 9984,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.065657,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 675,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "deepseek/deepseek-v4.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 191,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 7759,
+      "AssistantMessage": {
+        "total_count": 102,
+        "ThinkingBlock": 36,
+        "TextBlock": 30,
+        "ToolUseBlock": 36
+      },
+      "UserMessage": {
+        "total_count": 36,
+        "ToolResultBlock": 36
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "8b47c04e-35fe-4a29-a763-1ad3a762e746",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a creative prompt generator webpage where I can choose from predefined categories like short stories, poetry, character sketches, fantasy landscapes, and brainstorming topics. After choosing a category, I can generate a random prompt, mark prompts as favorites, and see a simple history of the prompts I’ve viewed in this visit so I can revisit them easily.I can customize, add, modify, and delete categories.\n\n## Application URL\nhttp://localhost:6025/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Default categories are available on load\n  - Action: Open the webpage and inspect the category list.\n  - Expected: Exactly these five categories are shown: \"Short Stories\", \"Poetry\", \"Character Sketches\", \"Fantasy Landscapes\", \"Brainstorming Topics\".\n\n- [ ] FT-02: Selecting a category enables prompt generation\n  - Action: Click any category (e.g., \"Poetry\"), then click the \"Generate\" button.\n  - Expected: A random prompt text is displayed for the selected category.\n\n- [ ] FT-03: Generating again returns a different prompt\n  - Action: Click \"Generate\" three more times while \"Poetry\" is selected.\n  - Expected: Each click displays a new prompt; the text is not identical to the immediately previous prompt.\n\n- [ ] FT-04: User can add a new category\n  - Action: Use the add-category input, enter \"Sci-Fi Worlds\", and confirm.\n  - Expected: \"Sci-Fi Worlds\" appears in the category list and is selectable.\n\n- [ ] FT-05: User can modify an existing category\n  - Action: Rename the \"Poetry\" category to \"Modern Poetry\" and save.\n  - Expected: The list shows \"Modern Poetry\" and \"Poetry\" is no longer listed; previously generated prompts remain intact.\n\n- [ ] FT-06: User can delete a category\n  - Action: Delete the \"Brainstorming Topics\" category and confirm if prompted.\n  - Expected: \"Brainstorming Topics\" is removed from the list and is no longer selectable.\n\n- [ ] FT-07: User can mark a prompt as a favorite\n  - Action: Generate a prompt and click the \"Favorite\" (star) control.\n  - Expected: The prompt is saved and appears in the Favorites list.\n\n- [ ] FT-08: Favorites list displays saved prompts\n  - Action: Mark two different prompts as favorites, then open the Favorites section.\n  - Expected: Both prompts are listed with their full text.\n\n- [ ] FT-09: History records prompts viewed in this visit\n  - Action: Generate and view three prompts in sequence, then open the History section.\n  - Expected: All three prompts appear, most recent first, with the full prompt text.\n\n- [ ] FT-10: User can revisit a prompt from history\n  - Action: Click a prompt entry in History.\n  - Expected: That prompt is displayed in the main prompt area.\n\n## Constraint\n- [ ] CS-01: Generation is blocked without a selected category\n  - Action: On fresh load with no category selected, click \"Generate\".\n  - Expected: No prompt is generated; an instruction such as \"Select a category first\" is shown.\n\n- [ ] CS-02: Empty category name is rejected\n  - Action: In the add-category input, submit with an empty or whitespace-only value.\n  - Expected: No new category is added; a validation message is shown.\n\n- [ ] CS-03: Duplicate category name is prevented\n  - Action: Attempt to add a category named exactly \"Poetry\" (already existing).\n  - Expected: The category is not added and a duplicate/exists message is shown.\n\n- [ ] CS-04: Unfavoriting removes a prompt from Favorites\n  - Action: Click the \"Favorite\" control again on a prompt already marked favorite.\n  - Expected: The prompt is removed from the Favorites list.\n\n- [ ] CS-05: History contains only the current visit's prompts\n  - Action: Note the History entries, reload the page.\n  - Expected: History is empty on the new visit (no prompts from the previous visit).\n\n## Interaction\n- [ ] IX-01: Active category is visually indicated\n  - Action: Click a category and observe the list.\n  - Expected: The selected category is visibly highlighted (e.g., background/border change).\n\n- [ ] IX-02: Favorite toggle gives immediate visual feedback\n  - Action: Click the star icon on the displayed prompt.\n  - Expected: The star immediately switches between filled and unfilled to reflect the state.\n\n- [ ] IX-03: Newly generated prompt replaces the previous one instantly\n  - Action: Click \"Generate\" and observe the prompt area.\n  - Expected: The prompt area updates immediately with the new prompt, without requiring a page reload.\n\n- [ ] IX-04: New history entry appears at the top immediately\n  - Action: Generate a new prompt while the History section is visible.\n  - Expected: The new prompt is added to the top of History without a reload.\n\n## Content\n- [ ] CT-01: Prompts are relevant to the selected category\n  - Action: Generate one prompt per default category and read each.\n  - Expected: Each prompt's content matches its category theme (e.g., \"Poetry\" prompts reference verse/poetic form).\n\n- [ ] CT-02: Generated prompts contain real content\n  - Action: Generate five prompts and inspect the text.\n  - Expected: All prompts are complete, readable sentences; no placeholders such as \"lorem ipsum\", \"TODO\", or empty strings.\n\n- [ ] CT-03: Displayed text matches actual stored data\n  - Action: Compare the main prompt area text with its entry in Favorites and History.\n  - Expected: The text is character-for-character identical across all three views.\n```\n\n# Output\n",
+    "duration_ms": 204287,
+    "is_error": false,
+    "num_turns": 37,
+    "token_usage": {
+      "input_tokens": 85353,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1045632,
+      "output_tokens": 34935,
+      "output_tokens_details": {
+        "thinking_tokens": 25602
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "deepseek/deepseek-v4.1-flash": {
+        "inputTokens": 88054,
+        "outputTokens": 35163,
+        "cacheReadInputTokens": 1045632,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.8421609999999997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 25819,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "deepseek/deepseek-v4.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

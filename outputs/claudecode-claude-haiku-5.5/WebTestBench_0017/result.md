@@ -1,0 +1,105 @@
+# Test Result
+
+## Functionality
+- [ ] FT-01: Category browsing shows only products from the chosen category.
+  - Action: Click "Cameras", then "Monitors", then "Vacuum Cleaners" in the category navigation.
+  - Expected: Each page lists only products of that category, and the active category is highlighted.
+  - Bug Report:
+    - Issue: Incorrect Category Filtering
+    - Actual: Clicking "Monitors" changes the URL to `/products?category=monitors` and marks the nav link active, but the listing still shows the three cameras (Canon EOS R6 Mark II, Fujifilm X-H2S, Sony A7 IV) with "Showing 3 products". The sidebar still shows "Cameras" checked and "Monitors" unchecked. Clicking "Vacuums" (`/products?category=vacuums`) shows the same three camera products.
+- [ ] FT-02: Price band filter narrows the listing to the selected band.
+  - Action: Open a category page and select one price band in the price filter.
+  - Expected: Every listed product's price falls within the selected band, and the product count updates.
+  - Bug Report:
+    - Issue: Incorrect Price Band Filtering
+    - Actual: On `/products` with "Luxury ($1200+)" selected, the page shows "Showing 4 products": Dell Alienware AW3423DWF ($1099), Dyson V15 Detect ($749), ASUS ROG Swift PG32UCDM ($1299), and Roborock S8 Pro Ultra ($1599). The $2499 Canon, Fujifilm, and Sony cameras are excluded. On the Cameras category, the same band shows "Showing 0 products" with "No products match your filters," although all three cameras are priced at $2499.
+- [X] FT-03: Sort by overall score orders products from highest to lowest score.
+  - Action: Open a category page and select "Sort by: Overall Score".
+  - Expected: Products are ordered by overall score, highest first.
+- [ ] FT-04: Sort by date orders products newest first.
+  - Action: Select "Sort by: Date".
+  - Expected: Products are ordered by publication date, newest first.
+  - Bug Report:
+    - Issue: Sort Order Cannot Be Verified
+    - Actual: Selecting "Newest First" reorders Cameras to Canon, Sony, Fujifilm, and the sort control shows "Newest First". However, no publication date appears on listing cards or product detail pages, so the order cannot be checked against publication date. The option is also labeled "Newest First", not "Date".
+- [X] FT-05: Search returns matching products and articles.
+  - Action: Type a known product name, then a keyword from a known article title, into the search box and press Enter.
+  - Expected: Results include the matching product and article, each labeled with its type.
+- [ ] FT-06: Product detail page shows the complete product profile.
+  - Action: Click any product name in a listing.
+  - Expected: The page shows the product name, overall score, ratings for Design, Performance, and Value, a verdict summary, and sections titled "Reviews" and "Comparisons."
+  - Bug Report:
+    - Issue: Missing Page Sections
+    - Actual: The Canon EOS R6 Mark II page shows the name, overall score 8.8, Design 8.8 / Performance 9.0 / Value 8.2, and "Our Verdict" text. Its headings are only "Detailed Ratings", "Specifications", "Pros & Cons", and "Featured In". There are no "Reviews" or "Comparisons" sections. The Dell, Dyson, ASUS, and LG pages have the same structure.
+- [ ] FT-07: Links on a product page open the related articles.
+  - Action: On a product detail page, click the first article under "Reviews," then go back and click the first item under "Comparisons."
+  - Expected: Each link opens the correct article page, and that article's title matches the link text.
+  - Bug Report:
+    - Issue: Missing Reviews and Comparisons Sections
+    - Actual: Product pages have no "Reviews" or "Comparisons" section. The only article list is "Featured In". Its first item (“The Best Mirrorless Cameras of 2024”) opened `/article/best-mirrorless-cameras-2024` with a matching title. Its second item (“Canon R6 II vs Sony A7 IV: The Ultimate Showdown”) opened `/article/canon-vs-sony-2024` with a matching title. Neither section name exists to click under.
+- [ ] FT-08: Comparison page shows several products side by side.
+  - Action: Open any comparison article from the Comparisons section or the search results.
+  - Expected: The page shows a table with one column per product, rows for key specs, ratings, and summaries, and all of them are aligned by row.
+  - Bug Report:
+    - Issue: Missing Side-by-Side Table in Comparison Article
+    - Actual: `/article/canon-vs-sony-2024` (typed "Comparison") renders prose sections (Autofocus, Image Quality, Video Features, Ergonomics, Lens Ecosystem, The Verdict) with no table, no product columns, and no spec or rating rows. The side-by-side table exists only on the separate `/compare` tool (for example `/compare?products=canon-r6ii,sony-a7iv`).
+- [ ] FT-09: Best-of list shows products in ranked order.
+  - Action: Open any "best of" list article.
+  - Expected: Products are numbered sequentially from 1, each with its rank, score, and a short summary.
+  - Bug Report:
+    - Issue: Missing Ranked Order
+    - Actual: `/article/best-gaming-monitors-2024` has no numbered list and no rank labels. "Products Mentioned" lists LG 27GP950-B (8.6), Dell AW3423DWF (9.0), and ASUS PG32UCDM (8.8) as unnumbered cards, in an order that is not by score. The body is prose under "Our Top Picks", with no per-product summary.
+- [ ] FT-10: Publish form opens for creating a new article.
+  - Action: Click "Publish" or "New Article" in the site navigation. Do not submit.
+  - Expected: A form opens with fields for title, article type (Review, Comparison, or Best-of), category, linked products, and body content.
+  - Bug Report:
+    - Issue: Missing Publish Entry Point
+    - Actual: The site navigation shows only "Cameras", "Monitors", "Vacuums", and "Compare". No "Publish" or "New Article" link or button exists on the home, listing, product, article, or compare pages.
+
+## Constraint
+- [X] CS-01: Search with no matches shows a "No results" message and no unrelated items.
+  - Action: Type "zzzqqx" in the search box and press Enter.
+  - Expected: The message "No results found" appears, and no product or article cards are displayed.
+- [X] CS-02: All ratings and overall scores stay within the stated scale.
+  - Action: Check the ratings and overall scores on five product detail pages and the scores shown on a best-of list.
+  - Expected: Every value is between 0 and the scale maximum shown on the page (for example, 10), with no negative or out-of-range values.
+- [ ] CS-03: Each product appears in exactly one price band.
+  - Action: Apply each price band filter in turn in one category and count the products in each result.
+  - Expected: The counts add up to the total number of products in that category, and no product appears in two bands.
+  - Bug Report:
+    - Issue: Price Band Counts Do Not Reconcile
+    - Actual: On Cameras, the Luxury band returns 0 products, but all three cameras are $2499 and should appear in a band. On all products, the Luxury band includes Dell ($1099) and Dyson ($749), which fall outside $1200+. The product tags also disagree with the bands. For example, the Dyson is tagged "luxury" at $749, and the Sony is tagged "premium" at $2499.
+- [X] CS-04: Visitors cannot see publishing or editing controls.
+  - Action: Browse the site as an unauthenticated visitor and check the navigation and product and article pages.
+  - Expected: No "Publish," "New Article," "Edit," or "Delete" controls are visible.
+
+## Interaction
+- [X] IX-01: Changing the sort option updates the listing in place.
+  - Action: On a category page, open the sort menu and select a different option.
+  - Expected: The product order changes without a full page reload, and the sort control displays the newly selected option.
+- [ ] IX-02: Active filters appear as removable chips.
+  - Action: Select a price band, then click the "x" on the resulting filter chip.
+  - Expected: The chip appears when the filter is applied, and clicking "x" removes it and restores the full listing.
+  - Bug Report:
+    - Issue: Missing Filter Chip
+    - Actual: After selecting "Luxury ($1200+)", no filter chip appeared. The page DOM contains no chip element and no removable "x" control. Only the checkbox state changed.
+- [ ] IX-03: Returning from a product page keeps the listing's filters and sort.
+  - Action: On a category page, apply a price band and a sort option, click a product, then press the browser Back button.
+  - Expected: The listing reappears with the same price band and sort option still applied.
+  - Bug Report:
+    - Issue: Filter and Sort State Lost on Back Navigation
+    - Actual: With "Luxury ($1200+)" and "Price: Low to High" applied, opening ASUS ROG Swift PG32UCDM and pressing Back returned to `/products`. The Luxury checkbox was unchecked, the sort had reset to "Highest Score", and the page showed "Showing 9 products".
+
+## Content
+- [ ] CT-01: Product images on each category page match that category.
+  - Action: Open the Cameras, Monitors, and Vacuum Cleaners pages and look at the product images.
+  - Expected: Each image shows a product from the page's category (for example, a camera on the Cameras page), with no unrelated or broken images.
+  - Bug Report:
+    - Issue: Unrelated Product Images on Category Pages
+    - Actual: The Cameras page correctly shows camera images (Canon, Fujifilm, Sony). The Monitors and Vacuums pages show the same three camera cards (Canon EOS R6 Mark II, Fujifilm X-H2S, Sony A7 IV), so their images do not match those categories.
+- [X] CT-02: Product detail pages contain complete rating and verdict content.
+  - Action: Open five product detail pages.
+  - Expected: Each page shows numeric ratings for Design, Performance, and Value, and a verdict summary with real text (not blank or placeholder).
+- [X] CT-03: Pages contain no placeholder text, and spec values use consistent units.
+  - Action: Review the home page, a product page, a comparison page, and a best-of list.
+  - Expected: No text such as "Lorem ipsum," "TBD," or "placeholder" appears, and every spec row on a comparison page uses one consistent unit (for example, all weights in "g" or all in "kg").

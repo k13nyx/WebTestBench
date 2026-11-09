@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "a682bf7d-26d3-4446-ba17-9e82531990f9",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a simple blogging website where I can sign up, write posts in Markdown, edit them, and publish them to my own profile page. Other visitors should be able to open any post, read it, and leave comments under it. I also want basic actions on each post like liking it and saving it to a personal list so I can find it again easily.When authors publish articles, they can add custom tags (e.g., Technology/Life/Reading Notes), and the system will automatically extract core keywords from the content to generate intelligent tags (e.g., extracting \"Python/Frontend Development\" from code-related articles). Visitors can filter articles through the dual dimensions of custom tags and intelligent tags, support combined search by tags (e.g., \"Technology + Python\"), and save frequently-used tag groups for quick access. Authors can view the page views, like counts, and comment counts of articles under each tag in their personal backend, and generate tag popularity analysis reports.\n\n# Output (Markdown)\n",
+    "duration_ms": 39979,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2798,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8192,
+      "output_tokens": 3481,
+      "output_tokens_details": {
+        "thinking_tokens": 1869
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "asap",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 3523,
+        "outputTokens": 3493,
+        "cacheReadInputTokens": 9216,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.109548,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1870,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 685,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 14428,
+      "AssistantMessage": {
+        "total_count": 218,
+        "ThinkingBlock": 65,
+        "TextBlock": 67,
+        "ToolUseBlock": 86
+      },
+      "UserMessage": {
+        "total_count": 86,
+        "ToolResultBlock": 86
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "fcc8d1dd-9340-4b7c-8a7b-56a63248ace6",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a simple blogging website where I can sign up, write posts in Markdown, edit them, and publish them to my own profile page. Other visitors should be able to open any post, read it, and leave comments under it. I also want basic actions on each post like liking it and saving it to a personal list so I can find it again easily.When authors publish articles, they can add custom tags (e.g., Technology/Life/Reading Notes), and the system will automatically extract core keywords from the content to generate intelligent tags (e.g., extracting \"Python/Frontend Development\" from code-related articles). Visitors can filter articles through the dual dimensions of custom tags and intelligent tags, support combined search by tags (e.g., \"Technology + Python\"), and save frequently-used tag groups for quick access. Authors can view the page views, like counts, and comment counts of articles under each tag in their personal backend, and generate tag popularity analysis reports.\n\n## Application URL\nhttp://localhost:6043/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n> **Testing data note:** Use the application's default data (pre-existing posts, tags, comments) wherever possible. Only one new account registration is required to test the sign-up flow; all author-side tests use this account. Visitor-side tests can rely on default published posts.\n\n## Functionality\n- [ ] FT-01: New user can sign up for an account\n  - Action: Open the \"Sign Up\" page, fill in username, email, and password, and click the \"Sign Up\" button.\n  - Expected: Account is created, user is logged in and redirected to their own (empty) profile page; logging out and back in with the same credentials succeeds.\n\n- [ ] FT-02: Author can write a post in Markdown and publish it to their profile page\n  - Action: While logged in, click \"New Post\", enter a title and Markdown body (e.g., `# Heading`, `**bold**`, fenced code block), add a custom tag \"Technology\", and click \"Publish\".\n  - Expected: Post is saved and appears in the author's profile page post list with its title, custom tag, and publish date.\n\n- [ ] FT-03: Author can edit a published post and changes persist\n  - Action: Open one of the author's own published posts, click \"Edit\", modify the title and body text, and click \"Save\".\n  - Expected: Post detail page shows the updated title and content; the profile page post list also reflects the new title.\n\n- [ ] FT-04: Visitor can open and read any published post\n  - Action: While logged out, browse the post list, open a default published post by clicking its title.\n  - Expected: The post's full content is displayed on a dedicated post page, including author name and publish date.\n\n- [ ] FT-05: Visitor can leave a comment under a post\n  - Action: On a post page, type a comment into the comment input box and click \"Submit Comment\".\n  - Expected: The comment appears in the post's comment list showing the commenter's name, comment text, and timestamp.\n\n- [ ] FT-06: Visitor can like a post\n  - Action: On a post page, click the \"Like\" button and note the count before and after.\n  - Expected: The like count increments by exactly 1.\n\n- [ ] FT-07: Visitor can save a post to a personal list and find it again\n  - Action: While logged in, click the \"Save\" (bookmark) icon on a post, then navigate to the \"My Saved Posts\" list page.\n  - Expected: The saved post appears in the personal saved list with its title, and clicking it opens the original post.\n\n- [ ] FT-08: System automatically generates intelligent tags from post content\n  - Action: Publish a post whose body contains Python code (e.g., a fenced ` ```python ` block with `def`/`print`), with no manually added intelligent tags, then open the published post.\n  - Expected: The post displays system-generated intelligent tags such as \"Python\" derived from the code content, shown separately from custom tags.\n\n- [ ] FT-09: Filtering by combined custom + intelligent tags works\n  - Action: On the post list, select the custom tag \"Technology\" and the intelligent tag \"Python\" together and apply the filter.\n  - Expected: Only posts carrying BOTH tags are listed (e.g., \"Technology + Python\"); posts with only one of the tags are excluded.\n\n- [ ] FT-10: User can save a frequently-used tag group and reapply it\n  - Action: Apply a tag combination (e.g., \"Technology\" + \"Python\"), click \"Save This Tag Group\" and name it; then clear filters and reapply the saved group from the saved-groups list.\n  - Expected: The named tag group appears in the saved-groups list, and clicking it re-applies the exact same combined filter results without re-selecting tags.\n\n- [ ] FT-11: Author backend shows per-tag views, likes, and comment counts\n  - Action: Log in as the author, open the personal dashboard/analytics backend, and locate the per-tag statistics table.\n  - Expected: Each tag used by the author's posts shows the aggregated page views, like counts, and comment counts for the posts under that tag.\n\n- [ ] FT-12: Author can generate a tag popularity analysis report\n  - Action: In the author dashboard, click \"Generate Tag Popularity Report\".\n  - Expected: A report is produced that ranks/compares tags by their statistics (views, likes, comments), and the numbers shown match the per-tag statistics in the dashboard.\n\n## Constraint\n- [ ] CS-01: Post cannot be published with empty required fields\n  - Action: In the \"New Post\" editor, leave the title (or body) empty and click \"Publish\".\n  - Expected: The post is NOT created; a validation message such as \"Title is required\" is shown next to the empty field.\n\n- [ ] CS-02: Author cannot edit posts owned by another author\n  - Action: While logged in, open a post published by a different author.\n  - Expected: No \"Edit\" button is shown on the post page; navigating directly to that post's edit URL is denied with an access-denied message.\n\n- [ ] CS-03: Liking a post twice does not inflate the count\n  - Action: While logged in, click the \"Like\" button on the same post twice in a row and observe the count.\n  - Expected: The second click removes the user's like (count returns to the original value) rather than incrementing it again.\n\n## Interaction\n- [ ] IX-01: Success toast appears after a post is published\n  - Action: Publish a valid post from the editor.\n  - Expected: A success toast/notification (e.g., \"Post published successfully\") appears near the publish button and auto-dismisses, then the user is taken to the published post or profile page.\n\n- [ ] IX-02: Like button state and count update instantly without page reload\n  - Action: Click the \"Like\" (heart) button on a post and observe the button and count.\n  - Expected: The heart icon immediately switches to its filled/active state and the count updates in place, with no full page reload required.\n\n## Content\n- [ ] CT-01: Markdown content is rendered as formatted rich text\n  - Action: Open a post whose body contains Markdown (`# heading`, `**bold**`, a fenced code block, a list) from the default data.\n  - Expected: The post page shows a rendered heading, bold text, a syntax-styled code block, and bulleted list — not the raw Markdown syntax characters.\n\n- [ ] CT-02: Intelligent tags are relevant to the post content\n  - Action: Inspect the intelligent tags shown on several default posts (e.g., a code-heavy article and a non-technical article).\n  - Expected: Each post's intelligent tags are keywords actually reflected in its content (e.g., \"Python\"/\"Frontend Development\" only on code-related articles), not random or identical tags across unrelated posts.\n\n- [ ] CT-03: Custom tags and intelligent tags are visually distinguished and correctly labeled\n  - Action: Open a post that has both author-added custom tags (e.g., \"Technology\", \"Life\", \"Reading Notes\") and system intelligent tags; also inspect the tag filter UI.\n  - Expected: The two tag types are displayed with distinct labels/visual styling (e.g., \"Custom\" vs \"Intelligent\" sections or colors) on both the post page and the tag filter panel, with no tag miscategorized.\n```\n\n# Output\n",
+    "duration_ms": 563092,
+    "is_error": false,
+    "num_turns": 87,
+    "token_usage": {
+      "input_tokens": 83036,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 5476352,
+      "output_tokens": 49945,
+      "output_tokens_details": {
+        "thinking_tokens": 45578
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 84981,
+        "outputTokens": 49992,
+        "cacheReadInputTokens": 5477632,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 4.413521,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 45616,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

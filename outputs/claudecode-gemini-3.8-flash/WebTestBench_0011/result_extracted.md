@@ -1,0 +1,102 @@
+# Test Result
+
+## Functionality
+- [ ] FT-01: Record a one-off income or expense transaction
+  - Action: Click "Add Transaction", enter an amount, select type "Income", choose recurrence "One-off", assign Category "Sales", Project "Website Redesign", Payment Method "Bank Transfer", set Status to "Paid", and click "Save".
+  - Expected: The transaction is saved and appears in the transactions list with all assigned attributes.
+  - Bug Report:
+    - Issue: Missing Form Field Options
+    - Actual: The modal's select dropdowns do not offer the specified options: Category lacks "Sales" (only "Client Services", "Product Sales", "Consulting", "Subscriptions" exist for Income), Project lacks "Website Redesign" (only predefined projects exist: "Marketing Campaigns", "Operations", "Client: TechCorp", "Client: RetailMax", "Product Development", "General"), and Payment Method lacks "Bank Transfer" (only "Business Checking", "Business Credit Card", "PayPal", "Stripe", "Wire Transfer" exist). Custom values cannot be entered.
+- [X] FT-02: Record a recurring expense transaction
+  - Action: Click "Add Transaction", enter an amount, select type "Expense", choose recurrence "Recurring" (Monthly), assign Category "Software", Payment Method "Credit Card", set Status to "Expected", and click "Save".
+  - Expected: The transaction is registered as a recurring item and scheduled into the future cash flow schedule.
+- [ ] FT-03: Filter transactions by status, category, and project
+  - Action: In the filter panel, select Status "Pending", Category "Operations", and Project "Internal".
+  - Expected: The transaction table displays only transactions that match all three selected filter criteria.
+  - Bug Report:
+    - Issue: Non-existent Filter Options
+    - Actual: The Category filter popover does not contain "Operations" (Operations is configured as a Project, not a Category), and the Project filter popover does not contain "Internal". Consequently, transactions cannot be filtered by these specified criteria.
+- [ ] FT-04: Sort transactions by date and amount
+  - Action: Click the "Amount" column header once, then click it a second time.
+  - Expected: First click sorts transactions in ascending order of amount; second click sorts transactions in descending order.
+  - Bug Report:
+    - Issue: Missing Table Column Headers
+    - Actual: Transactions are displayed as a list of card components without table headers; no clickable "Amount" column header exists. Sorting is only available through a separate dropdown select (which defaults to descending when Amount is chosen) and a separate sort direction toggle button.
+- [ ] FT-05: Create and save a custom view for a business area
+  - Action: Apply filters for Project "Marketing", click "Save View", enter the name "Marketing Overview", and click "Confirm".
+  - Expected: The view is saved and listed under the custom views menu.
+  - Bug Report:
+    - Issue: Missing In-line Save View Action
+    - Actual: There is no "Save View" button in the filter panel to save active filters, nor a "Confirm" dialog. Custom views can only be created by navigating to a separate "/views" page via the sidebar.
+- [X] FT-06: Switch between custom views to update summaries
+  - Action: Select "Marketing Overview" from the custom views dropdown, then switch to "Operations".
+  - Expected: The dashboard summary metrics and transaction list update immediately to reflect only the selected view's scope.
+- [ ] FT-07: View future cash balance forecast
+  - Action: Navigate to the "Forecast" tab and select a projection period of "Next 30 Days".
+  - Expected: The forecast displays projected cash balances calculated from scheduled recurring transactions and pending/expected payments.
+  - Bug Report:
+    - Issue: Missing Projection Period Selector
+    - Actual: The Forecast tab displays a fixed "3-Month Forecast" with no dropdown, button, or control to select a projection period of "Next 30 Days".
+
+## Constraint
+- [ ] CS-01: Prevent saving a transaction with empty required fields
+  - Action: Click "Add Transaction", leave the "Amount" and "Category" fields blank, and click "Save".
+  - Expected: The form is not submitted, and validation error messages appear under "Amount" and "Category".
+  - Bug Report:
+    - Issue: Missing Validation Error Messages
+    - Actual: No validation error messages appear in the DOM under "Amount" or "Category". The Category field is unvalidated, and Amount relies solely on native HTML5 browser tooltips rather than inline validation error messages.
+- [ ] CS-02: Restrict transaction amount to positive numeric values
+  - Action: Enter "-150" into the "Amount" field of the transaction form and click "Save".
+  - Expected: The input is rejected with an error message stating "Amount must be greater than zero".
+  - Bug Report:
+    - Issue: Incorrect Validation and Missing Error Message
+    - Actual: The input is not rejected with "Amount must be greater than zero"; it uses native HTML5 `min="0"` which allows 0 and displays the browser default message "Value must be greater than or equal to 0." rather than the specified error message.
+- [ ] CS-03: Prevent saving duplicate custom view names
+  - Action: Click "Save View", enter an already existing view name (e.g., "Marketing Overview"), and click "Confirm".
+  - Expected: The view is not saved, and an error message "A view with this name already exists" is displayed.
+  - Bug Report:
+    - Issue: Lack of Duplicate Name Validation
+    - Actual: Entering an existing view name ("Marketing Overview") creates a duplicate custom view in the sidebar without validation or rejection, and no error message "A view with this name already exists" is displayed.
+
+## Interaction
+- [ ] IX-01: Display success toast notification upon transaction creation
+  - Action: Fill out all required fields in the "Add Transaction" modal and click "Save".
+  - Expected: The modal closes and a temporary success toast notification stating "Transaction recorded successfully" appears.
+  - Bug Report:
+    - Issue: Missing Toast Notification
+    - Actual: The modal closes after submission, but no success toast notification stating "Transaction recorded successfully" appears.
+- [ ] IX-02: Display tooltip details on historical cash flow chart hover
+  - Action: Hover the cursor over any data point on the historical cash flow chart.
+  - Expected: A tooltip appears showing the date, total inflow, total outflow, and net balance for that period.
+  - Bug Report:
+    - Issue: Incomplete Tooltip Details
+    - Actual: Hovering over data points displays a tooltip showing the date, Income (inflow), and Expenses (outflow), but it omits the net balance for that period.
+- [ ] IX-03: Quick status change directly from transaction table
+  - Action: Click the status badge of a transaction marked "Pending" and select "Paid" from the inline dropdown.
+  - Expected: The badge updates to "Paid" with corresponding style/color change without requiring a full page refresh.
+  - Bug Report:
+    - Issue: Static Status Badge
+    - Actual: The status badge is a non-interactive badge element with no click event or dropdown menu; clicking it does not open an inline dropdown to change status.
+- [ ] IX-04: Prompt confirmation when deleting a custom view
+  - Action: Click the "Delete" icon next to a saved custom view.
+  - Expected: A confirmation dialog opens asking "Are you sure you want to delete this view?" before deletion occurs.
+  - Bug Report:
+    - Issue: Missing Deletion Confirmation Dialog
+    - Actual: Clicking the delete (X) icon immediately deletes the custom view without prompting a confirmation dialog asking "Are you sure you want to delete this view?".
+
+## Content
+- [ ] CT-01: Dashboard summary KPI cards display accurate totals
+  - Action: Review the top dashboard cards (Current Balance, Total Income, Total Expenses, Net Cash Flow).
+  - Expected: Each card displays formatted currency values that match the calculated sums of the currently visible transactions.
+  - Bug Report:
+    - Issue: Mismatched Dashboard KPI Card
+    - Actual: The dashboard top summary displays cards for Total Income ($91,600), Total Expenses ($72,300), Net Cash Flow (+$19,300), and Pending ($40,800); there is no "Current Balance" card on the dashboard.
+- [X] CT-02: Historical cash flow chart displays distinct income and expense series
+  - Action: View the historical cash flow chart area.
+  - Expected: The chart displays clearly labeled axes, time intervals (e.g., Month/Week), and distinct visual indicators/colors for Income vs. Expense series.
+- [ ] CT-03: Forecast chart visually distinguishes projected data from actual data
+  - Action: Inspect the forecast visualization timeline.
+  - Expected: Projected balances and upcoming expected items are visually differentiated (e.g., dashed lines or "Projected" label) from settled historical data.
+  - Bug Report:
+    - Issue: Lack of Visual Distinction Between Projected and Historical Data
+    - Actual: On the Cash Flow Overview timeline, projected data (Jan–Mar) and historical data (Jul–Dec) are connected and rendered using identical continuous solid area fills with no visual separation (such as dashed lines or a projected marker), while the Forecast tab chart shows only projected bars without historical data.

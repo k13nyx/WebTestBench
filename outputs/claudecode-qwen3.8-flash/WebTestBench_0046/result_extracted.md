@@ -1,0 +1,109 @@
+# Test Result
+
+## Functionality
+- [ ] FT-01: User can create a new top-level topic page
+  - Action: Use the "New Page" (or equivalent) control, enter a title, save.
+  - Expected: The page is created and its detail view opens showing the entered content.
+  - Bug Report:
+    - Issue: Unresponsive Button / Missing creation workflow
+    - Actual: The only "New Page" control is the "+" icon button beside the "PAGES" sidebar header. Clicking it (via Playwright click, native DOM click, verified twice) produces no dialog, no form, and no new tree entry. React props inspection confirms the button has **no onClick handler** and is not inside any `<form>` — it is a dead control. The app contains exactly one `<input>` (the global search box); there is no title field anywhere, so no page can be created.
+- [ ] FT-02: User can create a nested subpage under an existing page
+  - Action: From an existing default topic page, use its "Add subpage" control to create a child page.
+  - Expected: The child page is created and appears nested one level below the parent in the navigation tree.
+  - Bug Report:
+    - Issue: Missing Element
+    - Actual: No "Add subpage" control exists anywhere. Tree nodes contain only an expand/collapse chevron (verified in DOM and on synthetic hover; no hidden actions). A full-button inventory (17 buttons incl. main panel) found zero controls matching new/add/create; page detail views (e.g. Philosophy with its Subpages panel) offer no add button.
+- [ ] FT-03: User can create a bidirectional link between two pages
+  - Action: On page A, add a link to page B.
+  - Expected: Page A lists page B as linked, and page B lists page A as linked back without a second manual step.
+  - Bug Report:
+    - Issue: Missing Element
+    - Actual: No link-creation UI exists. "Linked From" / body inline links are rendered read-only; no button, input, or editable (contenteditable/textarea) control for adding a link was found on any page (`inputs:1, textareas:0, editables:0, selects:0`). Existing seeded pairs do show bidirectionally, but the action "add a link to page B" cannot be performed.
+- [ ] FT-04: User can create a citation relationship with a note
+  - Action: On page A, add a citation to page B and enter a citation note (e.g. "builds on definition in B").
+  - Expected: Page A shows B under "Cites" and page B shows A under "Cited by", with the note visible.
+  - Bug Report:
+    - Issue: Missing Element
+    - Actual: The "Cites"/"Cited By" panels display data but provide no add-citation control or note input anywhere in the DOM; citation creation is impossible. (The expected display behavior itself works for seeded citations — see CT-02 — but the create action fails.)
+- [X] FT-05: Opening a page displays content, tags, cites, and cited-by
+  - Action: Open any default page that has tags and citations.
+  - Expected: The page shows its body content, its tag list, a "Cites" panel, and a "Cited by" panel.
+  - Verified: Gettier Problems shows body ("In 1963, Edmund Gettier published…"), tags (knowledge, counterexample, justification), "Cites" panel (Epistemology "Challenges classical JTB definition"), and "Cited By" panel (The Knowledge Definition Debate "Responds to Gettier's challenge").
+- [X] FT-06: Search by title returns matching pages
+  - Action: Type part of an existing page's title into the search box.
+  - Expected: Results list includes the matching page and excludes non-matching pages.
+  - Verified: Query "Gettier" → "3 results": Gettier Problems (title match) plus Epistemology and The Knowledge Definition Debate, which genuinely reference "Gettier" in their body/links/citation notes (consistent with the combined pages/tags/citations search); non-referencing pages (Philosophy, Metaphysics, Scientific Method, etc.) are excluded.
+- [X] FT-07: Filter by tag returns all pages carrying that tag
+  - Action: Apply a tag filter using one of the default tags.
+  - Expected: Only pages tagged with that tag are listed; untagged pages are hidden.
+  - Verified: Clicking sidebar tag "knowledge" → "3 results" listing exactly Epistemology, Gettier Problems, The Knowledge Definition Debate (the only pages whose headers carry that tag); all other pages hidden from the results list.
+- [ ] FT-08: Search by citation note text
+  - Action: Search using a distinctive phrase that appears only in a citation note.
+  - Expected: The result includes the page pair involved in that citation, not just pages whose body text matches.
+  - Bug Report:
+    - Issue: Incomplete Search Results
+    - Actual: Query "Central ongoing debate" (the note on the citation The Knowledge Definition Debate → Epistemology) returns **1 result** — only "The Knowledge Definition Debate"; the cited page Epistemology is missing. Reproduced with "Challenges classical JTB definition" (Gettier Problems → Epistemology): returns only "Gettier Problems". Search matches only the citing (note-owning) page, not the page pair.
+- [X] FT-09: Hierarchical navigation reaches deep subpages
+  - Action: Starting from the root navigation, drill down through parent → child → grandchild of a default topic.
+  - Expected: Each intermediate level is reachable in ≤2 clicks and the leaf subpage opens correctly.
+  - Verified: Philosophy (root, 1 click) → Epistemology (child, 1 click) → Gettier Problems (grandchild, 1 click); each opened correctly with matching h1 and body; all three levels visible in the expanded tree.
+- [X] FT-10: User can follow a chain of links/citations to related pages
+  - Action: From a page, click a linked page, then from that page click a "Cited by" entry, continuing 2–3 hops.
+  - Expected: Each hop navigates to the referenced page with no dead ends or broken references in the default data.
+  - Verified: Gettier Problems → (Cites) Epistemology → (Cited By) The Knowledge Definition Debate → (Cites) Gettier Problems. All 3 hops navigated to real pages with correct content; every panel entry resolved to an existing page (no dead ends).
+
+## Constraint
+- [ ] CS-01: A page cannot be saved with an empty title
+  - Action: Attempt to create a page leaving the title field blank.
+  - Expected: Save is blocked and a validation message about the required title is shown; no new page appears in the tree.
+  - Bug Report:
+    - Issue: Missing Validation / Missing creation flow
+    - Actual: No page-creation form or title field exists (only the dead "+" button; app contains a single search input), so there is no save action and no validation message to be shown — the constraint cannot be enforced because the feature it guards is absent.
+- [ ] CS-02: Duplicate links between the same page pair are prevented
+  - Action: On page A, add a link to page B when an A↔B link already exists.
+  - Expected: The link is not listed twice; at most one entry appears in each direction.
+  - Bug Report:
+    - Issue: Feature absent — constraint unverifiable
+    - Actual: No link-creation UI exists (FT-03), so the add-duplicate action cannot be attempted and duplicate prevention cannot be demonstrated.
+- [ ] CS-03: A page cannot link to or cite itself
+  - Action: Attempt to add page A as a link target / citation target on page A.
+  - Expected: The action is rejected or A is absent from the selectable target list.
+  - Bug Report:
+    - Issue: Feature absent — constraint unverifiable
+    - Actual: No target selector, link/citation picker, or creation form exists anywhere; self-linking prevention is untestable and no protection mechanism is present.
+- [ ] CS-04: Removing a citation clears it from both panels
+  - Action: Delete an existing citation A→B.
+  - Expected: B no longer appears under "Cites" on A, and A no longer appears under "Cited by" on B.
+  - Bug Report:
+    - Issue: Missing Element
+    - Actual: Citation entries in "Cites"/"Cited By" panels are navigation buttons only — no delete/remove control (no X icon, no context menu, no edit mode) exists, so a citation cannot be deleted and dual-panel cleanup cannot be verified.
+
+## Interaction
+- [X] IX-01: Tree nodes expand and collapse to reveal or hide subpages
+  - Action: Click the expand toggle on a parent node that has subpages, then click it again.
+  - Expected: Children appear indented under the parent, then are hidden; parent and sibling positions are unchanged.
+  - Verified: Clicking Philosophy's chevron hid all 6 descendants (only Philosophy + sibling Scientific Method remained, Scientific Method node unchanged); second click restored the full nested list (Epistemology → Gettier/Rationalism/KDD, Metaphysics, Philosophy of Mind) in the original order and indentation; the active page (Gettier Problems) view was unaffected.
+- [X] IX-02: Clicking a tag chip on a page filters to that tag
+  - Action: Click one of the tag chips displayed on an open page.
+  - Expected: The browser shows the filtered page list for that tag with the tag filter visibly active.
+  - Verified: With Gettier Problems open, clicking its "counterexample" header chip switched the sidebar to a results panel showing "1 results" → Gettier Problems, with the active "Clear filters" control indicating the tag filter state.
+- [ ] IX-03: Inline link/citation references are clickable targets
+  - Action: Click a page name shown in the "Linked", "Cites", or "Cited by" panel.
+  - Expected: The app navigates to that page (not a static text label), and the breadcrumb reflects the new page's location.
+  - Bug Report:
+    - Issue: Missing Element (breadcrumb)
+    - Actual: Navigation works — clicking the "Cites" entry Epistemology on Gettier Problems correctly opened the Epistemology page. However, no breadcrumb is rendered anywhere (no `nav`/breadcrumb element; the page header shows only title, dates, and tags), so the page's hierarchical location (Philosophy › Epistemology) is not reflected after navigation.
+    
+## Content
+- [X] CT-01: Default knowledge base is populated with hierarchical, tagged, cross-cited content
+  - Action: Open the app home / navigation tree without creating anything.
+  - Expected: Pre-existing topic pages exist that include at least one multi-level parent→child nesting, tags, and at least one citation relationship.
+  - Verified: Fresh load showed 8 seeded pages with 3-level nesting (Philosophy → Epistemology → Gettier Problems/Rationalism vs Empiricism/The Knowledge Definition Debate), 20 sidebar tags, per-page tag sets, and multiple citation pairs (Gettier ↔ KDD, Epistemology ↔ Scientific Method).
+- [X] CT-02: Citation entries display their note text and direction correctly
+  - Action: Inspect the "Cites" and "Cited by" panels on a default page with citations.
+  - Expected: Each entry shows the related page's actual title plus its citation note; "Cites" = outgoing, "Cited by" = incoming (not swapped).
+  - Verified: Gettier Problems → Cites: "Epistemology — Challenges classical JTB definition" (outgoing, matches Gettier's own citation) and Cited By: "The Knowledge Definition Debate — Responds to Gettier's challenge" (incoming, matches KDD's own Cites entry). Titles and quoted notes are consistent on both ends; direction is correct.
+- [X] CT-03: No placeholder or lorem-ipsum content remains
+  - Action: Scan page bodies, tags, navigation labels, and citation notes across several default pages.
+  - Expected: All text is real knowledge-management content in a consistent style; no "TODO", "Lorem ipsum", "undefined", or empty title/link entries.
+  - Verified: Scanned all 8 default pages (bodies, panels, citation notes): regex for lorem/ipsum/TODO/undefined/null/[object/placeholder/tbd found zero matches; zero empty-text buttons/entries; all content is coherent philosophy/science knowledge-base text in a consistent style.

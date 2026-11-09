@@ -1,0 +1,137 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "b13d78c6-e788-4182-a8cf-3ce250ee565c",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a budgeting webpage where I can define several financial goals and monthly budgets, then log expenses in different currencies and assign each expense to a category. I’d like to choose a primary currency and have all summaries shown in that currency, with simple charts that show how my spending compares to my budget by category and over time. I should be able to filter my expense list by date range, category, and goal so I can focus on specific parts of my spending.\n\n# Output (Markdown)\n",
+    "duration_ms": 28938,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 1084,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8920,
+      "output_tokens": 3330,
+      "output_tokens_details": {
+        "thinking_tokens": 2117
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 2831,
+        "outputTokens": 7023,
+        "cacheReadInputTokens": 8920,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.19419000000000003,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 5798,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 10,
+      "AssistantMessage": {
+        "total_count": 3,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 107,
+      "AssistantMessage": {
+        "total_count": 245,
+        "ThinkingBlock": 41,
+        "ToolUseBlock": 101,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 102,
+        "ToolResultBlock": 101,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": false,
+    "defect_detection": false
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "61df606d-14dc-4746-a68c-286d52ddae67",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a budgeting webpage where I can define several financial goals and monthly budgets, then log expenses in different currencies and assign each expense to a category. I’d like to choose a primary currency and have all summaries shown in that currency, with simple charts that show how my spending compares to my budget by category and over time. I should be able to filter my expense list by date range, category, and goal so I can focus on specific parts of my spending.\n\n## Application URL\nhttp://localhost:6032/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Create a new financial goal\n  - Action: Navigate to the Financial Goals section, enter a goal name, target amount, and target completion date, then click \"Save Goal\".\n  - Expected: The new goal appears in the active goals list with its name, target amount, and progress indicators.\n- [ ] FT-02: Define a monthly category budget\n  - Action: In the Monthly Budgets section, select an existing category from the dropdown, enter a budget limit amount, and click \"Set Budget\".\n  - Expected: The monthly budget is saved and displayed under the corresponding category with the specified limit.\n- [ ] FT-03: Log an expense with a non-primary currency and assign a category and goal\n  - Action: Fill out the expense form with an amount, select a non-primary currency (e.g., \"EUR\"), choose a category, select an associated financial goal, and click \"Add Expense\".\n  - Expected: The expense is saved and listed in the expense table with its original currency amount, assigned category, and linked goal.\n- [ ] FT-04: Switch primary currency and convert summaries\n  - Action: Change the primary currency dropdown setting (e.g., from \"USD\" to \"GBP\").\n  - Expected: All summary metrics, budget limits, and expense totals automatically recalculate and display converted values in GBP.\n- [ ] FT-05: Filter expense list by date range\n  - Action: In the expense filter controls, set a start date and end date covering a past week, then click \"Apply Filter\".\n  - Expected: The expense list updates to display only transactions with dates falling within the selected start and end dates.\n- [ ] FT-06: Filter expense list by category\n  - Action: Select a specific category (e.g., \"Dining Out\") from the expense category filter dropdown.\n  - Expected: The expense list displays only transactions assigned to \"Dining Out\".\n- [ ] FT-07: Filter expense list by financial goal\n  - Action: Select a specific goal (e.g., \"Emergency Fund\") from the goal filter dropdown.\n  - Expected: The expense list updates to display only transactions linked to \"Emergency Fund\".\n\n## Constraint\n- [ ] CS-01: Prevent logging an expense with missing required fields\n  - Action: Leave the amount and category fields blank in the expense form and click \"Add Expense\".\n  - Expected: The form is not submitted, and required field error messages are displayed beneath the empty inputs.\n- [ ] CS-02: Prevent non-positive values for expense amounts and budgets\n  - Action: Enter \"0\" or \"-25\" into the expense amount or budget limit input and attempt to save.\n  - Expected: The submission is blocked, and an error message states that the amount must be greater than zero.\n- [ ] CS-03: Restrict invalid date range selection in expense filters\n  - Action: Select a filter start date that is later than the selected end date and click \"Apply Filter\".\n  - Expected: The filter action is blocked, and an error message indicates the start date must precede or equal the end date.\n- [ ] CS-04: Prevent duplicate budget creation for the same category and month\n  - Action: Attempt to add a new budget for a category that already has an assigned budget for the current month.\n  - Expected: The system blocks creation of a duplicate entry and prompts the user to edit the existing category budget instead.\n\n## Interaction\n- [ ] IX-01: Real-time update of spending vs. budget chart upon adding an expense\n  - Action: Add a new expense under a budgeted category and observe the \"Spending vs. Budget by Category\" chart.\n  - Expected: The corresponding category bar or gauge dynamically increases its spent value without requiring a full page refresh.\n- [ ] IX-02: Tooltip details on spending over time chart\n  - Action: Hover the mouse cursor over a data point or bar on the \"Spending Over Time\" chart.\n  - Expected: A tooltip appears showing the specific date/period and total expenditure converted to the primary currency.\n- [ ] IX-03: Reset active filters\n  - Action: Apply category, goal, and date range filters, then click the \"Reset Filters\" button.\n  - Expected: All filter selectors return to their default all/unfiltered states, and the full default expense list is restored.\n\n## Content\n- [ ] CT-01: Primary currency denomination across all summary cards\n  - Action: Inspect the \"Total Budget\", \"Total Spent\", and \"Remaining Balance\" overview cards.\n  - Expected: Every summary value displays the currency symbol or ISO code matching the selected primary currency.\n- [ ] CT-02: Spending vs. Budget by Category chart data representation\n  - Action: View the \"Spending vs. Budget by Category\" chart.\n  - Expected: Each budgeted category is clearly labeled, displaying both the allocated budget limit and current spent amount side-by-side or as a ratio.\n- [ ] CT-03: Spending Over Time chart axes and trend line\n  - Action: View the \"Spending Over Time\" chart.\n  - Expected: The horizontal axis displays chronological time intervals (e.g., days/months) and the vertical axis displays monetary amounts in the primary currency.\n- [ ] CT-04: Multi-currency expense item display\n  - Action: Locate a foreign-currency transaction in the expense list.\n  - Expected: The row displays the transaction's original amount with its currency code alongside the converted equivalent in the primary currency.\n```\n\n# Output\n",
+    "duration_ms": 948835,
+    "is_error": false,
+    "num_turns": 103,
+    "token_usage": {
+      "input_tokens": 560716,
+      "cache_creation_input_tokens": 9037,
+      "cache_read_input_tokens": 7238448,
+      "output_tokens": 33438,
+      "output_tokens_details": {
+        "thinking_tokens": 25675
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 711079,
+        "outputTokens": 44953,
+        "cacheReadInputTokens": 7248142,
+        "cacheCreationInputTokens": 18731,
+        "webSearchRequests": 0,
+        "costUSD": 8.420359749999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 31266,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

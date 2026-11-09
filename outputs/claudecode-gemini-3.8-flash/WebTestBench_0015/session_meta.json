@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "4d6d2287-1738-4b40-a5c7-1bf9d73db46d",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a polling webpage where registered users can create detailed polls with a question, description, multiple choices, an optional voting deadline, and a mode that chooses between anonymous voting or requiring voters to sign in. Poll creators should be able to share a link so others can vote, see visual results like bar-style breakdowns that update as votes are cast, and manage their polls by closing them early, reopening them, or switching them to read-only results. Voters should be able to see live results after they vote, and I want a dashboard where I can browse, search, and sort my polls by title, creation date, and status.\n\n# Output (Markdown)\n",
+    "duration_ms": 35280,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 1118,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8920,
+      "output_tokens": 4953,
+      "output_tokens_details": {
+        "thinking_tokens": 3818
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "provisioned",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 2899,
+        "outputTokens": 6707,
+        "cacheReadInputTokens": 8920,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.18663,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 5560,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 14,
+      "AssistantMessage": {
+        "total_count": 3,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 77,
+      "AssistantMessage": {
+        "total_count": 327,
+        "ThinkingBlock": 51,
+        "ToolUseBlock": 137,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 137,
+        "ToolResultBlock": 137
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": false,
+    "defect_detection": false
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "bed11d86-1f45-495a-a397-714b47c6edff",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a polling webpage where registered users can create detailed polls with a question, description, multiple choices, an optional voting deadline, and a mode that chooses between anonymous voting or requiring voters to sign in. Poll creators should be able to share a link so others can vote, see visual results like bar-style breakdowns that update as votes are cast, and manage their polls by closing them early, reopening them, or switching them to read-only results. Voters should be able to see live results after they vote, and I want a dashboard where I can browse, search, and sort my polls by title, creation date, and status.\n\n## Application URL\nhttp://localhost:6015/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Create a poll with complete details\n  - Action: Fill in Question, Description, at least two Choice fields, select a Voting Deadline, choose \"Anonymous\" mode, and click the \"Create Poll\" button.\n  - Expected: Poll is successfully created and the creator is redirected to the poll overview page.\n- [ ] FT-02: Cast a vote on an anonymous poll\n  - Action: Open an active anonymous poll link as an unauthenticated user, select an option, and click \"Submit Vote\".\n  - Expected: Vote is accepted and recorded without prompting for login.\n- [ ] FT-03: Cast a vote on a sign-in required poll\n  - Action: Log in to a registered voter account, open a poll configured with \"Require Sign-In\", select an option, and click \"Submit Vote\".\n  - Expected: Vote is accepted and successfully recorded under the authenticated account.\n- [ ] FT-04: Display post-vote results to voter\n  - Action: Submit a valid vote on an active poll.\n  - Expected: The view immediately transitions to display the visual results breakdown.\n- [ ] FT-05: Share poll link\n  - Action: On the poll detail page, click the \"Share\" button to copy the poll URL.\n  - Expected: The direct voting link is copied to the system clipboard.\n- [ ] FT-06: Close an active poll early\n  - Action: As the poll creator, navigate to poll management and click \"Close Poll\".\n  - Expected: Poll status changes to \"Closed\" and further voting is stopped.\n- [ ] FT-07: Reopen a closed poll\n  - Action: As the poll creator, open a closed poll and click \"Reopen Poll\".\n  - Expected: Poll status reverts to \"Active\" and voting is re-enabled.\n- [ ] FT-08: Switch poll to read-only results mode\n  - Action: As the poll creator, select the \"Set to Read-Only\" option in poll management.\n  - Expected: Poll status updates to \"Read-Only\" and voting inputs are removed while results remain visible.\n- [ ] FT-09: Search polls by title on dashboard\n  - Action: Type an existing poll title into the dashboard \"Search\" bar and press Enter.\n  - Expected: Dashboard list filters to display only polls with matching titles.\n- [ ] FT-10: Sort polls on dashboard\n  - Action: Select \"Title\", \"Creation Date\", and \"Status\" sequentially from the dashboard \"Sort By\" dropdown.\n  - Expected: Dashboard list reorders accurately based on each selected sorting criterion.\n\n## Constraint\n- [ ] CS-01: Validate mandatory poll creation fields\n  - Action: Leave the Question field empty, provide only one choice, and click \"Create Poll\".\n  - Expected: Form submission is blocked and validation error messages indicate required fields and the two-choice minimum.\n- [ ] CS-02: Prevent voting on closed or expired polls\n  - Action: Open a poll link where the status is \"Closed\" or the deadline timestamp is in the past.\n  - Expected: Choice selection and \"Submit Vote\" button are disabled, and a notice indicates voting has ended.\n- [ ] CS-03: Block unauthenticated voting on sign-in required polls\n  - Action: Open a poll configured with \"Require Sign-In\" mode while logged out.\n  - Expected: Voting is blocked and a prompt redirecting to the sign-in page is displayed.\n- [ ] CS-04: Prevent voting on read-only polls\n  - Action: Access the public link of a poll marked as \"Read-Only\".\n  - Expected: Voting controls are absent or disabled, preventing any new vote submission.\n\n## Interaction\n- [ ] IX-01: Dynamically add and remove poll choices\n  - Action: In the poll creator form, click \"+ Add Choice\", enter text, and then click the \"Delete\" icon next to an added choice.\n  - Expected: A new choice input field is appended dynamically, and clicking \"Delete\" removes that specific field immediately.\n- [ ] IX-02: Provide feedback upon copying share link\n  - Action: Click the \"Share\" or \"Copy Link\" button on a poll page.\n  - Expected: A confirmation toast or tooltip with text \"Link copied to clipboard\" appears temporarily.\n- [ ] IX-03: Real-time update of visual results\n  - Action: Keep the visual results page open while casting a vote from a separate browser session.\n  - Expected: The bar graphs and vote tally figures update in real time without a manual page refresh.\n\n## Content\n- [ ] CT-01: Display visual bar-style results breakdown\n  - Action: View the results section of a poll with cast votes.\n  - Expected: Each choice shows a proportional horizontal bar, exact vote count, and percentage share of total votes.\n- [ ] CT-02: Display complete poll metadata on dashboard\n  - Action: View the creator dashboard poll list.\n  - Expected: Each entry displays the poll title, creation date, and current status badge (\"Active\", \"Closed\", or \"Read-Only\").\n```\n\n# Output\n",
+    "duration_ms": 1080636,
+    "is_error": false,
+    "num_turns": 138,
+    "token_usage": {
+      "input_tokens": 673270,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8147212,
+      "output_tokens": 27087,
+      "output_tokens_details": {
+        "thinking_tokens": 18093
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 676070,
+        "outputTokens": 27855,
+        "cacheReadInputTokens": 8147212,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 8.150331,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 18848,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

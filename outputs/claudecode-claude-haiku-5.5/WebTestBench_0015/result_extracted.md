@@ -1,0 +1,99 @@
+# Test Result
+
+## Functionality
+- [X] FT-01: Registered user can create a poll with a question, description, and multiple choices.
+  - Action: Sign in, open the create-poll form, enter question "Best lunch spot?", description "Pick one option", choices "Pizza", "Sushi", "Tacos", select Anonymous mode, and submit.
+  - Expected: The poll is saved and its page shows the question, description, and all three choices in the entered order.
+- [ ] FT-02: Creator can share a poll link that lets others vote.
+  - Action: On the poll page, click the share/copy-link control, then open the copied link in a private window without signing in.
+  - Expected: The poll loads and the choices are selectable and votable (Anonymous mode).
+  - Bug Report:
+    - Issue: Shared Link Not Found
+    - Actual: Copy shows "Link copied to clipboard!" for `http://localhost:6015/poll/poll-1794231960683`. Opening that link in a fresh page load or a new tab shows "Poll Not Found: This poll may have been deleted or the link is incorrect." A private window was not available, so I used a new tab in the same browser.
+- [X] FT-03: Voter's submitted vote is recorded and results appear immediately.
+  - Action: Select "Sushi" on an open poll and click the vote button.
+  - Expected: The vote is accepted and a bar-style breakdown appears showing vote counts and percentages for every choice.
+- [ ] FT-04: Creator can close a poll early and then reopen it.
+  - Action: On an open poll you created, click "Close Poll", then click "Reopen Poll".
+  - Expected: Status changes to Closed after the first click and back to Open after the second; voting is blocked only while Closed.
+  - Bug Report:
+    - Issue: Control and Status Label Mismatch
+    - Actual: The creator controls are labeled "Open", "Close", and "Read-only"; there are no "Close Poll" or "Reopen Poll" buttons. Clicking "Close" changes the badge to "closed" and blocks voting ("This poll is closed and no longer accepting votes."). Clicking "Open" restores voting, but the badge reads "active", not "Open". The toggle behavior works; the labels do not match.
+- [ ] FT-05: Creator can switch a poll to read-only results.
+  - Action: On a poll you created, select the "Read-only results" option.
+  - Expected: The voting controls disappear, results remain visible, and the status shows Read-only.
+  - Bug Report:
+    - Issue: Status Label Mismatch
+    - Actual: After clicking "Read-only", the voting controls are gone and results remain visible with the note "Results are visible but voting is disabled." The status badge reads "readonly", not "Read-only", and the control is labeled "Read-only" rather than "Read-only results".
+- [X] FT-06: Dashboard lists the signed-in user's polls with title, creation date, and status.
+  - Action: Sign in and open the Dashboard.
+  - Expected: Only polls created by this user are listed, each showing its title, creation date, and status.
+- [X] FT-07: Dashboard search filters polls by title.
+  - Action: Type a distinctive part of an existing poll's title into the search box.
+  - Expected: Only polls whose titles contain the typed text remain listed; clearing the box restores the full list.
+- [ ] FT-08: Dashboard sorting orders polls by title, creation date, and status.
+  - Action: Choose "Title (A–Z)", then "Created (newest first)", then "Status" from the sort control.
+  - Expected: The list reorders correctly for each option (titles alphabetical; dates newest first; grouped by status).
+  - Bug Report:
+    - Issue: Missing Status Sort Option
+    - Actual: The sort control offers "Newest first", "Oldest first", "Title A-Z", and "Most votes". There is no "Status" option. "Title A-Z" sorted alphabetically (Best lunch spot?, Closed Poll Alpha, Zebra Survey), and "Newest first" put the most recent poll first.
+
+## Constraint
+- [ ] CS-01: Poll cannot be created without a question and at least two choices.
+  - Action: Open the create-poll form, leave the question empty and enter only one choice, then submit.
+  - Expected: Submission is blocked, error messages name the missing question and the minimum of two choices, and no poll is created.
+  - Bug Report:
+    - Issue: Missing Validation Messages
+    - Actual: With an empty question and one choice, the "Create Poll" button stays disabled, so submission is blocked. No error text naming the missing question or the two-choice minimum appears, and no poll is created.
+- [ ] CS-02: Voting deadline must be a future date and time.
+  - Action: In the create-poll form, set the deadline to yesterday's date and submit.
+  - Expected: Submission is rejected with a message that the deadline must be in the future.
+  - Bug Report:
+    - Issue: Silent Rejection of Past Deadline
+    - Actual: With a valid question and two choices and a deadline of 2026-11-08 10:00 (yesterday), submit did nothing visible. The page stayed on /create, no toast or error appeared, and no poll was created. The required "deadline must be in the future" message is missing.
+- [X] CS-03: In sign-in-required mode, anonymous visitors cannot vote.
+  - Action: Open an existing sign-in-required poll in a private window without signing in and attempt to vote.
+  - Expected: The vote is not accepted and the page prompts the visitor to sign in; results are not changed.
+- [ ] CS-04: A registered user can vote only once per poll.
+  - Action: Sign in, vote on a poll, then attempt to vote again on the same poll.
+  - Expected: The second vote is blocked with the message "You have already voted," and the vote count does not increase.
+  - Bug Report:
+    - Issue: Missing Already-Voted Feedback
+    - Actual: After one vote on "Best lunch spot?", the choice buttons and Submit Vote are replaced by results, so no second-vote control exists to attempt. The message "You have already voted" never appears. Because no retry control exists, the second attempt could not be exercised as written.
+- [ ] CS-05: Closed, read-only, or deadline-expired polls reject new votes.
+  - Action: Open one closed poll, one read-only poll, and one poll whose deadline has passed; check the voting controls on each.
+  - Expected: No voting controls are active on any of them; the status shows Closed, Read-only, or Expired respectively.
+  - Bug Report:
+    - Issue: Status Label Mismatch (Read-only)
+    - Actual: No voting controls are active on any of the three. Closed poll shows "closed" with "This poll is closed and no longer accepting votes." Read-only poll shows "readonly", not "Read-only". Expired seeded poll shows "Expired Dec 31" with "This poll has expired and is no longer accepting votes." Only the read-only label deviates.
+
+## Interaction
+- [ ] IX-01: Bar results update live when other votes are cast, without reloading.
+  - Action: Open an open poll in two windows, vote in one window, and watch the other window without refreshing.
+  - Expected: The bar lengths, vote counts, and percentages in the second window update to reflect the new vote.
+  - Bug Report:
+    - Issue: Second Window Cannot Load Poll
+    - Actual: The user-created poll opens in the originating tab, but a second tab on the same link shows "Poll Not Found." The live update could not be observed. The seeded polls are expired, so they could not serve as open-poll test data.
+- [ ] IX-02: Closing, reopening, or switching to read-only shows feedback and updates the control label.
+  - Action: On a poll you created, click "Close Poll," then "Reopen Poll," then choose read-only.
+  - Expected: Each action shows a confirmation message ("Poll closed," "Poll reopened," "Poll set to read-only"), and the action button label changes to match the next available action.
+  - Bug Report:
+    - Issue: Feedback Text and Control Label Mismatch
+    - Actual: Close shows "Poll has been closed." Open shows "Poll is now active and accepting votes." Read-only shows "Poll is now in read-only mode." The expected messages are not shown word for word. Control labels stay "Open", "Close", and "Read-only" and do not change to the next available action.
+- [ ] IX-03: After voting, choice selection locks and a confirmation appears.
+  - Action: Vote on an open poll, then try clicking a different choice.
+  - Expected: A "Vote recorded" confirmation appears, and the choices can no longer be changed.
+  - Bug Report:
+    - Issue: Confirmation Text Mismatch
+    - Actual: After voting, the choice buttons are removed and only results remain, so the choice cannot be changed. The confirmation toast reads "Your vote has been recorded!", not "Vote recorded."
+
+## Content
+- [X] CT-01: Poll page text matches the poll's saved question, description, and choices exactly.
+  - Action: Open an existing poll and compare its displayed question, description, and choice labels with the values shown in its edit view or creation record.
+  - Expected: All text matches exactly, with no truncation, placeholder text, or missing choices.
+- [X] CT-02: Result percentages match vote counts.
+  - Action: Open a poll with at least three votes and note each choice's count and percentage.
+  - Expected: Each percentage equals that choice's count divided by the total votes (rounded), and the percentages total 100%.
+- [X] CT-03: Dashboard status labels and creation dates are accurate.
+  - Action: Compare the status and creation date shown for three of your polls on the Dashboard with each poll's detail page.
+  - Expected: Status and creation date match on both views for every poll checked.

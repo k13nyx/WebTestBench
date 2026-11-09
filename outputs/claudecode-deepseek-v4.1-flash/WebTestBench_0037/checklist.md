@@ -1,0 +1,69 @@
+# Test Checklist
+
+## Functionality
+- [ ] FT-01: Search box returns adoptable pets matching the entered term
+  - Action: Type a pet name/keyword (e.g., "Labrador") in the search field and submit.
+  - Expected: Results list shows only pets matching the term; previously shown non-matching pets are removed.
+- [ ] FT-02: User can filter results by species
+  - Action: Select a species option (e.g., "Dog") in the species filter.
+  - Expected: Results list updates to show only pets of the selected species.
+- [ ] FT-03: User can filter results by age range
+  - Action: Set/select an age range (e.g., "1–3 years") in the age filter.
+  - Expected: Results list shows only pets whose listed age falls within the selected range.
+- [ ] FT-04: User can filter results by size
+  - Action: Select a size option (e.g., "Small") in the size filter.
+  - Expected: Results list shows only pets matching the selected size.
+- [ ] FT-05: User can filter by good with kids and good with other pets
+  - Action: Select "Good with kids" and separately "Good with other pets".
+  - Expected: Results list narrows to only pets tagged as good with kids / good with other pets respectively.
+- [ ] FT-06: Multiple filters apply together
+  - Action: Apply species + age range + size simultaneously.
+  - Expected: Results satisfy ALL selected criteria at once (not just the last one applied).
+- [ ] FT-07: Results list shows matching pets from multiple shelters
+  - Action: Run a broad search that matches pets from different shelters.
+  - Expected: Result cards list pets from more than one shelter, each card showing pet name, photo, and shelter name.
+- [ ] FT-08: User can sort results by relevance or time listed
+  - Action: Choose "Sort by: Relevance" then "Sort by: Newest/Time listed".
+  - Expected: Order changes accordingly — relevance keeps best matches first; time listed shows most recently listed first.
+- [ ] FT-09: User can open a detailed pet profile with photos and description
+  - Action: Click a pet in the results list.
+  - Expected: A detail page opens showing at least one pet photo and a written description for that specific pet.
+- [ ] FT-10: User can save a pet to a favorites list
+  - Action: Click "Save"/"Favorite" on a pet, then open the favorites list.
+  - Expected: The pet appears in the favorites list and is viewable there.
+- [ ] FT-11: User can send an adoption inquiry from the pet's page
+  - Action: On a pet's profile page, fill the inquiry form and click "Send Inquiry".
+  - Expected: Form submits successfully and a confirmation is shown.
+
+## Constraint
+- [ ] CS-01: No-match search/filter combination shows an empty state
+  - Action: Apply filters that match no pets (e.g., species + size with zero overlap).
+  - Expected: A clear "no pets found" message is shown; no unrelated or stale pets remain listed.
+- [ ] CS-02: Inquiry form blocks submission with missing required fields
+  - Action: Click "Send Inquiry" with required fields (e.g., name, email, message) empty.
+  - Expected: Form is not submitted; each missing required field shows a validation error.
+- [ ] CS-03: Inquiry is tied to the specific pet being viewed
+  - Action: Open Pet A, submit an inquiry, then open Pet B's page.
+  - Expected: The submitted inquiry references Pet A (not the wrong pet); Pet B's form is blank/unrelated.
+- [ ] CS-04: Favorites list does not create duplicates for the same pet
+  - Action: Save the same pet twice (from list and/or detail page).
+  - Expected: The pet appears only once in the favorites list.
+
+## Interaction
+- [ ] IX-01: Confirmation is shown after a successful inquiry submission
+  - Action: Submit a valid adoption inquiry form.
+  - Expected: A success message/toast (e.g., "Your inquiry has been sent") is displayed to the user.
+- [ ] IX-02: Favorite toggle reflects saved/unsaved state
+  - Action: Click the favorite control on a pet, then click it again.
+  - Expected: Icon/label switches to a visible "saved" state on first click and back to "unsaved" on second click, consistent with the favorites list.
+
+## Content
+- [ ] CT-01: Pet photos are relevant to the pet and its species
+  - Action: Open several pet profiles across different species.
+  - Expected: Each profile's main photo depicts a real animal of the stated species/breed (no placeholders, unrelated, or broken images).
+- [ ] CT-02: Each pet profile contains a specific, present description
+  - Action: Open multiple pet profiles.
+  - Expected: Every profile has a written description with pet-specific details (not empty, not generic filler).
+- [ ] CT-03: Shelter origin is identified on each pet
+  - Action: Review pet cards and profiles.
+  - Expected: Each pet displays its source shelter name so the user can confirm listings come from multiple shelters.

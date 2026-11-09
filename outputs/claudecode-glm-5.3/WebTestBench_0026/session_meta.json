@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "62ef4b52-ccc3-4b38-9942-795bd82a2bd1",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a web page for team leads to manage internal projects and staff assignment in one place. They should be able to create and edit projects with required skills, priority, and expected duration, view a searchable and filterable list of employees with their skills and availability, and then assign or reassign employees to project roles. The page should show a simple overview of which projects are fully staffed, partially staffed, or unstaffed, and allow leads to adjust assignments when availability or project needs change.\n\n# Output (Markdown)\n",
+    "duration_ms": 7948,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 10891,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 1812,
+      "output_tokens_details": {
+        "thinking_tokens": 469
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 12542,
+        "outputTokens": 1967,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.111885,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 613,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 133,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 16008,
+      "AssistantMessage": {
+        "total_count": 190,
+        "ThinkingBlock": 61,
+        "TextBlock": 58,
+        "ToolUseBlock": 71
+      },
+      "UserMessage": {
+        "total_count": 71,
+        "ToolResultBlock": 71
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "59d68f31-9182-4c51-ae37-d35b68821ee0",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a web page for team leads to manage internal projects and staff assignment in one place. They should be able to create and edit projects with required skills, priority, and expected duration, view a searchable and filterable list of employees with their skills and availability, and then assign or reassign employees to project roles. The page should show a simple overview of which projects are fully staffed, partially staffed, or unstaffed, and allow leads to adjust assignments when availability or project needs change.\n\n## Application URL\nhttp://localhost:6026/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Team lead can create a new project with all required attributes\n  - Action: Open the \"New Project\" form, enter a project name, select at least one required skill, set a priority (e.g., High/Medium/Low), enter an expected duration (e.g., 6 weeks), and submit.\n  - Expected: The project is created and appears in the project list displaying the entered name, skills, priority, and duration exactly as entered.\n\n- [ ] FT-02: Team lead can edit an existing project's details\n  - Action: Select an existing project from the list, change its priority and expected duration, and save.\n  - Expected: The project list shows the updated priority and duration for that project after saving.\n\n- [ ] FT-03: Team lead can search the employee list\n  - Action: Type the name (or partial name) of an existing employee into the employee search box.\n  - Expected: The employee list narrows to show only employees matching the search text; the matching employee is visible.\n\n- [ ] FT-04: Team lead can filter the employee list by skill and availability\n  - Action: Apply a skill filter (e.g., a skill that at least one default employee has) and an availability filter (e.g., \"Available\").\n  - Expected: Only employees with the selected skill and the selected availability status are shown; employees not matching are hidden.\n\n- [ ] FT-05: Team lead can assign an available employee to a project role\n  - Action: Open a project with an unfilled role and assign an employee who is marked available and has a matching skill.\n  - Expected: The employee is listed as the assignee for that role on the project.\n\n- [ ] FT-06: Team lead can reassign an employee from one project role to another\n  - Action: Remove (or change) an existing assignment so the employee moves from their current project role to a different unfilled role.\n  - Expected: The employee appears under the new role and no longer appears under the previous role.\n\n- [ ] FT-07: Team lead can unassign an employee from a project role\n  - Action: Remove an assigned employee from a project role.\n  - Expected: The role shows as unfilled and the employee no longer appears as assigned to that project; the employee shows as available again.\n\n- [ ] FT-08: Project overview reflects correct staffing status after each change\n  - Action: Check a project with all roles filled, one with some roles filled, and one with no roles filled.\n  - Expected: The overview labels them \"Fully Staffed\", \"Partially Staffed\", and \"Unstaffed\" respectively.\n\n## Constraint\n- [ ] CS-01: Project cannot be created with empty required fields\n  - Action: Open the \"New Project\" form and submit it with the name, required skills, priority, or duration left empty.\n  - Expected: The project is not created, is not added to the project list, and the empty fields are indicated as required.\n\n- [ ] CS-02: Employee cannot be assigned to a role while unavailable\n  - Action: Attempt to assign an employee whose availability status is not \"Available\" to an unfilled project role.\n  - Expected: The assignment is rejected and the employee is not added to the role; the system indicates the employee is unavailable.\n\n- [ ] CS-03: The same employee cannot be assigned to the same project role twice\n  - Action: Attempt to assign an employee who already fills a role on the same project to that role again (or a second slot of the same role).\n  - Expected: The duplicate assignment is rejected and the employee appears only once in the project's assignments.\n\n- [ ] CS-04: Project staffing status cannot exceed its defined roles\n  - Action: Attempt to assign more employees to a project than it has defined roles.\n  - Expected: No assignment beyond the number of defined roles is possible; the project's assignment count does not exceed its role count.\n\n- [ ] CS-05: Employee cannot hold conflicting simultaneous assignments beyond availability\n  - Action: Attempt to assign an already fully-assigned employee to an additional project role.\n  - Expected: The additional assignment is blocked and the employee's existing assignments remain unchanged.\n\n## Interaction\n- [ ] IX-01: Confirmation feedback is shown after creating or editing a project\n  - Action: Create a new project (then edit it) with valid data.\n  - Expected: A visible success message (toast/banner) confirms the project was created and then updated.\n\n- [ ] IX-02: Staffing status label updates immediately after an assignment change\n  - Action: On a \"Partially Staffed\" project, fill its last open role.\n  - Expected: The project's status label changes to \"Fully Staffed\" without requiring a page reload.\n\n- [ ] IX-03: Employee search updates results dynamically\n  - Action: Type a search term with no matches, then clear the search box.\n  - Expected: A \"no results\" indicator appears for the unmatched term, and clearing the search restores the full employee list.\n\n- [ ] IX-04: Assignment changes are reflected on the employee list\n  - Action: Assign an employee to a project role, then view the employee list.\n  - Expected: That employee's availability/status is updated (e.g., shown as assigned/busy) without a manual refresh.\n\n## Content\n- [ ] CT-01: Each employee entry shows complete, relevant details\n  - Action: Inspect every default employee in the employee list.\n  - Expected: Each entry displays the employee's name, their skills, and their current availability status; no employee entry is missing any of these.\n\n- [ ] CT-02: Each project entry shows complete, relevant details\n  - Action: Inspect every project in the project list/overview.\n  - Expected: Each project displays its name, required skills, priority, expected duration, and staffing status; no project entry is missing any of these.\n\n- [ ] CT-03: Staffing status labels match actual assignment state\n  - Action: Compare each project's staffing label against its filled vs. total roles in the default data.\n  - Expected: Projects with all roles filled are labeled \"Fully Staffed\", projects with some roles filled are labeled \"Partially Staffed\", and projects with no filled roles are labeled \"Unstaffed\" — with no mismatches.\n```\n\n# Output\n",
+    "duration_ms": 423146,
+    "is_error": false,
+    "num_turns": 72,
+    "token_usage": {
+      "input_tokens": 102812,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 4825447,
+      "output_tokens": 44475,
+      "output_tokens_details": {
+        "thinking_tokens": 37042
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 104353,
+        "outputTokens": 44526,
+        "cacheReadInputTokens": 4826791,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 4.048310499999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 37082,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

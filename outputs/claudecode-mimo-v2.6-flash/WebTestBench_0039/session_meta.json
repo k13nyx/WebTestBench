@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "b61ed11c-317b-4288-8e83-1c010373ce08",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a budgeting website where I can create a simple profile with my income sources, expense categories, and savings goals, then log individual transactions and assign them to categories. The site should show a monthly summary that compares actual spending to the budget for each category, highlight overspending, and let me filter my transaction history by date range and category so I can review my habits.\n\n# Output (Markdown)\n",
+    "duration_ms": 28893,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 11061,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2641,
+      "output_tokens_details": {
+        "thinking_tokens": 1659
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-flash": {
+        "inputTokens": 12692,
+        "outputTokens": 2704,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.13105999999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1709,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 476,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 9253,
+      "AssistantMessage": {
+        "total_count": 147,
+        "ThinkingBlock": 48,
+        "ToolUseBlock": 85,
+        "TextBlock": 14
+      },
+      "UserMessage": {
+        "total_count": 85,
+        "ToolResultBlock": 85
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "ee6673e0-ee34-48b3-85b3-43aa8147b744",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a budgeting website where I can create a simple profile with my income sources, expense categories, and savings goals, then log individual transactions and assign them to categories. The site should show a monthly summary that compares actual spending to the budget for each category, highlight overspending, and let me filter my transaction history by date range and category so I can review my habits.\n\n## Application URL\nhttp://localhost:6039/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: User can add an income source to their profile\n  - Action: Open the profile page, add an income source (e.g., \"Salary\" with amount), and save.\n  - Expected: The income source is saved and listed under the profile's income sources.\n\n- [ ] FT-02: User can add an expense category with a monthly budget\n  - Action: Add an expense category (e.g., \"Groceries\") with a monthly budget amount and save.\n  - Expected: The category appears in the expense category list showing its budget amount.\n\n- [ ] FT-03: User can add a savings goal\n  - Action: Add a savings goal (e.g., \"Emergency Fund\") with a target amount and save.\n  - Expected: The goal is saved and displayed in the savings goals section.\n\n- [ ] FT-04: User can log a transaction assigned to a category\n  - Action: Create a transaction with a date, amount (e.g., 50), and category \"Groceries\", then submit.\n  - Expected: The transaction is saved and appears in the transaction history with the entered details.\n\n- [ ] FT-05: Monthly summary compares actual spending to budget for each category\n  - Action: Open the monthly summary for the current month.\n  - Expected: Each expense category row displays its budgeted amount, actual spent amount, and the difference between them.\n\n- [ ] FT-06: Transaction history can be filtered by date range\n  - Action: Set a start date and end date in the history filters and apply.\n  - Expected: Only transactions dated within the selected range are listed.\n\n- [ ] FT-07: Transaction history can be filtered by category\n  - Action: Select a category (e.g., \"Groceries\") in the history filter and apply.\n  - Expected: Only transactions assigned to that category are listed.\n\n- [ ] FT-08: Date range and category filters work together\n  - Action: Apply a date range filter and a category filter simultaneously.\n  - Expected: Only transactions that fall within the date range AND belong to the selected category are listed.\n\n## Constraint\n- [ ] CS-01: Transaction cannot be submitted with empty required fields\n  - Action: Leave the amount and/or category field empty and attempt to submit the transaction.\n  - Expected: Submission is blocked with a validation error, and no transaction is created.\n\n- [ ] CS-02: Negative or non-numeric transaction amounts are rejected\n  - Action: Enter a negative amount (e.g., -20) or non-numeric text in the amount field and submit.\n  - Expected: A validation error is shown and the transaction is not saved.\n\n- [ ] CS-03: Date range filter rejects an invalid range\n  - Action: Set the start date later than the end date and apply the filter.\n  - Expected: A validation error is shown (or the range is corrected); the system never displays results for an impossible range.\n\n## Interaction\n- [ ] IX-01: Overspending is highlighted in the monthly summary\n  - Action: Ensure one category's actual spending exceeds its budget, then view the monthly summary.\n  - Expected: The over-budget category is visually highlighted (e.g., red indicator or \"Over budget\" label); under-budget categories are not highlighted.\n\n- [ ] IX-02: Monthly summary updates after a transaction is logged\n  - Action: Note a category's \"actual spent\" value, log a new transaction in that category, then view the monthly summary.\n  - Expected: The category's actual spent amount reflects the new transaction (increased by its amount).\n\n- [ ] IX-03: Clearing filters restores the full transaction list\n  - Action: Apply date/category filters, then clear/reset the filters.\n  - Expected: The complete, unfiltered transaction history is displayed again.\n\n## Content\n- [ ] CT-01: Transaction history entries show complete, accurate details\n  - Action: Review the transaction history list.\n  - Expected: Each entry displays its date, amount, and assigned category name, matching the values entered when logged.\n\n- [ ] CT-02: Monthly summary categories match the profile's expense categories\n  - Action: Compare the categories listed in the monthly summary with the expense categories in the profile.\n  - Expected: The same category names and budget amounts appear in both places.\n\n- [ ] CT-03: Savings goals display accurate target and progress data\n  - Action: Review the savings goals section.\n  - Expected: Each goal shows its name, target amount, and current saved amount consistent with the data entered.\n```\n\n# Output\n",
+    "duration_ms": 795614,
+    "is_error": false,
+    "num_turns": 86,
+    "token_usage": {
+      "input_tokens": 478201,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 2653472,
+      "output_tokens": 31739,
+      "output_tokens_details": {
+        "thinking_tokens": 24117
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-flash": {
+        "inputTokens": 479677,
+        "outputTokens": 31860,
+        "cacheReadInputTokens": 2654496,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 4.522133000000002,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 24223,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

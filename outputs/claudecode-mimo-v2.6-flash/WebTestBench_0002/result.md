@@ -1,0 +1,113 @@
+All testing is complete within budget. Here is the full checklist with results:
+
+# Test Result
+
+## Functionality
+- [X] FT-01: Organizer can create a new event with all required details
+  - Action: As an organizer, create an event providing title, category (concert/conference/workshop), date, location text, and at least one ticket type with price and quantity.
+  - Expected: The event is saved and appears in the event listings.
+  - Note: Created "Neon Lights Concert Gala" (concert, 2026-12-15, Grand Arena Seattle, VIP Pass $75/50 + General Admission $30/100). Toast "Event created", Total Events 3→4, card appears in organizer list and in the visitor "All Upcoming Events" listing.
+- [X] FT-02: Organizer can view and update an existing event
+  - Action: Open an existing event from the organizer's event list, change its title and ticket price, then save.
+  - Expected: The event detail page shows the updated title and ticket price after saving.
+  - Note: Edit dialog prefilled all data; title changed to "Neon Lights Concert Gala Revamped", VIP price 75→95; toast "Event updated"; visitor detail page shows updated title and $95.
+- [X] FT-03: Organizer can see the list of ticket reservations
+  - Action: Open the reservations list for an event that has reservations.
+  - Expected: A list displays reservation entries including the event name, ticket type, quantity, and customer details.
+  - Note: "View Reservations" toggles the list under the event card (event name shown as the card heading). Entries include customer name/email/phone, amount, timestamp, and "VIP Pass × 1", "General Admission × 1"; seed entries (Alice Johnson, General Admission × 2 etc.) likewise.
+- [X] FT-04: Visitor can browse all upcoming events
+  - Action: Open the events browsing page as a visitor.
+  - Expected: All upcoming events are listed, each showing title, category, date, and location.
+  - Note: The list shows only future-dated events (seed events are dated 2025 and are past relative to today, Nov 9 2026, so they correctly do not appear under "All Upcoming Events"). The two future events created were listed with title, category, date, time, and location. State is in-memory: a full page reload resets to seed data.
+- [X] FT-05: Visitor can filter events by category
+  - Action: Select the "concert" category filter on the events list.
+  - Expected: Only events with category "concert" remain in the list.
+  - Note: Clicking "Concerts" → heading changed to "1 events found"; only the Concert event remained; the Workshop event was excluded.
+- [X] FT-06: Visitor can filter events by date
+  - Action: Apply a date filter (e.g., a specific date or date range) on the events list.
+  - Expected: Only events occurring within the selected date criteria are shown.
+  - Note: Date filter set to 2026-12-25 → "1 events found", only the Dec 25 event shown; Dec 15 event excluded.
+- [X] FT-07: Visitor can search events by keyword
+  - Action: Enter a keyword matching an event title (e.g., part of a known event title) in the search box and submit.
+  - Expected: The results list shows only events whose text matches the keyword.
+  - Note: With other filters cleared, search "Neon" → "1 events found", only "Neon Lights Concert Gala Revamped"; search "Woodcraft" → only "Winter Woodcraft Workshop".
+- [X] FT-08: Visitor can open an event detail page
+  - Action: Click on an event from the browse list.
+  - Expected: A detail page opens showing the event's title, category, date, location, description, and available ticket types with prices and remaining quantities.
+  - Note: Detail page (/event/event-1794166303479) shows title, "Concert", "Tuesday, December 15, 2026" 19:30, "Grand Arena, Seattle", description, VIP Pass $95 (49 tickets available) and General Admission $30 (98 tickets available).
+- [X] FT-09: Visitor can select ticket quantities for multiple ticket types
+  - Action: On an event detail page, set quantities for two different ticket types.
+  - Expected: The selected quantities are reflected and the total price updates accordingly.
+  - Note: VIP=1 and GA=1 → "Total (2 tickets) $125" (95+30).
+- [X] FT-10: Visitor can complete checkout to reserve tickets
+  - Action: Proceed to checkout with selected tickets, fill in the checkout form (name, email, etc.), and submit.
+  - Expected: The reservation is created, an order summary/confirmation is displayed, and the reservation appears in the organizer's reservations list.
+  - Note: Checkout dialog showed Order Summary (VIP Pass ×1 $95, GA ×1 $30, Total $125); after "Confirm Reservation"/"Processing…", reservation created (Total Reservations 3→5, revenue $1,169→$1,324), confirmation toast displayed, and both reservations appear in the organizer's list under the event with full customer details.
+- [X] FT-11: Ticket quantity stock is consumed after reservation
+  - Action: Note an event's ticket quantity, reserve some tickets, then view the event detail page again.
+  - Expected: The remaining ticket quantity is reduced by the reserved amount.
+  - Note: VIP 50→49 and GA 100→99 after reserving 1 each; GA 99→98 after the second GA×1 reservation — exact reductions.
+
+## Constraint
+- [X] CS-01: Event creation requires all mandatory fields
+  - Action: Attempt to create an event leaving the title (or category, date, location) empty.
+  - Expected: The event is not created and an error message identifies the missing required field.
+  - Note: Submit with empty title/location/date kept the dialog open (Total Events unchanged = not created); fields are `required` and native validation flags the empty title with "Please fill out this field." anchored to that input.
+- [X] CS-02: Ticket types require valid price and quantity values
+  - Action: Attempt to save a ticket type with an empty, negative, or non-numeric price or quantity.
+  - Expected: The ticket type is rejected with a validation error; no invalid price/quantity is saved.
+  - Note: Price input has min=0 (quantity min=1); submitting with price −5 was blocked with validation message "Value must be greater than or equal to 0." focused on the price field; Total Events stayed 4 (nothing saved). Non-numeric input is rejected by the number input type.
+- [ ] CS-03: Cannot reserve more tickets than available quantity
+  - Action: On an event detail page, enter a quantity greater than the remaining stock for a ticket type and attempt to checkout.
+  - Expected: Checkout is blocked with an error message stating insufficient availability.
+  - Bug Report:
+    - Issue: Expected insufficient-availability error at checkout is unreachable — over-stock selection is silently clamped at the quantity stepper
+    - Actual: The stepper's increment handler is `onTicketChange(ticket.id, Math.min(maxQuantity, quantity + 1))`, so the quantity can never be set above maxQuantity through the UI; no direct quantity input exists, and during all checkout attempts no insufficient-availability error message appeared anywhere in the app. Stock is protected only by the silent client-side clamp — the required explicit "insufficient availability" error message at checkout does not exist/could not be triggered.
+- [X] CS-04: Cannot submit checkout with an incomplete form
+  - Action: Attempt to submit the checkout form with required fields (e.g., name, email) left empty or with an invalid email format.
+  - Expected: The reservation is not created and validation errors are shown on the offending fields.
+  - Note: Empty submit → blocked, reservation not created (dialog still open), native validation "Please fill out this field." on the offending field. Email "not-an-email" → blocked with focus on email field and message "Please include an '@' in the email address. 'not-an-email' is missing an '@'."
+- [ ] CS-05: Zero ticket quantity cannot be reserved
+  - Action: Proceed to checkout with all ticket quantities set to 0 (or none selected).
+  - Expected: Checkout is not allowed and a message indicates at least one ticket must be selected.
+  - Bug Report:
+    - Issue: Missing guidance message at zero quantity
+    - Actual: With all quantities at 0 the "Continue to Checkout" button and total are removed entirely (so checkout is indeed not possible), but no message such as "at least one ticket must be selected" is displayed anywhere — DOM scan for role=alert/status and any text matching "at least/select ticket/must" returned nothing, leaving the user with no explanation.
+
+## Interaction
+- [X] IX-01: Applying a filter or search updates the event list immediately
+  - Action: Change the category filter or enter a search keyword and submit.
+  - Expected: The event list refreshes to show matching events without a full page reload failure, and the active filter/search state is visibly indicated.
+  - Note: All changes applied instantly via client-side state (URL unchanged, no reload, no failed requests). Active state is visible: pressed filter button styling + "Clear filters" button appears for category/date; search text remains in the box; heading updates to "N events found".
+- [X] IX-02: Checkout total updates when ticket quantities change
+  - Action: Change a ticket quantity on the event detail or checkout page.
+  - Expected: The displayed order total recalculates immediately to reflect the new quantities.
+  - Note: 0→1 VIP showed "Total (1 tickets) $95"; +1 GA → "Total (2 tickets) $125"; +1 GA → "Total (3 tickets) $155"; decrements recalculated too ($155→$60→$30).
+- [ ] IX-03: Successful reservation shows a confirmation
+  - Action: Complete a valid checkout submission.
+  - Expected: A clear confirmation message or page is displayed showing the reserved event, ticket types, quantities, and total.
+  - Bug Report:
+    - Issue: Confirmation lacks required order details (event only, no ticket types/quantities/total)
+    - Actual: After submission the user is redirected to the events list and only a transient toast appears: "Reservation Confirmed! Your tickets for Neon Lights Concert Gala Revamped have been reserved." It shows the event name only — no ticket types, quantities, or total — and disappears within seconds (empty notification region afterward). No confirmation page or order summary is displayed after checkout completes.
+- [ ] IX-04: Navigating from browse list to detail and back preserves browsing context
+  - Action: Apply a category filter, open an event detail page, then return to the list.
+  - Expected: The user returns to the event list with the previously applied filter still active.
+  - Bug Report:
+    - Issue: Filter/search state lost when returning from detail page
+    - Actual: With "Concerts" filter and search "Neon" active, opening the event detail and clicking "Back" returned to "/" with everything reset: search box empty, date filter empty, "All Events" active (not "Concerts"), "Clear filters" gone, and both events listed ("All Upcoming Events").
+
+## Content
+- [X] CT-01: Event detail page content matches the event's entered data
+  - Action: Open the detail page of a known event.
+  - Expected: Title, category, date, location text, and every ticket type's name, price, and quantity exactly match what the organizer entered.
+  - Note: Title "Neon Lights Concert Gala Revamped", category Concert, "Tuesday, December 15, 2026" at 19:30, "Grand Arena, Seattle", description "A dazzling evening of neon lights and live music for QA testing.", VIP Pass $95 (entered 75, then updated to 95) with 50 initially available, General Admission $30 with 100 initially available — all exact matches.
+- [X] CT-02: Category values are limited to the three defined types
+  - Action: Review the category options when creating an event and the category labels shown on event listings.
+  - Expected: Only "concert", "conference", and "workshop" appear as categories, with each event displaying exactly one of them.
+  - Note: Create/Edit dialog select contains exactly: concert|Concert, conference|Conference, workshop|Workshop. All listings (organizer cards, featured, browse list) display exactly one label per event, and only the three values Concert/Conference/Workshop were ever observed.
+- [X] CT-03: Reservation list shows accurate reservation details
+  - Action: Open the organizer's reservation list after a checkout was completed.
+  - Expected: The entry shows the correct event title, ticket type, quantity, and customer information matching the submitted checkout data.
+  - Note: Under event card "Neon Lights Concert Gala Revamped": entry 1 = Maria Tester, maria.tester@example.com, 555-0199, $125, Nov 9 2026, "VIP Pass × 1" + "General Admission × 1"; entry 2 = Maria Tester, same contact details, $30, "General Admission × 1" — exactly matching the two submitted checkouts.
+
+**Summary: 21 PASS / 4 FAIL** — CS-03 (no insufficient-availability error; selection silently clamped), CS-05 (no "at least one ticket" message), IX-03 (confirmation toast lacks ticket types/quantities/total), IX-04 (filters not preserved when returning from detail).

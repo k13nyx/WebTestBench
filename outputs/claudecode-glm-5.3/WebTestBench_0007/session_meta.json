@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "ffce6594-9181-4a1c-84f8-1bb87fb93743",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a neighborhood watch webpage where local residents can sign up, create short posts about safety concerns or community events, and browse a feed of recent alerts. Users should be able to categorize their posts (for example as “safety alert,” “lost and found,” or “community event”) and filter or search the feed by category or keyword. The site should also allow users to comment on posts to share updates and mark important alerts as resolved or no longer relevant.\n\n# Output (Markdown)\n",
+    "duration_ms": 18124,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2372,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8512,
+      "output_tokens": 1933,
+      "output_tokens_details": {
+        "thinking_tokens": 678
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 2544,
+        "outputTokens": 2021,
+        "cacheReadInputTokens": 9984,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.06823699999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 754,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 86,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 940,
+      "AssistantMessage": {
+        "total_count": 88,
+        "ThinkingBlock": 29,
+        "TextBlock": 25,
+        "ToolUseBlock": 34
+      },
+      "UserMessage": {
+        "total_count": 34,
+        "ToolResultBlock": 34
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "2a985422-27fa-462f-9c5f-60bee518c760",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a neighborhood watch webpage where local residents can sign up, create short posts about safety concerns or community events, and browse a feed of recent alerts. Users should be able to categorize their posts (for example as “safety alert,” “lost and found,” or “community event”) and filter or search the feed by category or keyword. The site should also allow users to comment on posts to share updates and mark important alerts as resolved or no longer relevant.\n\n## Application URL\nhttp://localhost:6007/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: New resident can sign up for an account\n  - Action: On the signup page, fill in a valid name, email, and password and click the \"Sign Up\" button.\n  - Expected: The account is created and the user is signed in (or redirected to sign in), with no error shown.\n\n- [ ] FT-02: Registered user can sign in\n  - Action: Sign in with the credentials created during signup.\n  - Expected: The user is signed in and identified by their name/username in the page header or navigation.\n\n- [ ] FT-03: Signed-in user can create a post with a category\n  - Action: Use the post creation form to enter a short title and body (e.g., \"Suspicious van on Elm Street\"), select the category \"safety alert\", and submit.\n  - Expected: The post is created and appears in the feed with the entered title, body, and selected category.\n\n- [ ] FT-04: Feed displays recent posts from default data\n  - Action: Open the feed page without applying any filters or searches.\n  - Expected: Multiple pre-existing posts are listed, most recent first, each showing at least a title, category, and timestamp.\n\n- [ ] FT-05: User can filter the feed by category\n  - Action: Apply the category filter \"community event\" on the feed.\n  - Expected: Only posts categorized as \"community event\" are displayed; posts of other categories are hidden.\n\n- [ ] FT-06: User can search the feed by keyword\n  - Action: Type a keyword that exists in a default post's title or body (e.g., \"lost\") into the search box and submit.\n  - Expected: Only posts containing that keyword are displayed.\n\n- [ ] FT-07: User can comment on a post to share an update\n  - Action: Open any post, type a comment (e.g., \"The van was gone this morning\") into the comment box, and submit it.\n  - Expected: The comment appears attached to that post.\n\n- [ ] FT-08: User can mark an important alert as resolved\n  - Action: On an unresolved post (e.g., a safety alert), click the \"Mark as Resolved\" control.\n  - Expected: The post's status changes to resolved/no longer relevant and remains that way after reloading the page.\n\n## Constraint\n- [ ] CS-01: Signup cannot be completed with empty required fields\n  - Action: On the signup page, leave required fields (e.g., email or password) empty and click \"Sign Up\".\n  - Expected: The form is not submitted, an inline validation message indicates the missing field(s), and no account is created.\n\n- [ ] CS-02: Signup cannot reuse an already-registered email\n  - Action: Attempt to sign up with an email address that already has an account.\n  - Expected: The signup is rejected with a message indicating the email is already in use.\n\n- [ ] CS-03: Post creation cannot be completed with empty content or no category\n  - Action: In the post creation form, submit with an empty title/body, or without selecting a category.\n  - Expected: The post is not created and a message indicates which required input is missing.\n\n- [ ] CS-04: Comment cannot be submitted when empty\n  - Action: Click the comment submit button without typing anything.\n  - Expected: No comment is added to the post; a validation message or blocked submission occurs.\n\n- [ ] CS-05: Filter and search cannot return irrelevant posts\n  - Action: Apply the \"lost and found\" category filter and note the results; then clear it and search a keyword found only in a \"safety alert\" post.\n  - Expected: Each result set contains only posts matching the applied filter/search criterion, with no posts from unrelated categories or without the keyword.\n\n## Interaction\n- [ ] IX-01: Signup success is confirmed to the user\n  - Action: Complete a valid signup.\n  - Expected: A success message or welcome indication is shown (e.g., \"Account created\" toast) before navigating away from the form.\n\n- [ ] IX-02: Feed updates immediately after a new post is created\n  - Action: Create a new post, then return to the feed without reloading the page.\n  - Expected: The new post appears at the top of the feed immediately, without a manual page refresh.\n\n- [ ] IX-03: Marking a post as resolved visibly changes its appearance\n  - Action: Click \"Mark as Resolved\" on an active safety alert post.\n  - Expected: The post immediately displays a resolved indicator (e.g., a \"Resolved\" badge or dimmed styling) without a page reload.\n\n- [ ] IX-04: Applying or clearing a filter updates the feed instantly\n  - Action: Select a category filter, then clear it (e.g., choose \"All\").\n  - Expected: The feed updates to show the filtered subset, then restores the full list, without errors.\n\n## Content\n- [ ] CT-01: Each post displays its correct category label\n  - Action: Inspect several default posts in the feed and compare each post's category label against its content.\n  - Expected: Every post shows exactly one of the defined categories (\"safety alert\", \"lost and found\", or \"community event\") that matches what the post is about.\n\n- [ ] CT-02: Feed content is relevant to the neighborhood watch theme\n  - Action: Read the titles and bodies of all default posts in the feed.\n  - Expected: All posts concern safety concerns, lost and found items, or community events — no unrelated or placeholder content.\n\n- [ ] CT-03: Comments and posts display author information and timestamps\n  - Action: Inspect posts and their comments on the feed.\n  - Expected: Posts and comments show the author's name (or username) and a readable date/time; comment text is relevant to the post it belongs to.\n```\n\n# Output\n",
+    "duration_ms": 175361,
+    "is_error": false,
+    "num_turns": 35,
+    "token_usage": {
+      "input_tokens": 52792,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1341888,
+      "output_tokens": 11967,
+      "output_tokens_details": {
+        "thinking_tokens": 7461
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 54237,
+        "outputTokens": 12033,
+        "cacheReadInputTokens": 1343232,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.2436260000000003,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 7514,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

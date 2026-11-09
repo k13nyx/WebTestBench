@@ -1,0 +1,66 @@
+# Test Checklist
+
+## Functionality
+- [ ] FT-01: User can generate a random prompt from a selected category.
+  - Action: Select "Short Stories" in the category selector, then click "Generate Prompt".
+  - Expected: A prompt appears in the prompt display area, and it is a short-story prompt.
+- [ ] FT-02: Generating again replaces the displayed prompt with a new one from the same category.
+  - Action: With "Poetry" selected, click "Generate Prompt" three times.
+  - Expected: Each click shows a prompt, and the displayed prompt changes at least once across the three clicks.
+- [ ] FT-03: User can mark a prompt as a favorite.
+  - Action: Generate a prompt, then click the favorite button (star icon).
+  - Expected: The star becomes filled, and the prompt appears in the "Favorites" list.
+- [ ] FT-04: User can remove a prompt from favorites.
+  - Action: Click the filled star on a favorited prompt.
+  - Expected: The star becomes outlined, and the prompt is removed from the "Favorites" list.
+- [ ] FT-05: Viewed prompts are recorded in the history, newest first.
+  - Action: Generate three different prompts, then check the "History" panel.
+  - Expected: All three prompts are listed in the History panel, with the most recent at the top.
+- [ ] FT-06: Clicking a history entry redisplays that prompt.
+  - Action: Generate a prompt, generate another, then click the first prompt in the "History" panel.
+  - Expected: The prompt display area shows the first prompt's exact text.
+- [ ] FT-07: User can add a new category.
+  - Action: Click "Add Category", enter "Limericks", and click "Save".
+  - Expected: "Limericks" appears in the category selector, and selecting it followed by "Generate Prompt" produces a prompt.
+- [ ] FT-08: User can rename and delete a category.
+  - Action: Select "Limericks", click "Edit", change the name to "Haiku", click "Save"; then click "Delete" on "Haiku" and confirm.
+  - Expected: The selector shows "Haiku" after the rename, and "Haiku" is no longer in the selector after deletion.
+
+## Constraint
+- [ ] CS-01: Prompt generation is blocked when no category is selected.
+  - Action: On a fresh page load with no category selected, click "Generate Prompt".
+  - Expected: No prompt is displayed, and the message "Please select a category" appears (or the button is disabled).
+- [ ] CS-02: Category cannot be saved with an empty name.
+  - Action: Click "Add Category", leave the name field blank, and click "Save".
+  - Expected: The category is not created, and the message "Category name is required" appears.
+- [ ] CS-03: Duplicate category names are rejected.
+  - Action: Click "Add Category", enter "poetry" (lowercase), and click "Save".
+  - Expected: The category is not created, and the message "Category name already exists" appears.
+- [ ] CS-04: Deleting a category requires confirmation, and cancelling keeps it.
+  - Action: Click "Delete" on "Poetry", then click "Cancel" in the confirmation prompt.
+  - Expected: "Poetry" remains in the category selector with its prompts intact.
+
+## Interaction
+- [ ] IX-01: Favorite state updates immediately on click without a page reload.
+  - Action: Click the star icon on a prompt, then observe the icon without reloading.
+  - Expected: The star's fill state changes instantly, and the page URL and layout do not reload.
+- [ ] IX-02: A success message confirms a category was added.
+  - Action: Add a category named "Villains" and click "Save".
+  - Expected: A success notification reading "Category 'Villains' added" appears and disappears automatically within about 5 seconds.
+- [ ] IX-03: Editing a category opens a pre-filled input and "Cancel" reverts changes.
+  - Action: Click "Edit" on "Poetry", change the text to "Verse", then click "Cancel".
+  - Expected: The input initially shows "Poetry", and after cancelling, the selector still shows "Poetry" unchanged.
+
+## Content
+- [ ] CT-01: The category list contains exactly the five predefined categories.
+  - Action: Open the category selector and read all entries.
+  - Expected: The list shows "Short Stories", "Poetry", "Character Sketches", "Fantasy Landscapes", and "Brainstorming Topics", and nothing else.
+- [ ] CT-02: Prompts generated for each predefined category match that category's theme.
+  - Action: For each of the five categories, click "Generate Prompt" three times and read each prompt.
+  - Expected: Every prompt fits its category (e.g., Poetry prompts involve verse, rhyme, or imagery; Character Sketches prompts describe a person or character).
+- [ ] CT-03: Favorites and History entries show the correct prompt text and category label.
+  - Action: Favorite a "Fantasy Landscapes" prompt, then compare the Favorites and History entries with the prompt display area.
+  - Expected: Both lists show the same full prompt text and the label "Fantasy Landscapes".
+- [ ] CT-04: No placeholder or error text appears in any prompt or label.
+  - Action: Browse all five categories, generate prompts, and review the favorites, history, and selector.
+  - Expected: No text reads "undefined", "null", "lorem ipsum", "[object Object]", or is blank.

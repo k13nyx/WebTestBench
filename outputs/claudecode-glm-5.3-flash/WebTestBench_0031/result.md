@@ -1,0 +1,99 @@
+All tests executed. Compiling the final report.
+
+# Test Result
+
+## Functionality
+- [X] FT-01: New user registration
+  - Action: Open the page, go to the register/sign-up form, enter a unique username, password, display name, and short bio, then submit.
+  - Expected: Registration succeeds and the user is either logged in immediately or shown a login form; no error is displayed.
+  - Note: Registration succeeded ("Account created successfully!") and the user was logged in immediately into the chat interface. However, the sign-up form offers no bio field (username, display name, password, confirm password only); the bio field only exists later under Settings → Edit Profile (where a default bio "Hey there! I'm new here 👋" is pre-filled).
+- [X] FT-02: Login with registered credentials
+  - Action: On the login form, enter the credentials of a registered user and submit.
+  - Expected: The user is logged in and sees the chat interface (e.g., room list or chat view) with their display name visible.
+  - Note: Verified via demo account sarah_designs in a second browser context — login landed in the chat interface showing "Sarah Miller / @sarah_designs".
+- [X] FT-03: Send a message in a chat room
+  - Action: Log in, open any chat room, type "Hello world" in the message input, and send it.
+  - Expected: The message "Hello world" appears in the room's message list attributed to the current user's display name.
+- [X] FT-04: Send a message containing emoji
+  - Action: In a chat room, type a message containing an emoji (e.g., "Great job 🎉") and send it.
+  - Expected: The message appears in the chat with the emoji rendered correctly (as an emoji character or image, not broken text).
+- [ ] FT-05: Messages from other users appear as the conversation continues
+  - Action: Log in as User A in one browser, open the same room as User B in a second browser/session, and have User B send "Hi from B".
+  - Expected: User A's view shows "Hi from B" from User B without requiring a manual page reload.
+  - Bug Report:
+    - Issue: Messages are not shared between users/sessions (no live update and no persistence across sessions)
+    - Actual: User B (sarah_designs) sent "Hi from B" and "Attention test 123" in the General room while User A (Alpha Prime) was viewing the same room. User A's view never showed these messages — not after 30+ seconds of waiting, not with the settings dialog open or closed, and not even after a manual page reload. Conversely, User B never saw User A's messages ("Name change test"). Each session only sees its own locally-stored messages; the seeded demo messages are the only shared content.
+- [X] FT-06: Participate in multiple chat rooms
+  - Action: While logged in, join/enter a second chat room and send a message in it.
+  - Expected: The message appears in the second room, and switching back to the first room shows the first room's separate history intact.
+- [X] FT-07: Search chat history by keyword
+  - Action: In a room with existing messages, enter a keyword that exists in some messages (e.g., "deploy") into the search field and run the search.
+  - Expected: Matching messages are listed/shown, and only messages containing the keyword are returned.
+  - Note: Searching "tests" produced a "1 of 1 results" counter and only the matching message ("Just ran some tests...") was highlighted/marked as a result; non-matching messages remained in the conversation view but were not counted or marked as results.
+- [X] FT-08: Jump to a matching message from search results
+  - Action: Click on a search result for a keyword.
+  - Expected: The conversation view scrolls to (or clearly navigates to/highlights) the matching message within the chat history.
+  - Note: The matching message is clearly marked (element gains `message-highlight` + `fade-in` classes) and is in view within the scroll container.
+- [X] FT-09: Edit profile with display name and bio
+  - Action: Open the profile page, change the display name and the short bio, and save.
+  - Expected: The new display name and bio are saved and reflected in the profile view (and the new display name appears on messages the user sends afterwards).
+  - Note: Changed to "Alpha Prime" / "QA engineer. Loves clean code ☕"; saved, shown in profile, past messages re-labeled, and the next sent message was attributed to "Alpha Prime".
+- [X] FT-10: Log out
+  - Action: Click the logout button.
+  - Expected: The user is logged out and returns to the login/landing screen; accessing chat content now requires logging in again.
+
+## Constraint
+- [X] CS-01: Duplicate registration rejected
+  - Action: Attempt to register with a username that already exists (e.g., one used in FT-01).
+  - Expected: Registration is rejected with a clear error message (e.g., "username already taken") and the account is not created.
+  - Note: Exact error "Username already taken" was displayed and the app stayed on the sign-up form.
+- [X] CS-02: Login with wrong password rejected
+  - Action: Enter a registered username with an incorrect password and submit.
+  - Expected: Login fails with an error message; the user is not taken into the chat interface.
+  - Note: Exact error "Invalid password" was displayed and the app stayed on the login screen.
+- [X] CS-03: Cannot send an empty message
+  - Action: In a chat room, click send with the message input empty (or containing only spaces).
+  - Expected: No empty message is added to the chat; the input remains for typing (send is blocked or an error/validation is shown).
+  - Note: With whitespace-only input the send button is `disabled` and pressing Enter sends nothing; no empty message was added.
+- [ ] CS-04: Search with no matches handled gracefully
+  - Action: Search a room's history for a keyword that does not appear in any message (e.g., "zzzqqq").
+  - Expected: A "no results" indication is shown; no error, no unrelated messages returned.
+  - Bug Report:
+    - Issue: Missing "no results" feedback for empty search results
+    - Actual: Searching "zzzqqq" (confirmed the input retained the value) produced no "no results" indication, no "0 of 0 results" counter, and no message of any kind. The results counter/highlight from the previous search simply disappears and the UI silently reverts to the plain conversation view, giving the user no feedback that nothing matched.
+
+## Interaction
+- [X] IX-01: Theme selection changes the interface appearance
+  - Action: Open the theme chooser (which offers several themes), select a different theme, and apply it.
+  - Expected: The page's colors/visual appearance visibly change to the selected theme, and the choice persists after a page reload.
+  - Note: 4 theme swatches (indigo, emerald, rose, amber). Selecting rose switched `documentElement` class to `theme-rose`, changed `--primary` to a rose hue (346 77% 50%) visibly altering themed elements (e.g., send button tint), and the choice persisted after reload.
+- [ ] IX-02: Font style selection changes text rendering
+  - Action: Open the font style chooser, select a different font style, and apply it.
+  - Expected: Chat text and UI text visibly render in the selected font style, and the choice persists after a page reload.
+  - Bug Report:
+    - Issue: Font style selection has no visible effect on text
+    - Actual: All four styles (Clean/Modern/Friendly/Monospace) were selected in turn. The class on `<html>` correctly updates (e.g., `font-style-mono`) and the root element computes "JetBrains Mono", but the `body` and all visible text (chat messages, headers, UI labels) always compute "Inter, system-ui, sans-serif" — a body/wrapper-level font rule overrides the root class, so no visible text ever changes. (Persistence of the class itself does work across reload, but the rendered text never differs.)
+- [X] IX-03: Enter key sends message
+  - Action: Type a message in the chat input and press Enter.
+  - Expected: The message is sent and appears in the chat, and the input field is cleared.
+  - Note: Verified repeatedly ("Hello world", "Great job 🎉", "Dev room check", "Name change test") — message sent, appeared in the room, and input cleared each time.
+- [ ] IX-04: New message from another user draws attention / view follows conversation
+  - Action: With User B sending a new message while User A is scrolled up in the room (or at the bottom), observe User A's view.
+  - Expected: The new message becomes visible to User A (chat auto-scrolls to it or a "new message" indicator appears) without User A refreshing.
+  - Bug Report:
+    - Issue: No live delivery of other users' messages (no auto-scroll, no "new message" indicator)
+    - Actual: With User A scrolled to the top of the General room, User B sent "Attention test 123". After 10+ seconds User A's view showed nothing new — no message, no auto-scroll, no notification/indicator. Root cause is the same cross-user isolation bug as FT-05: other users' messages never reach another user's view at all.
+
+## Content
+- [X] CT-01: Default rooms and messages are present on first load
+  - Action: Log in with a fresh/default account and view the room list and at least one room's history.
+  - Expected: At least one chat room exists and contains pre-existing messages showing sender display names, message text, and timestamps.
+  - Note: Fresh account (tester_alpha) saw 4 seeded rooms — General, Development, Design, Random — with pre-existing messages, e.g. "Alex Chen / Dec 13, 9:00 AM / Hey everyone! 👋 Welcome to the new chat platform!".
+- [X] CT-02: Messages display sender and timestamp correctly
+  - Action: Open a chat room and inspect several messages.
+  - Expected: Each message shows the sender's display name and a readable timestamp, and content matches the chat-room context (no placeholder or irrelevant filler text).
+  - Note: e.g. Development room shows on-topic messages ("Anyone have experience with the new React 19 features?" — Alex Chen, Dec 13, 10:00 AM) with sender display names and readable timestamps.
+
+---
+
+**Summary: 21 PASS / 4 FAIL.** The critical defect is **FT-05/IX-04**: chat is not actually shared between users — messages sent by one user are visible only in their own session (stored per-browser), never delivered live or even after reload, which breaks the core premise of a multi-user chat room. Secondary issues: **CS-04** (no "no results" feedback for empty searches), **IX-02** (font style setting has no visible effect), and a minor note on **FT-01** (no bio field on the sign-up form).

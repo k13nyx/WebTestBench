@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "8f8626f8-f3f7-40ee-b8d6-f657a6a7bdd4",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a polling webpage where registered users can create detailed polls with a question, description, multiple choices, an optional voting deadline, and a mode that chooses between anonymous voting or requiring voters to sign in. Poll creators should be able to share a link so others can vote, see visual results like bar-style breakdowns that update as votes are cast, and manage their polls by closing them early, reopening them, or switching them to read-only results. Voters should be able to see live results after they vote, and I want a dashboard where I can browse, search, and sort my polls by title, creation date, and status.\n\n# Output (Markdown)\n",
+    "duration_ms": 17448,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 3146,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 7936,
+      "output_tokens": 1281,
+      "output_tokens_details": {
+        "thinking_tokens": 147
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-flash": {
+        "inputTokens": 4703,
+        "outputTokens": 1406,
+        "cacheReadInputTokens": 8032,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.062681,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 261,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 42,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 10565,
+      "AssistantMessage": {
+        "total_count": 83,
+        "ThinkingBlock": 28,
+        "TextBlock": 24,
+        "ToolUseBlock": 31
+      },
+      "UserMessage": {
+        "total_count": 31,
+        "ToolResultBlock": 31
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "54a76632-560a-433d-ac86-61c7a0935fcb",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a polling webpage where registered users can create detailed polls with a question, description, multiple choices, an optional voting deadline, and a mode that chooses between anonymous voting or requiring voters to sign in. Poll creators should be able to share a link so others can vote, see visual results like bar-style breakdowns that update as votes are cast, and manage their polls by closing them early, reopening them, or switching them to read-only results. Voters should be able to see live results after they vote, and I want a dashboard where I can browse, search, and sort my polls by title, creation date, and status.\n\n## Application URL\nhttp://localhost:6015/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Registered user can create a poll with a question, description, and multiple choices.\n  - Action: Sign in, create a new poll filling question, description, and at least 3 choices, then save.\n  - Expected: The poll is created successfully and appears as an available poll.\n- [ ] FT-02: Poll creator can set a voting deadline when creating a poll.\n  - Action: Create a poll and set a future voting deadline before saving.\n  - Expected: The poll is saved with the specified deadline visible on the poll.\n- [ ] FT-03: Poll creator can choose anonymous voting or sign-in-required voting modes.\n  - Action: Create one poll with anonymous mode and another requiring voters to sign in.\n  - Expected: Both polls are saved with their respective voting modes as selected.\n- [ ] FT-04: Creator can obtain a shareable link for a poll.\n  - Action: Open a created poll and use the share option.\n  - Expected: A shareable poll link is provided and can be opened in a new browser session to reach the voting page.\n- [ ] FT-05: Voter can cast a vote by selecting a choice and submitting.\n  - Action: Open a poll via its link, select one choice, and submit the vote.\n  - Expected: The vote is recorded and the vote count for that poll increases by 1.\n- [ ] FT-06: Voter sees live results after voting.\n  - Action: After submitting a vote, view the poll.\n  - Expected: Results are displayed showing the voter's choice and updated tallies.\n- [ ] FT-07: Results display bar-style visual breakdowns.\n  - Action: Open a poll's results view.\n  - Expected: Each choice is represented by a bar whose length corresponds proportionally to its vote share.\n- [ ] FT-08: Bar results update as votes are cast.\n  - Action: Note the bars, then cast an additional vote from another session, and re-check results.\n  - Expected: The bars and counts reflect the newly cast vote.\n- [ ] FT-09: Creator can close a poll early.\n  - Action: Open a poll's management options and close it before its deadline.\n  - Expected: Poll status changes to closed and voting is no longer accepted.\n- [ ] FT-10: Creator can reopen a closed poll.\n  - Action: Open a closed poll's management options and reopen it.\n  - Expected: Poll status returns to open and voting is accepted again.\n- [ ] FT-11: Creator can switch a poll to read-only results mode.\n  - Action: Set a poll to read-only results.\n  - Expected: The poll shows results only and no voting option is available.\n- [ ] FT-12: Dashboard lists the user's polls.\n  - Action: Open the dashboard.\n  - Expected: All polls created by the signed-in user are listed.\n- [ ] FT-13: Dashboard search filters polls by title.\n  - Action: Enter a title keyword in the dashboard search field.\n  - Expected: Only polls whose titles match the keyword are shown.\n- [ ] FT-14: Dashboard sorts polls by title, creation date, and status.\n  - Action: Apply each sort option (title, creation date, status) in both orders.\n  - Expected: The poll list reorders correctly for each sort criterion and direction.\n\n## Constraint\n- [ ] CS-01: Poll cannot be created without a question and at least two choices.\n  - Action: Attempt to save a new poll with an empty question, or with fewer than two choices.\n  - Expected: Saving is blocked and an error indicates the missing required fields.\n- [ ] CS-02: Sign-in-required polls cannot be voted on by an unauthenticated visitor.\n  - Action: Open a sign-in-required poll in a signed-out session and attempt to vote.\n  - Expected: Voting is blocked and the user is prompted to sign in.\n- [ ] CS-03: No voting on closed or read-only polls.\n  - Action: Attempt to vote on a poll that is closed or set to read-only results.\n  - Expected: No voting controls are available and submission is rejected.\n- [ ] CS-04: Voting is blocked after the deadline passes.\n  - Action: Attempt to vote on a poll whose deadline has passed.\n  - Expected: Voting is prevented and the poll is shown as ended.\n- [ ] CS-05: A voter cannot vote more than once on the same poll.\n  - Action: Submit a vote, then attempt to vote again on the same poll from the same voter session.\n  - Expected: The second vote is rejected; the poll's total count does not increase twice.\n\n## Interaction\n- [ ] IX-01: Poll management controls reflect and apply state changes immediately.\n  - Action: Use the close, reopen, and read-only controls on a poll.\n  - Expected: The displayed status label updates instantly to Closed, Open, or Read-only accordingly.\n\n## Content\n- [ ] CT-01: Poll view displays all creator-entered content accurately.\n  - Action: Open a poll created with a specific question, description, and choice texts.\n  - Expected: The question, description, and every choice text appear exactly as entered, with correct vote counts and percentages next to each bar.\n```\n\n# Output\n",
+    "duration_ms": 308575,
+    "is_error": false,
+    "num_turns": 32,
+    "token_usage": {
+      "input_tokens": 138700,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 826624,
+      "output_tokens": 43847,
+      "output_tokens_details": {
+        "thinking_tokens": 33661
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-flash": {
+        "inputTokens": 140124,
+        "outputTokens": 43937,
+        "cacheReadInputTokens": 827904,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 2.212997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 33739,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

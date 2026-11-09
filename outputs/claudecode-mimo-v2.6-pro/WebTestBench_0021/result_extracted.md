@@ -1,0 +1,114 @@
+# Test Result
+
+## Functionality
+- [X] FT-01: Customer list displays existing customer records on the admin page.
+  - Action: Open the CRM admin page and view the customer list.
+  - Expected: The list shows the default customer records with columns for name, status, and last activity.
+- [ ] FT-02: Staff can create a new customer record.
+  - Action: Click "Add Customer", fill in name "Test Collector", interest "Contemporary Painting", and save.
+  - Expected: The new customer appears in the customer list with the entered details.
+  - Bug Report:
+    - Issue: Created Record Unreachable ("Customer not found") + Missing Interest Field on Create Form
+    - Actual: The "Add New Customer" form has no interest field (only First Name, Last Name, Email, Phone, Status, Notes), so "Contemporary Painting" had to be entered into Notes. "Test Collector" was created and appeared in the list (toast "Customer created — Test Collector has been added."), but opening its record rendered "Customer not found" (/customers/cust-1794132235497) and after a page reload the customer disappeared from the list entirely — the entered details cannot be verified on any record view.
+- [ ] FT-03: Staff can update an existing customer record.
+  - Action: Open a default customer, change its interest field, and click "Save Changes".
+  - Expected: The updated value is shown in the customer detail view and persists after reload.
+  - Bug Report:
+    - Issue: Data Changes Not Persisted After Reload
+    - Actual: On Victoria Ashworth, the interest/notes value was changed to "Interested in Contemporary Painting" and "Save Changes" was clicked (toast "Customer updated — Changes have been saved successfully." and the detail view showed the new value), but after reload the Notes reverted to the original "Prefers private viewings. Interested in large-scale installations." (Note: the form has no field literally named "interest"; the editable Notes field in the Edit Customer dialog was used as its equivalent.)
+- [X] FT-04: Staff can attach a related item (e.g., artwork) to a customer record.
+  - Action: Open a customer, click "Attach Item", select an artwork from the default item list, and confirm.
+  - Expected: The artwork appears under the customer's related items list.
+- [ ] FT-05: Staff can remove an attached item from a customer record.
+  - Action: On a customer with an attached artwork, click the remove control for that item and confirm.
+  - Expected: The item no longer appears in the customer's related items list.
+  - Bug Report:
+    - Issue: Missing Remove Control for Attached Items
+    - Actual: After attaching "Urban Fragments" to Victoria Ashworth, the "Interested Artworks" item cards display only name/artist/price/status. DOM inspection of the section found no remove or delete button on any attached item (the only button in the section is "Add Artwork"), so an attached artwork cannot be removed.
+- [ ] FT-06: Staff can create a custom workflow status.
+  - Action: Open the status manager, click "Add Status", enter "Exhibition Invited", and save.
+  - Expected: The new status appears in the status list and in the status dropdown on customer records.
+  - Bug Report:
+    - Issue: Missing Feature — No Status Manager / "Add Status" Control Exists
+    - Actual: There is no status manager or "Add Status" button anywhere in the app (checked Dashboard, Customers, Artworks, Reports, Settings). Both status dropdowns (customer record and customer list filter) are fixed, read-only lists of 7 statuses (New Lead, Contacted, Interested, Negotiating, Purchased, VIP Collector, Inactive), so "Exhibition Invited" cannot be created.
+- [ ] FT-07: Staff can apply a custom status to a customer to track workflow stage.
+  - Action: Open a customer, set its status to "Exhibition Invited" (or another default custom status), and save.
+  - Expected: The customer's record shows the selected status and it persists after reload.
+  - Bug Report:
+    - Issue: Data Changes Not Persisted After Reload (+ Custom Status Unavailable)
+    - Actual: "Exhibition Invited" cannot be created (no status manager, see FT-06). Using the item's fallback, Victoria Ashworth's status was set to "Negotiating" via the record's status dropdown (toast "Status updated — Customer status changed to Negotiating." and the record showed "Negotiating"), but after page reload the status reverted to "VIP Collector" — it does not persist.
+- [ ] FT-08: Staff can filter customers by status.
+  - Action: Select status "Exhibition Invited" in the filter panel.
+  - Expected: The customer list shows only customers whose status is "Exhibition Invited".
+  - Bug Report:
+    - Issue: Required Filter Option Not Selectable (Dependent on FT-06)
+    - Actual: "Exhibition Invited" does not exist in the status filter dropdown because custom statuses cannot be created (FT-06 failed), so this filter cannot be applied as specified. Note: the status filter mechanism itself works — selecting "VIP Collector" correctly showed only Victoria Ashworth and Alexander Petrov.
+- [ ] FT-09: Staff can filter customers by attribute or behavior (e.g., interest or purchase activity).
+  - Action: Filter by interest "Contemporary Painting" (or equivalent default attribute).
+  - Expected: The list shows only customers matching that interest; the count label reflects the filtered number.
+  - Bug Report:
+    - Issue: Missing Result Count Label
+    - Actual: Attribute filtering works — searching the equivalent interest tag "contemporary-collector" shows only Victoria Ashworth. However, the customers page displays no count label at any time (verified in DOM: no "Showing X of Y" / "N customers" element exists) to reflect the filtered number, unlike the Artworks page which shows "8 artworks".
+- [X] FT-10: Staff can combine multiple filters to segment customers.
+  - Action: Apply a status filter together with an interest filter.
+  - Expected: The list shows only customers matching both criteria simultaneously.
+- [ ] FT-11: Clearing filters restores the full customer list.
+  - Action: Click "Clear Filters" after applying one or more filters.
+  - Expected: All default customers are shown again.
+  - Bug Report:
+    - Issue: Missing "Clear Filters" Control
+    - Actual: No "Clear Filters" button exists in the filter panel (verified in the DOM while filters were active — only the search box and status dropdown are present). Filters can only be cleared manually (empty the search box and reset status to "All Statuses"), after which all 8 default customers reappear; the specified one-click clear control is absent.
+- [X] FT-12: Staff can view a summary report of engagement and revenue patterns.
+  - Action: Open the reports section and select the default summary report.
+  - Expected: A report is displayed showing engagement figures and revenue totals for the listed customers.
+- [X] FT-13: Staff can configure a report (e.g., change metric or time range) and see it update.
+  - Action: Change the report's metric or date range selector to another option.
+  - Expected: The report re-renders with data matching the newly selected metric/range.
+
+## Constraint
+- [ ] CS-01: Customer cannot be created with an empty required name field.
+  - Action: Click "Add Customer", leave the name field blank, and submit.
+  - Expected: Submission is blocked and a validation error marks the name field as required; no customer is added.
+  - Bug Report:
+    - Issue: Missing Field-Level Validation Error on Required Name Field
+    - Actual: Submission is blocked and no customer is added, but the only feedback is a generic toast ("Missing required fields — Please fill in first name, last name, and email."). No validation error marks the name field itself: there is no inline error message, no error highlighting, and no aria-invalid on the input (verified in DOM); the field is only statically labeled "First Name *".
+- [ ] CS-02: A custom status cannot be created without a name.
+  - Action: In the status manager, click "Add Status" with an empty name and save.
+  - Expected: Submission is blocked with a validation error; no status is created.
+  - Bug Report:
+    - Issue: Missing Feature — Status Manager Does Not Exist
+    - Actual: The test could not be performed as specified: there is no status manager or "Add Status" control anywhere in the app (checked all five pages; both status dropdowns are fixed 7-status lists), so an empty-name status submission cannot be attempted or blocked.
+- [ ] CS-03: A duplicate status name cannot be created.
+  - Action: Create a status with a name identical to an existing default status (e.g., "Purchased").
+  - Expected: Creation is blocked with a message indicating the status name already exists.
+  - Bug Report:
+    - Issue: Missing Feature — Status Manager Does Not Exist
+    - Actual: The test could not be performed as specified: no status creation UI exists anywhere in the app (fixed, read-only status dropdowns only), so a duplicate status name cannot be entered and no duplicate-name blocking behavior exists to verify.
+- [ ] CS-04: A duplicate customer record cannot be created for the same email.
+  - Action: Create a customer using the email address of a default existing customer.
+  - Expected: Save is blocked with a message indicating the email is already in use.
+  - Bug Report:
+    - Issue: Missing Duplicate-Email Validation (Incorrect Form Submission)
+    - Actual: Creating "Dup Test" with the existing email "v.ashworth@email.com" (Victoria Ashworth's email) succeeded with toast "Customer created — Dup Test has been added."; the customer list now shows two records sharing the same email. No "email already in use" message was displayed and the save was not blocked.
+
+## Interaction
+- [X] IX-01: Saving a customer create or update shows a success confirmation.
+  - Action: Save a new or edited customer record.
+  - Expected: A success toast/notification (e.g., "Customer saved") is displayed and dismissed after a short time.
+- [ ] IX-02: Submitting an invalid form shows inline field-level error feedback.
+  - Action: Submit the Add Customer form with the name field empty.
+  - Expected: The offending field is highlighted with an inline error message next to it, and focus moves to that field.
+  - Bug Report:
+    - Issue: Missing Inline Field Error / Focus Not Moved to Offending Field
+    - Actual: Submitting with the name field empty produced only a toast ("Missing required fields — Please fill in first name, last name, and email."); the name input has no inline error message next to it, no highlight (no error styling/aria-invalid, verified in DOM), and document.activeElement remains on the "Create Customer" button instead of moving to the name field.
+- [X] IX-03: Changing a filter immediately updates the customer list without a manual refresh.
+  - Action: Select a different status in the filter panel.
+  - Expected: The list content updates in place to reflect the new filter, with no full page reload.
+
+## Content
+- [X] CT-01: Page content uses niche-domain (gallery) terminology consistent with the instruction.
+  - Action: Review labels, fields, and headings across the customer, workflow, and reports sections.
+  - Expected: Text references domain concepts such as collectors' interests, exhibition invitations, and artwork purchases; no placeholder or unrelated text is shown.
+- [X] CT-02: Report content presents engagement and revenue data relevant to the niche.
+  - Action: Open the summary report and review its metrics and labels.
+  - Expected: The report shows engagement and revenue figures derived from the default customer/related-item data, with labels matching the domain (e.g., artwork purchases).

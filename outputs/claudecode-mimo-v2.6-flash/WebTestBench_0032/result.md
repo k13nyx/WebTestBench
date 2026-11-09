@@ -1,0 +1,106 @@
+All tests are complete. Final state verified and filters restored.
+
+# Test Result
+
+## Functionality
+- [ ] FT-01: Create a financial goal with a name and target amount
+  - Action: Open the goals section, create a new goal (e.g., "Vacation Fund", target 2000) and save.
+  - Expected: The goal appears in the goals list with its name and target amount intact after reload.
+  - Bug Report:
+    - Issue: Missing Feature / No Create-Goal Control
+    - Actual: The "Financial Goals" section is read-only (3 seeded goals only). The page contains only 3 buttons total ("$ USD", "Add Expense", "Filters") — no "Add Goal"/"+" control, no goal input fields, no non-button clickable elements, and route /goals returns a 404 page. The goal dropdown in the expense form offers only the seeded goals (No goal / Summer Vacation / Emergency Fund / New Laptop), so no goal can be created.
+- [ ] FT-02: Create a monthly budget for a category
+  - Action: Open the budgets section, set a monthly amount (e.g., "Groceries" = 400) for the current month and save.
+  - Expected: The budget is saved and displayed for that category and month.
+  - Bug Report:
+    - Issue: Missing Feature / Budgets Are Not Editable
+    - Actual: "Budget Categories" only displays preset amounts ("$0.00 of $600.00" etc.). There is no input, button, dialog, or clickable card to set/change a monthly amount, and route /budgets returns a 404 page, so a budget cannot be entered or saved.
+- [X] FT-03: Log an expense in a non-primary currency and assign it to a category and goal
+  - Action: Add an expense with amount 50, currency EUR (when primary is USD), category "Groceries", a date, and an assigned goal, then save.
+  - Expected: The expense appears in the expense list showing amount, currency, category, and goal as entered.
+- [X] FT-04: Select a primary currency
+  - Action: Choose a primary currency (e.g., USD) in the currency setting.
+  - Expected: The setting is saved as the primary currency and applies to the whole page.
+- [X] FT-05: Filter the expense list by date range
+  - Action: Set a start and end date covering only part of the expense history and apply.
+  - Expected: Only expenses dated within the range remain visible in the list.
+- [X] FT-06: Filter the expense list by category
+  - Action: Select a single category filter (e.g., "Groceries") and apply.
+  - Expected: Only expenses belonging to that category are shown.
+- [X] FT-07: Filter the expense list by goal
+  - Action: Select a single goal filter and apply.
+  - Expected: Only expenses assigned to that goal are shown.
+- [X] FT-08: Combine date range, category, and goal filters
+  - Action: Apply all three filters at once with criteria that match a subset of expenses.
+  - Expected: The list shows only expenses satisfying all three conditions simultaneously.
+
+## Constraint
+- [ ] CS-01: Expense cannot be saved with missing required fields
+  - Action: Leave the amount (or category) empty and attempt to save an expense.
+  - Expected: Saving is blocked and an inline validation message identifies the missing required field; no partial expense is created.
+  - Bug Report:
+    - Issue: Generic Toast Instead of Inline Field-Level Validation
+    - Actual: Saving is blocked and no expense is created, but the only feedback is a toast notification "Missing fields / Please fill in all required fields." — it is not inline and does not identify which required field (Amount) is missing; the Amount input gets no aria-invalid/inline error text.
+- [ ] CS-02: Expense amount must be a positive number
+  - Action: Enter an amount of 0 or a negative value and attempt to save.
+  - Expected: Saving is rejected with a validation error; the expense is not added.
+  - Bug Report:
+    - Issue: Zero Amount Accepted (No Positive-Number Validation)
+    - Actual: With Amount = 0 and a valid category, clicking "Add Expense" succeeded: dialog closed, toast "Expense added — Added $0 for CS02 zero amount" appeared, and a new row "CS02 zero amount | Food & Dining | $0.00 | Nov 8, 2026" was added to the list (row count 20 → 21). No validation error was shown.
+- [ ] CS-03: Expense requires a valid currency selection
+  - Action: Attempt to save an expense without choosing a currency.
+  - Expected: Saving is blocked with a validation message prompting for a currency.
+  - Bug Report:
+    - Issue: No Currency Validation
+    - Actual: The Currency field is pre-filled with "$ USD", has no empty/placeholder option, and is not marked required ("Currency" without *). Submitting without ever touching the currency saved the expense normally — toast "Expense added — Added $10 for CS03 no currency chosen" — with no validation message prompting for a currency.
+- [ ] CS-04: Invalid date range is rejected in filters
+  - Action: Set the filter start date later than the end date and apply.
+  - Expected: The filter does not apply; an error message indicates the start date must be on or before the end date.
+  - Bug Report:
+    - Issue: Invalid Date Range Applied Silently
+    - Actual: With From = 2024-12-12 and To = 2024-11-25 (start after end), the filter was applied as-is: the expense list went to 0 rows (previous criteria still active, empty intersection) and the From/To values stayed set. No error message of any kind appeared anywhere on the page.
+
+## Interaction
+- [X] IX-01: Summaries and charts refresh after adding an expense
+  - Action: Note the current category total, add a new expense in that category, and observe the summary and chart.
+  - Expected: The category total and its chart bar/segment update to include the new expense without a manual refresh.
+- [X] IX-02: Budget-vs-spending chart displays per category
+  - Action: Navigate to the charts section with at least one budget and one expense present.
+  - Expected: A chart shows, for each category, both its budget and its actual spending, and the values match the recorded budgets/expenses.
+- [ ] IX-03: Spending-over-time chart displays correctly
+  - Action: View the time-series chart covering the dates of existing expenses.
+  - Expected: A chart plots spending across the selected time periods and reflects the expense dates and amounts entered.
+  - Bug Report:
+    - Issue: Time-Series Chart Window Does Not Cover Existing Expenses / No Period Selection
+    - Actual: The chart is hard-coded to "Spending Trend (Last 14 Days)" (Oct 28 – Nov 9, 2026) with no way to select another period, so none of the 20 pre-existing expenses (Nov 24 – Dec 12, 2024) are plotted — the line stays flat at $0 across the whole window. Only expenses dated inside the last 14 days appear (Nov 5: $54.35, Nov 8: $20.00).
+- [X] IX-04: Clearing filters restores the full expense list
+  - Action: Apply one or more filters, then reset/clear all filters.
+  - Expected: All previously hidden expenses reappear in the list.
+
+## Content
+- [X] CT-01: All summary totals are displayed in the primary currency with its symbol/code
+  - Action: With primary currency set to USD, review every summary total (category totals, grand total, chart axis/labels).
+  - Expected: Every total is labeled with the primary currency (e.g., "$" or "USD"); no summary shows a raw secondary-currency value.
+- [X] CT-02: Multi-currency expenses are converted consistently in summaries
+  - Action: Compare the summary total against the sum of logged expenses entered in different currencies.
+  - Expected: Each non-primary expense contributes an amount converted into the primary currency, and the grand total equals the sum of those converted values.
+- [ ] CT-03: Charts use correct category and period labels
+  - Action: Inspect the labels on both charts.
+  - Expected: Each chart element is labeled with the actual category name or time period it represents, with no missing, blank, or mismatched labels.
+  - Bug Report:
+    - Issue: Missing Category Names / Series Labels on Budget Chart
+    - Actual: The "Budget vs Spending" chart's category axis contains only emoji icons (🍽️ 🚗 🛍️ 🎬 💡 🏥 ✈️ 📦) instead of the category names ("Food & Dining", "Transportation", …), and there is no legend or labels identifying which bar is Budget vs Spending (chart text nodes contain only "$0–$600" and the emojis). The trend chart's date labels are correct.
+- [X] CT-04: Expense rows display complete, relevant data
+  - Action: Review any row in the expense list.
+  - Expected: The row shows the expense description/amount, its currency, its category, its date, and its assigned goal, all matching what was entered.
+
+---
+
+### Test notes (execution details)
+- **FT-03**: The app's category list is fixed (Food & Dining, Transportation, Shopping, Entertainment, Utilities, Health, Travel, Other) — there is no "Groceries" category, so Food & Dining was used; the goal assigned was "Summer Vacation" because FT-01 (goal creation) is not possible. Row rendered: `FT03 Euro groceries | Food & Dining + Summer Vacation | $54.35 / €50.00 | Nov 5, 2026`.
+- **FT-06**: Same category-name caveat — filter tested with "Food & Dining" (9 rows, all others hidden).
+- **FT-08**: Verified twice — 2024-11-25…2024-12-05 + Travel + Summer Vacation → exactly 2 rows; narrowed to 2024-11-25…2024-11-30 → exactly 1 row (Hotel deposit), proving all three conditions compose.
+- **IX-02**: Budget bars measured at $600/$400/$300/$200/$250/$150/$500/$200 (matching recorded budgets); the green actual bar for Food & Dining measures $74.35, matching the category total including the converted €50.
+- **CT-01/CT-02**: Programmatic sum of the 24 rows' primary-currency amounts = $1733.35, identical to the header "Total Spent"; EUR→USD rate ≈ 1.087 applied consistently (€50→$54.35, €12.50→$13.59, £18.50→$23.42). An orphaned `€60` node exists in the DOM but is positioned at top ≈ -20811px (far outside the viewport, not visible to users).
+
+**Summary: 13 PASS / 7 FAIL** (FT-01, FT-02, CS-01, CS-02, CS-03, CS-04, IX-03, CT-03 failed — 8 items; 12 passed).

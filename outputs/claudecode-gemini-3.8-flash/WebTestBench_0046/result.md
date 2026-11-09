@@ -1,0 +1,99 @@
+# Test Result
+
+## Functionality
+- [ ] FT-01: Create a top-level topic page
+  - Action: Click the "New Page" button, enter a title and content in the editor, and click "Save".
+  - Expected: The new topic page is created and displayed in the main content area and page list.
+  - Bug Report:
+    - Issue: Missing Feature / Unresponsive Button
+    - Actual: There is no "New Page" button, page editor, or "Save" button in the application. The "+" icon button in the sidebar header has no click handler and does not open any editor or modal.
+- [ ] FT-02: Create a nested subpage under an existing page
+  - Action: Open an existing topic page, click "Add Subpage", enter a title and content, and click "Save".
+  - Expected: The subpage is created and appears nested under the parent topic in the hierarchical navigation.
+  - Bug Report:
+    - Issue: Missing Feature
+    - Actual: No "Add Subpage" button or subpage creation functionality exists on topic pages or in the sidebar.
+- [ ] FT-03: Create a bidirectional link between pages
+  - Action: In the page editor, insert a bidirectional link referencing an existing target page and save.
+  - Expected: The link appears in the current page, and the current page automatically appears in the target page's incoming links list.
+  - Bug Report:
+    - Issue: Missing Feature
+    - Actual: No page editor or interactive editing interface exists to insert bidirectional links or edit page content.
+- [ ] FT-04: Add a citation relationship with a citation note
+  - Action: Click "Add Citation", select an existing target page, type a citation note, and click "Save Citation".
+  - Expected: The citation is saved and appears under the page's "Cites" section with the specified note.
+  - Bug Report:
+    - Issue: Missing Feature
+    - Actual: No "Add Citation" button, target page selection modal, or citation note input exists in the application.
+- [X] FT-05: Navigate using bidirectional links and citations
+  - Action: Click on a linked page title in the "Cites" or "Cited By" list of the active page.
+  - Expected: The application navigates to and displays the selected referenced page.
+- [ ] FT-06: Search pages by title
+  - Action: Enter an existing page title into the search input and press Enter.
+  - Expected: The search results list displays only the pages whose titles match the search query.
+  - Bug Report:
+    - Issue: Incorrect Search Filtering
+    - Actual: The search input executes a broad global match against page content, tags, and citation notes rather than title-only matching; entering a title like "Epistemology" returns 7 pages (including "Philosophy", "Metaphysics", "Gettier Problems", "Rationalism vs Empiricism", "Scientific Method", "The Knowledge Definition Debate") whose titles do not match the search query.
+- [X] FT-07: Filter pages by tag
+  - Action: Click on a tag name in the tag list or filter sidebar.
+  - Expected: The displayed page list updates to show only pages assigned to the selected tag.
+- [ ] FT-08: Filter or search by citation notes
+  - Action: Enter a keyword from an existing citation note into the citation search/filter field.
+  - Expected: The results list displays pages that contain or are cited with the matching citation note.
+  - Bug Report:
+    - Issue: Incomplete Search Results
+    - Actual: Entering a keyword from a citation note (e.g. "underlies" or "Challenges") only returns the citing page containing the outgoing citation note, but fails to display the target page that is cited with that citation note ("Scientific Method" or "Epistemology").
+
+## Constraint
+- [ ] CS-01: Prevent page creation with an empty title
+  - Action: Click "New Page", leave the title field blank, and click "Save".
+  - Expected: The page is not saved, and a validation error "Title cannot be empty" is displayed.
+  - Bug Report:
+    - Issue: Missing Feature
+    - Actual: Page creation is not implemented; there is no "New Page" dialog, title input, or "Title cannot be empty" validation error message.
+- [ ] CS-02: Prevent self-referencing citation
+  - Action: Open the "Add Citation" modal on a page and attempt to select the currently opened page as the citation target.
+  - Expected: The current page is disabled or excluded from the target selection list.
+  - Bug Report:
+    - Issue: Missing Feature
+    - Actual: There is no "Add Citation" modal or citation target selection list in the application.
+- [ ] CS-03: Prevent circular parent-child nesting
+  - Action: Edit a parent page's hierarchy settings and select one of its own descendant subpages as its new parent.
+  - Expected: The action is blocked, and an error message indicating invalid hierarchy or circular dependency is shown.
+  - Bug Report:
+    - Issue: Missing Feature
+    - Actual: There is no feature or settings interface to edit a page's hierarchy or change its parent page.
+- [ ] CS-04: Empty state for non-matching search or filter queries
+  - Action: Type a non-existent keyword into the search bar.
+  - Expected: The results panel displays a "No matching pages found" message and lists zero page items.
+  - Bug Report:
+    - Issue: Incorrect Empty State Message Text
+    - Actual: The results panel displays "No pages found" instead of the expected "No matching pages found" message.
+
+## Interaction
+- [X] IX-01: Expand and collapse hierarchical navigation nodes
+  - Action: Click the chevron toggle next to a parent topic in the hierarchical sidebar.
+  - Expected: The nested subpage list toggles between expanded (visible) and collapsed (hidden) states.
+- [ ] IX-02: Citation hover preview
+  - Action: Hover the mouse cursor over a citation link within a page.
+  - Expected: A popover card appears displaying a snippet of the cited page's content and its citation note.
+  - Bug Report:
+    - Issue: Missing Hover Preview Component
+    - Actual: Hovering over citation link buttons does not trigger any popover, tooltip, or preview card.
+- [ ] IX-03: Immediate update of citation backlink panel
+  - Action: Add a citation to a target page and immediately navigate to that target page.
+  - Expected: The target page's "Cited By" section reflects the newly added backlink without requiring a page refresh.
+  - Bug Report:
+    - Issue: Missing Feature
+    - Actual: Adding citations is not supported in the UI, preventing the execution and verification of immediate backlink updates.
+
+## Content
+- [X] CT-01: Page view structure and metadata display
+  - Action: Open an existing page that contains tags and citations.
+  - Expected: The view displays the page title, main content, assigned tags, a "Cites" section, and a "Cited By" section.
+- [X] CT-02: Citation details completeness
+  - Action: View the "Cites" list on a page with existing citations.
+  - Expected: Each citation item displays the referenced page title and its corresponding citation note text.
+- [X] CT-03: Visual indentation in hierarchical navigation
+  - Action: Inspect the sidebar navigation containing parent topics and nested subpages.
+  - Expected: Subpages are visually indented beneath their respective parent topics to reflect the hierarchy.

@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "af94e222-696a-4abe-b0fa-d718313b8749",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a richer event planning webpage where I can create detailed events with fields like title, date and time, location, category, and optional sections for schedule, dress code, and special instructions. For each event I can define multiple invitation options (e.g., “Dinner only,” “Drinks only,” “Full evening”) and simple preference questions (e.g., meal choice or activity preference) that guests answer when they RSVP as “Yes,” “No,” or “Maybe.” Guests should be able to see a shared event page with dynamic sections such as a simple poll for picking between a few venue or activity options, and a lightweight comment thread where guests can post short messages or questions. I should be able to change event details after invites are sent, close RSVPs or polls at any time, and view a summary that groups guests by invitation option, response, and key preferences, while keeping canceled or past events accessible in a separate area with their final RSVP and poll results.\n\n# Output (Markdown)\n",
+    "duration_ms": 17310,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 6,
+      "cache_creation_input_tokens": 3478,
+      "cache_read_input_tokens": 7984,
+      "output_tokens": 1409,
+      "output_tokens_details": {
+        "thinking_tokens": 45
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "qwen/qwen3.8-flash": {
+        "inputTokens": 371,
+        "outputTokens": 1701,
+        "cacheReadInputTokens": 9520,
+        "cacheCreationInputTokens": 3478,
+        "webSearchRequests": 0,
+        "costUSD": 0.07087750000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 320,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "qwen/qwen3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 15,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 8538,
+      "AssistantMessage": {
+        "total_count": 182,
+        "ThinkingBlock": 75,
+        "TextBlock": 33,
+        "ToolUseBlock": 74
+      },
+      "UserMessage": {
+        "total_count": 74,
+        "ToolResultBlock": 74
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "9822e926-d4bd-4087-aab7-ccec3dd44410",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a richer event planning webpage where I can create detailed events with fields like title, date and time, location, category, and optional sections for schedule, dress code, and special instructions. For each event I can define multiple invitation options (e.g., “Dinner only,” “Drinks only,” “Full evening”) and simple preference questions (e.g., meal choice or activity preference) that guests answer when they RSVP as “Yes,” “No,” or “Maybe.” Guests should be able to see a shared event page with dynamic sections such as a simple poll for picking between a few venue or activity options, and a lightweight comment thread where guests can post short messages or questions. I should be able to change event details after invites are sent, close RSVPs or polls at any time, and view a summary that groups guests by invitation option, response, and key preferences, while keeping canceled or past events accessible in a separate area with their final RSVP and poll results.\n\n## Application URL\nhttp://localhost:6014/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Create event with all core fields\n  - Action: Open the event creation form, fill in title, date & time, location, and category, then submit.\n  - Expected: Event is created and appears in the organizer's event list with all entered details shown correctly.\n\n- [ ] FT-02: Add optional sections to an event\n  - Action: While creating/editing an event, fill in the optional \"Schedule\", \"Dress code\", and \"Special instructions\" sections and save.\n  - Expected: All three sections are displayed on the shared event page with the entered content.\n\n- [ ] FT-03: Define multiple invitation options\n  - Action: Add at least two invitation options (e.g., \"Dinner only\", \"Drinks only\", \"Full evening\") to an event and save.\n  - Expected: All defined options appear on the event's invitation/RSVP interface for guests to select.\n\n- [ ] FT-04: Add preference questions to an event\n  - Action: Create a preference question (e.g., \"Meal choice\" with options Vegetarian/Non-vegetarian) attached to the event and save.\n  - Expected: The question and its answer options are rendered on the RSVP form.\n\n- [ ] FT-05: Guest submits RSVP with response and preferences\n  - Action: On the shared event page, open RSVP as \"Yes\", select an invitation option (e.g., \"Full evening\"), answer the preference question, and submit.\n  - Expected: RSVP is recorded and the guest's response, chosen invitation option, and preference answers are visible in the organizer's summary.\n\n- [ ] FT-06: RSVP \"No\" and \"Maybe\" responses\n  - Action: Submit two more RSVPs on the same event, one marked \"No\" and one \"Maybe\".\n  - Expected: Both responses are saved and listed under the correct response group in the summary.\n\n- [ ] FT-07: Guest poll voting\n  - Action: On the event page's poll (e.g., venue options \"Rooftop Bar\" vs \"Garden Hall\"), select one option and submit the vote.\n  - Expected: The vote is recorded and current tallies are displayed for each poll option.\n\n- [ ] FT-08: Comment thread posting\n  - Action: Type a short message in the event page's comment input and submit.\n  - Expected: The comment appears in the thread with the guest's name/identifier and is visible to other visitors of the page.\n\n- [ ] FT-09: Edit event details after invites are sent\n  - Action: Open an existing event with RSVPs already recorded, change the date/time and location, and save.\n  - Expected: The shared event page immediately shows the updated details; existing RSVPs, poll votes, and comments are preserved.\n\n- [ ] FT-10: View grouped RSVP summary\n  - Action: Open the organizer summary view for an event with multiple guests.\n  - Expected: Guests are grouped by invitation option, by response (\"Yes\"/\"No\"/\"Maybe\"), and key preferences (e.g., meal counts) are displayed per group.\n\n- [ ] FT-11: Archive area for canceled/past events\n  - Action: Cancel an event (or open one whose date has passed) and navigate to the separate \"past/canceled events\" area.\n  - Expected: The event appears there with its final RSVP counts and final poll results still readable.\n\n## Constraint\n- [ ] CS-01: Required fields enforced on event creation\n  - Action: Attempt to submit the event form with the title or date/time left empty.\n  - Expected: Submission is blocked and a validation message names the missing required field.\n\n- [ ] CS-02: Close RSVPs\n  - Action: As organizer, close RSVPs for an open event, then try to submit a new RSVP or change an existing one as a guest.\n  - Expected: RSVP form is no longer submittable; the page shows RSVPs are closed, and no new/changed responses are recorded.\n\n- [ ] CS-03: Close poll\n  - Action: As organizer, close the event poll, then try to cast or change a vote as a guest.\n  - Expected: Voting controls are disabled/hidden, results remain visible, and no new votes are accepted.\n\n- [ ] CS-04: One RSVP per guest, one vote per poll option set\n  - Action: Attempt to submit a second RSVP for the same guest, and separately try to select two options in the single-choice poll.\n  - Expected: Duplicate RSVP is rejected or replaces the prior one (never creates two entries); poll allows only one selection at a time.\n\n## Interaction\n- [ ] IX-01: Confirmation feedback after RSVP submission\n  - Action: Submit an RSVP on the shared event page.\n  - Expected: A success confirmation (toast/message) appears and the guest's recorded response is shown; error feedback appears if submission fails.\n\n- [ ] IX-02: Live poll result update after voting\n  - Action: Cast a vote, then reload/revisit the event page as another guest.\n  - Expected: Poll tallies reflect the new vote (bar/counts updated), not the stale pre-vote state.\n\n- [ ] IX-03: Hidden optional sections when empty\n  - Action: View a shared event page for an event where schedule, dress code, and special instructions were left blank.\n  - Expected: Those sections are not displayed (no empty headings/placeholders) on the guest-facing page.\n\n## Content\n- [ ] CT-01: Event details render consistently across views\n  - Action: Compare the event's title, date/time, location, and category shown on the shared event page, the RSVP form, and the organizer summary/archive view.\n  - Expected: All views show identical, correctly formatted values matching what the organizer entered (no placeholder text like \"Lorem ipsum\" or broken/undefined values).\n\n- [ ] CT-02: Category options present and relevant\n  - Action: Open the category selector on the event form.\n  - Expected: A list of event-planning-relevant categories (e.g., Party, Dinner, Wedding, Meeting) is offered, and the chosen category is shown with the event.\n```\n\n# Output\n",
+    "duration_ms": 400008,
+    "is_error": false,
+    "num_turns": 75,
+    "token_usage": {
+      "input_tokens": 3948231,
+      "cache_creation_input_tokens": 9245,
+      "cache_read_input_tokens": 665145,
+      "output_tokens": 37382,
+      "output_tokens_details": {
+        "thinking_tokens": 27192
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "qwen/qwen3.8-flash": {
+        "inputTokens": 3950095,
+        "outputTokens": 37764,
+        "cacheReadInputTokens": 666425,
+        "cacheCreationInputTokens": 9245,
+        "webSearchRequests": 0,
+        "costUSD": 21.085568749999997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 27562,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "qwen/qwen3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

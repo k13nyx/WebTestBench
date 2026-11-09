@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "51c8b051-5d3e-43e4-959c-15a1315e5db8",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a website where companies can set up simple virtual booths for an online trade show. Each booth should have a page where they can add their logo, a short company description, a list of products or services, and some images or videos. Attendees should be able to browse all booths, click into a booth to read more, and send a basic text message to the booth to ask questions.\n\n# Output (Markdown)\n",
+    "duration_ms": 2264,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 11284,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 925,
+      "output_tokens_details": {
+        "thinking_tokens": 97
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "deepseek/deepseek-v4.1-flash": {
+        "inputTokens": 12943,
+        "outputTokens": 1068,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.09141500000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 229,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "deepseek/deepseek-v4.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 30,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 1046,
+      "AssistantMessage": {
+        "total_count": 59,
+        "ThinkingBlock": 22,
+        "TextBlock": 11,
+        "ToolUseBlock": 26
+      },
+      "UserMessage": {
+        "total_count": 26,
+        "ToolResultBlock": 26
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "64fb5ad8-90c5-4f1a-a90f-66a938a2780b",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a website where companies can set up simple virtual booths for an online trade show. Each booth should have a page where they can add their logo, a short company description, a list of products or services, and some images or videos. Attendees should be able to browse all booths, click into a booth to read more, and send a basic text message to the booth to ask questions.\n\n## Application URL\nhttp://localhost:6035/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Booth list page displays all pre-existing booths\n  - Action: Open the website home/booths page with default data loaded.\n  - Expected: Every default booth is listed, each showing at least a company name and logo thumbnail.\n- [ ] FT-02: Attendee can open a booth detail page\n  - Action: Click a booth card/list item on the booths page.\n  - Expected: The booth's detail page opens, showing that company's booth content.\n- [ ] FT-03: Booth page shows company logo\n  - Action: View any default booth detail page.\n  - Expected: The company's logo image is displayed on the page.\n- [ ] FT-04: Booth page shows a short company description\n  - Action: View any default booth detail page.\n  - Expected: A short text description of the company is displayed.\n- [ ] FT-05: Booth page shows a list of products or services\n  - Action: View any default booth detail page that has products/services.\n  - Expected: The products/services are listed with their names (and details if provided).\n- [ ] FT-06: Booth page shows images or videos\n  - Action: View a default booth detail page that has media.\n  - Expected: At least one image or video is displayed on the page.\n- [ ] FT-07: Attendee can send a text message to a booth\n  - Action: On a booth detail page, type a question into the message field and submit it.\n  - Expected: The message is accepted and a confirmation of submission is shown or the message appears in the booth's message area.\n- [ ] FT-08: Company can set up a new booth\n  - Action: Use the booth creation flow, enter a company name, and save.\n  - Expected: A new booth is created and appears on the booths list.\n- [ ] FT-09: Company can add booth content fields when setting up a booth\n  - Action: In the booth setup flow, provide a logo, description, products/services list, and media, then save.\n  - Expected: All provided fields are saved and later display on the booth detail page.\n\n## Constraint\n- [ ] CS-01: Booth setup rejects submission without a company name\n  - Action: Attempt to save a new booth with the company name field left empty.\n  - Expected: Submission is blocked and a validation message identifies the missing required field.\n- [ ] CS-02: Message cannot be sent when empty\n  - Action: On a booth detail page, attempt to submit a blank text message.\n  - Expected: Submission is blocked; no empty message is created.\n- [ ] CS-03: Invalid media cannot be added to a booth\n  - Action: Attempt to upload a non-image, non-video file as booth media.\n  - Expected: The file is rejected and an error indicates only image/video files are allowed.\n\n## Interaction\n- [ ] IX-01: Booth detail page provides a way back to the full list\n  - Action: From a booth detail page, use the back/browse navigation control.\n  - Expected: The attendee returns to the booths list page.\n- [ ] IX-02: Message field gives clear feedback on submit\n  - Action: Send a valid text message from a booth page.\n  - Expected: A success indication (confirmation message or toast) appears after sending.\n\n## Content\n- [ ] CT-01: Booths display trade-show-relevant company content\n  - Action: Review the default booths and their content.\n  - Expected: All booth text, logos, and media relate to exhibiting companies/products, with no unrelated or placeholder content.\n- [ ] CT-02: Booth media renders fully and correctly\n  - Action: View the images/videos on each default booth page.\n  - Expected: Media load without broken links, blank frames, or error icons.\n```\n\n# Output\n",
+    "duration_ms": 72353,
+    "is_error": false,
+    "num_turns": 27,
+    "token_usage": {
+      "input_tokens": 47611,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 639232,
+      "output_tokens": 7116,
+      "output_tokens_details": {
+        "thinking_tokens": 2926
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "deepseek/deepseek-v4.1-flash": {
+        "inputTokens": 48654,
+        "outputTokens": 7260,
+        "cacheReadInputTokens": 640640,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.74509,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 3060,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "deepseek/deepseek-v4.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

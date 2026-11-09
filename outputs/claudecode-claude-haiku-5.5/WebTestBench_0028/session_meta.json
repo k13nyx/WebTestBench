@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "f3c6f3bd-f6df-4199-9bd3-ed46385e06ea",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a secure document vault where I can create an account, log in, upload and organize my personal documents into folders or tagged collections, rename and delete them, and search through my stored documents by name or tag, with all content strongly encrypted so only I can view or manage my files.\n\n# Output (Markdown)\n",
+    "duration_ms": 27175,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 16623,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 5393,
+      "output_tokens_details": {
+        "thinking_tokens": 3715
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 16623
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "anthropic/claude-haiku-5.5": {
+        "inputTokens": 2508,
+        "outputTokens": 5412,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 16623,
+        "webSearchRequests": 0,
+        "costUSD": 0.005034675,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 3715,
+        "cacheCreationEphemeral5mInputTokens": 16623,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-haiku-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 1,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 3,
+      "AssistantMessage": {
+        "total_count": 85,
+        "ThinkingBlock": 22,
+        "TextBlock": 15,
+        "ToolUseBlock": 48
+      },
+      "UserMessage": {
+        "total_count": 48,
+        "ToolResultBlock": 48
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "c53be75c-c937-4315-a66b-214eff82d49d",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a secure document vault where I can create an account, log in, upload and organize my personal documents into folders or tagged collections, rename and delete them, and search through my stored documents by name or tag, with all content strongly encrypted so only I can view or manage my files.\n\n## Application URL\nhttp://localhost:6028/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: User can create a new account\n  - Action: On the sign-up page, enter a new unused email and a valid password, then click \"Sign Up\".\n  - Expected: Account is created and the user reaches the vault (or a login prompt with a success message), with no error.\n- [ ] FT-02: User can log in with an existing account\n  - Action: Log in with the email and password from FT-01, then click \"Log In\".\n  - Expected: Vault page opens and shows the logged-in user's email in the header.\n- [ ] FT-03: User can upload a document\n  - Action: Click \"Upload\", choose a local document file (e.g., a PDF), and confirm.\n  - Expected: The file appears in the document list under its original file name.\n- [ ] FT-04: User can create a folder and move a document into it\n  - Action: Click \"New Folder\", enter \"Taxes\", click \"Create\". Then select the uploaded document and choose \"Move to\" > \"Taxes\".\n  - Expected: Folder \"Taxes\" is listed, and the document appears inside it and no longer at the root level.\n- [ ] FT-05: User can add a tag to a document\n  - Action: Select the document, click \"Add Tag\", type \"2026\", and press Enter.\n  - Expected: A \"2026\" tag chip appears on the document.\n- [ ] FT-06: User can rename a document\n  - Action: Select the document, click \"Rename\", change the name to \"Renamed-Doc\", and click \"Save\". Reload the page.\n  - Expected: The list shows \"Renamed-Doc\" after reload, and the old name no longer appears.\n- [ ] FT-07: User can delete a document\n  - Action: Select the document, click \"Delete\", then click the confirm \"Delete\" button.\n  - Expected: The document is removed from the list and from its folder.\n- [ ] FT-08: User can search documents by name\n  - Action: Type part of a stored document's name (e.g., \"Renamed\") into the search box.\n  - Expected: Only documents whose names contain that text are listed.\n- [ ] FT-09: User can search documents by tag\n  - Action: Type \"2026\" into the search box.\n  - Expected: Only documents tagged \"2026\" are listed.\n\n## Constraint\n- [ ] CS-01: Sign-up rejects an email that is already registered\n  - Action: On the sign-up page, enter an email already used in FT-01 and click \"Sign Up\".\n  - Expected: Error \"Email already registered\" appears, and no new account is created.\n- [ ] CS-02: Login rejects an incorrect password\n  - Action: Enter the correct email with a wrong password and click \"Log In\".\n  - Expected: Error \"Invalid email or password\" appears, and the vault does not open.\n- [ ] CS-03: Sign-up enforces the password policy\n  - Action: Enter the password \"123\" on the sign-up page and click \"Sign Up\".\n  - Expected: Error lists the minimum password requirements, and the account is not created.\n- [ ] CS-04: Vault content is inaccessible after logout\n  - Action: Click \"Log Out\", then press the browser Back button.\n  - Expected: The login page is shown, and no document list or file names are visible.\n- [ ] CS-05: Delete can be cancelled without removing the document\n  - Action: Select a document, click \"Delete\", then click \"Cancel\" in the confirmation.\n  - Expected: The document remains in the list with its name and tags unchanged.\n- [ ] CS-06: A different user cannot see another user's documents\n  - Action: Log out, log in with a different account, and view the document list. Search for \"Renamed\".\n  - Expected: The first account's documents are not listed, and the search returns no results.\n\n## Interaction\n- [ ] IX-01: Each completed action shows a matching confirmation toast\n  - Action: Upload a file, rename it, and delete it, observing the message after each action.\n  - Expected: Toasts read \"Document uploaded\", \"Document renamed\", and \"Document deleted\" respectively, and each appears within 2 seconds.\n- [ ] IX-02: Search filters live and clearing restores the full list\n  - Action: Type \"Ren\" into the search box without pressing Enter, then clear the box.\n  - Expected: The list filters as text is typed, and clearing the box shows all documents again.\n- [ ] IX-03: A no-match search shows an empty-state message\n  - Action: Type \"zzzz\" into the search box.\n  - Expected: The message \"No documents found\" is shown in place of the list.\n\n## Content\n- [ ] CT-01: Document list shows accurate names, tags, and folder for each item\n  - Action: Compare the list entries for the uploaded document against the local file name and the tags and folder assigned in FT-04 and FT-05.\n  - Expected: Name, tag, and folder values match exactly, with no missing or swapped entries.\n- [ ] CT-02: Document metadata matches the actual file\n  - Action: Compare the displayed size and upload date for the document with the local file's properties.\n  - Expected: File size matches the local file (within display rounding), and the upload date is 2026-11-09.\n```\n\n# Output\n",
+    "duration_ms": 114650,
+    "is_error": false,
+    "num_turns": 49,
+    "token_usage": {
+      "input_tokens": 56,
+      "cache_creation_input_tokens": 46430,
+      "cache_read_input_tokens": 1067771,
+      "output_tokens": 15620,
+      "output_tokens_details": {
+        "thinking_tokens": 7650
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 46430
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "anthropic/claude-haiku-5.5": {
+        "inputTokens": 4076,
+        "outputTokens": 15640,
+        "cacheReadInputTokens": 1067771,
+        "cacheCreationInputTokens": 46430,
+        "webSearchRequests": 0,
+        "costUSD": 0.024709060000000005,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 7650,
+        "cacheCreationEphemeral5mInputTokens": 46430,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-haiku-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  }
+}

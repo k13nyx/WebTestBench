@@ -1,0 +1,135 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "b97f7182-db65-41d7-93bf-a2920f374b6c",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a webpage where I can input several contract texts, give each contract a simple name, and then let the page auto-detect and group clauses by type (like payment terms, confidentiality, termination) and show them side by side. I want to be able to filter the view by clause type, highlight differences in the wording between contracts, and quickly switch between a summarized comparison view and a full-text view for each clause group.\n\n# Output (Markdown)\n",
+    "duration_ms": 7647,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 3390,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 7488,
+      "output_tokens": 1593,
+      "output_tokens_details": {
+        "thinking_tokens": 0
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3-flash": {
+        "inputTokens": 5026,
+        "outputTokens": 1701,
+        "cacheReadInputTokens": 7488,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.07139899999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 96,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 1,
+      "AssistantMessage": {
+        "total_count": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 5893,
+      "AssistantMessage": {
+        "total_count": 95,
+        "ThinkingBlock": 33,
+        "TextBlock": 29,
+        "ToolUseBlock": 33
+      },
+      "UserMessage": {
+        "total_count": 33,
+        "ToolResultBlock": 33
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "fa2e3dfc-6056-4660-a609-6aaeeaa84e4b",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a webpage where I can input several contract texts, give each contract a simple name, and then let the page auto-detect and group clauses by type (like payment terms, confidentiality, termination) and show them side by side. I want to be able to filter the view by clause type, highlight differences in the wording between contracts, and quickly switch between a summarized comparison view and a full-text view for each clause group.\n\n## Application URL\nhttp://localhost:6050/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: User can add a contract by entering its text and a simple name\n  - Action: Enter contract text into the contract input field, enter a name (e.g., \"Contract A\") into the name field, and click the \"Add Contract\" button\n  - Expected: \"Contract A\" appears in the list of loaded contracts, with its text stored and displayed when selected\n\n- [ ] FT-02: User can add multiple contracts for comparison\n  - Action: Repeat FT-01 for a second contract (e.g., \"Contract B\") and a third (e.g., \"Contract C\")\n  - Expected: All contracts (\"Contract A\", \"Contract B\", \"Contract C\") are listed and simultaneously available for comparison\n\n- [ ] FT-03: Clauses are auto-detected and grouped by type\n  - Action: Load contracts containing payment terms, confidentiality, and termination clauses, then view the comparison area\n  - Expected: Clause groups are displayed for each detected type (e.g., \"Payment Terms\", \"Confidentiality\", \"Termination\"), each containing the corresponding clause text from the contracts\n\n- [ ] FT-04: Clauses are shown side by side across contracts\n  - Action: Open a clause group (e.g., \"Payment Terms\")\n  - Expected: The clause text from each contract is displayed side by side, in columns or panels labeled with each contract's name\n\n- [ ] FT-05: User can filter the view by clause type\n  - Action: Select a clause type filter (e.g., \"Confidentiality\") from the filter control\n  - Expected: Only the \"Confidentiality\" group is shown; other clause types (e.g., \"Payment Terms\", \"Termination\") are hidden\n\n- [ ] FT-06: Filtering by \"All\" restores the full view\n  - Action: Select the \"All\" (or equivalent) option in the clause type filter\n  - Expected: All clause type groups are displayed again\n\n- [ ] FT-07: User can switch between summarized comparison view and full-text view\n  - Action: Toggle from the summarized view to the full-text view for a clause group (e.g., \"Termination\")\n  - Expected: The view switches to show the complete clause text from each contract; toggling back shows the summarized view again\n\n- [ ] FT-08: Summarized view shows a condensed comparison of each clause group\n  - Action: View the summarized comparison for a clause group (e.g., \"Payment Terms\")\n  - Expected: A condensed summary of each contract's clause is shown (clearly shorter than the full text), aligned side by side per contract\n\n- [ ] FT-09: Differences in wording between contracts are highlighted\n  - Action: View a clause group where two contracts use different wording (e.g., different payment percentages or notice periods)\n  - Expected: The differing words/phrases are visually highlighted (e.g., different background or text color) so the differences are immediately identifiable\n\n- [ ] FT-10: Identical wording is not highlighted as a difference\n  - Action: View a clause group where two contracts use identical wording\n  - Expected: No difference highlighting appears on the shared, identical text\n\n- [ ] FT-11: User can remove a contract\n  - Action: Click the remove/delete control next to a contract (e.g., \"Contract B\")\n  - Expected: \"Contract B\" is removed from the contract list and its column disappears from the comparison view; remaining contracts continue to compare correctly\n\n## Constraint\n- [ ] CS-01: Contract cannot be added with an empty name\n  - Action: Enter contract text but leave the name field empty, then click \"Add Contract\"\n  - Expected: The contract is not added; an error message (e.g., \"Please enter a contract name\") is shown\n\n- [ ] CS-02: Contract cannot be added with empty text\n  - Action: Enter a name but leave the contract text field empty, then click \"Add Contract\"\n  - Expected: The contract is not added; an error message (e.g., \"Please enter contract text\") is shown\n\n- [ ] CS-03: Duplicate contract names are not allowed\n  - Action: Add a contract named \"Contract A\", then attempt to add another contract with the same name \"Contract A\"\n  - Expected: The duplicate is rejected with an error message (e.g., \"A contract with this name already exists\")\n\n- [ ] CS-04: Comparison view is not shown until at least two contracts exist\n  - Action: Load only one contract and observe the comparison area\n  - Expected: No clause comparison/grouping is shown; a message (e.g., \"Add at least two contracts to compare\") is displayed instead\n\n- [ ] CS-05: Non-contract text does not produce clause groups\n  - Action: Add a contract whose text contains no recognizable clauses (e.g., \"Hello world\")\n  - Expected: No clause group is created for it; the group area shows an empty/no-clauses state instead of miscategorized content\n\n## Interaction\n- [ ] IX-01: Switching view mode updates immediately without page reload\n  - Action: Click the summarized/full-text toggle\n  - Expected: The view updates instantly in place, with no full page reload or loss of selected filter state\n\n- [ ] IX-02: Clause group can be expanded/collapsed\n  - Action: Click on a clause group header (e.g., \"Confidentiality\")\n  - Expected: The group expands to show the side-by-side clauses; clicking again collapses it\n\n- [ ] IX-03: Selecting a contract highlights or focuses its column\n  - Action: Click on a contract name in the contract list\n  - Expected: The selected contract's clause column is visually emphasized or scrolled into view in the comparison area\n\n- [ ] IX-04: Visual feedback during clause analysis\n  - Action: Click the \"Add Contract\" / \"Analyze\" button and observe the interface\n  - Expected: A loading indicator or progress state (e.g., spinner, \"Analyzing...\") is shown while clause detection runs, and the result appears once complete\n\n## Content\n- [ ] CT-01: Contract names are displayed correctly in the comparison view\n  - Action: Add \"Contract A\" and \"Contract B\", then view any clause group\n  - Expected: The column/panel headers show exactly \"Contract A\" and \"Contract B\" matching the names entered\n\n- [ ] CT-02: Displayed clause text matches the entered contract text\n  - Action: Add a contract with a distinctive clause (e.g., \"The payment shall be made within 30 days of invoice\") and view its clause group\n  - Expected: The displayed clause text matches the entered wording exactly (no truncation or alteration in full-text view)\n\n- [ ] CT-03: Clause type labels are relevant and correctly named\n  - Action: View the clause group headers for contracts containing payment, confidentiality, and termination clauses\n  - Expected: Headers use relevant type labels (e.g., \"Payment Terms\", \"Confidentiality\", \"Termination\") that match the clause content under them — not mislabeled (e.g., a payment clause not shown under \"Termination\")\n\n- [ ] CT-04: Default data is present for testing on first load\n  - Action: Open the page without adding anything\n  - Expected: The page loads with usable default data or ready input controls (e.g., pre-loaded sample contracts or empty input fields with clear placeholders), and no error states are shown\n```\n\n# Output\n",
+    "duration_ms": 226649,
+    "is_error": false,
+    "num_turns": 34,
+    "token_usage": {
+      "input_tokens": 153566,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1018624,
+      "output_tokens": 29467,
+      "output_tokens_details": {
+        "thinking_tokens": 15560
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3-flash": {
+        "inputTokens": 156659,
+        "outputTokens": 29555,
+        "cacheReadInputTokens": 1018624,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 2.0314820000000005,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 15636,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

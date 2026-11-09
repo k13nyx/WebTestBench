@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "39025729-915d-4a8e-9812-cae9a2b30c5b",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a language learning website where I can register, pick a language, and follow a structured sequence of lessons, exercises, and quizzes organized by level. I should be able to start or resume a course, answer different types of questions, see instant feedback and a simple score, and view a basic summary of my progress across the lessons.\n\n# Output (Markdown)\n",
+    "duration_ms": 22645,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 16637,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 4549,
+      "output_tokens_details": {
+        "thinking_tokens": 2877
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 16637
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "anthropic/claude-haiku-5.5": {
+        "inputTokens": 2522,
+        "outputTokens": 4567,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 16637,
+        "webSearchRequests": 0,
+        "costUSD": 0.004615325,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 2877,
+        "cacheCreationEphemeral5mInputTokens": 16637,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-haiku-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 1,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 1,
+      "AssistantMessage": {
+        "total_count": 164,
+        "ThinkingBlock": 35,
+        "ToolUseBlock": 111,
+        "TextBlock": 18
+      },
+      "UserMessage": {
+        "total_count": 111,
+        "ToolResultBlock": 111
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "ee347201-082e-4abd-9ae2-af00a51b9670",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a language learning website where I can register, pick a language, and follow a structured sequence of lessons, exercises, and quizzes organized by level. I should be able to start or resume a course, answer different types of questions, see instant feedback and a simple score, and view a basic summary of my progress across the lessons.\n\n## Application URL\nhttp://localhost:6034/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Register a new account with valid details.\n  - Action: Open the sign-up page, enter a name, unique email, and matching passwords, then click \"Sign up\".\n  - Expected: Account is created, the user is logged in, and the language selection page loads.\n- [ ] FT-02: Log in with an existing account.\n  - Action: Log out, then log in with the registered email and password.\n  - Expected: The dashboard loads and shows the user's name.\n- [ ] FT-03: Start a course by picking a language.\n  - Action: On the language selection page, click one available language card.\n  - Expected: The course page opens and lists its levels in order (e.g., Beginner, Intermediate, Advanced).\n- [ ] FT-04: View lessons, exercises, and quizzes organized under each level.\n  - Action: Click the first level.\n  - Expected: Numbered lessons appear in order, and each lesson lists its exercises, with a quiz at the end of the level.\n- [ ] FT-05: Answer a multiple-choice question.\n  - Action: Select one option, click \"Submit\", then click \"Next\".\n  - Expected: The answer is accepted and the next question appears.\n- [ ] FT-06: Answer a fill-in-the-blank question.\n  - Action: Type the answer in the blank, click \"Submit\", then click \"Next\".\n  - Expected: The typed answer is accepted and the next question appears.\n- [ ] FT-07: Answer a matching or word-ordering question.\n  - Action: Match the pairs or arrange the words in order, then click \"Submit\".\n  - Expected: The answer is accepted and feedback is shown.\n- [ ] FT-08: Complete a quiz and view the score.\n  - Action: Answer every question in the Level 1 quiz and click \"Finish\".\n  - Expected: A results screen shows the score as \"X / Y\" and a percentage matching the answers given.\n- [ ] FT-09: Resume a partially completed course.\n  - Action: Complete two lessons, log out, log in, and click \"Continue\" or \"Resume course\".\n  - Expected: The course opens at the first incomplete lesson, and the two completed lessons still show as complete.\n- [ ] FT-10: Open the progress summary.\n  - Action: Click \"Progress\" in the navigation.\n  - Expected: A summary page shows completed lessons, quiz scores by level, and overall completion.\n\n## Constraint\n- [ ] CS-01: Registration rejects a duplicate email.\n  - Action: Register with an email that already has an account.\n  - Expected: The error \"Email already registered\" appears, and no new account is created.\n- [ ] CS-02: Registration validates required fields and formats.\n  - Action: Submit the sign-up form with empty fields, an invalid email (e.g., \"abc\"), and mismatched passwords.\n  - Expected: Each invalid field shows an inline error, and the form is not submitted.\n- [ ] CS-03: Submitting without an answer is blocked.\n  - Action: On any question, click \"Submit\" without selecting or entering an answer.\n  - Expected: The question does not advance, the score does not change, and a message such as \"Please select an answer\" appears.\n- [ ] CS-04: Locked levels cannot be opened.\n  - Action: On a new course, click Level 2 before completing Level 1.\n  - Expected: Level 2 is marked as locked, and its lessons and quiz do not open.\n- [ ] CS-05: Lessons cannot be skipped within a level.\n  - Action: On a new course, click Lesson 3 before completing Lessons 1 and 2.\n  - Expected: Lesson 3 is marked as locked and does not open.\n\n## Interaction\n- [ ] IX-01: Correct answers show instant positive feedback.\n  - Action: Submit a correct answer on any question.\n  - Expected: The answer is highlighted green, a \"Correct!\" message appears immediately, and the running score increases.\n- [ ] IX-02: Incorrect answers show instant negative feedback with the right answer.\n  - Action: Submit a wrong answer on any question.\n  - Expected: The chosen answer is highlighted red, a \"Incorrect\" message appears immediately, and the correct answer is displayed.\n- [ ] IX-03: Progress indicator updates as questions are answered.\n  - Action: Answer the first two questions of an exercise.\n  - Expected: The indicator reads \"Question 2 of N\" (or equivalent), and the progress bar fills proportionally.\n\n## Content\n- [ ] CT-01: Lesson content matches the selected language.\n  - Action: Open any lesson in the chosen course.\n  - Expected: Prompts, vocabulary, and answer options are in the target language, with no unrelated language mixed in.\n- [ ] CT-02: Progress summary figures match actual completion.\n  - Action: Note the completed lessons and quiz scores on the course page, then open the progress summary.\n  - Expected: The lesson count, quiz scores, and overall percentage on the summary match the course page exactly.\n```\n\n# Output\n",
+    "duration_ms": 228882,
+    "is_error": false,
+    "num_turns": 112,
+    "token_usage": {
+      "input_tokens": 100,
+      "cache_creation_input_tokens": 82630,
+      "cache_read_input_tokens": 2794845,
+      "output_tokens": 24225,
+      "output_tokens_details": {
+        "thinking_tokens": 11309
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 82630
+      },
+      "inference_geo": "global",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "anthropic/claude-haiku-5.5": {
+        "inputTokens": 4128,
+        "outputTokens": 24244,
+        "cacheReadInputTokens": 2794845,
+        "cacheCreationInputTokens": 82630,
+        "webSearchRequests": 0,
+        "costUSD": 0.050812,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 11309,
+        "cacheCreationEphemeral5mInputTokens": 82630,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "claude-haiku-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  }
+}

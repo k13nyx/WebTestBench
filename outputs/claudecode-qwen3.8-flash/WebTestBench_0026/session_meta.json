@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "0b8035e7-47da-4f84-8e4a-0ec0dd72afc8",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a web page for team leads to manage internal projects and staff assignment in one place. They should be able to create and edit projects with required skills, priority, and expected duration, view a searchable and filterable list of employees with their skills and availability, and then assign or reassign employees to project roles. The page should show a simple overview of which projects are fully staffed, partially staffed, or unstaffed, and allow leads to adjust assignments when availability or project needs change.\n\n# Output (Markdown)\n",
+    "duration_ms": 28675,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 3388,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 7984,
+      "output_tokens": 3493,
+      "output_tokens_details": {
+        "thinking_tokens": 1931
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "qwen/qwen3.8-flash": {
+        "inputTokens": 3657,
+        "outputTokens": 3944,
+        "cacheReadInputTokens": 9520,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.12164499999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 2365,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "qwen/qwen3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 588,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 5771,
+      "AssistantMessage": {
+        "total_count": 162,
+        "ThinkingBlock": 62,
+        "ToolUseBlock": 68,
+        "TextBlock": 32
+      },
+      "UserMessage": {
+        "total_count": 68,
+        "ToolResultBlock": 68
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "b140d8ec-d81d-4452-b937-7e8616b3eae4",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a web page for team leads to manage internal projects and staff assignment in one place. They should be able to create and edit projects with required skills, priority, and expected duration, view a searchable and filterable list of employees with their skills and availability, and then assign or reassign employees to project roles. The page should show a simple overview of which projects are fully staffed, partially staffed, or unstaffed, and allow leads to adjust assignments when availability or project needs change.\n\n## Application URL\nhttp://localhost:6026/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Team lead can create a new project with all required attributes\n  - Action: Open the \"New Project\" (or equivalent \"Create Project\") form, enter a project name, select/add required skills, choose a priority, set an expected duration, and submit.\n  - Expected: The new project is saved and now appears in the projects list/overview with the entered skills, priority, and duration.\n\n- [ ] FT-02: Team lead can edit an existing project's attributes\n  - Action: Open the edit control (e.g., \"Edit\") on a default project, change its priority and add one required skill, and save.\n  - Expected: The project detail/list re-displays the updated priority and the added skill; the change persists when the page is revisited.\n\n- [ ] FT-03: Employee list displays each employee's skills and availability\n  - Action: Navigate to the staff/employee list view and inspect several default employee rows/cards.\n  - Expected: Every employee entry shows a skills list and an availability status (e.g., \"Available\" / \"Busy\" / a percentage or date), not blank or placeholder values.\n\n- [ ] FT-04: Employee list is searchable by name\n  - Action: Type the first few characters of a known default employee's name into the search box and apply/trigger the search.\n  - Expected: The list narrows to matching employee(s) only; the typed name match is visible in the results.\n\n- [ ] FT-05: Employee list is filterable by skill and/or availability\n  - Action: Select a filter (e.g., skill = \"React\", or availability = \"Available\") from the filter control.\n  - Expected: Only employees matching the selected filter remain in the list, and each result visibly possesses that skill/availability.\n\n- [ ] FT-06: Lead can assign an employee to a project role\n  - Action: On a default unstaffed/partially staffed project, use the assignment control (e.g., \"Assign\" next to an open role), pick an available default employee, and confirm.\n  - Expected: The role row now shows the assigned employee's name; the project is listed under that employee's assignments.\n\n- [ ] FT-07: Lead can reassign an employee to a different role or project\n  - Action: Take a default employee already assigned to a role, use the reassign control, and move them to a different open role on another project.\n  - Expected: The employee appears only in the new role; the original role reverts to \"unfilled/open.\"\n\n- [ ] FT-08: Staffing overview shows the three staffing states for projects\n  - Action: Open the overview/dashboard section with default data present.\n  - Expected: Each project is visibly labeled \"Fully Staffed,\" \"Partially Staffed,\" or \"Unstaffed,\" and at least projects in differing staffing levels are shown with the correct label relative to their filled vs. open roles.\n\n## Constraint\n- [ ] CS-01: Project cannot be saved while required fields are empty\n  - Action: Open the \"New Project\" form, leave required fields (e.g., name, required skills, priority) empty, and attempt to submit.\n  - Expected: Submission is blocked, an inline validation message names the missing field(s), and no incomplete project appears in the list.\n\n- [ ] CS-02: Staffing status recalculates automatically when assignments change\n  - Action: Starting from a default \"Partially Staffed\" project, assign employees until all roles are filled, then unassign one employee.\n  - Expected: The project's overview label changes to \"Fully Staffed\" when the last role is filled, and back to \"Partially Staffed\" after the unassignment — without requiring a manual refresh step.\n\n- [ ] CS-03: An employee cannot remain doubly assigned after reassignment\n  - Action: Reassign a default employee from Role A (Project 1) to Role B (Project 2), then inspect both roles and the employee record.\n  - Expected: The employee is listed only under Role B; Role A shows no assignment (or \"Open\"), and the employee record shows exactly one active project assignment.\n\n- [ ] CS-04: Search and filter combine correctly and handle no-match cases\n  - Action: With a skill filter active, type a non-existent employee name (e.g., \"zzzqqq\") in the search box; then clear both.\n  - Expected: The list shows an explicit \"no results\" (or empty-state) message rather than stale rows or an error, and clearing restores the full employee list.\n\n## Interaction\n- [ ] IX-01: Success feedback is shown after creating/updating a project\n  - Action: Save the \"New Project\" form, then save an edit on an existing project.\n  - Expected: A confirmation appears each time (e.g., success toast/message such as \"Project created\" / \"Project updated\") and disappears without requiring a page reload.\n\n- [ ] IX-02: Edit dialog is pre-filled with the project's current values\n  - Action: Click \"Edit\" on a default project and inspect the form before changing anything.\n  - Expected: The form opens (modal or inline panel) with the project's current name, skills, priority, and duration already populated; canceling leaves the project unchanged.\n\n- [ ] IX-03: Assignment changes reflect in the UI immediately\n  - Action: Assign an employee to a role from the assignment control, then unassign them.\n  - Expected: The role row and any staffing label/count update in place right after each action (no stale display, no manual reload required).\n\n- [ ] IX-04: Staffing states are visually distinguishable\n  - Action: View the overview with default projects in all three states.\n  - Expected: \"Fully Staffed,\" \"Partially Staffed,\" and \"Unstaffed\" are rendered as distinct visual indicators (e.g., colored badges: green/yellow/red), not identical plain text.\n\n## Content\n- [ ] CT-01: Default data is present and relevant on first load\n  - Action: Open the page fresh, without adding any data.\n  - Expected: At least a few projects (with role slots) and a staff list of multiple employees are pre-loaded, and all content relates to internal project/staff management (no lorem ipsum, no \"TODO\" placeholders).\n\n- [ ] CT-02: Projects display required skills and expected duration meaningfully\n  - Action: Inspect a default project's detail view or list row.\n  - Expected: Required skills are shown as concrete, readable skill names (e.g., \"SQL,\" \"UX Design\") and duration as a value with a unit (e.g., \"6 weeks\"), not empty or numeric-only fields.\n\n- [ ] CT-03: Priority values are rendered as human-readable labels\n  - Action: Check the projects list and the create/edit form.\n  - Expected: Priority appears as readable labels (e.g., \"High\" / \"Medium\" / \"Low\") rather than raw codes like \"p1\"/\"0\", and the labels used in the form match those shown in the list.\n```\n\n# Output\n",
+    "duration_ms": 324416,
+    "is_error": false,
+    "num_turns": 69,
+    "token_usage": {
+      "input_tokens": 3620752,
+      "cache_creation_input_tokens": 9663,
+      "cache_read_input_tokens": 587764,
+      "output_tokens": 26277,
+      "output_tokens_details": {
+        "thinking_tokens": 18476
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "qwen/qwen3.8-flash": {
+        "inputTokens": 3622718,
+        "outputTokens": 26449,
+        "cacheReadInputTokens": 589044,
+        "cacheCreationInputTokens": 9663,
+        "webSearchRequests": 0,
+        "costUSD": 19.12973075,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 18632,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "qwen/qwen3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "419df6aa-1185-4ef8-94d6-03c8dca4addd",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a webpage where I can keep a pantry list of ingredients I have, including quantities and optional expiration dates, and then generate a multi-day meal plan that prioritizes using food that is close to expiring while still fitting simple preferences like vegetarian, high-protein, or budget-friendly. The page should show a day-by-day plan with recipes, indicate exactly how much of each ingredient will be used, produce a grocery list for missing items, and let me lock certain meals or days and regenerate the rest so I can refine the plan without starting over.\n\n# Output (Markdown)\n",
+    "duration_ms": 32158,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 3,
+      "cache_creation_input_tokens": 9576,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2879,
+      "output_tokens_details": {
+        "thinking_tokens": 1552
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "openai/gpt-5.6-luna": {
+        "inputTokens": 6,
+        "outputTokens": 2976,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 11251,
+        "webSearchRequests": 0,
+        "costUSD": 0.14474874999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1632,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "openai/gpt-5.6-luna",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 825,
+      "AssistantMessage": {
+        "total_count": 7,
+        "ThinkingBlock": 3,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 3277,
+      "AssistantMessage": {
+        "total_count": 95,
+        "ThinkingBlock": 23,
+        "ToolUseBlock": 40,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 40,
+        "ToolResultBlock": 40
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "6064ef5a-f42d-4a39-aa86-4f1e43cafe02",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a webpage where I can keep a pantry list of ingredients I have, including quantities and optional expiration dates, and then generate a multi-day meal plan that prioritizes using food that is close to expiring while still fitting simple preferences like vegetarian, high-protein, or budget-friendly. The page should show a day-by-day plan with recipes, indicate exactly how much of each ingredient will be used, produce a grocery list for missing items, and let me lock certain meals or days and regenerate the rest so I can refine the plan without starting over.\n\n## Application URL\nhttp://localhost:6022/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Existing pantry entries display ingredient names, quantities, units, and expiration dates when available.\n  - Action: Open the **Pantry** list and inspect the default pantry entries.\n  - Expected: Every entry shows its ingredient name and current quantity; entries with expiration dates show those dates.\n\n- [ ] FT-02: User can update the quantity of an existing pantry item.\n  - Action: Edit the quantity for one default pantry item and select **Save**.\n  - Expected: The new quantity is saved and remains displayed after leaving and returning to the **Pantry** list.\n\n- [ ] FT-03: User can set or change an expiration date for an existing pantry item.\n  - Action: Select an existing pantry item, enter an expiration date, and select **Save**.\n  - Expected: The selected expiration date appears on that pantry entry.\n\n- [ ] FT-04: User can generate a multi-day meal plan.\n  - Action: Select a planning duration of at least two days and select **Generate meal plan**.\n  - Expected: A meal plan is generated with a separate section for every requested day.\n\n- [ ] FT-05: Each planned day contains recipe information.\n  - Action: Inspect every day in the generated **Meal plan**.\n  - Expected: Each day displays at least one recipe with a recipe name and sufficient details to identify the meal.\n\n- [ ] FT-06: Each recipe identifies the exact pantry ingredients and amounts it uses.\n  - Action: Expand or inspect each planned recipe.\n  - Expected: Every listed ingredient includes a specific quantity and unit, and pantry ingredients used by the recipe are identifiable.\n\n- [ ] FT-07: The application generates a grocery list for missing ingredients.\n  - Action: Review the **Grocery list** after generating a meal plan.\n  - Expected: The list contains each ingredient needed but unavailable in sufficient pantry quantity, including the quantity and unit to buy.\n\n- [ ] FT-08: User can generate plans using supported preferences.\n  - Action: Generate a plan separately with **Vegetarian**, **High-protein**, and **Budget-friendly** selected.\n  - Expected: Each generated plan reflects the selected preference: vegetarian plans contain no meat or seafood, high-protein plans identify protein-focused meals or amounts, and budget-friendly plans identify lower-cost meal choices.\n\n- [ ] FT-09: User can lock a meal or day and regenerate only the remaining plan.\n  - Action: Select **Lock** on one meal or day, then select **Regenerate plan**.\n  - Expected: The locked meal or day remains unchanged, while unlocked meals or days are regenerated without requiring the user to start a new plan.\n\n## Constraint\n- [ ] CS-01: Pantry quantities cannot be saved as empty, zero, or negative values.\n  - Action: Edit an existing pantry quantity using an empty value, `0`, and a negative number, selecting **Save** after each attempt.\n  - Expected: Each invalid value is rejected with a validation message, and the invalid quantity is not saved.\n\n- [ ] CS-02: Expiration dates are optional.\n  - Action: Leave the expiration date blank for an existing pantry item and select **Save**.\n  - Expected: The item saves successfully without an expiration date and remains available for meal planning.\n\n- [ ] CS-03: Meal planning prioritizes food that is closest to expiring when usable.\n  - Action: Generate a plan using default pantry data containing items with different expiration dates.\n  - Expected: Recipes use the soonest-expiring usable ingredients before later-expiring or undated ingredients where the recipes and selected preferences allow.\n\n- [ ] CS-04: Generated recipes respect the selected dietary preference.\n  - Action: Select **Vegetarian** and generate a meal plan.\n  - Expected: No planned recipe or listed ingredient contains meat, poultry, fish, or seafood.\n\n- [ ] CS-05: Planned pantry usage does not exceed available quantities.\n  - Action: Compare each recipe’s stated pantry usage with the corresponding pantry quantities.\n  - Expected: The total planned usage of every pantry item is no greater than its available quantity; any shortfall appears in the **Grocery list**.\n\n- [ ] CS-06: Locked meals and days are excluded from regeneration.\n  - Action: Lock one meal and one full day, then select **Regenerate plan**.\n  - Expected: Neither locked selection changes, while only unlocked selections can change.\n\n## Interaction\n- [ ] IX-01: Saving a pantry change provides clear completion feedback.\n  - Action: Change an existing pantry quantity or expiration date and select **Save**.\n  - Expected: A visible success confirmation appears, and the updated value is immediately shown in the pantry list.\n\n- [ ] IX-02: Generating or regenerating a plan updates the displayed plan and grocery list.\n  - Action: Generate a plan, change an unlocked planning option or preference, and select **Regenerate plan**.\n  - Expected: The affected unlocked plan content and **Grocery list** refresh to reflect the new result without displaying stale entries.\n\n- [ ] IX-03: Lock controls clearly show locked and unlocked states.\n  - Action: Select **Lock** on a meal or day, then select the same control again if available.\n  - Expected: The control visibly changes to a **Locked** state after the first action and returns to an unlocked state after the second action.\n\n## Content\n- [ ] CT-01: Day labels and meal order are clear and chronological.\n  - Action: Review the generated multi-day plan from the first day to the last.\n  - Expected: Every requested day has a distinct, readable label, and days appear in chronological order without missing or duplicate day labels.\n\n- [ ] CT-02: Ingredient names are consistent across the pantry, recipes, and grocery list.\n  - Action: Compare ingredients appearing in the **Pantry**, recipe details, and **Grocery list**.\n  - Expected: The same ingredient is represented with consistent naming, and pantry quantities, recipe usage, and missing quantities are understandable.\n\n- [ ] CT-03: Preference and expiration information is visible in the generated plan.\n  - Action: Generate a plan with a supported preference and inspect the recipe and meal details.\n  - Expected: The plan clearly identifies the selected preference context and shows which near-expiration pantry ingredients are being used when applicable.\n```\n\n# Output\n",
+    "duration_ms": 244972,
+    "is_error": false,
+    "num_turns": 41,
+    "token_usage": {
+      "input_tokens": 123,
+      "cache_creation_input_tokens": 79714,
+      "cache_read_input_tokens": 1508599,
+      "output_tokens": 10581,
+      "output_tokens_details": {
+        "thinking_tokens": 6331
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "openai/gpt-5.6-luna": {
+        "inputTokens": 126,
+        "outputTokens": 10681,
+        "cacheReadInputTokens": 1508599,
+        "cacheCreationInputTokens": 82602,
+        "webSearchRequests": 0,
+        "costUSD": 1.538217,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 6414,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "openai/gpt-5.6-luna",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

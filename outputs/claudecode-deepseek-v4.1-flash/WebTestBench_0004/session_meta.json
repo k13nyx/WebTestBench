@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "45c2fa39-0ad6-4b44-8196-d51aea9b0ed5",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a wedding planning website where couples can create and update a simple planning dashboard with key details like wedding date, budget, and guest count. They should be able to browse, filter, and search venue and vendor listings by categories such as location type, price range, and service type, and mark favorites for later. The site should also offer a collection of planning tips and checklists that users can view, save to their dashboard, and mark as completed.\n\n# Output (Markdown)\n",
+    "duration_ms": 5891,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2507,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 12032,
+      "output_tokens": 2347,
+      "output_tokens_details": {
+        "thinking_tokens": 1212
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "deepseek/deepseek-v4.1-flash": {
+        "inputTokens": 2768,
+        "outputTokens": 2452,
+        "cacheReadInputTokens": 13440,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.08186,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1304,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "deepseek/deepseek-v4.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 403,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 4512,
+      "AssistantMessage": {
+        "total_count": 102,
+        "ThinkingBlock": 41,
+        "TextBlock": 20,
+        "ToolUseBlock": 41
+      },
+      "UserMessage": {
+        "total_count": 41,
+        "ToolResultBlock": 41
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "74c0dbbd-5c0d-4cbd-a142-e87343ba54b6",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a wedding planning website where couples can create and update a simple planning dashboard with key details like wedding date, budget, and guest count. They should be able to browse, filter, and search venue and vendor listings by categories such as location type, price range, and service type, and mark favorites for later. The site should also offer a collection of planning tips and checklists that users can view, save to their dashboard, and mark as completed.\n\n## Application URL\nhttp://localhost:6004/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Couple can create a planning dashboard and save key details\n  - Action: Open the dashboard, enter a wedding date, budget, and guest count, then click \"Save\".\n  - Expected: Dashboard is created and shows the entered wedding date, budget, and guest count.\n\n- [ ] FT-02: Couple can update existing dashboard details\n  - Action: Change the wedding date, budget, and guest count on a saved dashboard and click \"Save\".\n  - Expected: The dashboard updates and displays the new values (not the old ones).\n\n- [ ] FT-03: User can browse venue and vendor listings\n  - Action: Open the listings page for venues and vendors.\n  - Expected: A list of venue and vendor listings is displayed with multiple entries.\n\n- [ ] FT-04: User can search listings by keyword\n  - Action: Type a keyword (e.g., a listing name) into the search field and submit.\n  - Expected: Only listings matching the keyword are shown; non-matching listings are hidden.\n\n- [ ] FT-05: User can filter listings by location type, price range, and service type\n  - Action: Apply a location type filter, a price range filter, and a service type filter to the listings.\n  - Expected: Displayed listings match all selected filter criteria for each category.\n\n- [ ] FT-06: User can mark a listing as a favorite\n  - Action: Click the favorite control on a listing card.\n  - Expected: The listing is marked as a favorite.\n\n- [ ] FT-07: User can view saved favorites\n  - Action: Open the favorites view after marking one or more listings as favorite.\n  - Expected: All previously favorited listings are listed in the favorites view.\n\n- [ ] FT-08: User can view the collection of planning tips and checklists\n  - Action: Open the planning tips and checklists section.\n  - Expected: A collection of tips/checklists is displayed for viewing.\n\n- [ ] FT-09: User can save a tip or checklist to the dashboard\n  - Action: On a tip/checklist, click \"Save\" (or equivalent).\n  - Expected: The selected tip/checklist is added to and shown on the dashboard.\n\n- [ ] FT-10: User can mark a checklist item as completed\n  - Action: On a saved checklist, mark an item as completed.\n  - Expected: The item is recorded as completed and reflected in the checklist state.\n\n## Constraint\n- [ ] CS-01: Dashboard cannot be saved with empty required fields\n  - Action: Leave wedding date, budget, or guest count empty and click \"Save\".\n  - Expected: Save is blocked and a validation message identifies the missing required field(s).\n\n- [ ] CS-02: Guest count accepts only valid numbers\n  - Action: Enter a non-numeric or negative value in the guest count field and click \"Save\".\n  - Expected: Save is blocked with a validation message; no invalid guest count is stored.\n\n- [ ] CS-03: Un-favoriting removes a listing from favorites\n  - Action: Click the favorite control on a listing that is already favorited.\n  - Expected: The listing is removed from the favorites view; no duplicate or stale favorite remains.\n\n## Interaction\n- [ ] IX-01: Confirmation shown after saving the dashboard\n  - Action: Enter valid dashboard details and click \"Save\".\n  - Expected: A success confirmation (e.g., \"Saved\" message/toast) is displayed.\n\n- [ ] IX-02: Favorite control toggles visual state immediately\n  - Action: Click the favorite control on a listing.\n  - Expected: The control visibly changes state (e.g., filled vs. unfilled) without a page reload.\n\n- [ ] IX-03: Checklist item shows completed state when marked done\n  - Action: Mark a checklist item as completed.\n  - Expected: The item visually reflects completion (e.g., checkmark or strikethrough).\n\n- [ ] IX-04: No-results message shown when filters/search match nothing\n  - Action: Apply filters or a search term that matches no listings.\n  - Expected: A clear \"no results\" message is displayed instead of an empty or stale list.\n\n## Content\n- [ ] CT-01: Dashboard displays the required labeled fields\n  - Action: View the planning dashboard.\n  - Expected: Fields are labeled \"Wedding Date\", \"Budget\", and \"Guest Count\", matching the instruction.\n\n- [ ] CT-02: Listings show wedding-relevant attributes\n  - Action: Inspect venue and vendor listing cards.\n  - Expected: Listings display relevant details such as location type, price range, and service type.\n\n- [ ] CT-03: Tips, checklists, and media are wedding-planning relevant\n  - Action: Review the tips/checklists content and their accompanying images/icons.\n  - Expected: All text and media are directly relevant to wedding planning; no unrelated content is present.\n```\n\n# Output\n",
+    "duration_ms": 115112,
+    "is_error": false,
+    "num_turns": 42,
+    "token_usage": {
+      "input_tokens": 39943,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1484032,
+      "output_tokens": 19136,
+      "output_tokens_details": {
+        "thinking_tokens": 11947
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "deepseek/deepseek-v4.1-flash": {
+        "inputTokens": 41158,
+        "outputTokens": 19499,
+        "cacheReadInputTokens": 1485440,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.435985,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 12299,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "deepseek/deepseek-v4.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+# Test Result
+
+## Functionality
+- [X] FT-01: Create a new note.
+  - Action: Click the "New Note" button, enter title "QA Test Note", and type "Hello world" in the body.
+  - Expected: The note appears in the note list with title "QA Test Note" and opens in the editor showing "Hello world".
+- [X] FT-02: Edit the title and body of an existing note.
+  - Action: Open a default note, change its title to "Edited Title", and append "edit check" to the body.
+  - Expected: The list and editor both show "Edited Title" and the appended text.
+- [X] FT-03: Rich-text formatting is applied and kept.
+  - Action: Select a word in the body, click Bold, Italic, and Bulleted List, then open another note and return.
+  - Expected: The word is bold and italic, and the list formatting is still present.
+- [X] FT-04: Delete a note.
+  - Action: Select the note "QA Test Note" and click the "Delete" button.
+  - Expected: The note disappears from the list and is no longer accessible.
+- [X] FT-05: Rename a folder.
+  - Action: Right-click an existing folder, choose "Rename", enter "Renamed Folder", and confirm.
+  - Expected: The sidebar and the folder label on its notes show "Renamed Folder".
+- [X] FT-06: Move a note to another folder.
+  - Action: Open a note's folder menu and select a different folder.
+  - Expected: The note appears under the new folder and no longer appears under the original folder.
+- [ ] FT-07: Add a tag to a note.
+  - Action: In the note's tag field, type "urgent" and press Enter.
+  - Expected: A tag chip labeled "urgent" appears on the note and in the note list.
+  - Bug Report:
+    - Issue: Missing Tag Input / Unable to Create Tag
+    - Actual: The editor's "Tags" control opens a menu listing only the five existing tags (Important, To-Do, Reference, Idea, Meeting) and has no text field. Typing "urgent" and pressing Enter added no chip and no new tag appeared in the sidebar.
+- [ ] FT-08: Remove a tag from a note.
+  - Action: Click the × on the "urgent" tag chip of the note.
+  - Expected: The chip is removed from that note and the tag is still on other notes that have it.
+  - Bug Report:
+    - Issue: Blocked by FT-07 (Precondition Not Met)
+    - Actual: No "urgent" chip exists because it could not be created, so there is no × to click. Tag removal was not tested against "urgent". Tag chips on notes are not shown with an × control in the editor.
+- [X] FT-09: Search by title.
+  - Action: Type a distinctive part of a default note's title in the search box.
+  - Expected: Only notes whose titles contain that text are listed.
+- [X] FT-10: Search by content.
+  - Action: Type a distinctive phrase from a default note's body (not its title) in the search box.
+  - Expected: That note is listed in the results.
+- [ ] FT-11: Search by tag and by folder name.
+  - Action: Type an existing tag name, then an existing folder name, in the search box.
+  - Expected: Each search lists only the notes carrying that tag or located in that folder.
+  - Bug Report:
+    - Issue: Incorrect Search Results (Over-inclusive Tag Match)
+    - Actual: Searching the tag "Important" from All Notes returned "Welcome to Notes" and "Project Planning". "Welcome to Notes" does not carry the Important tag; it matched only because its body contains the word "important". The folder search "Work" returned only the three notes in that folder, which is correct.
+- [X] FT-12: Filtered view of a folder with a specific tag.
+  - Action: Select an existing folder in the sidebar, then select one of its tags in the tag filter.
+  - Expected: Only notes that are in that folder and have that tag are shown.
+- [X] FT-13: Notes persist after reloading the page.
+  - Action: Edit a note's title, add a tag, then reload the browser page.
+  - Expected: After reload, the title and tag are still present.
+- [ ] FT-14: Edits made while offline sync when the connection returns.
+  - Action: Disconnect the network, edit a note body with "offline text", then reconnect.
+  - Expected: The edit is retained in the editor with no loss, and the save status changes to "Saved" after reconnecting.
+  - Bug Report:
+    - Issue: Missing Save Status Indicator
+    - Actual: The offline text "offline text" was retained in the editor after reconnecting. However, no element containing "Saved" or "Saving" exists on the page at any point, so the status could not change to "Saved".
+
+## Constraint
+- [ ] CS-01: Folder rename rejects empty or duplicate names.
+  - Action: Rename a folder to an empty string, then to the name of another existing folder.
+  - Expected: Each attempt is blocked with an error message (e.g., "Folder name required" / "Folder already exists") and the original name is kept.
+  - Bug Report:
+    - Issue: Duplicate Folder Name Accepted
+    - Actual: Renaming "Renamed Folder" to "Work" was accepted. The sidebar now shows two folders named "Work" (1 note and 3 notes). The empty-string attempt kept the rename input open, but no error message appeared in the DOM (no alert or status text was found).
+- [ ] CS-02: A note cannot have the same tag twice.
+  - Action: On a note that already has "urgent", type "urgent" in the tag field and press Enter.
+  - Expected: No duplicate "urgent" chip is added.
+  - Bug Report:
+    - Issue: Blocked by FT-07 (Precondition Not Met)
+    - Actual: No note has an "urgent" tag and no tag text field exists, so the duplicate-tag scenario could not be executed.
+- [ ] CS-03: Edits made while offline survive a reload that happens while still offline.
+  - Action: Disconnect the network, type "survive test" in a note, then reload the page without reconnecting.
+  - Expected: After reload, the "survive test" text is still in the note.
+  - Bug Report:
+    - Issue: Application Fails to Load Offline
+    - Actual: Reloading while offline failed with net::ERR_INTERNET_DISCONNECTED. The page navigated to chrome-error://chromewebdata/ and the app did not render. After reconnecting and loading the app again, "survive test" was present in the note, so the text was saved but was not recoverable through a reload while offline.
+
+## Interaction
+- [ ] IX-01: The save status indicator reflects save state, including offline state.
+  - Action: Type in a note, watch the status indicator, then disconnect the network and type again.
+  - Expected: While typing online it shows "Saving..." then "Saved"; while offline it shows "Saved locally – offline" (or equivalent) instead of "Saved".
+  - Bug Report:
+    - Issue: Missing Save Status Indicator
+    - Actual: No "Saving", "Saved", or offline status text appeared online or offline. The only matching text was the note body itself.
+
+## Content
+- [ ] CT-01: Note list metadata matches the note's stored data.
+  - Action: Compare each note's row in the list (title, folder name, tags, last-modified date) with the same note opened in the editor.
+  - Expected: Title, folder, tags, and date shown in the list match the editor exactly for every note.
+  - Bug Report:
+    - Issue: Metadata Mismatch / Missing Folder in List
+    - Actual: List rows never show the folder name, while the editor shows it (e.g., "Renamed Folder" or "Work"). For "App Feature Ideas", the list shows "almost 3 years ago" but the editor shows "Last edited less than a minute ago". Titles and tags matched for all five notes.
+- [X] CT-02: Rich-text content displays without raw markup.
+  - Action: Format a note's text as bold and as a list, then reopen the note.
+  - Expected: The text shows formatted, with no visible HTML or markup characters (e.g., "<b>", "**") in the editor or list preview.

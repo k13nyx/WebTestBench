@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "701c9a74-6cb5-4ad0-866b-3dc2b119480f",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a simple website where I can log my job applications in a personal list. I should be able to add a new application with basic details like company, role, and date, edit or delete entries, and mark each one with a status such as applied, interviewed, or offered. I also want a place to jot down brief notes for each application so I can remember key points.\n\n# Output (Markdown)\n",
+    "duration_ms": 24430,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 0,
+      "cache_creation_input_tokens": 8920,
+      "cache_read_input_tokens": 8920,
+      "output_tokens": 2879,
+      "output_tokens_details": {
+        "thinking_tokens": 1989
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "provisioned",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 1731,
+        "outputTokens": 3867,
+        "cacheReadInputTokens": 8920,
+        "cacheCreationInputTokens": 8920,
+        "webSearchRequests": 0,
+        "costUSD": 0.16554,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 2964,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 9,
+      "AssistantMessage": {
+        "total_count": 3,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 62,
+      "AssistantMessage": {
+        "total_count": 115,
+        "ThinkingBlock": 25,
+        "ToolUseBlock": 44,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 44,
+        "ToolResultBlock": 44
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": false,
+    "defect_detection": false
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "a916c33f-7a96-49e2-bbe5-37045a5b7f78",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a simple website where I can log my job applications in a personal list. I should be able to add a new application with basic details like company, role, and date, edit or delete entries, and mark each one with a status such as applied, interviewed, or offered. I also want a place to jot down brief notes for each application so I can remember key points.\n\n## Application URL\nhttp://localhost:6044/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Add a new job application with all details\n  - Action: Click the \"Add Application\" button, fill in \"Company\" with \"TechCorp\", \"Role\" with \"Frontend Developer\", \"Date\" with \"2026-11-09\", select \"Status\" as \"Applied\", enter \"Referred by John\" in \"Notes\", and click \"Save\".\n  - Expected: The new entry is added to the list displaying \"TechCorp\", \"Frontend Developer\", \"2026-11-09\", \"Applied\", and the entered notes.\n- [ ] FT-02: Edit an existing job application\n  - Action: Click the \"Edit\" button on an existing application entry, modify the \"Role\" to \"Senior Software Engineer\" and \"Notes\" to \"First round scheduled\", then click \"Save\".\n  - Expected: The application entry in the list updates immediately to reflect \"Senior Software Engineer\" and \"First round scheduled\".\n- [ ] FT-03: Update job application status\n  - Action: On an existing application currently set to \"Applied\", change the status to \"Interviewed\" and save.\n  - Expected: The application status in the list updates to \"Interviewed\".\n- [ ] FT-04: Delete a job application entry\n  - Action: Click the \"Delete\" button on an existing application entry and confirm deletion in the prompt.\n  - Expected: The selected application entry is permanently removed from the list.\n- [ ] FT-05: View full application notes\n  - Action: Locate an application with long notes in the list and click to view/expand the notes section.\n  - Expected: The full text of the notes is legibly displayed for the user.\n\n## Constraint\n- [ ] CS-01: Prevent submission with empty required fields\n  - Action: Open the \"Add Application\" form, leave \"Company\" and \"Role\" blank, and click the \"Save\" button.\n  - Expected: The form is not submitted, and validation error messages appear indicating \"Company\" and \"Role\" are required.\n- [ ] CS-02: Prevent submission with an invalid date\n  - Action: Enter an invalid or malformed date value into the \"Date\" field and attempt to submit the form.\n  - Expected: Form submission is blocked, and an error prompt indicates the date must be valid.\n\n## Interaction\n- [ ] IX-01: Dismiss application modal/form without saving\n  - Action: Click \"Add Application\", enter \"Acme Inc\" in \"Company\", then click the \"Cancel\" or \"Close\" button.\n  - Expected: The modal/form closes, and no new record is added to the application list.\n- [ ] IX-02: Delete confirmation prompt display\n  - Action: Click the \"Delete\" icon/button on an existing application.\n  - Expected: A confirmation modal or dialog appears asking the user to confirm or cancel the deletion.\n- [ ] IX-03: Visual status badge differentiation\n  - Action: View entries with statuses \"Applied\", \"Interviewed\", and \"Offered\" in the list.\n  - Expected: Each status displays distinct visual styling (e.g., distinct badge background or font colors) corresponding to its state.\n\n## Content\n- [ ] CT-01: Table/list columns and field headers\n  - Action: Inspect the headers of the application list.\n  - Expected: The list clearly displays labels or column headers for \"Company\", \"Role\", \"Date\", \"Status\", and \"Notes\".\n- [ ] CT-02: Status dropdown option values\n  - Action: Click the \"Status\" dropdown in the add/edit application form.\n  - Expected: The dropdown options explicitly include \"Applied\", \"Interviewed\", and \"Offered\".\n- [ ] CT-03: Empty list state messaging\n  - Action: View the application list when no applications exist.\n  - Expected: A descriptive empty state message (e.g., \"No job applications yet. Click 'Add Application' to get started.\") is displayed.\n```\n\n# Output\n",
+    "duration_ms": 388301,
+    "is_error": false,
+    "num_turns": 45,
+    "token_usage": {
+      "input_tokens": 121771,
+      "cache_creation_input_tokens": 8908,
+      "cache_read_input_tokens": 1319497,
+      "output_tokens": 22631,
+      "output_tokens_details": {
+        "thinking_tokens": 15200
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 124276,
+        "outputTokens": 23516,
+        "cacheReadInputTokens": 1319497,
+        "cacheCreationInputTokens": 8908,
+        "webSearchRequests": 0,
+        "costUSD": 1.9247034999999997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 16078,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

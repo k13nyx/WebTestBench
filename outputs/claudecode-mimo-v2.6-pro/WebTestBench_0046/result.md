@@ -1,0 +1,106 @@
+All tests complete. Here is the full checklist with updated statuses:
+
+# Test Result
+
+## Functionality
+- [ ] FT-01: Create a new topic page with title and content.
+  - Action: Click "New Page", enter a title and body content, save.
+  - Expected: The page is created, appears in navigation, and opens showing the entered title and content.
+  - Bug Report:
+    - Issue: Unresponsive Button / Missing Creation Form
+    - Actual: The "New Page" button (plus icon next to the "Pages" header) is unresponsive — clicking it (verified 3 times) opens no dialog or form. No Title/body input fields or Save button appear anywhere in the DOM (only the sidebar search input exists), so no page can be created and nothing appears in navigation.
+- [ ] FT-02: Create a nested subpage under an existing page.
+  - Action: Open an existing page, choose "Add Subpage", enter title and content, save.
+  - Expected: The subpage appears nested under its parent in the hierarchy and opens correctly.
+  - Bug Report:
+    - Issue: Missing Control / Missing Creation Form
+    - Actual: No "Add Subpage" control exists anywhere in the UI (verified across page view, sidebar, and full DOM text/element scan). The page view only shows content, tags, Subpages list, Cites/Cited By/Linked From lists — no creation entry point, so a subpage cannot be created.
+- [ ] FT-03: Create a bidirectional link between two pages.
+  - Action: On page A, create a link to an existing page B.
+  - Expected: The link on A opens B, and B shows A in its backlinks ("Linked From") section automatically.
+  - Bug Report:
+    - Issue: Missing Control / Unresponsive Link Creation
+    - Actual: There is no link-creation control (no "Add Link", no editor, no content-editable area) on any page, so a link from A to B cannot be created. Pre-existing links/backlinks render ("Linked From" works for seeded data), but the creation action is impossible to perform.
+- [ ] FT-04: Add tags to a page.
+  - Action: Open a page, add tags (e.g., "research", "learning") via the tags control, save.
+  - Expected: The tags are saved and listed among the page's tags.
+  - Bug Report:
+    - Issue: Missing Control / Read-only Tags
+    - Actual: Page tags are display-only chips; there is no "Add Tag" control, tag input, or edit affordance anywhere in the DOM. Tags cannot be added or saved to a page.
+- [ ] FT-05: Create a citation relationship with a citation note.
+  - Action: On a page, add a citation to another existing page with the note "supports the theory", save.
+  - Expected: The cited page appears in the page's "Cites" list along with the entered note.
+  - Bug Report:
+    - Issue: Missing Control / Missing Citation Form
+    - Actual: No "Add Citation" control or citation form exists on any page (confirmed via full DOM scan of buttons/inputs/text). Citation relationships for seeded data display correctly, but a new citation with a note cannot be created.
+- [X] FT-06: View pages a page cites and pages that cite it.
+  - Action: Open a default page that has citation relationships.
+  - Expected: The page shows a "Cites" list (pages it cites) and a "Cited By" list (pages citing it), both populated.
+- [X] FT-07: Browse the knowledge base through hierarchical navigation.
+  - Action: Use the navigation tree to expand parent pages and open a nested page.
+  - Expected: The nested page opens and its parent chain in the hierarchy is visible.
+- [X] FT-08: Search pages by title.
+  - Action: Enter part of a default page's title in the search box (search by title).
+  - Expected: Matching pages appear in results; clicking a result opens that page.
+- [X] FT-09: Filter pages by tag.
+  - Action: Select a tag present in the default data via the tag filter.
+  - Expected: The page list shows only pages carrying the selected tag.
+- [ ] FT-10: Search by citation notes.
+  - Action: Enter text from an existing citation note in the search box (search by citation note).
+  - Expected: Results show the page/citation whose note matches the query, with the matching note visible.
+  - Bug Report:
+    - Issue: Missing Information in Results (note not displayed)
+    - Actual: Query "Responds to Gettier" correctly matches via citation note and returns "1 results — The Knowledge Definition Debate" (and "Challenges classical" returns "Gettier Problems"), but the result item renders only a file icon and the page title — the matching citation note text is not shown in the results list at all.
+- [X] FT-11: Follow chains of links or citations across pages.
+  - Action: Open a page, follow a link or citation entry to its target page, then follow a link or citation from that page again.
+  - Expected: Each step opens the correct target page, enabling multi-hop exploration.
+
+## Constraint
+- [ ] CS-01: Page creation requires a non-empty title.
+  - Action: Attempt to save a new page with the Title field empty (content filled).
+  - Expected: Creation is blocked with a validation message (e.g., "Title is required") and no page is created.
+  - Bug Report:
+    - Issue: Unverifiable Constraint / Missing Creation Form
+    - Actual: The "New Page" button is unresponsive and no title/content form exists in the DOM, so an empty-title save cannot be attempted. No validation message ("Title is required" or similar) is ever displayed and the entire creation flow is unavailable.
+- [ ] CS-02: A page cannot be linked to itself.
+  - Action: On a page, attempt to create a link to the same page.
+  - Expected: The self-link is rejected (validation error or target unavailable); the page's link list is unchanged.
+  - Bug Report:
+    - Issue: Unverifiable Constraint / Missing Link-Creation UI
+    - Actual: No link-creation control exists on any page, so a self-link attempt cannot be performed; no validation error can be observed and the constraint cannot be exercised.
+- [ ] CS-03: The same tag cannot be added twice to one page.
+  - Action: On a page that already has the tag "research", try to add "research" again.
+  - Expected: The duplicate is rejected with a validation message and the tag appears only once.
+  - Bug Report:
+    - Issue: Unverifiable Constraint / Missing Tag-Add UI
+    - Actual: Tags are display-only chips with no add/edit control anywhere in the UI, so adding a duplicate tag cannot be attempted and no duplicate-rejection validation message can be observed.
+- [ ] CS-04: A citation must reference an existing page.
+  - Action: Attempt to create a citation whose target page title does not exist (or leave target empty).
+  - Expected: The citation is rejected with a validation message; no citation is created.
+  - Bug Report:
+    - Issue: Unverifiable Constraint / Missing Citation Form
+    - Actual: No citation-creation form or control exists anywhere in the DOM, so an invalid/empty citation target cannot be submitted and no validation message can be observed.
+
+## Interaction
+- [ ] IX-01: Creation actions give confirmation feedback.
+  - Action: Successfully create a page or subpage.
+  - Expected: A success confirmation (e.g., "Page created") appears and the new item is visible without manually refreshing.
+  - Bug Report:
+    - Issue: No Confirmation Feedback / Creation Impossible
+    - Actual: Creation is impossible (unresponsive "New Page" button, no creation/subpage forms), so no success confirmation (e.g., "Page created") can ever appear; repeated clicks on the "New Page" button produce zero DOM change and no toast/notification.
+- [X] IX-02: Search and filter results update when the input changes.
+  - Action: Change the search query or switch the selected tag filter.
+  - Expected: The results list updates to reflect the new query/filter immediately after the change.
+- [X] IX-03: Hierarchy nodes expand and collapse on click.
+  - Action: Click a parent node in the navigation tree to expand it, then click again to collapse it.
+  - Expected: Expanding reveals its subpages, collapsing hides them, with a visible state indicator (e.g., arrow toggle).
+
+## Content
+- [X] CT-01: Page data is displayed exactly as stored.
+  - Action: Open a default page and compare the displayed title, body content, and tags against its stored values.
+  - Expected: Title, content, and tags render completely and exactly — no truncation, placeholders, or wrong labels.
+- [X] CT-02: Citation notes are displayed intact in citation lists.
+  - Action: View the "Cites" list of a default page that has citations and read the notes.
+  - Expected: Each note's full text appears exactly as recorded next to its cited page, with no missing or garbled text.
+
+**Summary:** 12 PASS / 9 FAIL. The read-only knowledge-browsing experience works well (hierarchy navigation, search by title and citation notes, tag filtering, bidirectional link/citation viewing, multi-hop chains, content rendering). All failures cluster in one root cause: the application has **no working content-creation/editing UI** — the "New Page" (+) button is unresponsive and there are no controls for adding subpages, links, tags, or citations — so all creation-related functionality (FT-01–FT-05), their constraint validations (CS-01–CS-04), and creation feedback (IX-01) cannot function; FT-10 additionally fails because matched citation notes are not shown in search results.

@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "6219299c-b5a6-410e-81bf-e8e5e8d07956",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a to-do webpage where I can add tasks with titles, optional descriptions, and deadlines, then edit, complete, or delete them. I’d like to mark tasks as completed without losing them entirely, and have an easy way to view active tasks first. The page should also let me assign a simple priority to each task and sort my list by that priority or by deadline.It supports binding one or more prerequisite dependent tasks to any task. If Task A is dependent on Task B, the edit and complete buttons of Task A will be grayed out when Task B is not yet completed, with only the description and priority fields available for modification. Meanwhile, a prominent label stating \"Prerequisite Task B Incomplete\" will be displayed next to Task A. The system also enables visual connection of dependent tasks via dashed lines, and hovering over the connection will trigger a pop-up window showing the details of the dependency chain.\n\n# Output (Markdown)\n",
+    "duration_ms": 28079,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 3481,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 7984,
+      "output_tokens": 3610,
+      "output_tokens_details": {
+        "thinking_tokens": 2315
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "qwen/qwen3.8-flash": {
+        "inputTokens": 3843,
+        "outputTokens": 4359,
+        "cacheReadInputTokens": 9520,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.13294999999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 3046,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "qwen/qwen3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 714,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 7426,
+      "AssistantMessage": {
+        "total_count": 137,
+        "ThinkingBlock": 54,
+        "TextBlock": 30,
+        "ToolUseBlock": 53
+      },
+      "UserMessage": {
+        "total_count": 53,
+        "ToolResultBlock": 53
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "ac9f4f9b-90c1-45c8-8b98-3909fe9f1dc7",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a to-do webpage where I can add tasks with titles, optional descriptions, and deadlines, then edit, complete, or delete them. I’d like to mark tasks as completed without losing them entirely, and have an easy way to view active tasks first. The page should also let me assign a simple priority to each task and sort my list by that priority or by deadline.It supports binding one or more prerequisite dependent tasks to any task. If Task A is dependent on Task B, the edit and complete buttons of Task A will be grayed out when Task B is not yet completed, with only the description and priority fields available for modification. Meanwhile, a prominent label stating \"Prerequisite Task B Incomplete\" will be displayed next to Task A. The system also enables visual connection of dependent tasks via dashed lines, and hovering over the connection will trigger a pop-up window showing the details of the dependency chain.\n\n## Application URL\nhttp://localhost:6045/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Add a task with title, description, deadline, and priority\n  - Action: Enter a title (e.g., \"Write report\"), a description, pick a deadline date, select a priority (e.g., High), then click the Add/Submit button.\n  - Expected: A new task appears in the list showing the entered title, description, deadline, and priority.\n\n- [ ] FT-02: Task can be added with description left blank (description is optional)\n  - Action: Fill in only the title (and optionally deadline/priority), leave the description field empty, click Add.\n  - Expected: The task is created successfully with no error; an empty description is accepted.\n\n- [ ] FT-03: Edit an unblocked task and save changes\n  - Action: Click the Edit button on a task that has no incomplete prerequisites; modify its title, description, deadline, and priority; save.\n  - Expected: The task row updates to display all newly saved values.\n\n- [ ] FT-04: Mark a task as completed without losing it\n  - Action: Click the Complete button/checkbox on an independent task.\n  - Expected: The task is shown as completed (e.g., checked/strikethrough) and remains present in the list; it is not deleted.\n\n- [ ] FT-05: Delete a task\n  - Action: Click the Delete button on any task.\n  - Expected: The task is permanently removed from the list and no longer appears in any view.\n\n- [ ] FT-06: View active tasks first\n  - Action: Use the provided view control (e.g., \"Active\" tab/filter or default ordering).\n  - Expected: Incomplete (active) tasks are displayed above/first; completed tasks are still reachable (e.g., under a \"Completed\" view) rather than hidden permanently.\n\n- [ ] FT-07: Sort the task list by priority\n  - Action: Choose the \"Sort by Priority\" option.\n  - Expected: Tasks reorder strictly by priority level (e.g., High → Medium → Low).\n\n- [ ] FT-08: Sort the task list by deadline\n  - Action: Choose the \"Sort by Deadline\" option.\n  - Expected: Tasks reorder by deadline date (earliest deadline first).\n\n- [ ] FT-09: Bind one or more prerequisite tasks to a task\n  - Action: For default task A, use the dependency control to bind prerequisite task B and also prerequisite task C; save.\n  - Expected: Both dependencies are registered — A is blocked by each incomplete prerequisite and connections for both are rendered.\n\n## Constraint\n- [ ] CS-01: Edit and Complete buttons are grayed out while a prerequisite is incomplete\n  - Action: With task B incomplete, inspect dependent task A and attempt to click A's Edit and Complete buttons.\n  - Expected: Both buttons appear grayed/disabled; clicking them does nothing — no edit form opens and A cannot be completed.\n\n- [ ] CS-02: Only description and priority are modifiable on a blocked task\n  - Action: On blocked task A (prerequisite B incomplete), attempt to modify the description and priority, then attempt title/deadline changes.\n  - Expected: Description and priority changes are accepted and saved; title and deadline cannot be changed, and the full Edit form remains inaccessible.\n\n- [ ] CS-03: Completing the prerequisite unblocks the dependent task\n  - Action: Complete prerequisite task B.\n  - Expected: Task A's Edit and Complete buttons become enabled, and the \"Prerequisite Task B Incomplete\" label next to A disappears.\n\n- [ ] CS-04: Task cannot be added without a title\n  - Action: Leave the title field empty and click Add.\n  - Expected: Submission is rejected with a visible validation message; no new task is created.\n\n- [ ] CS-05: A task unlocks only when ALL its prerequisites are completed\n  - Action: With A bound to prerequisites B and C (both incomplete), complete only B and inspect A; then complete C and inspect A again.\n  - Expected: After B alone is completed, A remains blocked (label still shown, buttons disabled); only after C is also completed does A unlock.\n\n## Interaction\n- [ ] IX-01: Dependent tasks are visually connected by dashed lines\n  - Action: With task A bound to prerequisite B, view the task list/graph area.\n  - Expected: A dashed line is drawn connecting task B's entry to task A's entry, clearly distinguishing the dependency link from normal content.\n\n- [ ] IX-02: Hovering over a dashed connection opens a dependency pop-up\n  - Action: Hover the mouse cursor over the dashed line between B and A; then move the cursor away.\n  - Expected: A pop-up window appears showing the dependency chain details (the prerequisite → dependent relationship); the pop-up closes when the hover ends.\n\n## Content\n- [ ] CT-01: Prominent blocking label with exact wording\n  - Action: View dependent task A while prerequisite task B is incomplete.\n  - Expected: A prominent label reading \"Prerequisite Task B Incomplete\" (referencing the prerequisite task's title) is displayed next to task A, visually distinct (e.g., bold/colored).\n\n- [ ] CT-02: Task card displays all required fields accurately\n  - Action: Inspect a default task's row after adding/editing.\n  - Expected: Title, description, deadline, and priority are all displayed and match exactly what was entered — no missing, truncated, or placeholder content.\n\n- [ ] CT-03: Dependency pop-up content is relevant and correct\n  - Action: Hover the dashed connection between B and A and read the pop-up contents.\n  - Expected: The pop-up shows the actual tasks in the chain (B and A titles) and their completion status — information directly relevant to that dependency, with no unrelated or placeholder text.\n```\n\n# Output\n",
+    "duration_ms": 443882,
+    "is_error": false,
+    "num_turns": 54,
+    "token_usage": {
+      "input_tokens": 2024081,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 517116,
+      "output_tokens": 40865,
+      "output_tokens_details": {
+        "thinking_tokens": 23848
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "qwen/qwen3.8-flash": {
+        "inputTokens": 2025873,
+        "outputTokens": 41009,
+        "cacheReadInputTokens": 518396,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 11.413787999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 23979,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "qwen/qwen3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

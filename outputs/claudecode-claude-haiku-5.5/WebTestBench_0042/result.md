@@ -1,0 +1,108 @@
+# Test Result
+
+## Functionality
+- [X] FT-01: User can open a project from the project list and view its kanban board.
+  - Action: On the project list page, click the name of the first default project.
+  - Expected: The kanban board opens with status columns, and each existing task card appears in its matching column.
+- [X] FT-02: User can create a task with title, due date, priority, and assignee.
+  - Action: On the board, click "New Task" in the "To Do" column. Enter Title "QA Checklist Task", set Due Date to a future date, set Priority to "High", set Assignee to a team member, and click "Save".
+  - Expected: A card titled "QA Checklist Task" appears in "To Do" showing the due date, High priority, and the selected assignee.
+- [ ] FT-03: User can drag a task card to another column and the new status persists after reload.
+  - Action: Drag the "QA Checklist Task" card from "To Do" to "In Progress", then reload the page.
+  - Expected: After reload, the card is still in "In Progress" and is not in "To Do".
+  - Bug Report:
+    - Issue: Unresponsive Drag and Drop / Data Not Persisted
+    - Actual: Three drag attempts (drop on the In Progress column container, on an In Progress card, and on the "In Progress" heading) left the card in "To Do". The status bar reported "You have moved the item from position 3 to position 3". After reload the "QA Checklist Task" card was gone entirely, so it was not in "In Progress" or "To Do".
+- [ ] FT-04: User can mark progress on a task, and the progress is saved.
+  - Action: Click the "QA Checklist Task" card, set its progress to 50% (or the app's progress control), and click "Save". Reload the page and reopen the card.
+  - Expected: The card shows the updated progress, and the value is still 50% after reload.
+  - Bug Report:
+    - Issue: Progress Not Saved / Data Not Persisted
+    - Actual: The Edit Task dialog's Progress slider was moved to 50 with the keyboard (PageUp x5) and "Save Changes" was clicked. The card showed no progress row afterwards, unlike the seeded cards that display "Progress N%". After reload the "QA Checklist Task" card no longer existed, so progress could not be reopened or confirmed at 50%.
+- [ ] FT-05: User can view a concise summary of the project's overall status.
+  - Action: Open the summary panel or header of the default project.
+  - Expected: The summary shows a total task count and per-status counts (To Do, In Progress, Done) that match the number of cards in each column.
+  - Bug Report:
+    - Issue: Missing Total Task Count
+    - Actual: The header shows per-status counts (To Do 2, In Progress 2, Review 1, Done 1) that match the columns, plus "17% Complete". No total task count (e.g., "6 tasks") is displayed anywhere in the summary.
+- [X] FT-06: User can filter tasks by status.
+  - Action: In the Status filter, select "In Progress".
+  - Expected: Only tasks in "In Progress" are visible. Clearing the filter restores all tasks.
+- [X] FT-07: User can filter tasks by assignee.
+  - Action: In the Assignee filter, select one team member who has at least one task.
+  - Expected: Only tasks assigned to that member are visible.
+- [X] FT-08: User can search tasks by keyword.
+  - Action: Type the first word of an existing task title in the search box and press Enter.
+  - Expected: Only tasks whose title or description contains that keyword are visible. Clearing the search restores all tasks.
+- [ ] FT-09: User can send a message in the project chat panel.
+  - Action: In the project chat panel, type "Checklist test message" and click "Send".
+  - Expected: The message appears at the end of the chat with the sender's name and a timestamp, and the input field clears.
+  - Bug Report:
+    - Issue: Incorrect Sender Name
+    - Actual: The message was posted and the input cleared, with a timestamp (20:48). However, the sender label reads "You" instead of the sender's team member name (the avatar is "Alex Chen").
+- [ ] FT-10: Chat messages appear in real time for other team members.
+  - Action: Open the same project in two browser windows, signed in as two different team members. Send a message from window A.
+  - Expected: The message appears in window B without refreshing the page.
+  - Bug Report:
+    - Issue: Real-time Sync Missing
+    - Actual: Tab B was opened on the same project before sending. "Realtime probe" was sent from tab A and tab B was checked after 3 seconds without reloading. The text "Realtime probe" was not present in tab B. Note: no sign-in exists, so both tabs ran as the same user rather than two different team members.
+
+## Constraint
+- [ ] CS-01: Task cannot be saved without a title.
+  - Action: Open the New Task form, leave Title empty, fill in the other fields, and click "Save".
+  - Expected: The task is not created, a required-field error appears on Title, and no new card appears on the board.
+  - Bug Report:
+    - Issue: Missing Required-Field Error
+    - Actual: With Title empty and Due Date filled, clicking "Create" kept the dialog open and added no card (To Do stayed at 2). However, no error message appeared on Title. The Title input reported `required: false` and no validation message, and the dialog text contained no error.
+- [ ] CS-02: Assignee and priority are limited to valid options.
+  - Action: Open the Assignee and Priority fields in the New Task form.
+  - Expected: Assignee lists only the project's team members. Priority offers only the predefined levels (High, Medium, Low), and no other value can be entered.
+  - Bug Report:
+    - Issue: Invalid Assignee Option
+    - Actual: The Assignee list shows "Unassigned", "Alex Chen", "Sarah Miller", "James Wilson", "Emma Davis". "Unassigned" is not a team member. Priority offers low, medium, high as lowercase values, which is a case mismatch with "High, Medium, Low" but otherwise matches the predefined set.
+- [X] CS-03: An empty chat message cannot be sent.
+  - Action: Leave the chat input empty, or enter only spaces, and click "Send" or press Enter.
+  - Expected: No message is posted, and the chat history stays unchanged.
+- [X] CS-04: Tasks and chat messages are isolated per project.
+  - Action: Note a task title and a chat message in the first default project. Switch to the second default project.
+  - Expected: The second project's board and chat do not show the first project's tasks or messages.
+
+## Interaction
+- [ ] IX-01: The target column is highlighted while a card is dragged over it.
+  - Action: Drag a task card over the "Done" column without releasing the mouse button. Then move the cursor out of the column.
+  - Expected: "Done" shows a visible drop highlight while the card hovers over it, and the highlight disappears when the cursor leaves.
+  - Bug Report:
+    - Issue: Drop Highlight Not Verifiable / Drag Not Working
+    - Actual: The available drag tool performs a full drag-and-drop and cannot hold the pointer over "Done". Drag attempts in FT-03 did not move any card, so no drop highlight could be observed on "Done".
+- [X] IX-02: Clicking a task card opens its detail view.
+  - Action: Click any task card on the board.
+  - Expected: A detail panel or modal opens showing title, description, due date, priority, assignee, and progress. It closes when the "X" is clicked.
+- [ ] IX-03: A success toast appears after a task is created.
+  - Action: Create a task with valid Title, Due Date, Priority, and Assignee, and click "Save".
+  - Expected: A toast reading "Task created" appears and disappears automatically after a few seconds.
+  - Bug Report:
+    - Issue: Missing Success Toast
+    - Actual: Task "Toast probe task" was created (Medium, Dec 20). Immediately after clicking "Create", the notification region was empty, and the page text did not contain "Task created". No toast appeared.
+- [ ] IX-04: The chat scrolls to the newest message when a new message is sent.
+  - Action: Scroll the chat history up to the oldest messages, then send a new message.
+  - Expected: The chat scrolls to the bottom so the newly sent message is visible.
+  - Bug Report:
+    - Issue: Chat Does Not Scroll to Newest Message
+    - Actual: After a long filler message made the chat overflow (scrollHeight 1080 vs clientHeight 574), the chat was scrolled to top (scrollTop 0). "Newest scroll probe" was sent. The newest message was in the DOM, but scrollTop remained 0 and the newest message was not in view (lastInView=false).
+
+## Content
+- [ ] CT-01: Due dates display the same value and format on the card and in the detail view.
+  - Action: Compare the due date on the "QA Checklist Task" card with the due date in its detail view.
+  - Expected: Both show the same date in the same format, with no blank values or "Invalid Date".
+  - Bug Report:
+    - Issue: Inconsistent Date Format
+    - Actual: The card shows "Dec 15" while the detail view's Due Date field shows "2026-12-15". The same date is shown in different formats. Another card showed "Feb 20" on the board and "2024-02-20" in its detail view.
+- [X] CT-02: Assignee names on cards are real team members.
+  - Action: Review the assignee shown on each task card on the default project's board.
+  - Expected: Every card shows a named team member from the project's team list, with no placeholder text such as "undefined", "null", or "User 1".
+- [ ] CT-03: Existing chat messages show correct sender names and timestamps.
+  - Action: Review the existing messages in the default project's chat panel.
+  - Expected: Each message shows a real team member name and a valid timestamp, with no blank or "undefined" values.
+  - Bug Report:
+    - Issue: Incorrect Sender Name
+    - Actual: The first seeded message in the default project's chat shows the sender as "You" at 17:30, not a team member name. The other two messages show "Sarah Miller" (18:15) and "James Wilson" (21:00) with valid timestamps. The same "You" label appears in Mobile App Launch.

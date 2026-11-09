@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "042ef0a9-9cfb-472b-a0af-1bf801917c93",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want an admin dashboard to manage all my smart home devices, where I can view them by room or device type, adjust settings like brightness or target temperature, and create simple schedules for when lights or thermostats should change state. The panel should let me see recent activity, such as when a device was last used, and quickly filter devices by status, like only showing offline or idle devices.\n\n# Output (Markdown)\n",
+    "duration_ms": 34657,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2921,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8192,
+      "output_tokens": 1630,
+      "output_tokens_details": {
+        "thinking_tokens": 574
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-flash": {
+        "inputTokens": 4556,
+        "outputTokens": 1789,
+        "cacheReadInputTokens": 8192,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.071601,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 721,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 181,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 4397,
+      "AssistantMessage": {
+        "total_count": 68,
+        "ThinkingBlock": 34,
+        "ToolUseBlock": 33,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 33,
+        "ToolResultBlock": 33
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "9d88f4f5-2932-4e6d-8aef-05fd2dd298a2",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want an admin dashboard to manage all my smart home devices, where I can view them by room or device type, adjust settings like brightness or target temperature, and create simple schedules for when lights or thermostats should change state. The panel should let me see recent activity, such as when a device was last used, and quickly filter devices by status, like only showing offline or idle devices.\n\n## Application URL\nhttp://localhost:6041/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: View devices grouped/filtered by room\n  - Action: Select a room (e.g., \"Living Room\") from the room view option\n  - Expected: The device list shows only devices assigned to that room\n\n- [ ] FT-02: View devices grouped/filtered by device type\n  - Action: Select a device type (e.g., \"Lights\" or \"Thermostats\") from the type view option\n  - Expected: The device list shows only devices of the selected type\n\n- [ ] FT-03: Adjust light brightness\n  - Action: Open a light device's settings and change the brightness to a new value (e.g., 75%)\n  - Expected: The brightness setting is saved and the device card reflects the new value\n\n- [ ] FT-04: Adjust thermostat target temperature\n  - Action: Open a thermostat's settings and change the target temperature to a new value (e.g., 22°C)\n  - Expected: The target temperature is saved and the device card reflects the new value\n\n- [ ] FT-05: Create a schedule for a light\n  - Action: Create a schedule selecting a light device, a time, and a target state (e.g., On at 18:00)\n  - Expected: The schedule is created and appears in the schedules list with the correct device, time, and state\n\n- [ ] FT-06: Create a schedule for a thermostat\n  - Action: Create a schedule selecting a thermostat, a time, and a target temperature/state\n  - Expected: The schedule is created and appears in the schedules list with the correct details\n\n- [ ] FT-07: View recent activity\n  - Action: Navigate to the recent activity section\n  - Expected: A list of recent device events is displayed (e.g., which device was used and when)\n\n- [ ] FT-08: Filter devices by status \"Offline\"\n  - Action: Apply the \"Offline\" status filter\n  - Expected: Only devices with offline status are shown in the device list\n\n- [ ] FT-09: Filter devices by status \"Idle\"\n  - Action: Apply the \"Idle\" status filter\n  - Expected: Only devices with idle status are shown in the device list\n\n## Constraint\n- [ ] CS-01: Schedule form cannot be submitted with missing required fields\n  - Action: Attempt to save a schedule without selecting a device, time, or target state\n  - Expected: The schedule is not created and a validation error identifies the missing field(s)\n\n- [ ] CS-02: Brightness cannot be set outside its valid range\n  - Action: Attempt to set brightness below 0% or above 100%\n  - Expected: The value is rejected or clamped to the valid range; invalid input is not saved\n\n- [ ] CS-03: Target temperature cannot be set outside its valid range\n  - Action: Attempt to set a target temperature outside the allowed range (e.g., below minimum or above maximum)\n  - Expected: The value is rejected or clamped to the valid range; invalid input is not saved\n\n- [ ] CS-04: Status filter shows only matching devices\n  - Action: With the \"Offline\" filter active, inspect the returned device list\n  - Expected: No device with a non-offline status (e.g., online, idle) appears in the list\n\n## Interaction\n- [ ] IX-01: Device list updates immediately when a filter or view option is changed\n  - Action: Switch between room view, type view, or a status filter\n  - Expected: The device list refreshes right away to reflect the selection without requiring a manual reload\n\n- [ ] IX-02: Confirmation feedback after saving a device setting\n  - Action: Change a device setting (brightness or temperature) and save\n  - Expected: A visible success confirmation (toast or message) appears indicating the setting was saved\n\n- [ ] IX-03: Confirmation feedback after creating a schedule\n  - Action: Submit a valid new schedule\n  - Expected: A visible success confirmation appears and the new schedule is shown in the list\n\n## Content\n- [ ] CT-01: Recent activity entries include device name and timestamp\n  - Action: Open the recent activity section\n  - Expected: Each entry clearly shows which device was used and the time of last use\n\n- [ ] CT-02: Device status labels are accurate and consistent\n  - Action: Inspect device cards/list against their status filter results\n  - Expected: Each device displays a status label (e.g., Online, Idle, Offline) that matches its actual state\n\n- [ ] CT-03: Schedule entries display correct device, time, and action details\n  - Action: Open the schedules list and inspect an existing schedule\n  - Expected: Each schedule shows the target device name, scheduled time, and the state/temperature it will apply\n```\n\n# Output\n",
+    "duration_ms": 399573,
+    "is_error": false,
+    "num_turns": 34,
+    "token_usage": {
+      "input_tokens": 149323,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1039232,
+      "output_tokens": 19364,
+      "output_tokens_details": {
+        "thinking_tokens": 10778
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-flash": {
+        "inputTokens": 151202,
+        "outputTokens": 19443,
+        "cacheReadInputTokens": 1039904,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.7620369999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 10846,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

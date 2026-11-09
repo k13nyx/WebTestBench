@@ -1,0 +1,137 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "74627cb2-5e42-41f4-a304-546271a3dba7",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a web-based bookkeeping application where users can track income and expenses, categorize transactions, and view summarized reports such as monthly profit and loss. Users should be able to create and manage simple financial records (like invoices, bills, and payments) and assign them to customizable categories or accounts. The site should provide basic tools to review and adjust entries, filter records by date or category, and see simple dashboards of their financial status. It should also allow users to mark items as tax-related and generate a basic tax summary they can review and print.\n\n# Output (Markdown)\n",
+    "duration_ms": 25736,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 0,
+      "cache_creation_input_tokens": 8920,
+      "cache_read_input_tokens": 8920,
+      "output_tokens": 3570,
+      "output_tokens_details": {
+        "thinking_tokens": 2469
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 1764,
+        "outputTokens": 3877,
+        "cacheReadInputTokens": 8920,
+        "cacheCreationInputTokens": 8920,
+        "webSearchRequests": 0,
+        "costUSD": 0.16595500000000002,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 2761,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 11,
+      "AssistantMessage": {
+        "total_count": 3,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 81,
+      "AssistantMessage": {
+        "total_count": 314,
+        "ThinkingBlock": 52,
+        "ToolUseBlock": 130,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 131,
+        "ToolResultBlock": 130,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": false,
+    "defect_detection": false
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "85342c6e-6132-48f1-9643-d9beccc57415",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a web-based bookkeeping application where users can track income and expenses, categorize transactions, and view summarized reports such as monthly profit and loss. Users should be able to create and manage simple financial records (like invoices, bills, and payments) and assign them to customizable categories or accounts. The site should provide basic tools to review and adjust entries, filter records by date or category, and see simple dashboards of their financial status. It should also allow users to mark items as tax-related and generate a basic tax summary they can review and print.\n\n## Application URL\nhttp://localhost:6006/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Create an income transaction\n  - Action: Navigate to the transactions page, click \"Add Income\", enter a valid amount, select an account and category from the dropdowns, and click \"Save\".\n  - Expected: The new income transaction appears in the transactions list with the correct amount, account, and category.\n- [ ] FT-02: Create an expense transaction\n  - Action: Click \"Add Expense\", enter an amount, select an expense category, and click \"Save\".\n  - Expected: The expense transaction appears in the transaction history and reduces the overall balance.\n- [ ] FT-03: Create a financial record (invoice/bill)\n  - Action: Navigate to records management, click \"New Record\", select type \"Invoice\", fill in client details, amount, and due date, then click \"Create\".\n  - Expected: The invoice is saved and listed in the records overview table with an \"Unpaid\" or \"Pending\" status.\n- [ ] FT-04: Edit an existing financial record\n  - Action: Click the \"Edit\" icon on an existing transaction, change the category and amount, and click \"Update\".\n  - Expected: The transaction list updates to display the modified category and amount.\n- [ ] FT-05: Filter records by date range\n  - Action: Select a custom start date and end date in the date filter bar, then click \"Apply Filter\".\n  - Expected: The transaction table displays only records with dates falling within the chosen date range.\n- [ ] FT-06: Filter records by category\n  - Action: Select a specific category from the category filter dropdown.\n  - Expected: Only records matching the selected category are displayed in the list.\n- [ ] FT-07: Create a custom category\n  - Action: Navigate to category settings, click \"Add Category\", type a new category name, and click \"Save\".\n  - Expected: The new category is saved and appears as an option in transaction category dropdowns.\n- [ ] FT-08: Mark an entry as tax-related\n  - Action: Open a transaction for editing, check the \"Tax-related\" checkbox, and save.\n  - Expected: The transaction is saved with an active tax-related badge or indicator next to its name.\n- [ ] FT-09: View monthly Profit and Loss report\n  - Action: Navigate to the Reports section and select \"Monthly Profit & Loss\".\n  - Expected: The screen displays a monthly breakdown of total income, total expenses, and the calculated net profit or loss.\n- [ ] FT-10: Trigger print for tax summary report\n  - Action: Navigate to the Tax Summary page and click the \"Print\" button.\n  - Expected: The browser's native print preview dialog opens showing the formatted tax summary document.\n\n## Constraint\n- [ ] CS-01: Prevent submission with empty required fields\n  - Action: Open the \"Add Transaction\" modal, leave the \"Amount\" field empty, and click \"Save\".\n  - Expected: The form is not submitted and an inline validation error message appears stating that amount is required.\n- [ ] CS-02: Reject invalid numeric amount inputs\n  - Action: Type negative numbers or non-numeric characters (e.g., \"-50\" or \"abc\") into the \"Amount\" field and attempt to submit.\n  - Expected: The system blocks the submission and displays an error indicating that amount must be a positive number.\n- [ ] CS-03: Date filter start date cannot exceed end date\n  - Action: Set the date filter \"Start Date\" to a date later than the \"End Date\" and click \"Apply Filter\".\n  - Expected: The system prevents filtering and displays a validation alert stating the start date must precede the end date.\n\n## Interaction\n- [ ] IX-01: Confirmation modal before record deletion\n  - Action: Click the \"Delete\" button on an existing transaction entry.\n  - Expected: A confirmation modal opens asking to confirm the deletion before the record is permanently removed.\n- [ ] IX-02: Dynamic summary recalculation on record modification\n  - Action: Edit an existing income entry to increase its amount and return to the main dashboard.\n  - Expected: Dashboard summary cards immediately reflect the updated total balance without requiring a manual page refresh.\n\n## Content\n- [ ] CT-01: Financial status dashboard metric cards\n  - Action: Navigate to the main dashboard.\n  - Expected: Prominent stat cards display \"Total Income\", \"Total Expenses\", and \"Net Balance\" with valid currency formatting.\n- [ ] CT-02: Monthly Profit and Loss table content\n  - Action: Open the Profit and Loss report view.\n  - Expected: The table clearly lists distinct line items for operating income, itemized expense categories, and calculated net margin.\n- [ ] CT-03: Tax summary report data alignment\n  - Action: Open the Tax Summary report.\n  - Expected: The report lists only transactions flagged as \"Tax-related\" along with their relevant taxable totals and categories.\n```\n\n# Output\n",
+    "duration_ms": 1111169,
+    "is_error": false,
+    "num_turns": 132,
+    "token_usage": {
+      "input_tokens": 661891,
+      "cache_creation_input_tokens": 17913,
+      "cache_read_input_tokens": 10187156,
+      "output_tokens": 27741,
+      "output_tokens_details": {
+        "thinking_tokens": 17307
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 811614,
+        "outputTokens": 36993,
+        "cacheReadInputTokens": 10197072,
+        "cacheCreationInputTokens": 27829,
+        "webSearchRequests": 0,
+        "costUSD": 10.255362250000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 21826,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

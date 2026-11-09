@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "bb47c9b5-ead5-459b-81cc-915047a50b60",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a subscription-focused website for my software service where visitors can compare different plans, read detailed feature descriptions, and then create an account and subscribe using a simple checkout flow. Signed-in users should be able to view their current plan, see upcoming billing information, and change to a different plan or cancel their subscription from their account area.Annual, quarterly, and monthly payment plans yield different outcomes, which can then be compared against one another.\n\n# Output (Markdown)\n",
+    "duration_ms": 16102,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2367,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8512,
+      "output_tokens": 1665,
+      "output_tokens_details": {
+        "thinking_tokens": 297
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 2534,
+        "outputTokens": 1718,
+        "cacheReadInputTokens": 9984,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.06061200000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 339,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 38,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 4172,
+      "AssistantMessage": {
+        "total_count": 124,
+        "ThinkingBlock": 39,
+        "TextBlock": 39,
+        "ToolUseBlock": 46
+      },
+      "UserMessage": {
+        "total_count": 46,
+        "ToolResultBlock": 46
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "d2e1e089-7b9a-480f-86ce-f7a1fe40756e",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a subscription-focused website for my software service where visitors can compare different plans, read detailed feature descriptions, and then create an account and subscribe using a simple checkout flow. Signed-in users should be able to view their current plan, see upcoming billing information, and change to a different plan or cancel their subscription from their account area.Annual, quarterly, and monthly payment plans yield different outcomes, which can then be compared against one another.\n\n## Application URL\nhttp://localhost:6038/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Visitor can browse all subscription plans\n  - Action: Open the pricing/plans page.\n  - Expected: All default plans (e.g., Basic, Pro, Enterprise) are listed with name, price, and a \"Subscribe\"/\"Choose plan\" button for each.\n- [ ] FT-02: Visitor can read detailed feature descriptions for each plan\n  - Action: Click the \"Learn more\" / \"See features\" link (or expand the feature section) of any plan.\n  - Expected: A detailed feature list for that plan is displayed (e.g., feature bullets with descriptions), matching the plan's tier.\n- [ ] FT-03: Visitor can compare billing cycles (monthly / quarterly / annual)\n  - Action: On the plans page, switch the billing cycle selector between \"Monthly\", \"Quarterly\", and \"Annual\".\n  - Expected: The displayed price for each plan updates to the amount corresponding to the selected billing cycle.\n- [ ] FT-04: Visitor can compare plans against one another side by side\n  - Action: View the plans/comparison page with the \"Compare plans\" view.\n  - Expected: All plans are shown in a side-by-side layout where feature availability per plan can be directly compared (e.g., checkmarks vs. dashes).\n- [ ] FT-05: Visitor can create an account\n  - Action: Fill in the registration form (name, email, password) with valid values and submit it.\n  - Expected: The account is created and the user is signed in (e.g., redirected to the account area or shown as logged in).\n- [ ] FT-06: User can subscribe to a plan through the checkout flow\n  - Action: While signed in, select any plan with a chosen billing cycle and complete the checkout (billing/payment details, confirm).\n  - Expected: Checkout completes and the subscription to the selected plan and billing cycle becomes active.\n- [ ] FT-07: Signed-in user can view their current plan\n  - Action: Sign in and open the account area / \"Subscription\" section.\n  - Expected: The currently subscribed plan name and its billing cycle (monthly/quarterly/annual) are displayed.\n- [ ] FT-08: Signed-in user can see upcoming billing information\n  - Action: Open the account area / \"Billing\" section.\n  - Expected: Upcoming billing details are shown, including the amount to be charged and the next billing date.\n- [ ] FT-09: Signed-in user can change to a different plan\n  - Action: In the account area, click \"Change plan\", select a different plan (with a billing cycle), and confirm.\n  - Expected: The current plan is updated to the newly selected plan/cycle, and the account area reflects the change.\n- [ ] FT-10: Signed-in user can cancel their subscription\n  - Action: In the account area, click \"Cancel subscription\" and confirm the cancellation.\n  - Expected: The subscription status changes to \"Canceled\" (or equivalent), and the account area shows the subscription as canceled.\n\n## Constraint\n- [ ] CS-01: Registration cannot be submitted with empty required fields\n  - Action: On the registration form, leave required fields (e.g., email, password) empty and submit.\n  - Expected: The form is not submitted; a validation error indicates which required fields are missing.\n- [ ] CS-02: Registration cannot be completed with an already-registered email\n  - Action: Attempt to register using the email of an existing default account.\n  - Expected: Registration is rejected with an error such as \"Email already in use\"; no duplicate account is created.\n- [ ] CS-03: Checkout cannot be completed with empty or invalid payment details\n  - Action: Start checkout for a plan and submit with empty or malformed payment fields (e.g., blank card number).\n  - Expected: Checkout is blocked; an error indicates the payment details are missing/invalid, and no subscription is created.\n- [ ] CS-04: Checkout requires a plan and billing cycle to be selected\n  - Action: Attempt to open/submit the checkout without any plan or billing cycle chosen.\n  - Expected: The checkout cannot proceed; the user is prompted to select a plan and billing cycle first.\n- [ ] CS-05: Cancellation requires explicit confirmation\n  - Action: In the account area, click \"Cancel subscription\" but dismiss/abort the confirmation step.\n  - Expected: The subscription remains active; no cancellation is applied without explicit confirmation.\n- [ ] CS-06: Subscription actions are unavailable to signed-out visitors\n  - Action: While signed out, attempt to access the account area / manage subscription pages directly.\n  - Expected: The user cannot view or manage any subscription; they are redirected to sign in.\n\n## Interaction\n- [ ] IX-01: Billing cycle selector updates prices immediately\n  - Action: On the plans page, click between \"Monthly\", \"Quarterly\", and \"Annual\" toggles.\n  - Expected: Plan prices update instantly without a page reload, and the selected cycle is visually highlighted.\n- [ ] IX-02: Checkout shows a success confirmation after subscribing\n  - Action: Complete a valid checkout.\n  - Expected: A success message/confirmation (e.g., \"Subscription successful\" toast or confirmation page) is shown to the user.\n- [ ] IX-03: Plan change shows a confirmation of the new plan\n  - Action: Complete a plan change in the account area.\n  - Expected: Feedback is shown confirming the plan change (e.g., \"Your plan has been updated\" message).\n- [ ] IX-04: Cancellation shows a confirmation of cancellation\n  - Action: Confirm the cancellation of a subscription.\n  - Expected: Feedback is shown confirming the cancellation (e.g., \"Your subscription has been canceled\" message).\n\n## Content\n- [ ] CT-01: Displayed prices are consistent with the selected billing cycle and plan\n  - Action: Compare the price shown on the plans page for each plan/cycle combination against the price charged at checkout and shown in billing.\n  - Expected: The amounts are consistent for the same plan and billing cycle across plans page, checkout, and billing section.\n- [ ] CT-02: All plan content is relevant to the software service theme\n  - Action: Review plan names, feature descriptions, and marketing text on the plans and comparison pages.\n  - Expected: All text and features describe software-service capabilities (e.g., seats, storage, API access); no irrelevant or placeholder content is present.\n```\n\n# Output\n",
+    "duration_ms": 159401,
+    "is_error": false,
+    "num_turns": 47,
+    "token_usage": {
+      "input_tokens": 68124,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1899648,
+      "output_tokens": 21134,
+      "output_tokens_details": {
+        "thinking_tokens": 14753
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 71021,
+        "outputTokens": 21191,
+        "cacheReadInputTokens": 1899648,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.8347040000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 14809,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

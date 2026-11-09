@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "60e21df6-9717-43d3-9bea-b236e39d71d4",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a simple website where I can log my job applications in a personal list. I should be able to add a new application with basic details like company, role, and date, edit or delete entries, and mark each one with a status such as applied, interviewed, or offered. I also want a place to jot down brief notes for each application so I can remember key points.\n\n# Output (Markdown)\n",
+    "duration_ms": 16589,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2356,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 11681,
+      "output_tokens": 2936,
+      "output_tokens_details": {
+        "thinking_tokens": 2163
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 3984,
+        "outputTokens": 3109,
+        "cacheReadInputTokens": 11681,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.1034855,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 2326,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 930,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 9084,
+      "AssistantMessage": {
+        "total_count": 59,
+        "ThinkingBlock": 20,
+        "TextBlock": 19,
+        "ToolUseBlock": 20
+      },
+      "UserMessage": {
+        "total_count": 20,
+        "ToolResultBlock": 20
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "854d49c1-4b4a-4896-9bc3-16c0f816d6d8",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a simple website where I can log my job applications in a personal list. I should be able to add a new application with basic details like company, role, and date, edit or delete entries, and mark each one with a status such as applied, interviewed, or offered. I also want a place to jot down brief notes for each application so I can remember key points.\n\n## Application URL\nhttp://localhost:6044/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: User can view the personal list of job applications\n  - Action: Open the website's main page\n  - Expected: The list displays the pre-existing default entries, each showing company, role, date, and status\n\n- [ ] FT-02: User can add a new application entry\n  - Action: Fill in the company, role, and date fields and click the add/save button\n  - Expected: A new entry is created and visible in the list with the entered company, role, and date\n\n- [ ] FT-03: User can edit an existing entry\n  - Action: Click the edit control on a default entry, change the role (e.g., to \"Senior Engineer\"), and save\n  - Expected: The entry shows the updated role value in the list\n\n- [ ] FT-04: User can delete an entry\n  - Action: Click the delete control on a default entry and confirm deletion\n  - Expected: The entry is removed from the list\n\n- [ ] FT-05: User can mark an entry with a status\n  - Action: Change a default entry's status (e.g., to \"Offered\")\n  - Expected: The entry displays the selected status value\n\n- [ ] FT-06: User can save a brief note on an entry\n  - Action: Type a short note (e.g., \"Recruiter said 2-week turnaround\") into an entry's notes field and save\n  - Expected: The note is stored and displayed with that entry\n\n- [ ] FT-07: Entries persist after page reload\n  - Action: Reload the page after adding/editing an entry\n  - Expected: All entries and their details are still present in the list unchanged\n\n## Constraint\n- [ ] CS-01: Cannot create an entry with empty required fields\n  - Action: Leave the company, role, or date field empty and attempt to save\n  - Expected: No entry is created; a validation message or blocked save identifies the missing required field(s)\n\n- [ ] CS-02: Status accepts only the three defined values\n  - Action: Open the status selector on any entry and review available options\n  - Expected: Only \"Applied\", \"Interviewed\", and \"Offered\" are selectable; no other status values can be entered or chosen\n\n## Interaction\n- [ ] IX-01: List updates immediately after user actions\n  - Action: Add an entry, then edit and delete it, observing the list after each action\n  - Expected: The list reflects each change immediately without requiring a manual page reload\n\n- [ ] IX-02: Edit view pre-fills the entry's current values\n  - Action: Click the edit control on a default entry\n  - Expected: The edit form opens with that entry's existing company, role, date, status, and note already filled in\n\n## Content\n- [ ] CT-01: Displayed entry data matches the saved data\n  - Action: Compare each list entry's displayed company, role, date, status, and notes against the values saved for that entry\n  - Expected: All displayed text matches exactly, with no truncated notes or mismatched values\n\n- [ ] CT-02: Page content is relevant to job application tracking\n  - Action: Inspect the page title, headings, field labels (e.g., \"Company\", \"Role\", \"Date\", \"Status\", \"Notes\"), and button texts\n  - Expected: All visible text and controls relate to logging job applications, with no unrelated or placeholder content\n```\n\n# Output\n",
+    "duration_ms": 159285,
+    "is_error": false,
+    "num_turns": 21,
+    "token_usage": {
+      "input_tokens": 44040,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 711669,
+      "output_tokens": 24512,
+      "output_tokens_details": {
+        "thinking_tokens": 20977
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3": {
+        "inputTokens": 44930,
+        "outputTokens": 24867,
+        "cacheReadInputTokens": 713046,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.2028479999999997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 21322,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

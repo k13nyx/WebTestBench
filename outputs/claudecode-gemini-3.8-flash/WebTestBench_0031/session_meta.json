@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "ef2fffe1-9a8a-43b1-a1c0-debfbb78526d",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a chat webpage where users register, log in, and participate in one or more chat rooms, sending messages with emoji support and seeing others’ messages appear as the conversation continues. Users should have profiles with display names and short bios, choose from several themes and font styles. The chat history should be searchable by keyword, and users should be able to jump to matching messages within the conversation.\n\n# Output (Markdown)\n",
+    "duration_ms": 24406,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 0,
+      "cache_creation_input_tokens": 8920,
+      "cache_read_input_tokens": 8920,
+      "output_tokens": 2566,
+      "output_tokens_details": {
+        "thinking_tokens": 1555
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 0,
+        "outputTokens": 2566,
+        "cacheReadInputTokens": 8920,
+        "cacheCreationInputTokens": 8920,
+        "webSearchRequests": 0,
+        "costUSD": 0.12436000000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1555,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 7,
+      "AssistantMessage": {
+        "total_count": 3,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 60,
+      "AssistantMessage": {
+        "total_count": 281,
+        "ThinkingBlock": 43,
+        "ToolUseBlock": 118,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 118,
+        "ToolResultBlock": 118
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": false,
+    "defect_detection": false
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "223d11b3-3fe7-4248-a6d8-53650d6b55e2",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a chat webpage where users register, log in, and participate in one or more chat rooms, sending messages with emoji support and seeing others’ messages appear as the conversation continues. Users should have profiles with display names and short bios, choose from several themes and font styles. The chat history should be searchable by keyword, and users should be able to jump to matching messages within the conversation.\n\n## Application URL\nhttp://localhost:6031/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: User registration with valid details\n  - Action: Fill in valid registration details (username, email, password) and click the \"Register\" button.\n  - Expected: Account is created successfully and user is navigated to the chat dashboard or login page.\n- [ ] FT-02: User login with valid credentials\n  - Action: Enter valid registered credentials in the login form and click \"Log In\".\n  - Expected: User is authenticated and redirected to the chat room interface.\n- [ ] FT-03: Switch between chat rooms\n  - Action: Click on a different chat room from the rooms sidebar/list.\n  - Expected: Active chat room switches and loads the message history specific to the selected room.\n- [ ] FT-04: Send a message containing emojis\n  - Action: Type a text message, select an emoji from the emoji picker, and click \"Send\".\n  - Expected: Message containing both text and the selected emoji renders in the active chat feed.\n- [ ] FT-05: Real-time incoming message display\n  - Action: Receive a message sent by another user in the current chat room.\n  - Expected: The new message appears at the bottom of the conversation without requiring a page refresh.\n- [ ] FT-06: Update profile display name and bio\n  - Action: Edit the display name and short bio fields in profile settings and click \"Save\".\n  - Expected: Updated display name and bio are saved and reflected in the profile view.\n- [ ] FT-07: Switch application theme\n  - Action: Select an alternative theme (e.g., Dark Theme) from the theme selection settings.\n  - Expected: The application interface immediately updates its color scheme to match the chosen theme.\n- [ ] FT-08: Change typography font style\n  - Action: Select a different font style from the font settings dropdown.\n  - Expected: The chat message text updates to render in the selected font family/style.\n- [ ] FT-09: Search chat history by keyword\n  - Action: Enter an existing keyword into the chat search bar and press Enter.\n  - Expected: A list of search results matching the keyword within the chat history is displayed.\n- [ ] FT-10: Jump to matching message from search\n  - Action: Click on a specific search result item from the search results list.\n  - Expected: The chat viewport scrolls directly to the position of that message within the conversation timeline.\n\n## Constraint\n- [ ] CS-01: Prevent sending empty messages\n  - Action: Clear the message input field and click the \"Send\" button or press Enter.\n  - Expected: The message is not sent and no empty message bubble appears in the chat.\n- [ ] CS-02: Prevent registration with existing username\n  - Action: Attempt to register with a username that is already taken.\n  - Expected: Registration is rejected and an error message indicates the username is unavailable.\n- [ ] CS-03: Enforce required fields on login\n  - Action: Leave the username/email and password fields blank and click \"Log In\".\n  - Expected: Form submission is blocked with inline validation error indicators on the required fields.\n- [ ] CS-04: Non-matching search query state\n  - Action: Enter a non-existent keyword into the chat search bar and execute search.\n  - Expected: Search view displays a \"No messages found\" state without breaking chat history display.\n\n## Interaction\n- [ ] IX-01: Toggle emoji picker popover\n  - Action: Click the emoji icon button beside the message input field.\n  - Expected: Emoji picker popover opens; clicking outside or clicking the icon again closes it.\n- [ ] IX-02: Visual highlight on jumped message\n  - Action: Click a search result to jump to a message in the conversation.\n  - Expected: The target message briefly flashes or shows a distinct highlight color to draw attention.\n- [ ] IX-03: Active room selection indicator\n  - Action: Click on an unselected chat room in the sidebar.\n  - Expected: The selected room item displays an active visual state (e.g., highlighted background or border).\n\n## Content\n- [ ] CT-01: Profile details display completeness\n  - Action: Open user profile card/modal.\n  - Expected: Displays the user's avatar, display name, and short bio text accurately.\n- [ ] CT-02: Customization options listing\n  - Action: Navigate to the appearance/settings section.\n  - Expected: Displays multiple distinct theme choices and several selectable font style options with descriptive labels.\n```\n\n# Output\n",
+    "duration_ms": 911560,
+    "is_error": false,
+    "num_turns": 119,
+    "token_usage": {
+      "input_tokens": 434840,
+      "cache_creation_input_tokens": 8908,
+      "cache_read_input_tokens": 5948027,
+      "output_tokens": 23468,
+      "output_tokens_details": {
+        "thinking_tokens": 13052
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "google/gemini-3.8-flash": {
+        "inputTokens": 437467,
+        "outputTokens": 25754,
+        "cacheReadInputTokens": 5948027,
+        "cacheCreationInputTokens": 8908,
+        "webSearchRequests": 0,
+        "costUSD": 5.860873499999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 15324,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "google/gemini-3.8-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

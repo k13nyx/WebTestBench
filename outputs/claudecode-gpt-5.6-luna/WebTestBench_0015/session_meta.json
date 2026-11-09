@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "190f9680-3d52-465e-abed-f6514f77c6e9",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a polling webpage where registered users can create detailed polls with a question, description, multiple choices, an optional voting deadline, and a mode that chooses between anonymous voting or requiring voters to sign in. Poll creators should be able to share a link so others can vote, see visual results like bar-style breakdowns that update as votes are cast, and manage their polls by closing them early, reopening them, or switching them to read-only results. Voters should be able to see live results after they vote, and I want a dashboard where I can browse, search, and sort my polls by title, creation date, and status.\n\n# Output (Markdown)\n",
+    "duration_ms": 27378,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 3,
+      "cache_creation_input_tokens": 9593,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2430,
+      "output_tokens_details": {
+        "thinking_tokens": 1034
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "openai/gpt-5.6-luna": {
+        "inputTokens": 6,
+        "outputTokens": 2656,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 11285,
+        "webSearchRequests": 0,
+        "costUSD": 0.13696125,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1242,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "openai/gpt-5.6-luna",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 507,
+      "AssistantMessage": {
+        "total_count": 5,
+        "ThinkingBlock": 2,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 3896,
+      "AssistantMessage": {
+        "total_count": 147,
+        "ThinkingBlock": 26,
+        "ToolUseBlock": 76,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 76,
+        "ToolResultBlock": 76
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "440080a8-4ce7-45b6-b00e-57d5ca901ca2",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a polling webpage where registered users can create detailed polls with a question, description, multiple choices, an optional voting deadline, and a mode that chooses between anonymous voting or requiring voters to sign in. Poll creators should be able to share a link so others can vote, see visual results like bar-style breakdowns that update as votes are cast, and manage their polls by closing them early, reopening them, or switching them to read-only results. Voters should be able to see live results after they vote, and I want a dashboard where I can browse, search, and sort my polls by title, creation date, and status.\n\n## Application URL\nhttp://localhost:6015/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Registered users can create a poll with a question, description, and at least two answer choices.\n  - Action: Sign in as a registered user, open the poll creation form, enter a question, description, multiple choices, and submit.\n  - Expected: The poll is created and its question, description, and choices are displayed.\n\n- [ ] FT-02: Poll creators can set an optional voting deadline and select a voting mode.\n  - Action: Create or edit a poll, set a future deadline, choose Anonymous voting or Sign-in required, and save.\n  - Expected: The selected deadline and voting mode are saved and displayed on the poll.\n\n- [ ] FT-03: Poll creators can share a usable voting link.\n  - Action: Open an existing poll owned by the registered user and activate its Share or Copy link control.\n  - Expected: A poll URL is provided, and opening it displays the corresponding poll voting page.\n\n- [ ] FT-04: Voters can submit a vote through a shared poll link.\n  - Action: Open a shared poll link, select one available choice, and submit the vote.\n  - Expected: The vote is accepted and the selected choice is recorded.\n\n- [ ] FT-05: Voters can view poll results after voting.\n  - Action: Submit a valid vote and inspect the results section.\n  - Expected: Results are displayed immediately after the vote is submitted.\n\n- [ ] FT-06: Poll creators can close a poll early.\n  - Action: Open an active poll owned by the user and select the control to close it.\n  - Expected: The poll changes to a closed state and no longer accepts votes.\n\n- [ ] FT-07: Poll creators can reopen a closed poll.\n  - Action: Open a closed poll owned by the user and select the Reopen control.\n  - Expected: The poll returns to an active voting state and accepts a valid vote.\n\n- [ ] FT-08: Poll creators can switch a poll to read-only results mode.\n  - Action: Change an active poll to read-only results mode.\n  - Expected: Existing results remain visible while voting controls are unavailable.\n\n- [ ] FT-09: Users can browse their polls from the dashboard.\n  - Action: Sign in and open the polls dashboard.\n  - Expected: The dashboard lists the user’s available polls with enough information to open each poll.\n\n- [ ] FT-10: Users can search dashboard polls by title.\n  - Action: Enter an exact or partial existing poll title in the dashboard search field.\n  - Expected: Only polls whose titles match the search query are listed.\n\n- [ ] FT-11: Users can sort dashboard polls by title, creation date, and status.\n  - Action: Apply each available sort option and toggle its ascending or descending order when available.\n  - Expected: The poll list is reordered according to the selected field and direction.\n\n## Constraint\n- [ ] CS-01: Poll creation cannot be submitted without a question, description, and multiple choices.\n  - Action: Leave each required field empty in separate submission attempts, or provide fewer than two choices, and submit.\n  - Expected: Submission is blocked and the missing or invalid field is identified.\n\n- [ ] CS-02: An optional voting deadline must be valid.\n  - Action: Submit a poll with no deadline, then attempt submission with an invalid or past deadline.\n  - Expected: A poll without a deadline can be saved; an invalid or past deadline is rejected with a clear validation message.\n\n- [ ] CS-03: Sign-in-required polls cannot be voted on by signed-out users.\n  - Action: Open a sign-in-required poll while signed out and attempt to vote.\n  - Expected: Voting is blocked and the user is prompted to sign in.\n\n- [ ] CS-04: Anonymous polls allow voting without requiring sign-in.\n  - Action: Open an anonymous poll while signed out, select a choice, and submit the vote.\n  - Expected: The vote can be submitted without a sign-in prompt.\n\n- [ ] CS-05: Closed, expired, and read-only polls do not accept votes.\n  - Action: Open a poll in each of these states and attempt to select and submit a choice.\n  - Expected: Voting is unavailable or submission is blocked, while any permitted results remain viewable.\n\n- [ ] CS-06: Poll management controls are restricted to the poll creator.\n  - Action: Open another user’s poll while signed in as a different registered user.\n  - Expected: Close, reopen, and read-only management controls are unavailable.\n\n## Interaction\n- [ ] IX-01: Poll results update live when a new vote is cast.\n  - Action: Open the same active poll in two browser sessions, cast a vote in one session, and observe the results in the other session without manually refreshing.\n  - Expected: The second session updates its result bars and vote totals to include the new vote.\n\n- [ ] IX-02: Results display a visual bar breakdown for every answer choice.\n  - Action: Open results for a poll containing multiple choices and inspect the results visualization.\n  - Expected: Each choice has a visible bar and an associated count or percentage that corresponds to its votes.\n\n- [ ] IX-03: Poll state changes are reflected immediately in the creator interface.\n  - Action: Close, reopen, and switch a poll to read-only mode in succession.\n  - Expected: The displayed status, available management action, and voting controls change to match the current state after each action.\n\n- [ ] IX-04: The dashboard responds to search and sort actions without showing stale poll entries.\n  - Action: Search for a title, clear the search, and apply different sort options.\n  - Expected: The list refreshes after each action and contains only the records matching the current filter and sort settings.\n\n## Content\n- [ ] CT-01: Poll details accurately display the configured question, description, choices, deadline, and voting mode.\n  - Action: Open a configured poll and compare its displayed content with the values saved during creation.\n  - Expected: Every displayed value matches the saved poll configuration.\n\n- [ ] CT-02: Poll results show accurate labels, totals, and percentages.\n  - Action: Compare each result bar’s choice label, vote count, and percentage with the votes submitted for that poll.\n  - Expected: All labels and figures are present, readable, and mathematically consistent.\n\n- [ ] CT-03: Dashboard poll metadata accurately identifies title, creation date, and status.\n  - Action: Compare dashboard entries with the corresponding poll pages and inspect entries in each available status.\n  - Expected: Each dashboard title, creation date, and status matches the associated poll.\n```\n\n# Output\n",
+    "duration_ms": 373916,
+    "is_error": false,
+    "num_turns": 77,
+    "token_usage": {
+      "input_tokens": 231,
+      "cache_creation_input_tokens": 61991,
+      "cache_read_input_tokens": 2341494,
+      "output_tokens": 15756,
+      "output_tokens_details": {
+        "thinking_tokens": 10658
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "openai/gpt-5.6-luna": {
+        "inputTokens": 234,
+        "outputTokens": 15959,
+        "cacheReadInputTokens": 2341494,
+        "cacheCreationInputTokens": 64965,
+        "webSearchRequests": 0,
+        "costUSD": 1.97692325,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 10845,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "openai/gpt-5.6-luna",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

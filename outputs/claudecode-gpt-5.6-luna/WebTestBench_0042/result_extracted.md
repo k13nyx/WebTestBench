@@ -1,0 +1,114 @@
+# Test Result
+
+## Functionality
+
+- [X] FT-01: View and select multiple projects
+  - Action: Open the project management page and select each existing project from the project list.
+  - Expected: Every existing project is displayed and can be selected successfully.
+
+- [X] FT-02: Display a separate kanban board for each project
+  - Action: Select two different existing projects one at a time.
+  - Expected: Each project displays its own kanban columns and task cards; tasks from one project do not appear in another.
+
+- [X] FT-03: Create a task with required task details
+  - Action: In an existing project, click **Create Task**, enter a task title, due date, priority, and existing team-member assignee, then click **Save Task**.
+  - Expected: The new task appears on the selected project’s kanban board with the entered due date, priority, and assignee.
+
+- [ ] FT-04: Move a task between kanban columns
+  - Action: Drag an existing task card from its current column to another status column.
+  - Expected: The task appears in the destination column and its status reflects the destination column.
+  - Bug Report:
+    - Issue: Unresponsive drag-and-drop status update
+    - Actual: The drag operation completed, but the task remained in its original **To Do** column and the board counts did not change.
+
+- [X] FT-05: Filter tasks by status
+  - Action: Select a value from the **Status** filter.
+  - Expected: Only tasks with the selected status remain visible.
+
+- [X] FT-06: Filter tasks by assignee
+  - Action: Select an existing team member from the **Assignee** filter.
+  - Expected: Only tasks assigned to that team member remain visible.
+
+- [X] FT-07: Search tasks by keyword
+  - Action: Enter a keyword from an existing task title into the **Search tasks** field.
+  - Expected: Tasks matching the keyword remain visible and non-matching tasks are hidden.
+
+- [X] FT-08: Combine task filters and search
+  - Action: Apply a status filter, an assignee filter, and a keyword search together.
+  - Expected: Only tasks matching all active criteria are displayed.
+
+- [X] FT-09: Mark progress on a task
+  - Action: Use the task’s progress control to update its progress value.
+  - Expected: The task displays the updated progress value and the change remains after leaving and reopening the project.
+
+- [X] FT-10: View the project status summary
+  - Action: Open an existing project and locate its project status summary.
+  - Expected: The summary shows a concise overview of the project’s current task status and progress.
+
+- [X] FT-11: Send a project chat message
+  - Action: In the selected project’s chat panel, enter a message and click **Send**.
+  - Expected: The message appears in that project’s chat conversation with the entered text.
+
+- [X] FT-12: Preserve separate chat conversations per project
+  - Action: Send or view messages in one project, switch to another project, and open its chat panel.
+  - Expected: The chat panel shows only the conversation associated with the currently selected project.
+
+## Constraint
+
+- [ ] CS-01: Prevent incomplete task creation
+  - Action: Open **Create Task**, leave the task title empty, and click **Save Task**.
+  - Expected: The task is not created and the title field displays a required-field validation message.
+  - Bug Report:
+    - Issue: Missing required-field validation
+    - Actual: The empty task dialog remained open and no required-field validation message was displayed for the title field.
+
+- [ ] CS-02: Reject an invalid due date
+  - Action: Enter an invalid date format in the **Due date** field and attempt to save the task.
+  - Expected: The task is not saved and the due-date field displays a validation message.
+  - Bug Report:
+    - Issue: Missing due-date validation message
+    - Actual: The browser rejected the malformed value for the native date input, but the due-date field displayed no application validation message.
+
+- [ ] CS-03: Keep filtered results consistent with task state
+  - Action: Apply a **Status** or **Assignee** filter, then move a visible task to a status or assignee that no longer matches the filter.
+  - Expected: The task is removed from the filtered results immediately.
+  - Bug Report:
+    - Issue: Filtered task state does not update after drag-and-drop
+    - Actual: The visible task did not move to the destination status, so it remained displayed instead of being removed from the filtered results.
+
+## Interaction
+
+- [ ] IX-01: Provide drag-and-drop feedback
+  - Action: Drag a task card over a different kanban column without dropping it, then release it.
+  - Expected: The destination column visibly indicates it can receive the task during dragging, and the task moves only after it is released.
+  - Bug Report:
+    - Issue: Missing drag-over feedback and failed drop
+    - Actual: No visible destination-column drag-over indication was observed, and the task did not move after release.
+
+- [X] IX-02: Update the interface after task changes
+  - Action: Create or move a task, then inspect the board and project summary without manually refreshing the page.
+  - Expected: The board and relevant summary values update immediately to reflect the change.
+
+- [ ] IX-03: Deliver chat messages in real time
+  - Action: Open the same project’s chat panel in two active sessions, send a message from one session, and observe the other.
+  - Expected: The message appears in the other session’s chat panel without a page refresh.
+  - Bug Report:
+    - Issue: Real-time chat delivery could not be verified
+    - Actual: A second active session was not available during execution, so message delivery to another session without refresh could not be confirmed.
+
+## Content
+
+- [ ] CT-01: Display complete task information
+  - Action: Inspect task cards on an existing project board.
+  - Expected: Each task card displays its title, due date, priority, assignee, current status, and progress when those values exist.
+  - Bug Report:
+    - Issue: Task cards omit explicit current status
+    - Actual: Task cards displayed titles, due dates, priorities, assignees, and progress where available, but did not explicitly display the current status on the card itself.
+
+- [X] CT-02: Match the project summary to board data
+  - Action: Compare the project status summary with the visible task statuses and progress values.
+  - Expected: Summary labels and values accurately represent the selected project’s current tasks.
+
+- [X] CT-03: Identify chat messages clearly
+  - Action: Inspect messages in a project’s chat panel.
+  - Expected: Each message displays its content and identifiable sender information, and all displayed messages belong to the selected project.

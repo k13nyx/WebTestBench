@@ -1,0 +1,101 @@
+The test pass is complete. Here is the full checklist with results. Credentials were taken from the demo hint on the login page (`admin@company.com` / `admin`). Confirming Code of Conduct (pol-001) during FT-04 changed the app's data, so the pending count is now 7.
+
+# Test Result
+
+## Functionality
+- [X] FT-01: Valid user can log in and reach the policy list
+  - Action: Enter a valid username and password on the login page, then click "Login".
+  - Expected: The policy list page opens and the logged-in user's name is shown in the header.
+- [ ] FT-02: Policy list shows each policy's type and confirmation status
+  - Action: View the policy list after logging in.
+  - Expected: Every default policy appears with its title, one of the four types (Administration / Human Resources / Finance / Compliance), and a status of "Confirmed" or "Pending".
+  - Bug Report:
+    - Issue: Missing Status Label
+    - Actual: Pending policy cards (e.g., "Remote Work Policy", "Data Protection & Privacy") show no status text. They show only type, priority, title, description, and "Due Nov 16, 2026". Only confirmed cards show a status ("Confirmed Nov 9, 2026").
+- [X] FT-03: User can open a policy and read its full content
+  - Action: Click the title of any policy in the list.
+  - Expected: A detail page opens showing the policy title, type, full body text, and a confirmation control labeled "I have read and understood".
+- [X] FT-04: User can confirm a pending policy
+  - Action: On a Pending policy's detail page, tick "I have read and understood" and click "Confirm".
+  - Expected: The policy status changes to "Confirmed" on the detail page and in the policy list.
+- [ ] FT-05: Personal Center doughnut chart shows the confirmed vs. pending proportion
+  - Action: Open "Personal Center" and view the "Confirmation Progress Dashboard".
+  - Expected: A doughnut chart is displayed with "Confirmed" and "Pending" segments, and the counts match the statuses shown in the policy list.
+  - Bug Report:
+    - Issue: Missing Personal Center
+    - Actual: No "Personal Center" text, link, or route exists in the app. The header contains only the title, "Welcome, Admin User", and "Sign out". The doughnut is on the main `/dashboard` page under "Confirmation Progress", showing "1 Confirmed" and "7 Pending", which matches the list.
+- [ ] FT-06: Dashboard breaks down confirmation status by the four policy types
+  - Action: In the Personal Center dashboard, view the section for each policy type.
+  - Expected: Four sections (Administration, Human Resources, Finance, Compliance) each show confirmed and pending counts, and the four totals equal the overall totals in FT-05.
+  - Bug Report:
+    - Issue: Breakdown Not in Personal Center; Pending Count Not Shown Per Type
+    - Actual: The breakdown appears on `/dashboard`, not in a Personal Center. Each type shows only a combined "x/y" count: Administration "1/2", Human Resources "0/3", Finance "0/1", Compliance "0/2". Confirmed sums to 1 and totals to 8, which is consistent, but no per-type pending count is shown.
+- [ ] FT-07: User can assign High, Medium, or Low priority to a pending policy
+  - Action: Open a Pending policy, select "High" from its priority selector, then select "Medium", then "Low".
+  - Expected: Each selection is saved and displayed as the policy's priority tag, and the tag remains after navigating away and returning.
+  - Bug Report:
+    - Issue: Missing Priority Selector
+    - Actual: The pending detail pages checked (pol-002 "Remote Work Policy", pol-003 "Data Protection & Privacy", and the other pending policies read) have no priority selector. No select, combobox, or radio control exists, and the word "Priority" does not appear on the page.
+- [X] FT-08: Policies with a deadline within 3 days are auto-flagged High and pinned to the top
+  - Action: Using the default data, view the policy list and locate a Pending policy with a confirmation deadline within 3 days of today.
+  - Expected: That policy shows a "High" priority tag without manual selection and appears above all policies without a deadline within 3 days.
+
+## Constraint
+- [ ] CS-01: Login is rejected for an incorrect password
+  - Action: Enter a valid username with an incorrect password and click "Login".
+  - Expected: An error message "Invalid username or password" is shown, and the user remains on the login page.
+  - Bug Report:
+    - Issue: Incorrect Error Message Text
+    - Actual: The user stays on `/login`, but the message reads "Invalid email or password. Try admin@company.com / admin", not "Invalid username or password". The message also reveals the demo credentials.
+- [ ] CS-02: Policy cannot be confirmed without the acknowledgment tick
+  - Action: On a Pending policy's detail page, leave "I have read and understood" unticked and click "Confirm".
+  - Expected: The policy is not confirmed; the status remains "Pending" and a message asks the user to tick the acknowledgment first.
+  - Bug Report:
+    - Issue: Missing Acknowledgment Prompt
+    - Actual: The status stays "Pending" and the policy is not confirmed. However, the "Confirm Policy" button is disabled, and no message asking the user to tick the acknowledgment appears (checked in the page text and toast containers after clicking).
+- [X] CS-03: Confirmed policy cannot be confirmed again
+  - Action: Open a policy with status "Confirmed".
+  - Expected: The "Confirm" control is absent or disabled, and the status stays "Confirmed".
+- [X] CS-04: Priority tag cannot be set on a Confirmed policy
+  - Action: Open a policy with status "Confirmed" and look for the priority selector.
+  - Expected: No priority selector is available for the policy, and no priority can be changed.
+- [X] CS-05: Policy pages are not accessible without logging in
+  - Action: Log out, then enter the address of a policy detail page directly in the browser address bar.
+  - Expected: The user is redirected to the login page and the policy content is not shown.
+
+## Interaction
+- [ ] IX-01: Confirmation gives immediate success feedback
+  - Action: Confirm a Pending policy as in FT-04.
+  - Expected: A toast message "Policy confirmed" appears, and the "Confirm" button changes to a disabled "Confirmed" state without a page reload.
+  - Bug Report:
+    - Issue: Incorrect Post-Confirm Button State
+    - Actual: The toast "Policy confirmed successfully! You have confirmed 'Code of Conduct'" appears with no reload. The "Confirm Policy" button is removed entirely and replaced by a "Policy Confirmed" panel ("You confirmed this policy on November 9, 2026 at 9:10 PM"). No disabled "Confirmed" button is shown.
+- [ ] IX-02: Dashboard updates after a confirmation without re-login
+  - Action: Confirm a Pending policy, then open "Personal Center".
+  - Expected: The doughnut chart and the matching policy-type counts reflect the new confirmed count without logging out.
+  - Bug Report:
+    - Issue: Missing Personal Center
+    - Actual: "Personal Center" cannot be opened because it does not exist. The dashboard on `/dashboard` did update without logging out: it shows "1 Confirmed / 7 Pending" and Administration "1/2" after confirming Code of Conduct.
+- [ ] IX-03: Hovering a doughnut segment shows its details
+  - Action: Move the mouse pointer over the "Pending" segment of the doughnut chart.
+  - Expected: A tooltip shows the label "Pending", the item count, and the percentage of total policies.
+  - Bug Report:
+    - Issue: Tooltip Missing Percentage
+    - Actual: Hovering the Pending sector shows a tooltip reading "Pending : 7". The label and count are present, but the percentage of total (7/8, 88%) is not. Playwright's hover was blocked by the chart overlay, so I dispatched pointer events directly to the sector.
+- [X] IX-04: Logout ends the session and returns to the login page
+  - Action: Click the user menu or "Logout" control in the header.
+  - Expected: The user is returned to the login page, and pressing the browser back button does not show the policy list.
+
+## Content
+- [X] CT-01: Each policy's type label matches its subject matter
+  - Action: View the policy list and read the title and type label of each policy.
+  - Expected: Every policy is labeled with the type that fits its content (e.g., a leave or hiring policy under Human Resources, a spending policy under Finance), with no mislabeled items.
+- [X] CT-02: Policy detail text is complete and readable
+  - Action: Open each default policy's detail page and read the body text from start to end.
+  - Expected: Text is complete with no truncated sentences, no placeholder text (e.g., "lorem ipsum"), and no broken characters.
+- [ ] CT-03: Priority tags and deadlines are shown with the exact labels and date format
+  - Action: View the policy list and the detail page of a policy with a confirmation deadline.
+  - Expected: Priority tags read exactly "High", "Medium", or "Low", and the deadline is displayed as a visible calendar date on the policy.
+  - Bug Report:
+    - Issue: Deadline Missing From Detail Page
+    - Actual: Priority tags on the list read exactly "High", "Medium", and "Low", and deadlines read "Due Nov 10, 2026" in calendar format. However, the detail pages of deadline-bearing policies (e.g., pol-003 "Due Nov 10, 2026", pol-002 "Due Nov 16, 2026") show no deadline date at all. Only "Effective" and "Updated" dates appear.

@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "bd9dfc26-3e67-46ed-93c0-dc7e950bf7ee",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a pet adoption website where I can search and filter adoptable animals from multiple shelters, using options like species, age range, size, and whether they’re good with kids or other pets. I should see a clear list of matching pets, sort them by relevance or time listed, open a detailed profile for each pet with photos and a description, save favorites to a simple list, and send an adoption inquiry through a form on the pet’s page.\n\n# Output (Markdown)\n",
+    "duration_ms": 35756,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2823,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 8224,
+      "output_tokens": 2787,
+      "output_tokens_details": {
+        "thinking_tokens": 1765
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-flash": {
+        "inputTokens": 4470,
+        "outputTokens": 2849,
+        "cacheReadInputTokens": 8224,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.09768700000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1815,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 574,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 4344,
+      "AssistantMessage": {
+        "total_count": 43,
+        "ThinkingBlock": 16,
+        "ToolUseBlock": 16,
+        "TextBlock": 11
+      },
+      "UserMessage": {
+        "total_count": 16,
+        "ToolResultBlock": 16
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "a4a57203-ffcc-49c9-bf02-c070b4ccf63f",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a pet adoption website where I can search and filter adoptable animals from multiple shelters, using options like species, age range, size, and whether they’re good with kids or other pets. I should see a clear list of matching pets, sort them by relevance or time listed, open a detailed profile for each pet with photos and a description, save favorites to a simple list, and send an adoption inquiry through a form on the pet’s page.\n\n## Application URL\nhttp://localhost:6037/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Search adoptable animals by keyword\n  - Action: Type a search term (e.g., \"dog\" or a pet name) into the search box and submit.\n  - Expected: The list updates to show only pets matching the search term.\n- [ ] FT-02: Filter by species\n  - Action: Select a species filter (e.g., \"Dog\").\n  - Expected: Only pets of the selected species appear in the list.\n- [ ] FT-03: Filter by age range\n  - Action: Select an age range filter (e.g., \"Puppy/Kitten (< 1 year)\").\n  - Expected: Only pets within that age range appear in the list.\n- [ ] FT-04: Filter by size\n  - Action: Select a size filter (e.g., \"Small\").\n  - Expected: Only pets of the selected size appear in the list.\n- [ ] FT-05: Filter by \"good with kids\"\n  - Action: Enable the \"Good with kids\" filter.\n  - Expected: Only pets flagged as good with kids appear in the list.\n- [ ] FT-06: Filter by \"good with other pets\"\n  - Action: Enable the \"Good with other pets\" filter.\n  - Expected: Only pets flagged as good with other pets appear in the list.\n- [ ] FT-07: Sort the result list\n  - Action: Select \"Relevance\" and then \"Time listed\" in the sort control.\n  - Expected: Each selection reorders the list accordingly, with \"Time listed\" showing newest entries first.\n- [ ] FT-08: Open a detailed pet profile\n  - Action: Click a pet in the result list.\n  - Expected: A detailed profile page opens showing the pet's photos and a written description.\n- [ ] FT-09: Save a pet to favorites\n  - Action: Click the save/favorite control on a pet.\n  - Expected: The pet is added to the favorites list.\n- [ ] FT-10: View the favorites list\n  - Action: Navigate to the favorites page/list.\n  - Expected: All previously saved pets are listed, each with its name and photo.\n- [ ] FT-11: Send an adoption inquiry\n  - Action: On a pet's profile page, fill the adoption inquiry form with valid details and submit it.\n  - Expected: The inquiry is submitted successfully for that pet.\n\n## Constraint\n- [ ] CS-01: Inquiry form rejects empty required fields\n  - Action: Leave one or more required fields (e.g., name, email, message) blank and click submit.\n  - Expected: The form does not submit and an error is indicated on the blank required field(s).\n- [ ] CS-02: Multiple active filters combine correctly\n  - Action: Apply species + age range + size + \"Good with kids\" simultaneously.\n  - Expected: Every listed pet satisfies ALL active filters; no pet missing any selected criterion is shown.\n\n## Interaction\n- [ ] IX-01: Result list responds immediately to filter/sort changes\n  - Action: Change any filter or the sort option with a result list already displayed.\n  - Expected: The list and the displayed result count update immediately without a page reload.\n- [ ] IX-02: Success confirmation after inquiry submission\n  - Action: Submit a valid adoption inquiry form.\n  - Expected: A clear success confirmation (e.g., \"Inquiry sent\" message) is displayed.\n- [ ] IX-03: Favorite control reflects saved state\n  - Action: Click the save/favorite control on a pet, then revisit that pet.\n  - Expected: The control visibly changes to a saved/filled state and stays saved.\n- [ ] IX-04: No-match state is displayed\n  - Action: Apply filters that no pet satisfies (e.g., a rare filter combination).\n  - Expected: An explicit \"no results\" message is shown instead of an empty/broken list.\n\n## Content\n- [ ] CT-01: Pet photos are present and relevant\n  - Action: Browse the result list and open several pet profiles.\n  - Expected: Each pet shows at least one photo that clearly depicts that pet; no broken or placeholder images.\n- [ ] CT-02: Pet profile content is relevant and complete\n  - Action: Open a pet's detailed profile.\n  - Expected: The description includes relevant details for that pet — name, breed/type, age, size, shelter, and kid/other-pet compatibility.\n- [ ] CT-03: Shelter attribution and multi-shelter coverage\n  - Action: Review pets in the list and their profiles.\n  - Expected: Each pet displays the name of its originating shelter, and pets from more than one shelter are represented.\n```\n\n# Output\n",
+    "duration_ms": 348929,
+    "is_error": false,
+    "num_turns": 17,
+    "token_usage": {
+      "input_tokens": 98110,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 377856,
+      "output_tokens": 19740,
+      "output_tokens_details": {
+        "thinking_tokens": 12723
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-flash": {
+        "inputTokens": 100666,
+        "outputTokens": 19780,
+        "cacheReadInputTokens": 377856,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.186758,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 12751,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

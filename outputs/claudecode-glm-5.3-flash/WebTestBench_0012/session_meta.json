@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "7394da1d-5086-4660-a0a2-37ab29514150",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a collaborative study platform where students create accounts, set up profiles with their subjects, current level, and preferred study times, and then join or create focused study groups around topics like calculus, biology, or literature. Each group should have a shared space for organizing notes, outlines, and reading summaries into labeled sections, plus a running discussion area for questions and answers. Students should be able to schedule upcoming group study sessions with a simple time selector that shows who has marked themselves as available, and group members can RSVP so everyone knows who plans to attend. There should also be a way for advanced students or mentors to mark their profiles as mentors, let groups invite them to join, and give them a slightly different role so they can highlight recommended resources and pin important posts in the group’s space.\n\n# Output (Markdown)\n",
+    "duration_ms": 5768,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 10933,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 1509,
+      "output_tokens_details": {
+        "thinking_tokens": 126
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3-flash": {
+        "inputTokens": 12613,
+        "outputTokens": 1637,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.10399,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 240,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 46,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 28318,
+      "AssistantMessage": {
+        "total_count": 154,
+        "ThinkingBlock": 72,
+        "ToolUseBlock": 81,
+        "TextBlock": 1
+      },
+      "UserMessage": {
+        "total_count": 81,
+        "ToolResultBlock": 81
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "92a18708-4639-4679-95b5-0dbfdea32611",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a collaborative study platform where students create accounts, set up profiles with their subjects, current level, and preferred study times, and then join or create focused study groups around topics like calculus, biology, or literature. Each group should have a shared space for organizing notes, outlines, and reading summaries into labeled sections, plus a running discussion area for questions and answers. Students should be able to schedule upcoming group study sessions with a simple time selector that shows who has marked themselves as available, and group members can RSVP so everyone knows who plans to attend. There should also be a way for advanced students or mentors to mark their profiles as mentors, let groups invite them to join, and give them a slightly different role so they can highlight recommended resources and pin important posts in the group’s space.\n\n## Application URL\nhttp://localhost:6012/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: New student can register an account\n  - Action: Open the sign-up page, enter a name/email/password, and click \"Sign Up\" / \"Create Account\".\n  - Expected: Account is created, user is logged in, and a profile setup is accessible.\n- [ ] FT-02: User can set up profile with subjects, current level, and preferred study times\n  - Action: In profile settings, add a subject (e.g., \"Calculus\"), select a level (e.g., \"Undergraduate\"), and set preferred study times (e.g., \"Evenings 6–9 PM\"); save.\n  - Expected: Saved profile displays the subject, level, and preferred study times.\n- [ ] FT-03: User can create a new study group\n  - Action: Click \"Create Group\", enter a topic name (e.g., \"Calculus Group\"), and submit.\n  - Expected: The group is created and shown with the creator as a member.\n- [ ] FT-04: User can join an existing study group\n  - Action: Browse/search the group list for a topic like \"Biology\" and click \"Join Group\".\n  - Expected: User becomes a group member and the group appears in \"My Groups\".\n- [ ] FT-05: Group members can add notes/outlines/reading summaries into labeled sections\n  - Action: In a group's shared space, create/select a labeled section (e.g., \"Notes\") and add a post with a title and text.\n  - Expected: The item appears under that labeled section and is visible to group members.\n- [ ] FT-06: Group members can post questions and answers in the discussion area\n  - Action: In the group's discussion area, post a question; then (as another member or same member) post a reply/answer.\n  - Expected: Question and answer both appear in the running discussion thread in order.\n- [ ] FT-07: Member can schedule a study session with time selector showing who is available\n  - Action: In a group, click \"Schedule Session\", choose a date/time via the time selector, and save.\n  - Expected: Session is listed with date/time and shows which members have marked themselves available for that time.\n- [ ] FT-08: Member can RSVP to a scheduled session\n  - Action: Open an upcoming session and click \"RSVP\" / \"Attending\".\n  - Expected: The member's name appears in the attendees list and the attendee count updates.\n- [ ] FT-09: User can mark their profile as a mentor\n  - Action: In profile settings, toggle/enable \"Available as Mentor\" and save.\n  - Expected: The profile displays a mentor designation/badge.\n- [ ] FT-10: Group can invite a mentor to join\n  - Action: In a group, open the mentor list, pick a mentor profile, and click \"Invite\".\n  - Expected: The mentor is invited/joined and appears in the group member list with a distinct mentor role.\n- [ ] FT-11: Mentor can highlight recommended resources\n  - Action: As a mentor in a group, add a resource post marked \"Recommended Resource\".\n  - Expected: The resource appears visibly flagged/highlighted as a recommended resource in the group space.\n- [ ] FT-12: Mentor can pin an important post\n  - Action: As a mentor, select a post in the group space and click \"Pin\".\n  - Expected: The post appears at the top of the group space marked as pinned.\n\n## Constraint\n- [ ] CS-01: Registration cannot be completed with missing/invalid required fields\n  - Action: Submit the sign-up form with an empty email or password (or invalid email format).\n  - Expected: Submission is blocked and a validation error message is shown.\n- [ ] CS-02: User cannot access a group's shared space or discussion without being a member\n  - Action: As a non-member, attempt to open a group's shared space/discussion content directly.\n  - Expected: Access is denied or content is hidden; only a \"Join\" option is available.\n- [ ] CS-03: Duplicate account email is rejected\n  - Action: Sign up again with an email already registered.\n  - Expected: Registration is blocked with an error stating the email/account already exists.\n- [ ] CS-04: Only mentors can pin posts or mark recommended resources\n  - Action: As a regular (non-mentor) member, look for \"Pin\" or \"Recommended Resource\" controls on a post.\n  - Expected: Those controls are not available to non-mentors (pinning attempt is prevented).\n- [ ] CS-05: Profile requires subjects, level, and preferred study times before saving\n  - Action: Attempt to save the profile with one of the required fields (subject, level, or study time) empty.\n  - Expected: Save is blocked and the missing field is indicated.\n\n## Interaction\n- [ ] IX-01: Successful actions show immediate visual feedback\n  - Action: Join a group, RSVP to a session, or create a post.\n  - Expected: A success toast/confirmation message or visible state change (e.g., button becomes \"Joined\"/\"Attending\") appears immediately.\n- [ ] IX-02: Time selector updates availability display dynamically\n  - Action: In the session scheduler, change the selected date/time slot.\n  - Expected: The list of members marked available updates to match the newly selected time.\n- [ ] IX-03: RSVP toggle reflects current state\n  - Action: Click \"RSVP\" on a session, then click it again to cancel.\n  - Expected: First click adds the user to attendees; second click removes them and the count updates both times.\n\n## Content\n- [ ] CT-01: Group topics are relevant to study subjects\n  - Action: Browse the group list/default groups.\n  - Expected: Groups are themed around academic subjects (e.g., calculus, biology, literature), not unrelated content.\n- [ ] CT-02: Mentor profiles are visually distinct from student profiles\n  - Action: View a mentor's profile in a member list or group roster.\n  - Expected: The mentor shows a distinct label/role (e.g., \"Mentor\" badge) differentiating them from regular students.\n- [ ] CT-03: Pinned and recommended content stays accessible in the group space\n  - Action: Open a group with existing pinned posts and recommended resources.\n  - Expected: Pinned posts appear prominently (top of the space) and recommended resources are clearly marked/labeled.\n```\n\n# Output\n",
+    "duration_ms": 575447,
+    "is_error": false,
+    "num_turns": 82,
+    "token_usage": {
+      "input_tokens": 124369,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 4702314,
+      "output_tokens": 53898,
+      "output_tokens_details": {
+        "thinking_tokens": 41519
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "z-ai/glm-5.3-flash": {
+        "inputTokens": 127369,
+        "outputTokens": 54479,
+        "cacheReadInputTokens": 4702314,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 4.349977,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 42088,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "z-ai/glm-5.3-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+# Test Checklist
+
+## Functionality
+- [ ] FT-01: Create initial planning dashboard details
+  - Action: Enter a future date in "Wedding Date", "25000" in "Budget", and "150" in "Guest Count", then click "Save Details".
+  - Expected: Dashboard displays the wedding date as the selected date, budget as "$25,000", and guest count as "150".
+- [ ] FT-02: Update existing planning dashboard details
+  - Action: Modify "Budget" to "30000" and "Guest Count" to "175" in the dashboard edit form, then click "Update Details".
+  - Expected: Dashboard updates immediately to reflect "$30,000" for budget and "175" for guest count.
+- [ ] FT-03: Search venue and vendor listings by keyword
+  - Action: Enter a vendor name into the listings search input and press Enter.
+  - Expected: Listings directory displays only venues and vendors matching the entered keyword in their name or description.
+- [ ] FT-04: Filter listings by location type, price range, and service type
+  - Action: Select "Barn/Rustic" from the Location Type filter, "$$$" from Price Range, and "Photography" from Service Type.
+  - Expected: Directory displays only listings that match all three selected filter criteria simultaneously.
+- [ ] FT-05: Add listing to favorites list
+  - Action: Click the "Add to Favorites" button on a default venue card and navigate to the Favorites tab.
+  - Expected: The favorited venue card is displayed in the Favorites list.
+- [ ] FT-06: Remove listing from favorites list
+  - Action: Click the "Remove from Favorites" button on an item in the Favorites list.
+  - Expected: The item is removed and no longer appears in the Favorites list.
+- [ ] FT-07: Save a checklist item to the planning dashboard
+  - Action: Navigate to the Planning Tips & Checklists page and click "Save to Dashboard" on a default checklist item.
+  - Expected: The selected checklist item appears under the active checklist section on the planning dashboard.
+- [ ] FT-08: Mark a dashboard checklist task as completed
+  - Action: Click the checkbox next to a saved checklist item on the dashboard.
+  - Expected: The checklist item status updates to completed and reflects in the overall completion progress.
+
+## Constraint
+- [ ] CS-01: Disallow negative numbers for budget and guest count
+  - Action: Enter "-5000" into "Budget" and "-20" into "Guest Count", then click "Update Details".
+  - Expected: Submission is blocked and an error message "Value must be greater than or equal to 0" is displayed under both fields.
+- [ ] CS-02: Prevent dashboard update with empty required fields
+  - Action: Clear the "Wedding Date" field completely and click "Update Details".
+  - Expected: Submission is blocked and an error message "Wedding date is required" appears below the field.
+- [ ] CS-03: Display empty state when search or filters return no matches
+  - Action: Enter "XYZNonExistentVendor999" into the search bar and apply all filters.
+  - Expected: No listings are displayed, and a "No venues or vendors found matching your criteria" message is shown.
+- [ ] CS-04: Prevent duplicate entries in favorites
+  - Action: Click "Add to Favorites" multiple times on the same vendor listing card.
+  - Expected: The vendor appears exactly once in the Favorites list without creating duplicate entries.
+
+## Interaction
+- [ ] IX-01: Favorite button toggle visual state
+  - Action: Click the heart icon on an unfavorited listing card.
+  - Expected: The heart icon fills with color immediately and the button text changes to "Favorited".
+- [ ] IX-02: Checklist item completion visual change
+  - Action: Click the checkbox for an incomplete checklist item on the dashboard.
+  - Expected: The item text receives a strikethrough styling and the checkbox displays an active checkmark.
+- [ ] IX-03: Dashboard update notification feedback
+  - Action: Click "Update Details" after modifying dashboard values.
+  - Expected: A confirmation toast notification appears stating "Planning details updated successfully".
+
+## Content
+- [ ] CT-01: Planning dashboard key metrics content
+  - Action: View the main planning dashboard.
+  - Expected: Dashboard displays distinct sections and labels for "Wedding Date", "Budget", and "Guest Count".
+- [ ] CT-02: Venue and vendor listing card information
+  - Action: Inspect the default venue and vendor cards in the directory.
+  - Expected: Each card displays the vendor name, location type, price range, and service type clearly.
+- [ ] CT-03: Wedding planning tips and checklist catalog content
+  - Action: Open the Planning Tips & Checklists page.
+  - Expected: Catalog displays structured wedding planning advice and milestone-oriented checklist tasks.

@@ -1,0 +1,125 @@
+# Test Result
+
+## Functionality
+- [ ] FT-01: Open a tour from the catalog
+  - Action: On the catalog page, click the card of any tour.
+  - Expected: The tour detail page opens and shows the tour title, description, and a "Start Tour" button.
+  - Bug Report:
+    - Issue: Missing Element (Start Tour button)
+    - Actual: Clicking "Mysteries of Ancient Egypt" opens `/tour/ancient-egypt`, which shows the title and description, but there is no "Start Tour" button. The page shows a "Save Tour" button and the rooms inline.
+- [X] FT-02: Move between rooms or areas
+  - Action: Start a tour, click "Next" once, then click "Previous".
+  - Expected: The view changes to the next room and the room name indicator updates. "Previous" returns to the first room.
+  - Note: There is no separate Start step; the rooms are reachable on the tour page. "Next" moved from "Room 1 of 3 / The Great Hall of Pharaohs" to "Room 2 of 3 / The Tomb Chamber", and "Previous" returned to Room 1.
+- [X] FT-03: Open an exhibit's overview
+  - Action: In any room, click an exhibit hotspot.
+  - Expected: An exhibit panel opens with the exhibit name, an "Overview" tab selected, and overview text with an image.
+  - Note: The panel for "Colossal Statue of Ramesses II" showed the name, the Overview tab active on open, overview text, and a loaded image.
+- [ ] FT-04: Open deeper dive and related items
+  - Action: In the open exhibit panel, click the "Deeper Dive" tab, then the "Related Items" tab.
+  - Expected: "Deeper Dive" shows more detailed text than the overview. "Related Items" lists at least one linked exhibit, and clicking it opens that exhibit's panel.
+  - Bug Report:
+    - Issue: Missing Element (Related Items tab) / Unresponsive Related Item
+    - Actual: The panel tabs are "Overview", "Deep Dive", "Timeline", and "Quiz". There is no "Related Items" tab. "Deep Dive" text is longer than the overview, and it contains a "Related Items" section listing "Nefertari Bust" and "Abu Simbel Model". Clicking "Nefertari Bust" does not open its panel; the panel header still reads "Colossal Statue of Ramesses II".
+- [ ] FT-05: Complete a quiz and see a score
+  - Action: Open a quiz in a tour, select one answer per question, and click "Submit" on each question until the quiz ends.
+  - Expected: The quiz ends with a final score shown as "X / Y" where X matches the number of correct answers.
+  - Bug Report:
+    - Issue: Missing Final Score / Missing Next Question
+    - Actual: The Ramesses II quiz has one question. After selecting "30 years" and clicking "Submit Answer", the feedback "Not quite. The correct answer is highlighted above." appears, but there is no "Next Question" control and no final score (no "X / Y") is shown anywhere.
+- [ ] FT-06: Select a timeline event
+  - Action: Open a timeline in a tour and click the second event marker.
+  - Expected: That event's date and description display in a detail area, and the marker is shown as selected.
+  - Bug Report:
+    - Issue: Missing Selection State / No Detail Area
+    - Actual: The Timeline tab lists four events (1303 BCE, 1279 BCE, 1274 BCE, 1213 BCE). Clicking the second event ("1279 BCE / Becomes Pharaoh") leaves all four event containers with identical classes (`bg-secondary rounded-lg p-4`) and no aria state. No separate detail area appears, and no event is shown as selected.
+- [ ] FT-07: Bookmark a tour
+  - Action: On a tour detail page, click "Bookmark".
+  - Expected: The button label changes to "Bookmarked", and the tour appears in the "Bookmarks" list in the user's library.
+  - Bug Report:
+    - Issue: Incorrect Button Label / Incorrect Section Name
+    - Actual: The button labeled "Save Tour" changes to "Saved", not "Bookmarked". In "My Collection" (`/bookmarks`), the tour is listed under a section named "Saved Tours", not "Bookmarks".
+- [ ] FT-08: Mark a tour as in progress and resume it
+  - Action: Start a tour, go to the third room, click "Home", then open the tour's detail page and click "Resume".
+  - Expected: The tour appears under "In Progress" in the library, and "Resume" opens the tour directly at the third room.
+  - Bug Report:
+    - Issue: Missing Element (Home and Resume controls)
+    - Actual: Going to Room 3 of 3 works. The tour has no "Home" control; the only exit is "Back to Explore", which was used instead. The catalog card shows the "In Progress" label, and the tour is listed under "In Progress" in the library. Reopening the tour from the catalog lands at "Room 3 of 3 / Treasury of the Pharaohs", but no "Resume" button exists on the detail page.
+- [X] FT-09: Search for a tour by keyword
+  - Action: In the search box, type the exact title of an existing tour and press Enter.
+  - Expected: The results list shows that tour as the first result, and every result's title or description contains the search term.
+  - Note: Searching "Mysteries of Ancient Egypt" shows "1 Tour Available", with the Egypt card as the result.
+- [X] FT-10: Filter tours by theme, period, culture, and difficulty
+  - Action: Set the "Difficulty" filter to "Beginner" and the "Historical Period" filter to any available period, then click "Clear all".
+  - Expected: Results show only tours matching both filters, the result count updates, and after "Clear all" the full catalog returns.
+  - Note: Difficulty "Beginner" alone shows 3 tours (Egypt, Impressionist Paris, Greek Gods) with the heading "3 Tours Available". Adding Period "Ancient (3000 BCE - 30 BCE)" shows 1 tour. "Clear all filters" restores all 6 tours and resets the controls.
+- [ ] FT-11: Open a related tour from the end screen
+  - Action: Click "Finish Tour" in the last room of any tour.
+  - Expected: An end screen shows a "Related Tours" section with at least one tour card, and clicking a card opens that tour's detail page.
+  - Bug Report:
+    - Issue: Missing Element (Finish Tour button / End screen)
+    - Actual: In the last room of "Realm of the Greek Gods" (Room 1 of 1) and "Mysteries of Ancient Egypt" (Room 3 of 3), there is no "Finish Tour" button. The "Next Room" button is disabled, and no end screen or "Related Tours" section appears.
+
+## Constraint
+- [ ] CS-01: Bookmark toggles without duplicates
+  - Action: On a tour detail page, click "Bookmark", then click "Bookmarked" again.
+  - Expected: The button returns to "Bookmark", and the "Bookmarks" list contains no entry for that tour.
+  - Bug Report:
+    - Issue: Incorrect Button Label
+    - Actual: Toggling off works and the library shows "Saved Tours: 0 / No saved tours yet". However, the button returns to "Save Tour", not "Bookmark".
+- [ ] CS-02: Quiz cannot be submitted without an answer
+  - Action: Open a quiz question, do not select any option, and click "Submit".
+  - Expected: The submit action is blocked, a message "Please select an answer" appears, and the question is not marked as answered.
+  - Bug Report:
+    - Issue: Cannot Perform Action (no Submit control before selection)
+    - Actual: Before any option is selected, the quiz shows only the four answer buttons; no "Submit" control exists on the page. The "Submit Answer" button appears only after an option is selected. The "Please select an answer" message cannot be triggered, so the blocking behavior could not be verified.
+- [ ] CS-03: Navigation limits at the first and last rooms
+  - Action: In the first room of a tour, check the "Previous" button. Then go to the last room and check the navigation control.
+  - Expected: "Previous" is disabled in the first room. In the last room, "Next" is replaced by "Finish Tour".
+  - Bug Report:
+    - Issue: Incorrect Navigation Control (Next not replaced by Finish Tour)
+    - Actual: In Room 1, "Previous Room" is disabled as expected. In the last room ("Room 1 of 1" in Greek Gods; "Room 3 of 3" in Egypt), "Next Room" is shown disabled, and there is no "Finish Tour" control.
+
+## Interaction
+- [ ] IX-01: Hover feedback on exhibit hotspots
+  - Action: In any room, move the mouse over an exhibit hotspot without clicking.
+  - Expected: The hotspot is visually highlighted and its exhibit name label appears. Moving the mouse away removes both.
+  - Bug Report:
+    - Issue: Incomplete Hover Feedback (label does not appear on hover)
+    - Actual: Hovering "Golden Death Mask of Tutankhamun" changes the card border to `rgba(221,167,60,0.5)` and adds a glow shadow, so the highlight works. The exhibit name is already visible on the card before hover, so no name label appears on hover. The hover-out removal was not verified.
+- [ ] IX-02: Immediate quiz answer feedback
+  - Action: In a quiz, select an incorrect option and click "Submit".
+  - Expected: The selected option turns red, the correct option turns green and is labeled, and a "Next Question" button appears.
+  - Bug Report:
+    - Issue: Missing Element (Next Question button)
+    - Actual: After submitting the incorrect "30 years", the selected option gets destructive (red) styling and the correct "66 years" option gets emerald (green) styling with a check icon. The feedback text "Not quite. The correct answer is highlighted above." appears. No "Next Question" button appears; only "Next Room" is present on the page.
+- [ ] IX-03: Layered panel tab switching
+  - Action: With an exhibit panel open, click "Overview", "Deeper Dive", then "Related Items", then click the close (X) button.
+  - Expected: The active tab is highlighted at each step, the room view stays visible behind the panel while switching tabs, and closing the panel returns to the room with no change in the current room.
+  - Bug Report:
+    - Issue: Missing Element (Related Items tab)
+    - Actual: The steps for "Overview", "Deep Dive", and the close (X) work. Each tab becomes the only one with the active class (`text-primary border-b-2`), the room view stays visible, and closing returns to "Room 1 of 3" with no change. No "Related Items" tab exists; "Timeline" was clicked in its place.
+
+## Content
+- [ ] CT-01: Catalog card details match the tour page
+  - Action: Note the title, theme, historical period, culture, difficulty, and "Real" or "Imagined" label on any catalog card. Click the card and compare the detail page.
+  - Expected: All values match exactly on both pages, and each tour is labeled as either "Real" or "Imagined".
+  - Bug Report:
+    - Issue: Missing Content (historical period, culture on card, Real/Imagined label)
+    - Actual: For "Mysteries of Ancient Egypt", the card and detail page match on theme ("Ancient Civilizations") and difficulty ("Beginner"). The card shows no culture and no historical period. The detail page shows culture "Egyptian" and no historical period. Neither page contains "Real" or "Imagined" labels.
+- [ ] CT-02: Exhibit media and text are relevant
+  - Action: Open three different exhibits from any tour and read the overview text and view each image.
+  - Expected: Each image loads, is relevant to its exhibit name, and the text contains no placeholder or lorem ipsum content.
+  - Bug Report:
+    - Issue: Broken Image
+    - Actual: "Colossal Statue of Ramesses II" and "Bust of Queen Nefertari" load (naturalWidth > 0) with relevant text. "Golden Death Mask of Tutankhamun" shows `complete: true, naturalWidth: 0` (broken). "The Throne of Zeus" (Greek Gods tour) also shows `complete: true, naturalWidth: 0`. No lorem ipsum text was found.
+- [ ] CT-03: Related tours match the completed tour's theme
+  - Action: Finish any tour and note its theme, period, and culture. Compare them with the "Related Tours" shown on the end screen.
+  - Expected: Each related tour shares at least one of the theme, historical period, or culture of the completed tour.
+  - Bug Report:
+    - Issue: Cannot Perform Action (no end screen)
+    - Actual: No tour could be finished because the "Finish Tour" control does not exist, so no end screen or "Related Tours" section was reached. The tour page's "Continue Your Journey" section is not the end screen and was not used for this check.
+
+---
+
+**Execution notes:** About 75 of 100 tool calls were used. Browser state was changed during testing: "Mysteries of Ancient Egypt" was saved and then unsaved, and its progress is now 60% (3/5 exhibits viewed, Room 3 of 3). The Egypt tour also remains in the "In Progress" library section.

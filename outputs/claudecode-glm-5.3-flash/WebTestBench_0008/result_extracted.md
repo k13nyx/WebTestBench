@@ -1,0 +1,95 @@
+# Test Result
+
+## Functionality
+- [X] FT-01: New user can register an account
+  - Action: Open the registration page, enter a valid username/email and password, submit the form
+  - Expected: Registration succeeds, the user is logged in (or redirected to login and can log in), and the app shows the authenticated user's identity (e.g., username in the header)
+  - Verified: Registered `qa_tester` / `qa_tester@example.com` / `SecurePass123` → redirected to /dashboard, header nav shows "qa_tester"
+- [X] FT-02: Registered user can log in
+  - Action: Enter the credentials of the account created in FT-01 on the login form and submit
+  - Expected: User is authenticated and taken to the catalog or dashboard
+  - Verified: Login form (email+password) → authenticated, landed on /dashboard with "Welcome back, qa_tester!"
+- [X] FT-03: Catalog displays programming challenges organized by difficulty
+  - Action: Open the challenge catalog
+  - Expected: Multiple pre-existing challenges are listed and each is labeled with a difficulty level, with grouping or filter controls by difficulty
+  - Verified: 10 pre-existing challenges listed, each with an easy/medium/hard badge, plus difficulty filter buttons (easy/medium/hard) and a search box
+- [X] FT-04: Catalog supports filtering/browsing by topic
+  - Action: Select a topic from the catalog's topic navigation/filter
+  - Expected: Only challenges matching that topic are shown; the list updates accordingly
+  - Verified: "strings" filter → exactly 2 challenges (Reverse String, Valid Palindrome), counter updated to "2 challenges"; difficulty "easy" filter → only the 5 easy challenges
+- [X] FT-05: User can open a challenge and write code in the embedded editor
+  - Action: Click any challenge in the catalog to open its detail page
+  - Expected: The challenge description is shown together with an embedded code editor where the user can type/edit code
+  - Verified: /challenge/1 shows full description + examples and an embedded Monaco editor with starter code; code was successfully typed/edited (verified via editor content inspection)
+- [X] FT-06: User can submit a solution and it is automatically evaluated
+  - Action: Type a correct solution for a challenge in the embedded editor and click the Submit button
+  - Expected: The submission is accepted without manual intervention, the code is run against the challenge's predefined test cases, and a result appears
+  - Verified: Correct twoSum solution → "Run Tests" click → automatic execution → "Test Results: 3/3 passed", toast "Congratulations! You earned 10 points!"
+- [X] FT-07: Incorrect solution shows failed result with basic feedback
+  - Action: Submit deliberately wrong code for the same challenge
+  - Expected: Result shows a failure state, and basic feedback is displayed such as which test case failed or expected vs. actual output
+  - Verified: Wrong `fib` (return n*2) → "Test Results: 0/4 passed" with per-test "Expected: 1 / Got: 4", "Expected: 2 / Got: 6", etc.
+- [X] FT-08: Dashboard tracks solved challenges
+  - Action: After solving at least one challenge (FT-06), open the personal dashboard
+  - Expected: The dashboard lists the challenge just solved as completed and shows an overall progress indicator
+  - Verified: Dashboard shows "Challenges Solved 1 / 10", "Total Points 10", "Overall Progress 10%", difficulty progress "Easy 1/5"
+- [X] FT-09: User can review past submissions
+  - Action: Open the submissions history section (dashboard or challenge page)
+  - Expected: A chronological list of the user's own submissions is shown with challenge name, timestamp, and pass/fail status
+  - Verified: Dashboard "Recent Submissions" lists 5 entries newest-first with challenge name, date (11/8/2026) and status (✕ icon for failed, "+10 pts" for passed); per-challenge History tab shows "3/3 passed" / "0/3 passed" entries with dates
+- [X] FT-10: Dashboard shows statistics of challenges completed by difficulty
+  - Action: Open the dashboard statistics section
+  - Expected: Statistics are displayed breaking down completed challenges per difficulty level matching the user's actual solved challenges
+  - Verified: "Progress by Difficulty: Easy 1/5, Medium 0/4, Hard 0/1" — matches exactly (only Two Sum, an easy challenge, solved)
+- [X] FT-11: Leaderboard ranks users by points earned from solved challenges
+  - Action: Open the leaderboard page
+  - Expected: A ranked list of users is shown sorted by total points (descending), including the current user, with points earned from solved challenges
+  - Verified: Ranked list descending: charlie_algo 110 (7 solved), alice_codes 80 (5), bob_dev 50 (3), qa_tester 10 (1) [rank 4, current user], tester1 0 (0)
+
+## Constraint
+- [ ] CS-01: Registration cannot proceed with invalid or missing required fields
+  - Action: Submit the registration form with an empty username or email, or an invalid email format, or too-short password
+  - Expected: Submission is rejected with a validation error message; no account is created and the user remains unauthenticated
+  - Bug Report:
+    - Issue: Missing password strength/length validation
+    - Actual: Empty username and invalid email are correctly rejected with visible native validation messages ("Please fill out this field.", "Please include an '@' in the email address…"). However, a 3-character password "abc" with valid username/email was accepted — registration completed, account "tester1" was created and the user was logged in immediately. No minimum password length is enforced.
+- [X] CS-02: Registration rejects a username/email that is already registered
+  - Action: Attempt to register again with the exact credentials of the account created in FT-01
+  - Expected: An error message indicates the account/username already exists and registration is not completed
+  - Verified: Re-registering qa_tester@example.com → error "Email already registered" displayed, stayed on /register, user not authenticated
+- [ ] CS-03: Challenge catalog and submission features are inaccessible when not logged in
+  - Action: Log out (or use a fresh/incognito session) and attempt to open the dashboard, submit code, or view the leaderboard
+  - Expected: Access is denied — the user is redirected to login/registration or shown an "access denied" message; no personal data is visible
+  - Bug Report:
+    - Issue: Insufficient access control on leaderboard and code execution
+    - Actual: Logging out redirects to /login and /dashboard is correctly protected (redirects to login). However, (1) the leaderboard at /leaderboard is fully viewable when logged out (nav shows only Login/Get Started), and (2) any challenge page (/challenge/2) is open to anonymous users with a working editor — clicking "Run Tests" executed the code against the predefined test cases and returned "Test Results: 0/2 passed" with no login prompt or access-denied message. The submission feature is therefore accessible without authentication.
+- [ ] CS-04: Submitting with an empty editor is not allowed
+  - Action: Open a challenge, leave the code editor empty (or clear it), and click Submit
+  - Expected: Submission is blocked with a validation message (e.g., "Code cannot be empty") and no test run is triggered
+  - Bug Report:
+    - Issue: Missing client-side validation on empty submission
+    - Actual: After clearing the editor on Fibonacci Number and clicking "Run Tests", no validation message appeared; the test run was triggered and returned "Test Results: 0/4 passed / Got: Error: solution is not defined". The empty submission was also recorded in the submission history instead of being blocked.
+- [X] CS-05: A failed submission does not award points or mark the challenge as solved
+  - Action: Submit a wrong solution to a previously unsolved challenge (FT-07), then check the dashboard and leaderboard
+  - Expected: The challenge is not counted as completed, no points are added for it, and dashboard statistics are unchanged
+  - Verified: After 3 failed Fibonacci submissions, dashboard still shows Total Points 10, Challenges Solved 1/10, Easy 1/5 (unchanged from after FT-06); leaderboard still shows qa_tester with 10 points / 1 solved
+
+## Interaction
+- [X] IX-01: Submission shows an in-progress state while test cases are running
+  - Action: Click Submit on a challenge solution
+  - Expected: The UI immediately shows a pending/running indicator before the final result appears
+  - Verified: Immediately after clicking "Run Tests", button/state showed "JavaScript Running..." across 4 successive DOM samples (~600ms) before the final result replaced it
+- [X] IX-02: Passing result is highlighted with success feedback
+  - Action: Submit a correct solution (FT-06)
+  - Expected: A success state is clearly visible and the tests-passed count is shown
+  - Verified: Success panel styled with `border-success/50` showing "Test Results: 3/3 passed" plus a "Congratulations! You earned 10 points!" toast; each test case shows Expected/Got match
+
+## Content
+- [X] CT-01: Challenge descriptions are relevant to programming challenges
+  - Action: Open at least two different challenges from the catalog
+  - Expected: Each shows a problem statement containing task description, examples/input-output, and/or constraints relevant to programming problems — no placeholder or empty text
+  - Verified: Two Sum (task statement, constraints, 2 input/output examples), Fibonacci Number (task statement, 3 examples), Reverse String (task statement, in-place constraint, 2 examples) — all real programming content, no placeholders
+- [X] CT-02: Leaderboard entries show meaningful, non-placeholder data
+  - Action: Inspect the leaderboard list
+  - Expected: Each row shows a username and a numeric point total consistent with the points system; default seeded users appear with plausible values
+  - Verified: 5 rows with real usernames (charlie_algo, alice_codes, bob_dev, qa_tester, tester1), numeric points (110/80/50/10/0), solved counts and point values consistent with the 10/20/30 pts difficulty system — no lorem ipsum or placeholder text

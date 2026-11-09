@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "451ff029-1f53-48a8-a9a0-69aad3dea7b9",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a fitness tracker webpage where I can sign in, log detailed workouts with fields like exercise type, intensity, duration, distance, and notes, and set a few simple fitness goals such as “run three times a week” or “exercise 150 minutes per week.” The site should show my recent workouts in a timeline and give me a summary view that compares my logged activity against my goals for the current week and month.\n\n# Output (Markdown)\n",
+    "duration_ms": 2966,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 2501,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 12032,
+      "output_tokens": 1423,
+      "output_tokens_details": {
+        "thinking_tokens": 351
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "deepseek/deepseek-v4.1-flash": {
+        "inputTokens": 2756,
+        "outputTokens": 1583,
+        "cacheReadInputTokens": 13440,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.060075,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 500,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "deepseek/deepseek-v4.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 134,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 6166,
+      "AssistantMessage": {
+        "total_count": 76,
+        "ThinkingBlock": 30,
+        "TextBlock": 15,
+        "ToolUseBlock": 31
+      },
+      "UserMessage": {
+        "total_count": 31,
+        "ToolResultBlock": 31
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "9a5a8350-420b-4e07-ad9e-47da3e80362b",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a fitness tracker webpage where I can sign in, log detailed workouts with fields like exercise type, intensity, duration, distance, and notes, and set a few simple fitness goals such as “run three times a week” or “exercise 150 minutes per week.” The site should show my recent workouts in a timeline and give me a summary view that compares my logged activity against my goals for the current week and month.\n\n## Application URL\nhttp://localhost:6018/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: User can sign in with valid credentials and reach the workout dashboard\n  - Action: Enter a valid username/email and password on the sign-in page, click \"Sign In\".\n  - Expected: User is authenticated and the main dashboard (workout logging view) is displayed.\n- [ ] FT-02: User can log a workout with all five fields populated\n  - Action: Fill exercise type, intensity, duration, distance, and notes; click \"Log Workout\".\n  - Expected: Workout is saved and a confirmation appears; no field errors are shown.\n- [ ] FT-03: Newly logged workout appears in the recent workouts timeline\n  - Action: Log a workout, then view the timeline.\n  - Expected: The new workout appears as an entry in the timeline.\n- [ ] FT-04: User can create a count-based goal (e.g., \"run three times a week\")\n  - Action: Create a goal stating \"run 3 times per week\" and save it.\n  - Expected: Goal is saved and listed among the user's active fitness goals.\n- [ ] FT-05: User can create a duration-based goal (e.g., \"exercise 150 minutes per week\")\n  - Action: Create a goal stating \"exercise 150 minutes per week\" and save it.\n  - Expected: Goal is saved and listed among the user's active fitness goals.\n- [ ] FT-06: Summary view compares logged activity against goals for the current week\n  - Action: Log activity, then open the weekly summary view.\n  - Expected: Weekly summary shows logged activity totals against each weekly goal.\n- [ ] FT-07: Summary view compares logged activity against goals for the current month\n  - Action: Open the monthly summary view.\n  - Expected: Monthly summary shows logged activity totals against the applicable goals.\n- [ ] FT-08: Timeline lists workouts in reverse-chronological order\n  - Action: Log two workouts with different dates, then view the timeline.\n  - Expected: The most recent workout is listed first.\n\n## Constraint\n- [ ] CS-01: Workout cannot be submitted with empty required fields\n  - Action: Click \"Log Workout\" with the exercise type or duration left blank.\n  - Expected: Submission is blocked and a required-field error is shown.\n- [ ] CS-02: Numeric workout fields reject invalid values\n  - Action: Enter a negative or non-numeric value for duration or distance.\n  - Expected: Invalid input is rejected with an error; the workout is not saved.\n- [ ] CS-03: Sign-in rejects invalid credentials\n  - Action: Enter an incorrect password and click \"Sign In\".\n  - Expected: Sign-in fails with an error message; the dashboard is not shown.\n- [ ] CS-04: Goal cannot be saved without a target value and period\n  - Action: Attempt to save a goal with a missing target (e.g., no number/period) .\n  - Expected: Goal creation is blocked with a validation error.\n- [ ] CS-05: Summary counts only activity within the current week/month\n  - Action: Review the weekly summary when a workout exists in a prior week.\n  - Expected: The prior-week workout is excluded from the current weekly totals.\n\n## Interaction\n- [ ] IX-01: Success message appears after a workout is logged\n  - Action: Submit a valid workout.\n  - Expected: A success confirmation/toast is displayed.\n- [ ] IX-02: Summary view updates after a workout is logged\n  - Action: Note summary totals, log a new workout, return to the summary.\n  - Expected: Totals reflect the newly logged activity without a manual reload.\n- [ ] IX-03: Goal progress visually distinguishes met vs. unmet goals\n  - Action: Log activity such that one goal is met and another is not.\n  - Expected: Met goal shows a distinct progress/complete state; unmet goal does not.\n\n## Content\n- [ ] CT-01: Exercise type field offers a relevant selection of exercises\n  - Action: Open the exercise type dropdown when logging a workout.\n  - Expected: Options are relevant fitness activities (e.g., run, cycle, swim) with no unrelated entries.\n- [ ] CT-02: Summary and workout entries display correct measurement units\n  - Action: View a logged workout and the summary view.\n  - Expected: Duration is shown in minutes and distance in a labeled unit (km/mi) consistently.\n- [ ] CT-03: Timeline entries display all logged workout details\n  - Action: View a previously logged workout in the timeline.\n  - Expected: Exercise type, intensity, duration, distance, and notes are all shown for that entry.\n```\n\n# Output\n",
+    "duration_ms": 122913,
+    "is_error": false,
+    "num_turns": 32,
+    "token_usage": {
+      "input_tokens": 72545,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1195136,
+      "output_tokens": 24211,
+      "output_tokens_details": {
+        "thinking_tokens": 17087
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "deepseek/deepseek-v4.1-flash": {
+        "inputTokens": 73693,
+        "outputTokens": 24382,
+        "cacheReadInputTokens": 1196544,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.5762870000000002,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 17247,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "deepseek/deepseek-v4.1-flash",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}

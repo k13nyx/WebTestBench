@@ -1,0 +1,136 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "700964a2-2273-420d-8fd7-29deaec949d9",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a resume-building webpage where users can create and edit professional resumes using pre-designed templates. Users should be able to enter and organize their information (such as contact details, work experience, education, and skills), choose a template style, and customize basic layout options like section order and headings. The page should let users preview their resume, duplicate or rename versions, and save multiple variations for different job applications. Users should also be able to quickly search and filter their saved resumes by title or date created.\n\n# Output (Markdown)\n",
+    "duration_ms": 86862,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 9728,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1328,
+      "output_tokens": 2636,
+      "output_tokens_details": {
+        "thinking_tokens": 1540
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-pro": {
+        "inputTokens": 11354,
+        "outputTokens": 2733,
+        "cacheReadInputTokens": 1328,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.125759,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 1626,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-pro",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 516,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 4723,
+      "AssistantMessage": {
+        "total_count": 130,
+        "ThinkingBlock": 45,
+        "ToolUseBlock": 45,
+        "TextBlock": 40
+      },
+      "UserMessage": {
+        "total_count": 45,
+        "ToolResultBlock": 45
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "e87b2198-b713-4a01-bff5-27c035a43fc9",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a resume-building webpage where users can create and edit professional resumes using pre-designed templates. Users should be able to enter and organize their information (such as contact details, work experience, education, and skills), choose a template style, and customize basic layout options like section order and headings. The page should let users preview their resume, duplicate or rename versions, and save multiple variations for different job applications. Users should also be able to quickly search and filter their saved resumes by title or date created.\n\n## Application URL\nhttp://localhost:6005/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: Create a new resume with a title.\n  - Action: Click \"New Resume\" (or equivalent), enter a title, and confirm creation.\n  - Expected: A new resume entry is created and appears in the saved resumes list with the entered title.\n- [ ] FT-02: Enter and edit contact details.\n  - Action: Fill in the contact section fields (full name, email, phone, address/links), save, and reopen the resume.\n  - Expected: All entered contact details are saved and shown again unchanged when the resume is reopened.\n- [ ] FT-03: Add work experience entries.\n  - Action: Add one work experience entry with job title, company, dates, and description; then add a second entry.\n  - Expected: Both entries appear in the work experience section with all fields as entered, in the order added.\n- [ ] FT-04: Add education entries.\n  - Action: Add an education entry with degree, institution, and dates.\n  - Expected: The entry appears in the education section with all fields as entered.\n- [ ] FT-05: Add skills.\n  - Action: Enter multiple skills in the skills section.\n  - Expected: All entered skills are listed in the skills section without duplicates or dropped items.\n- [ ] FT-06: Choose a template style.\n  - Action: Open the template picker and select a different pre-designed template.\n  - Expected: The selected template is applied to the resume and remains selected after saving and reopening.\n- [ ] FT-07: Reorder sections.\n  - Action: Move a section (e.g., Education) above another (e.g., Work Experience) using the section order control.\n  - Expected: The new section order is saved and reflected in the resume layout.\n- [ ] FT-08: Customize section headings.\n  - Action: Rename a section heading (e.g., change \"Work Experience\" to \"Employment History\") and save.\n  - Expected: The custom heading is displayed in place of the default one and persists after reopening.\n- [ ] FT-09: Preview the resume.\n  - Action: Open the preview for an edited resume.\n  - Expected: A full resume preview is displayed showing all sections with the entered data and the chosen template.\n- [ ] FT-10: Duplicate a resume version.\n  - Action: Use \"Duplicate\" on an existing resume.\n  - Expected: A new resume entry (e.g., \"… copy\") is created containing the same content and template as the original.\n- [ ] FT-11: Rename a resume version.\n  - Action: Use \"Rename\" on a saved resume, enter a new title, and confirm.\n  - Expected: The saved resumes list shows the new title; no other resume data changes.\n- [ ] FT-12: Save multiple variations for different job applications.\n  - Action: Save three resumes with different titles and content, then reload the page.\n  - Expected: All three resumes are listed after reload with their respective content intact.\n- [ ] FT-13: Search saved resumes by title.\n  - Action: Type a title keyword (or partial title) into the search field.\n  - Expected: Only saved resumes whose title contains the keyword are listed; clearing the field restores the full list.\n- [ ] FT-14: Filter saved resumes by date created.\n  - Action: Apply the date-created filter (e.g., select a date or range matching one saved resume).\n  - Expected: Only resumes created within the selected date criteria are listed.\n\n## Constraint\n- [ ] CS-01: Cannot save a resume with empty required fields.\n  - Action: Leave the title and full name fields empty and attempt to save.\n  - Expected: The save is blocked and a validation message indicates the missing required field(s).\n- [ ] CS-02: A duplicated resume is independent of its original.\n  - Action: Duplicate a resume, edit a field in the copy, then open the original.\n  - Expected: The original's content is unchanged; edits affect only the copy.\n\n## Interaction\n- [ ] IX-01: Preview reflects edits immediately.\n  - Action: Change a field (e.g., full name) and switch to the preview.\n  - Expected: The preview shows the updated value without requiring a separate refresh step.\n- [ ] IX-02: Search and filter results update as criteria change.\n  - Action: Type into the search field and change the date filter one after the other.\n  - Expected: The saved resumes list updates immediately after each keystroke/selection with no manual refresh button needed.\n\n## Content\n- [ ] CT-01: Pre-designed templates are present and visually distinct.\n  - Action: Open the template picker and compare the available templates side by side.\n  - Expected: Multiple templates are offered, each rendered with a clearly different layout/style, and all are selectable and functional.\n- [ ] CT-02: Saved resume list metadata is accurate.\n  - Action: Compare each entry in the saved resumes list with the resume's actual title and creation time.\n  - Expected: Each entry displays the exact current title and the correct date created.\n```\n\n# Output\n",
+    "duration_ms": 295049,
+    "is_error": false,
+    "num_turns": 46,
+    "token_usage": {
+      "input_tokens": 64779,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 1261584,
+      "output_tokens": 26362,
+      "output_tokens_details": {
+        "thinking_tokens": 14323
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "xiaomi/mimo-v2.6-pro": {
+        "inputTokens": 66394,
+        "outputTokens": 26497,
+        "cacheReadInputTokens": 1262608,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 1.6256989999999998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 14445,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "xiaomi/mimo-v2.6-pro",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}
