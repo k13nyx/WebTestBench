@@ -1,0 +1,137 @@
+{
+  "stage_success": {
+    "start": true,
+    "server_deploy": true,
+    "checklist_generation": true,
+    "defect_detection": true,
+    "result_extract": true,
+    "server_cleanup": true,
+    "finish": true
+  },
+  "checklist_generation": {
+    "stage": "checklist_generation",
+    "session_id": "9b68a081-85e3-44c6-bbf3-1adb207030e0",
+    "user_prompt": "# Role\nYou are a Senior Software Quality Assurance Engineer who can read a user instruction and immediately produce a complete, executable UI/UX test checklist. Your focus is strictly on 'what' the application should do (the features), not 'how' it should be built (the technical implementation).\n\n# Task\nDirectly generate executable test checklist. Decompose the user instruction into structured, testable items.\n\nEach item must be:\n- **Specific**: Clear action and expected outcome.\n- **Binary**: PASS or FAIL (no ambiguity).\n- **Debuggable**: Failure indicates exactly what's missing.\n\nYour checklist will be used to:\n1. Test web applications. Produce PASS/FAIL results for each test item.\n2. Generate detailed bug reports identifying which requirement failed and why.\n\n## Checklist Item Category\n1. Functionality (FT)\n   * Focus: Core user tasks and workflows that must succeed when inputs are valid.\n   * Scope: What happens when everything goes right?\n   * Example: \"User can submit a search query\", \"User can add an item to the cart\".\n2. Constraint (CS)\n   * Focus: Rules, validations, state invariants, and conflict-prevention logic that prevent the system from entering invalid or contradictory states.\n   * Scope: What prevents the user from doing the wrong thing? What happens with conflicting data?\n   * Examples: \"Meeting room cannot be booked if already occupied.\", \"Cannot submit form with empty required fields.\"\n3. Interaction (IX)\n   * Focus: Dynamic behaviors and system responses to user actions (non-functional visual/state changes, user experience).\n   * Scope: How does the interface respond to events like clicks, hover?\n   * Examples: \"Show success toast after reservation is created.\"\n4. Content (CT)\n   * Focus: The relevance and integrity of text, data, and media (images, icons, videos). Content must strictly align with the instruction's theme/purpose.\n   * Scope: Is the displayed information relevant, and fully functional?\n   * Examples: \"All displayed images must be directly relevant to the theme of 'iPhone'.\"\n\n## Default Data\nAssume the application has default data (e.g., pre-existing products in a store). Do not create new data for testing; use the default data already present in the application.\n\n# Unified Checklist Item Template\n\n```markdown\n- [ ] [ID]: [Test description]\n  - Action: [What to do]\n  - Expected: [What should happen]\n```\n\n# Output Format (Markdown)\n\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: [use unified template]\n- [ ] FT-02: [use unified template]\n\n## Constraint\n- [ ] CS-01: [use unified template]\n\n## Interaction\n- [ ] IX-01: [use unified template]\n\n## Content\n- [ ] CT-01: [use unified template]\n```\n\n# Rules\n1. Testable: Every item must produce a clear Pass/Fail result.\n2. Executable: Quality assurance tester should know exactly what to do.\n3. Specific for action/expected: Include exact element names, button text, expected messages, etc.\n4. Concise for description: Test description should be 1-2 lines, action/expected should be brief.\n5. No Implementation: Specify what the app does, not how it's built (no framework details).\n6. Desktop Only: Ignore responsive design requirements.\n7. Max 20 items total: Prioritize core requirements. Keep only what is necessary to satisfy the instruction.\n8. No Redundancy: Avoid duplicating content or behavior that is covered by other categories (e.g., \"success messages\" should be included only once). Each checklist item MUST be assigned exactly one primary category (FT / CS / IX / CT), even if it has secondary implications. \n\n# Input\n\n## User Instruction\nI want a niche product recommendation website where I can curate lists of tech gadgets, home goods, and fitness products, each with brief reviews and affiliate purchase links. I should be able to create, edit, categorize, and tag product entries, and mark certain items as featured on the homepage. Visitors should be able to browse products by category, sort and filter them by attributes like price range or rating, and search by keyword. Each product should have its own detail page showing my review, key specs, and a clear button linking to the external retailer.\n\n# Output (Markdown)\n",
+    "duration_ms": 65613,
+    "is_error": false,
+    "num_turns": 1,
+    "token_usage": {
+      "input_tokens": 11006,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 128,
+      "output_tokens": 5728,
+      "output_tokens_details": {
+        "thinking_tokens": 4129
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "minimax/minimax-m3": {
+        "inputTokens": 11277,
+        "outputTokens": 5869,
+        "cacheReadInputTokens": 1664,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.203942,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 4258,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "minimax/minimax-m3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  },
+  "message_statistics": {
+    "checklist_generation": {
+      "SystemMessage": 1004,
+      "AssistantMessage": {
+        "total_count": 2,
+        "ThinkingBlock": 1,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    },
+    "defect_detection": {
+      "SystemMessage": 24538,
+      "AssistantMessage": {
+        "total_count": 198,
+        "TextBlock": 41,
+        "ToolUseBlock": 80,
+        "ThinkingBlock": 77
+      },
+      "UserMessage": {
+        "total_count": 81,
+        "ToolResultBlock": 80,
+        "TextBlock": 1
+      },
+      "ResultMessage": 1
+    }
+  },
+  "final_result_sources": {
+    "checklist_generation": true,
+    "defect_detection": true
+  },
+  "defect_detection": {
+    "stage": "defect_detection",
+    "session_id": "3ba13972-7f81-4df2-9472-047155e18c29",
+    "user_prompt": "# Role\nYou are an expert Quality Assurance Test Engineer specializing in automated UI/UX testing. Your task is to validate a web application against a provided checklist. You must systematically execute actions, verify results, and update the checklist status.\n\n# Execution Standards\n\n## 1. Interaction Strategy\n- Tool Use: Use **Playwright tools** to interact with the DOM. Disallow the use of `Bash`, `Read`, and `Write` tools to operate web pages.\n- DOM-Only: Do NOT use screenshots or visual validation. Rely on DOM attributes (text, id, class, accessibility roles) for verification.\n- Integrity: Execute all items; never skip. If an item cannot be done, mark FAIL with a concrete reason (no hallucination).\n- Batching: For pure data entry (e.g., filling a form), you may combine multiple `fill/select` actions into a single code block to save time.\n- Limited Budget: The entire execution process must operate within a limited budget of turn/tool-call (max 100 times total). Plan first, and execute with as few operations as possible.\n- Navigation: Only navigate if the checklist item explicitly requires it. Disable page refresh operations unless the page crashes.\n\n## 2. Verification Logic\n- Strict Verification: Compare the `Actual` behavior of the page against the `Expected` field in the checklist.\n- Pass: The feature works exactly as described.\n- Fail: Any deviation (missing element, wrong text, no response, error message) is a FAIL.\n\n## 3. Workflow\n1. Initialize: Navigate to the Target URL.\n2. Iterate: Go through the Checklist items.\n3. Execute: Perform the `Action` defined in the item.\n4. Verify: Check if the `Expected` result is met.\n5. Record: Update the item's status immediately in your internal memory.\n\n# Output Format (Markdown)\nYou must output the Full Checklist with updated statuses. Do not summarize; return the complete list.\n\n## Unified Result Item Template\n\nIf PASS: Change `- [ ]` to `- [X]` to mark the test as passed.\n\n```markdown\n- [X] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n```\n\nIf FAIL: Keep `- [ ]` and append a `Bug Report` block immediately after the test item.\n     \n```markdown\n- [ ] TEST-ID: [original Description]\n  - Action: [original Action]\n  - Expected: [original Expected]\n  - Bug Report:\n    - Issue: [Specific problem type: e.g., Unresponsive Button, Incorrect Form Submission, Element Occlusion]\n    - Actual: [Quote the observed deviation: e.g., Button does not trigger the expected modal, Button text overlaps with icon]\n```\n\n## Output Template\n\n```markdown\n# Test Result\n\n## Functionality\n[use unified result item template for each FT-xx]\n[use unified result item template for each FT-xx]\n\n## Constraint\n[use unified result item template for each CS-xx]\n\n## Interaction\n[use unified result item template for each IX-xx]\n\n## Content\n[use unified result item template for each CT-xx]\n```\n\n# Input\n\n## User Instruction\nI want a niche product recommendation website where I can curate lists of tech gadgets, home goods, and fitness products, each with brief reviews and affiliate purchase links. I should be able to create, edit, categorize, and tag product entries, and mark certain items as featured on the homepage. Visitors should be able to browse products by category, sort and filter them by attributes like price range or rating, and search by keyword. Each product should have its own detail page showing my review, key specs, and a clear button linking to the external retailer.\n\n## Application URL\nhttp://localhost:6001/\n\n## Test Checklist\n```markdown\n# Test Checklist\n\n## Functionality\n- [ ] FT-01: User can create a new product entry\n  - Action: Open the \"Add Product\"/\"New Product\" form, enter a product name, review text, price, key specs, category, tags, external retailer URL, and save.\n  - Expected: The product is saved and its card appears in the default product listing with the entered name, price, and category; a confirmation message is shown.\n\n- [ ] FT-02: User can edit an existing product entry\n  - Action: Open a default product, click \"Edit\", change its review text and price, and save.\n  - Expected: The changes are saved and the new values are shown on the product's card and detail page; the original values are no longer displayed.\n\n- [ ] FT-03: User can categorize a product\n  - Action: On a default product, assign one of the categories (tech gadgets, home goods, fitness) and save.\n  - Expected: The product appears under that category in the category listing and shows the assigned category label on its card and detail page.\n\n- [ ] FT-04: User can tag a product\n  - Action: On a default product, add one or more tags (e.g., \"bluetooth\", \"kitchen\") and save.\n  - Expected: The tags are saved, are displayed on the product's card and detail page, and are returned when browsing/filtering by those tags.\n\n- [ ] FT-05: User can mark a product as featured and it appears on the homepage\n  - Action: On a default product, enable the \"Featured\" toggle/mark-as-featured control and save; then open the homepage.\n  - Expected: The product is listed in the homepage's featured section, and the featured marker is shown on its card elsewhere in the site.\n\n- [ ] FT-06: Visitor can browse products by category\n  - Action: Open the product listing and select each category (tech gadgets, home goods, fitness).\n  - Expected: The listing shows only products belonging to the selected category, with the current category visibly indicated.\n\n- [ ] FT-07: Visitor can sort the product list by price and by rating\n  - Action: On the product listing, select \"Price\" sorting and then \"Rating\" sorting (both ascending and descending options if offered).\n  - Expected: The displayed order changes accordingly — lowest price first when sorted by price ascending, highest-rated products first when sorted by rating descending — and every visible card's price/rating matches that order.\n\n- [ ] FT-08: Visitor can filter products by price range and by rating\n  - Action: On the product listing, set a minimum/maximum price range and apply; then set a minimum rating and apply.\n  - Expected: After the price filter, every displayed product's price falls within the chosen range; after the rating filter, every displayed product's rating is at or above the chosen value.\n\n- [ ] FT-09: Visitor can search products by keyword\n  - Action: Enter a keyword from a default product's name, review, or tag into the search box and submit.\n  - Expected: The results include the matching product(s), and non-matching products are excluded from the result list.\n\n- [ ] FT-10: Each product has a detail page with review, key specs, and retailer link\n  - Action: Click a product card/title in any listing to open its detail page.\n  - Expected: The detail page shows that product's review text, its key specs, and a clearly labelled purchase/retailer button linking to the external retailer.\n\n## Constraint\n- [ ] CS-01: A product cannot be saved with missing required data or an invalid retailer link\n  - Action: Open the Add Product form, leave the product name, review, category, and retailer URL blank (one at a time) and attempt to save; then enter a non-URL string (e.g., \"not a link\") as the retailer URL and save.\n  - Expected: Saving is blocked for each case, an error message identifies the invalid field, and no incomplete/empty product entry is created in the listing.\n\n- [ ] CS-02: Filtering never returns products that fail the filter criteria\n  - Action: Apply a narrow price range and a high minimum rating (e.g., price 100–150 and rating 4+) and inspect every result card's price and rating; also apply a price range and rating that no default product satisfies.\n  - Expected: Every result satisfies both active criteria, and when no product satisfies them, zero product cards are shown (not the full list, not an error page).\n\n- [ ] CS-03: A search with no matching results shows an empty state and can be cleared\n  - Action: Search for a nonsense keyword (e.g., \"xyzqwerty123\"), then clear the search box.\n  - Expected: A \"no results\"/no products found message is shown with zero product cards, and after clearing the search the full default product list is displayed again.\n\n## Interaction\n- [ ] IX-01: Clicking a product card opens that product's detail page\n  - Action: Click the card image/title of a default product in the listing.\n  - Expected: The browser navigates to the matching product's detail page showing that product's name, review, specs, and retailer button.\n\n- [ ] IX-02: The retailer button opens the external store link\n  - Action: Click the \"Buy\"/\"View on retailer\" button on a product detail page.\n  - Expected: The external retailer URL opens in a new tab/window (the site itself stays on the product detail page), and the URL matches the retailer link stored for that product.\n\n- [ ] IX-03: The edit form opens pre-filled and saving confirms the update\n  - Action: Click \"Edit\" on a default product and observe the form fields; save without changes, then change the price and save again.\n  - Expected: The form is pre-populated with the product's current name, review, price, category, and tags; after saving, a confirmation message appears and the updated price is shown on the product's card and detail page.\n\n- [ ] IX-04: Featured products are visibly marked in listings\n  - Action: Browse the main product listing and view a card for a product that has been marked as featured.\n  - Expected: That card displays a clearly visible featured indicator (e.g., \"Featured\" badge/label), while non-featured cards do not.\n\n## Content\n- [ ] CT-01: The homepage featured section contains exactly the featured products\n  - Action: Mark one default product as featured and unmark another that was featured; then open the homepage.\n  - Expected: The featured section lists the marked product and omits the unmarked one, and each entry links to the correct product's detail page.\n\n- [ ] CT-02: Product detail page shows the correct, complete saved content\n  - Action: Open the detail pages of two different default products and compare the displayed review, key specs, price, and category with what was entered/saved for each.\n  - Expected: Each detail page shows that product's own review text, key specs, price, and category — no placeholder text, no \"TBD\", and no content copied from the other product.\n\n- [ ] CT-03: Category and tag labels match each product's assignments\n  - Action: View product cards and detail pages for products in each category and for products with multiple tags.\n  - Expected: Every product displays its assigned category label (tech gadgets / home goods / fitness) and all of its saved tags, with no missing or extra labels shown.\n```\n\n# Output\n",
+    "duration_ms": 860670,
+    "is_error": false,
+    "num_turns": 82,
+    "token_usage": {
+      "input_tokens": 368001,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 5644484,
+      "output_tokens": 127393,
+      "output_tokens_details": {
+        "thinking_tokens": 91074
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "model_usage": {
+      "minimax/minimax-m3": {
+        "inputTokens": 371171,
+        "outputTokens": 134429,
+        "cacheReadInputTokens": 5810804,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 8.121982000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 91288,
+        "cacheCreationEphemeral5mInputTokens": 0,
+        "cacheCreationEphemeral1hInputTokens": 0,
+        "canonicalModel": "minimax/minimax-m3",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    }
+  }
+}
