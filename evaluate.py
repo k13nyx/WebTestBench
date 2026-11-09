@@ -19,7 +19,7 @@ fills in).
 
 Output:
     report mode (default)
-        Rebuilds the tables from artifacts that already exist. Reads nothing else:
+        Rebuilds the tables from artifacts that already exist, plus the dataset so a task that never ran counts as a failure:
             outputs/<version>/<index>/score.json         # coverage/precision/recall/f1
             outputs/<version>/<index>/session_meta.json  # token usage, reported cost
         and emits:
@@ -225,7 +225,10 @@ def collect_task(
     score = _read_json(task_dir / "score.json") or {}
     session = _read_json(task_dir / "session_meta.json") or {}
     if not score and not session:
-        return None
+        if task_dir.exists():
+            return None
+        # never ran: a dataset task with no output dir still has to count as a failure
+        score = {"overall": {"coverage": 0.0, "precision": 0.0, "recall": 0.0, "f1": 0.0, "num_pred_item": 0}}
 
     overall = score.get("overall") or {}
     match_info = _read_json(task_dir / "score_match_ids.json") or {}
@@ -653,13 +656,18 @@ class Sweep:
         log_dir = self.log_root.parent / "scoring"
         log_dir.mkdir(parents=True, exist_ok=True)
         log_path = log_dir / f"log_{time.strftime('%Y_%m_%d_%H_%M')}_{version}.log"
+
+        # the judge POSTs to this URL verbatim, but ANTHROPIC_BASE_URL is a base for
+        # the agent's CLI, which appends /v1/messages by itself
+        judge_url = self.base_url.rstrip("/")
+        judge_url = judge_url if judge_url.endswith("/chat/completions") else judge_url + "/v1/chat/completions"
         cmd = [
             sys.executable, "eval/scoring.py",
             "--dataset_path", str(self.dataset if not args.limit else self._limited_dataset()),
             "--output_root", str(self.output_root),
             "--version", version,
             "--use_checklist_fallback", "True",
-            "--api_base_url", self.base_url,
+            "--api_base_url", judge_url,
             "--api_key", self.api_key,
             "--api_model", args.judge_model,
         ]
@@ -815,6 +823,7 @@ def build_report(
     dataset_path: str | Path | None = "./data/WebTestBench/WebTestBench.jsonl",
     plot: bool = True,
     verbose: bool = True,
+    limit: Optional[int] = None,
 ) -> List[dict]:
     """Build benchmark.jsonl + score-vs-price reports and return the per-model aggregates.
 
@@ -838,6 +847,8 @@ def build_report(
                     records.append(json.loads(line))
                 except Exception:
                     continue
+
+        records = records[:limit] if limit else records
         total_tasks = len(records)
         gold_counts = {str(r.get("index", "")): len(r.get("checklist") or []) for r in records}
 
@@ -849,11 +860,12 @@ def build_report(
     all_rows: List[dict] = []
     agg: List[dict] = []
 
-    for version_dir in sorted(d for d in output_root.iterdir() if d.is_dir()):
+    for version_dir in sorted(d for d in output_root.iterdir() if d.is_dir() and d.name not in ("logs", "work") and any(x.is_dir() for x in d.iterdir())):
         short = version_dir.name.split("claudecode-")[-1]
         model = models.get(short, {"key": short, "model_id": short})
+
         rows = []
-        for task_dir in sorted(d for d in version_dir.iterdir() if d.is_dir()):
+        for task_dir in sorted([d for d in version_dir.iterdir() if d.is_dir()] + [version_dir / i for i in gold_counts if not (version_dir / i).is_dir()]):
             row = collect_task(
                 version_dir, task_dir, model,
                 gold_items=gold_counts.get(task_dir.name)
@@ -901,6 +913,7 @@ def main() -> int:
         output_root=args.output_root,
         models_yml=ROOT / "models.yml",
         dataset_path=Path(args.data_root) / "WebTestBench.jsonl",
+        limit=args.limit,
     )
     return 0
 
