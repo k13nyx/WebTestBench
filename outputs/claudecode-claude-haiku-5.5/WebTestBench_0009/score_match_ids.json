@@ -1,0 +1,303 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "2"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      null
+    ],
+    [
+      "FT-04",
+      "13"
+    ],
+    [
+      "FT-05",
+      null
+    ],
+    [
+      "FT-06",
+      "17"
+    ],
+    [
+      "FT-07",
+      "15"
+    ],
+    [
+      "FT-08",
+      "4"
+    ],
+    [
+      "FT-09",
+      "5"
+    ],
+    [
+      "CS-01",
+      "8"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      "9"
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "CS-06",
+      "11"
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      "13"
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "16"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can edit existing property listings."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Owner can edit an existing listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can create and manage property listings."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Owner can create a new listing with all required details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can search for existing housing information by entering a text field."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Travelers can fill out a booking application form (selecting dates, residents, contact information, etc.)"
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Traveler can submit a booking request for chosen dates"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The homeowner can refuse or approve a booking request."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Owner can view booking requests and update their status"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Homeowners can delete property listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users cannot perform a search without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users cannot submit listings with empty required fields (location, description, amenities, photos (image links), and nightly price)."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Listing creation is blocked when required fields are empty"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The check-in date submitted by the traveler must be when the property is available for rent; dates that are already booked or are inappropriately dated cannot be selected."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Booking is blocked for dates already marked unavailable"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Only one valid booking can be accepted for the same property at the same time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Homeowners can only manage the listings they create and their corresponding booking requests; they cannot manage other people's listings."
+      },
+      "pred": [
+        {
+          "id": "CS-06",
+          "text": "Owner can view only booking requests for their own listings"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Travelers can only submit booking requests and do not have access to edit property listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Page updates after users filter by price range, number of guests, and property type."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Traveler can filter listings by price range, number of guests, and property type"
+        },
+        {
+          "id": "IX-02",
+          "text": "Filter and sort results update immediately, with a no-results message when applicable"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "After submitting a simple booking request form and selecting check-in dates, users will receive visual confirmation (a success message or notification)."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "System shows confirmation after saving a listing or submitting a booking request"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "In the available rental date calendar, booked dates are grayed out and cannot be selected. Selected check-in/check-out dates will automatically calculate the booking duration and estimated total amount, which will be displayed to the user in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Listing detail page shows available and unavailable dates"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Travelers can submit reviews after booking, including ratings and written comments. Reviews will be displayed on the property details page. Repeated reviews of the same property are not allowed."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Reviews and rating are specific to each listing and consistent with its card"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "After clicking on a property listing, users can view detailed information about the property (basic reviews, item details)."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Listing detail page shows the full listing information"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Traveler can browse all available listings in a list"
+        },
+        {
+          "id": "FT-05",
+          "text": "Traveler can sort listings by price and by rating"
+        },
+        {
+          "id": "CS-02",
+          "text": "Listing creation rejects an invalid nightly price or photo URL"
+        },
+        {
+          "id": "CS-03",
+          "text": "Booking is blocked when check-out is not after check-in"
+        },
+        {
+          "id": "CS-05",
+          "text": "Booking is blocked when guest count exceeds the listing's maximum"
+        },
+        {
+          "id": "CT-01",
+          "text": "Listing photos load and match the property"
+        },
+        {
+          "id": "CT-03",
+          "text": "Listing details are consistent between browse cards and detail pages"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,139 @@
+{
+  "matches": [
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can edit existing property listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can create and manage property listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can search for existing housing information by entering a text field."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Travelers can fill out a booking application form (selecting dates, residents, contact information, etc.)"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The homeowner can refuse or approve a booking request."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Homeowners can delete property listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users cannot perform a search without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users cannot submit listings with empty required fields (location, description, amenities, photos (image links), and nightly price)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The check-in date submitted by the traveler must be when the property is available for rent; dates that are already booked or are inappropriately dated cannot be selected."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Only one valid booking can be accepted for the same property at the same time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Homeowners can only manage the listings they create and their corresponding booking requests; they cannot manage other people's listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Travelers can only submit booking requests and do not have access to edit property listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Page updates after users filter by price range, number of guests, and property type."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "After submitting a simple booking request form and selecting check-in dates, users will receive visual confirmation (a success message or notification)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "In the available rental date calendar, booked dates are grayed out and cannot be selected. Selected check-in/check-out dates will automatically calculate the booking duration and estimated total amount, which will be displayed to the user in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Travelers can submit reviews after booking, including ratings and written comments. Reviews will be displayed on the property details page. Repeated reviews of the same property are not allowed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "After clicking on a property listing, users can view detailed information about the property (basic reviews, item details)."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": null
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

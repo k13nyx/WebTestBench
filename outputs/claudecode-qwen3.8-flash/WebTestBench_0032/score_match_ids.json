@@ -1,0 +1,293 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "16"
+    ],
+    [
+      "FT-07",
+      "16"
+    ],
+    [
+      "FT-08",
+      "5"
+    ],
+    [
+      "FT-09",
+      "5"
+    ],
+    [
+      "FT-10",
+      "5"
+    ],
+    [
+      "CS-01",
+      "10"
+    ],
+    [
+      "CS-02",
+      "9"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "11"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "8"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The website allows users to create and manage multiple financial goals and monthly budgets."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can define a new financial goal"
+        },
+        {
+          "id": "FT-02",
+          "text": "User can define monthly budgets per category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Each expenditure can be entered by currency and categorized accordingly."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can log an expense in a non-primary currency and assign it to a category and goal"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Supports setting a single primary currency as the unified unit of measurement for aggregated information."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can select a primary currency"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Automatically converts multi-currency expenditures to the major currency for data aggregation."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Summaries convert multi-currency expenses into the primary currency"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Supports filtering expense lists by date range, category, and financial goals."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Expense list can be filtered by date range"
+        },
+        {
+          "id": "FT-09",
+          "text": "Expense list can be filtered by category"
+        },
+        {
+          "id": "FT-10",
+          "text": "Expense list can be filtered by goal"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Real-time recording of expenditure data and synchronized updates on budget usage progress."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The expense categorization has explicit classification options and does not support custom uncategorized expenses."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "After setting the main currencies, all summary/chart data are uniformly adapted without any display errors."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Monetary values are labeled with the correct currency"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The amount in the form cannot be negative."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Invalid expense amounts are rejected"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users cannot save new fee forms with required fields empty."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Expense cannot be saved with missing required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "You can quickly switch filter criteria, and the expenditure list refreshes the matching results in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Filtering updates results live, including an empty state"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The charts allow for intuitive viewing of budget comparisons across different dimensions (category/time period)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Expense entry supports quick selection of currency and category, and the operation is smooth."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The expense list clearly displays the amount, currency, category, date, and associated goal."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The aggregated data is accurately converted to major currencies with no calculation errors."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The chart fully illustrates the comparison between expenditures and budgets for each category/time period."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Chart compares spending vs. budget by category"
+        },
+        {
+          "id": "FT-07",
+          "text": "Chart shows spending over time"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Financial goals and monthly budget information are displayed completely, with no missing content."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Only one monthly budget per category"
+        },
+        {
+          "id": "CS-04",
+          "text": "Expenses cannot reference non-existent categories or goals"
+        },
+        {
+          "id": "IX-01",
+          "text": "Success feedback after adding an item"
+        },
+        {
+          "id": "IX-03",
+          "text": "Chart hover reveals values"
+        },
+        {
+          "id": "CT-01",
+          "text": "Default data is present and spans multiple currencies and categories"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

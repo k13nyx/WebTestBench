@@ -1,0 +1,321 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "5"
+    ],
+    [
+      "FT-02",
+      "5"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "17"
+    ],
+    [
+      "FT-05",
+      "6"
+    ],
+    [
+      "FT-06",
+      "8"
+    ],
+    [
+      "FT-07",
+      "1"
+    ],
+    [
+      "FT-08",
+      "2"
+    ],
+    [
+      "FT-09",
+      "9"
+    ],
+    [
+      "CS-01",
+      "10"
+    ],
+    [
+      "CS-02",
+      "3"
+    ],
+    [
+      "CS-03",
+      "12"
+    ],
+    [
+      "CS-04",
+      "14"
+    ],
+    [
+      "CS-05",
+      "12"
+    ],
+    [
+      "IX-01",
+      "20"
+    ],
+    [
+      "IX-02",
+      "18"
+    ],
+    [
+      "CT-01",
+      "11"
+    ],
+    [
+      "CT-02",
+      "21"
+    ],
+    [
+      "CT-03",
+      "18"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can sort the list by priority."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Sort the task list by priority"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can sort the list by deadline."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Sort the task list by deadline"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can modify the content and priority of any task."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Edit an unblocked task and save changes"
+        },
+        {
+          "id": "CS-02",
+          "text": "Only description and priority are modifiable on a blocked task"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can add to-do items"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can fill in the details of the to-do item (title, optional description, and due date)."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Add a task with title, description, deadline, and priority"
+        },
+        {
+          "id": "FT-02",
+          "text": "Task can be added with description left blank (description is optional)"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can edit, complete, or delete tasks."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Delete a task"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can mark tasks as completed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can view ongoing tasks."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "View active tasks first"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can bind one or more prerequisite tasks to any task."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Bind one or more prerequisite tasks to a task"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The system will automatically gray out tasks that have not completed their prerequisite tasks."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Edit and Complete buttons are grayed out while a prerequisite is incomplete"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The system will automatically mark tasks whose prerequisite tasks have not been completed as \"Dependency on xxx task not completed\"."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Prominent blocking label with exact wording"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Tasks with dependencies cannot be marked as completed until the dependencies are completed."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Completing the prerequisite unblocks the dependent task"
+        },
+        {
+          "id": "CS-05",
+          "text": "A task unlocks only when ALL its prerequisites are completed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "If task A has become a prerequisite task for task B, then task B cannot be chosen as a prerequisite task for task A."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "If a title is not entered when creating a new to-do item, it cannot be created."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Task cannot be added without a title"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The date selection must be in the correct date format."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The deadline cannot be a date that has already passed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Tasks marked as completed should not be automatically deleted; they should remain visible."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Mark a task as completed without losing it"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "A details pop-up window will appear when the user hovers over the task."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Hovering over a dashed connection opens a dependency pop-up"
+        },
+        {
+          "id": "CT-03",
+          "text": "Dependency pop-up content is relevant and correct"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Provide visual feedback when creating a new to-do item without adding any title content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "Visual feedback when the user hovers over the dependency list."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Dependent tasks are visually connected by dashed lines"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "The main page must display the task title, due date, and completion status."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Task card displays all required fields accurately"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

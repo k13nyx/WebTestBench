@@ -1,0 +1,287 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "1"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "3"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "8"
+    ],
+    [
+      "FT-08",
+      "5"
+    ],
+    [
+      "FT-09",
+      "5"
+    ],
+    [
+      "FT-10",
+      "5"
+    ],
+    [
+      "FT-11",
+      "6"
+    ],
+    [
+      "FT-12",
+      "7"
+    ],
+    [
+      "FT-13",
+      "7"
+    ],
+    [
+      "CS-01",
+      "1"
+    ],
+    [
+      "CS-02",
+      "1"
+    ],
+    [
+      "CS-03",
+      "6"
+    ],
+    [
+      "CS-04",
+      "6"
+    ],
+    [
+      "CS-05",
+      "9"
+    ],
+    [
+      "IX-01",
+      "6"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "CT-01",
+      "14"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can set preferred work hours, fixed rest times, and dates they will not attend meetings, and can modify and update their profiles."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can save a personal availability profile with preferred working hours"
+        },
+        {
+          "id": "FT-02",
+          "text": "User can record typical break times in their profile"
+        },
+        {
+          "id": "FT-03",
+          "text": "User can mark days they never meet"
+        },
+        {
+          "id": "CS-01",
+          "text": "Suggested slots never fall on a participant's never-meet day"
+        },
+        {
+          "id": "CS-02",
+          "text": "Suggested slots never overlap a participant's break times"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can create meetings (meeting name, description, time, date)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can add participants to the meeting."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Organizer can add participants by name and email"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Based on the organizer's availability preferences and date range, and combined with participant profiles, a suggested meeting time slot is generated."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Organizer can create a meeting within a chosen date range and receives suggested slots"
+        },
+        {
+          "id": "FT-06",
+          "text": "Suggested slots respect the preferences of known participants"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Participants can mark time slots for a single meeting as \"preferred\" or \"alternative\" to flexibly adjust their preferred time."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Participant can adjust availability for a specific meeting"
+        },
+        {
+          "id": "FT-09",
+          "text": "Participant can mark a slot as \"preferred\""
+        },
+        {
+          "id": "FT-10",
+          "text": "Participant can mark a slot as \"last resort\""
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The system generates a list of candidate times with conflict and partial overlap warnings and scores, sorted by suitability."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Organizer sees a ranked candidate list after participants respond"
+        },
+        {
+          "id": "CS-03",
+          "text": "Slot conflict indicators are shown when participants are unavailable"
+        },
+        {
+          "id": "CS-04",
+          "text": "Partial overlaps are distinguished from full conflicts"
+        },
+        {
+          "id": "IX-01",
+          "text": "Tied scores are visibly indicated in the ranked list"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The organizer confirms the final meeting time; if participants change, the meeting can be reopened to select a new time."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Organizer can confirm one time for the meeting"
+        },
+        {
+          "id": "FT-13",
+          "text": "Organizer can reopen a confirmed meeting and pick a different time"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Organizers add meeting participants by name and email address; the system automatically identifies whether participants have personal profiles."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Unknown participants get generic business-hour slots"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot create a meeting without any content input."
+      },
+      "pred": [
+        {
+          "id": "CS-05",
+          "text": "Meeting creation requires a valid date range with participants"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can only view and edit their own free time profiles and cannot access other users' profile details."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Time slots can only be reselected when the final meeting time is not confirmed or when there are changes in participants; meetings with confirmed times must be manually unlocked before adjustments can be made."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Participants can only adjust the current meeting's time slot; they cannot modify their personal available profile (this requires accessing the profile page separately)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The meeting list displays the meeting status (confirmed, talent show, etc.)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users can view meeting details (meeting time, participants, suggested time)."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Participant and meeting data displays match what was entered"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "UI provides clear feedback when availability or meeting changes are saved"
+        }
+      ]
+    }
+  ],
+  "source": "checklist"
+}

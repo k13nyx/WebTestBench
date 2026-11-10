@@ -1,0 +1,316 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "2"
+    ],
+    [
+      "FT-02",
+      null
+    ],
+    [
+      "FT-03",
+      "18"
+    ],
+    [
+      "FT-04",
+      "19"
+    ],
+    [
+      "FT-05",
+      "7"
+    ],
+    [
+      "FT-06",
+      "5"
+    ],
+    [
+      "FT-07",
+      "9"
+    ],
+    [
+      "FT-08",
+      "10"
+    ],
+    [
+      "FT-09",
+      "12"
+    ],
+    [
+      "FT-10",
+      "3"
+    ],
+    [
+      "FT-11",
+      "1"
+    ],
+    [
+      "FT-12",
+      "6"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "CT-01",
+      "19"
+    ],
+    [
+      "CT-02",
+      "6"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can view their past challenge submissions."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "User can review past submissions."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can register personal information (name, email, mobile phone number)."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can create a new account through the registration form."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can view their progress (statistics) in their personal information."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Personal dashboard shows the user's progress and statistics by difficulty."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can search for programming challenges by entering a text field."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can choose a challenge and take the test."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can open a challenge and view its problem statement."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can view the leaderboard based on their completed challenge scores, and can switch the leaderboard display scope (such as the overall leaderboard or the monthly leaderboard)."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "User can view the leaderboard."
+        },
+        {
+          "id": "CT-02",
+          "text": "The leaderboard shows accurate usernames and points, ordered by points."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can filter programming problems by category or keyword."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can filter the catalog by topic."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The webpage provides an embedded editor and is interactive."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can submit their answers after filling in the results."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can enter code in the embedded editor and submit it."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The webpage automatically runs the user's code after submission."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Submitted code is automatically run against predefined test cases and a pass/fail result is shown."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The webpage tests the user-submitted code against predefined test cases."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The webpage displays the test results (pass or fail) and provides feedback."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User receives basic feedback after a submission."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Users cannot perform a search without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The test results will only be displayed after the user clicks \"Run Test\"."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Multiple submissions are allowed for the same challenge, but a reasonable submission interval must be set (to prevent frequent duplicate submissions). There is a size limit to the code in a single submission."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Users can click on recent commits to view the corresponding code content and test results, and can copy the code to the editor to optimize and resubmit."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "After completing the challenge, the user clicks the \"Complete\" button to display the test results."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Users can view the page content of the selected challenge category."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can browse the catalog of programming challenges."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Each challenge in the challenge catalog displays its difficulty level (easy, intermediate, difficult)."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can filter the catalog by difficulty."
+        },
+        {
+          "id": "CT-01",
+          "text": "The catalog displays accurate title, difficulty, and topic for each challenge."
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can log in with a registered account."
+        },
+        {
+          "id": "CS-01",
+          "text": "Registration with an already-used username or email is rejected."
+        },
+        {
+          "id": "CS-02",
+          "text": "Code cannot be submitted when the editor is empty."
+        },
+        {
+          "id": "CS-03",
+          "text": "Points are awarded only when all test cases pass."
+        },
+        {
+          "id": "CS-04",
+          "text": "Points are not awarded twice for the same challenge."
+        },
+        {
+          "id": "IX-01",
+          "text": "A loading/processing state is shown while the submitted code is being evaluated."
+        },
+        {
+          "id": "IX-02",
+          "text": "Filter selection is visually reflected in the UI and updates the list immediately."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

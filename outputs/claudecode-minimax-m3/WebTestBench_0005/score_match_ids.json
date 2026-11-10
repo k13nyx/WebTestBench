@@ -1,0 +1,307 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "3"
+    ],
+    [
+      "FT-02",
+      "3"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "2"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "4"
+    ],
+    [
+      "FT-08",
+      "5"
+    ],
+    [
+      "FT-09",
+      "6"
+    ],
+    [
+      "FT-10",
+      "6"
+    ],
+    [
+      "FT-11",
+      "7"
+    ],
+    [
+      "FT-12",
+      "8"
+    ],
+    [
+      "FT-13",
+      "8"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "11"
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      "8"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create blank resumes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can select preset templates to create professional resumes."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "A template style can be selected and is applied"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can enter and edit personal information (contact information, work experience, and other core items)."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Contact details can be entered and saved"
+        },
+        {
+          "id": "FT-02",
+          "text": "A work experience entry can be added"
+        },
+        {
+          "id": "FT-03",
+          "text": "An education entry can be added"
+        },
+        {
+          "id": "FT-04",
+          "text": "Skills can be added and removed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Supports customizable resume layout (chapter order and title modification)."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Section order can be customized"
+        },
+        {
+          "id": "FT-07",
+          "text": "Section headings can be renamed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "It provides a resume preview function, allowing users to see the edited result."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "The resume can be previewed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Supports copying and renaming existing resume versions."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "A saved resume can be duplicated"
+        },
+        {
+          "id": "FT-10",
+          "text": "A saved resume can be renamed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "It can save multiple resume versions to suit different job search scenarios."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Multiple resume variations can be saved"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Supports filtering and searching saved resumes by title/creation date."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Saved resumes can be searched by title"
+        },
+        {
+          "id": "FT-13",
+          "text": "Saved resumes can be filtered by date created"
+        },
+        {
+          "id": "IX-02",
+          "text": "Search filters the saved list as the user types"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "When adding past work or education experience, the time period must be a valid time frame and there should be no conflicts."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "When adding past work or education experience, you must use the correct time format; otherwise, you will not be able to add it."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The saved resume version is persistently stored and will not be lost upon re-access."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Saved settings survive reload without corrupting state"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The preview function synchronizes edited content in real time, with no delay or display errors."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The changes to chapter order and titles take effect immediately, and the operation is smooth."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users can save their resumes and provide feedback after successful saving."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Saving gives immediate confirmation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The resume template is displayed in its entirety, with no layout issues."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The entered personal information was completely retained, with no fields missing."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Resume information for multiple versions is stored independently, and there is no content sharing between versions."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The resume title should remain consistent across multiple pages."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "A resume cannot be saved while required fields are empty"
+        },
+        {
+          "id": "IX-03",
+          "text": "Selecting a saved variation loads it into the editor and preview"
+        },
+        {
+          "id": "CT-01",
+          "text": "Each template is visually distinct"
+        },
+        {
+          "id": "CT-02",
+          "text": "The preview contains only the user's own information"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

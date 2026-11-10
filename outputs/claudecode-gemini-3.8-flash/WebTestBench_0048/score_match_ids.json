@@ -1,0 +1,275 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      null
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "6"
+    ],
+    [
+      "CS-01",
+      "12"
+    ],
+    [
+      "CS-02",
+      "9"
+    ],
+    [
+      "CS-03",
+      "9"
+    ],
+    [
+      "IX-01",
+      "5"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "3"
+    ],
+    [
+      "CT-01",
+      "7"
+    ],
+    [
+      "CT-02",
+      "3"
+    ],
+    [
+      "CT-03",
+      "8"
+    ],
+    [
+      "CT-04",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can log in to the webpage using their account and password."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User Login"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can view the full list of company policies and procedures."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Browse Policy and Procedure List"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can filter policies by confirmation status and policy type."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Filter by Confirmation Status"
+        },
+        {
+          "id": "CT-02",
+          "text": "Policy Type Categorization Coverage"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can complete the confirmation on the policy details page (e.g., by clicking the confirm button)."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Confirm Policy Acknowledgment"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The webpage updates the status of a policy after the user completes the confirmation process."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Dynamic Status Update upon Confirmation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can check the confirmation progress in their personal center."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Access Personal Center Dashboard"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The webpage uses a pie chart to display and confirm progress."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Doughnut Chart Proportion Accuracy"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can prioritize modifying items for confirmation."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Priority Tag Label Values"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "By default, policies requiring confirmation within a specified period (e.g., within 3 days) are marked as high priority and displayed at the top of the screen."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Automatic High-Priority Assignment for Imminent Deadlines"
+        },
+        {
+          "id": "CS-03",
+          "text": "Pinned High-Priority Policies Order"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The policy content can only be read and cannot be modified."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The confirmation step can only be completed on the details page, not on the list page."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The policy has been confirmed and cannot be confirmed a second time."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent Duplicate Confirmation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "When an incorrect username or password is entered during login, a visual feedback message indicating an incorrect username/password is displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When you click on a filter tag, the policies that meet the requirements will be displayed in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Visual feedback will be displayed after the steps are confirmed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Visual feedback can be provided in real time after the contract priority is modified."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The policies in the list and the content on the policy details page correspond correctly."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The policy on the list page includes necessary information (title, confirmation status, brief summary, priority, etc.)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The personal homepage displays the progress confirmation in a circular format, filtered content, and basic contract information."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Open Policy Details"
+        },
+        {
+          "id": "IX-02",
+          "text": "Doughnut Chart Hover Tooltip"
+        },
+        {
+          "id": "CT-04",
+          "text": "Confirmation Step Phrasing"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

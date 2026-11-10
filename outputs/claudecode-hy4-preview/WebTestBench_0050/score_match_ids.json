@@ -1,0 +1,281 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "2"
+    ],
+    [
+      "FT-02",
+      "4"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      null
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "8"
+    ],
+    [
+      "FT-07",
+      "7"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "12"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "6"
+    ],
+    [
+      "IX-02",
+      "7"
+    ],
+    [
+      "IX-03",
+      "10"
+    ],
+    [
+      "IX-04",
+      "12"
+    ],
+    [
+      "CT-01",
+      "3"
+    ],
+    [
+      "CT-02",
+      "4"
+    ],
+    [
+      "CT-03",
+      "15"
+    ],
+    [
+      "CT-04",
+      "13"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can manually enter multiple contract texts."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can name the contract"
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can add a new named contract to the comparison"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The webpage can automatically recognize the terms in the contract text and categorize and group them according to preset types (payment terms, confidentiality clauses, termination clauses, etc.)."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Clause types are auto-detected and grouped"
+        },
+        {
+          "id": "CT-01",
+          "text": "Clause type labels are contract-relevant categories"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Web pages can be grouped by clause type, displaying similar clauses from different contracts side-by-side in the same view."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Contracts are displayed side by side within each clause group"
+        },
+        {
+          "id": "CT-02",
+          "text": "Each column shows text belonging to its own contract"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can filter by terms type"
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "View can be filtered by clause type"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage can automatically detect differences in the wording of similar clauses in different contracts and highlight them using color."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Differences in wording are visually highlighted inline"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The webpage allows users to switch between summary comparison view and full-text view with a single click for each clause group."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Summarized view can be restored for a group"
+        },
+        {
+          "id": "IX-02",
+          "text": "View-mode switch is immediate and applies per clause group"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "After the user clicks on the full-text view, the webpage displays the full text content."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Full-text view shows the complete clause for a group"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot give two contracts the same name."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "A contract cannot be added with an empty name or empty text"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "After the user clicks \"Submit Contract,\" there is visual feedback indicating that the contract has been successfully added."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Adding a contract updates the existing comparison without losing data"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "After the user clicks on the corresponding terms, the webpage displays the corresponding contract."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Different content is highlighted using differentiated styles (such as different font colors, underlines, and background highlights), while content without differences maintains a unified basic style."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Identical wording is never highlighted as a difference"
+        },
+        {
+          "id": "IX-04",
+          "text": "Difference highlighting is preserved across both view modes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The contract must display its actual text content when viewed or edited."
+      },
+      "pred": [
+        {
+          "id": "CT-04",
+          "text": "No raw placeholder or garbled text in the interface"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Completed contracts must be displayed in their entirety when viewed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The terms and conditions must display the correct text content."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Summary text is consistent with the full clause text"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Clauses are grouped under the correct clause type"
+        },
+        {
+          "id": "CS-02",
+          "text": "A clause missing from one contract is marked, not silently dropped"
+        },
+        {
+          "id": "CS-04",
+          "text": "Filtering to a clause type with no matching clauses shows an empty state"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

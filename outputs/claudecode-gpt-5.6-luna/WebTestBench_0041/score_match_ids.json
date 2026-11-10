@@ -1,0 +1,278 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      null
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "1"
+    ],
+    [
+      "FT-04",
+      "2"
+    ],
+    [
+      "FT-05",
+      "2"
+    ],
+    [
+      "FT-06",
+      "3"
+    ],
+    [
+      "FT-07",
+      "3"
+    ],
+    [
+      "FT-08",
+      "4"
+    ],
+    [
+      "FT-09",
+      "5"
+    ],
+    [
+      "FT-10",
+      "5"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "7"
+    ],
+    [
+      "CS-03",
+      "7"
+    ],
+    [
+      "IX-01",
+      "11"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "14"
+    ],
+    [
+      "CT-01",
+      "15"
+    ],
+    [
+      "CT-02",
+      "16"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can switch between viewing the device list by either \"room\" (such as living room, bedroom) or \"device type\" (such as lights, sensors)."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Group or filter devices by room."
+        },
+        {
+          "id": "FT-03",
+          "text": "Group or filter devices by device type."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can directly adjust specific parameters of the device in the background, such as adjusting the brightness of the lights by sliding or inputting the target temperature of the thermostat."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Adjust a light’s brightness."
+        },
+        {
+          "id": "FT-05",
+          "text": "Adjust a thermostat’s target temperature."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can create timed schedules for designated devices, setting them to automatically trigger on/off status or mode changes at specific times."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Create a schedule for a light to change state."
+        },
+        {
+          "id": "FT-07",
+          "text": "Create a schedule for a thermostat to change state."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The system must display the \"last active time\" and operation records of each device in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "View recent device activity."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can use the status filter to filter out devices as \"offline\", \"idle\" or \"running\" with a single click."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Filter devices by Offline status."
+        },
+        {
+          "id": "FT-10",
+          "text": "Filter devices by Idle status."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can create plans that specify when a device should change its status."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "When adjusting values ​​such as brightness or temperature, the system must set reasonable upper and lower limits (thresholds) to prevent illegal parameters from being sent."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Keep brightness within the control’s supported range."
+        },
+        {
+          "id": "CS-03",
+          "text": "Keep thermostat targets within the control’s supported range."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The scheduling function must have conflict detection. If two scheduled tasks issue conflicting instructions to the same device at the same time, the user should be alerted."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The brightness adjustment function can only be used on lighting equipment, not on thermostats or other types of equipment."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The temperature control function can only be used on thermostat-type devices, and not on lamps or other types of devices."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The status of the equipment needs to be changed in real time according to the equipment's power on/off status."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Update device settings immediately after a valid change."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When adjusting the slider, the system should provide a real-time numerical preview and display the Loading status of command transmission after the slider is released for confirmation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The schedule editing interface should provide an intuitive time selector or a cycle checkbox (e.g., repeat every Monday to Friday)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When switching rooms or filtering states, the list should have a smooth transition animation to avoid visual loss due to sudden page jumps."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Refresh results when room, type, or status filters change."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Each device card must clearly indicate the device name, the room label, and the current temperature (e.g., 26°C)."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Display complete and relevant device information."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The timestamp format for recent activities must be consistent and accurately reflect the last online time detected by the device's heartbeat packet."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Display meaningful recent-activity details."
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "View all default smart home devices in the admin dashboard."
+        },
+        {
+          "id": "CS-01",
+          "text": "Prevent saving an incomplete schedule."
+        },
+        {
+          "id": "IX-02",
+          "text": "Confirm successful schedule creation."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

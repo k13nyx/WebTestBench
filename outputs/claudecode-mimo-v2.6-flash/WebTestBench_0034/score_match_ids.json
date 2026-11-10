@@ -1,0 +1,298 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "10"
+    ],
+    [
+      "FT-07",
+      "15"
+    ],
+    [
+      "FT-08",
+      "15"
+    ],
+    [
+      "FT-09",
+      "15"
+    ],
+    [
+      "FT-10",
+      "5"
+    ],
+    [
+      "FT-11",
+      "14"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "11"
+    ],
+    [
+      "IX-02",
+      "12"
+    ],
+    [
+      "IX-03",
+      "8"
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      "13"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The webpage should be able to support users in completing the core process of registering an account or logging in."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Register a new account"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The website should offer multilingual selection functionality, allowing users to choose the language they wish to learn."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Choose a language to learn"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Online courses are organized and presented in tiers according to language level."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Course displays lessons grouped by level"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The webpage should allow users to start a new course or continue learning from an unfinished course."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Start a course from the beginning"
+        },
+        {
+          "id": "FT-05",
+          "text": "Resume an in-progress course"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Online courses should be accompanied by practice and quiz modules at the corresponding levels."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Take a quiz at the end of a lesson or level"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage can record the user's learning progress through courses, exercises, and quizzes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Unregistered users cannot access the course/exercise/quiz learning sessions."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Progress data is persistently saved and will not be lost after logging in again."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Course state reflects progress after leaving and returning"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users should not be able to log in or register if any required information is left blank; the page should display a corresponding message."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Registration blocked with invalid or empty credentials"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The course learning page operates smoothly, allowing for normal progress through the learning process."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Complete a lesson and advance to the next"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Exercises/quizzes allow you to submit your answers and receive instant feedback."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Instant feedback shown after each answer"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After submitting your answer, a simple score/accuracy rate will be automatically calculated and displayed."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Score updates after answering questions"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The learning progress summary page updates data in real time, allowing for quick viewing."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Progress summary values are accurate"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The learning summary page on the website should be able to fully display the progress data of all courses."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "View a progress summary"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The exercises/tests contain different types of questions, and the question design meets the standards."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Answer a multiple-choice question"
+        },
+        {
+          "id": "FT-08",
+          "text": "Answer a typed/text-input question"
+        },
+        {
+          "id": "FT-09",
+          "text": "Answer a matching or ordering-style question"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Cannot skip ahead to locked lessons"
+        },
+        {
+          "id": "CS-03",
+          "text": "Cannot submit an exercise or quiz question with no answer selected/entered"
+        },
+        {
+          "id": "CS-04",
+          "text": "Duplicate registration with an existing email is rejected"
+        },
+        {
+          "id": "CT-01",
+          "text": "Lesson content matches the selected language and level"
+        },
+        {
+          "id": "CT-02",
+          "text": "Answer options and quiz content are relevant and non-duplicated"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

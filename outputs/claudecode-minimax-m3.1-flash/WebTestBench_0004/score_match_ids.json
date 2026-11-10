@@ -1,0 +1,317 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      null
+    ],
+    [
+      "FT-05",
+      null
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "3"
+    ],
+    [
+      "FT-08",
+      "3"
+    ],
+    [
+      "FT-09",
+      "3"
+    ],
+    [
+      "FT-10",
+      "5"
+    ],
+    [
+      "FT-11",
+      "6"
+    ],
+    [
+      "FT-12",
+      "7"
+    ],
+    [
+      "FT-13",
+      "13"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "9"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "13"
+    ],
+    [
+      "CT-01",
+      "16"
+    ],
+    [
+      "CT-02",
+      "17"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Couples can create a personal wedding planning page and enter key information such as the wedding date."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create a new planning dashboard with wedding date, budget, and guest count"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "New users can update information such as dates and budgets on the planning page."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Update the wedding date on an existing dashboard"
+        },
+        {
+          "id": "FT-03",
+          "text": "Update the budget and guest count on an existing dashboard"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The webpage allows users to filter venues/suppliers by location type, price range, and service type."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Filter listings by location type"
+        },
+        {
+          "id": "FT-08",
+          "text": "Filter listings by price range"
+        },
+        {
+          "id": "FT-09",
+          "text": "Filter listings by service type"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Provides a keyword search function for venues/suppliers."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Search listings by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The website allows users to tag their preferred venues/suppliers for easy access later."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Mark a listing as a favorite and view it later"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The website provides wedding planning tips and checklists for users to view."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "View planning tips and checklists"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "New users can save planning tips/lists to their personal planning page."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Save a tip/checklist to the dashboard"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The wedding budget cannot be plural."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The number of guests cannot be negative."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Budget and guest count only accept valid numeric values"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Tagged favorite options and saved planning content are persistently stored so they are not lost when accessed again."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The wedding date cannot be an invalid date in the past."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When a user clicks the \"View Details\" button, they are smoothly redirected to the details page."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Planning Tips / The checklist can be marked as completed normally, and the status is updated in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-13",
+          "text": "Mark a saved tip/checklist as completed"
+        },
+        {
+          "id": "IX-02",
+          "text": "Saved/completed checklist items show immediate state feedback"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "After switching the filter/search criteria, the venue/supplier list is updated in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The personal planning page fully displays all key wedding information, with no content missing."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The venue/supplier information includes key details (location, price, services offered)."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Listing content accurately describes each venue and vendor"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Planning tips / The list is comprehensive and has practical reference value."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Tips and checklists contain relevant, usable wedding planning content"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Filter/search results with precise matching criteria, displaying results without errors or omissions."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Browse venue listings"
+        },
+        {
+          "id": "FT-05",
+          "text": "Browse vendor listings"
+        },
+        {
+          "id": "CS-01",
+          "text": "Dashboard form rejects missing required details"
+        },
+        {
+          "id": "CS-03",
+          "text": "Filters and search that match nothing show an empty result state"
+        },
+        {
+          "id": "CS-04",
+          "text": "Un-marking a favorite removes it from the favorites list"
+        },
+        {
+          "id": "IX-01",
+          "text": "Favorite control reflects the current favorited state"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

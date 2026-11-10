@@ -1,0 +1,317 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "2"
+    ],
+    [
+      "FT-05",
+      "11"
+    ],
+    [
+      "FT-06",
+      "12"
+    ],
+    [
+      "FT-07",
+      "3"
+    ],
+    [
+      "FT-08",
+      "12"
+    ],
+    [
+      "FT-09",
+      "13"
+    ],
+    [
+      "FT-10",
+      "14"
+    ],
+    [
+      "FT-11",
+      "14"
+    ],
+    [
+      "FT-12",
+      "13"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      "9"
+    ],
+    [
+      "CS-03",
+      "8"
+    ],
+    [
+      "CS-04",
+      "9"
+    ],
+    [
+      "CS-05",
+      "9"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "11"
+    ],
+    [
+      "CT-01",
+      "1"
+    ],
+    [
+      "CT-02",
+      "2"
+    ],
+    [
+      "CT-03",
+      "13"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Administrators can successfully configure different subscription box plans, including setting the plan name, price, billing cycle, and maximum number of subscribers."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Admin can create a new box plan with a name, price, billing cycle, and maximum subscriber count."
+        },
+        {
+          "id": "FT-02",
+          "text": "Admin can edit an existing plan's price, billing cycle, or maximum subscriber count."
+        },
+        {
+          "id": "CT-01",
+          "text": "Plan detail views display exactly the saved price, billing cycle, and maximum subscriber count."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Administrators can assign specific product components to each subscription box package and adjust the types and quantities of products."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Admin can assign specific products to a plan with quantities."
+        },
+        {
+          "id": "FT-04",
+          "text": "Admin can remove an assigned product from a plan."
+        },
+        {
+          "id": "CT-02",
+          "text": "Product names shown in a plan's assignment and in the shipment requirements view come from the actual product catalog."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Administrators can update customers' shipping addresses and contact information. The updated data takes effect immediately and historical records are traceable."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Admin can update a subscriber's shipping address."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Administrators can set and adjust billing cycles (e.g., monthly, quarterly), and the adjustments should correctly apply to existing subscriptions."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The system can generate an upcoming shipping schedule, displaying orders awaiting shipment by date and product category."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "After a change in package price or product composition, the system can provide options to decide whether to apply the changes to existing subscriptions (e.g., apply immediately, apply in the next cycle)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The system can correctly handle subscription pauses, resumptions, or cancellations, and adjust billing and delivery plans accordingly."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When the number of subscribers reaches the limit set by the plan, the system should automatically stop accepting new subscriptions or provide a waitlist option."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "A new subscription cannot be assigned to a plan that has reached its maximum subscriber count."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The system can prevent administrators from performing invalid operations, such as remarking shipped orders as \"ready\" or generating new bills for canceled subscriptions."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "A plan cannot be saved with an empty or non-positive price."
+        },
+        {
+          "id": "CS-02",
+          "text": "A plan cannot be saved with an empty billing cycle or maximum subscriber count."
+        },
+        {
+          "id": "CS-04",
+          "text": "An order cannot be marked as shipped unless its current status is \"Prepared\"."
+        },
+        {
+          "id": "CS-05",
+          "text": "A subscriber's address cannot be saved with empty required fields (street, city, postal code)."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The system can automatically identify products with insufficient stock and provide clear warnings when configuring packages or preparing for shipment."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The system can calculate and display the inventory level and the quantity of goods to be shipped in real time based on the current active subscription status."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Admin can view how many units of each product are needed for the upcoming shipment."
+        },
+        {
+          "id": "IX-03",
+          "text": "Inventory requirement figures refresh after a plan's product assignment or subscriber count changes."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Administrators can view detailed information about all customer subscriptions, including plan selection, billing cycle, and subscription status."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Admin can view the list of customer subscriptions."
+        },
+        {
+          "id": "FT-08",
+          "text": "Admin can change a subscriber's plan choice."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Administrators can view each customer's payment history, including payment time, amount, status, and associated billing cycle."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Admin can view a subscriber's payment history."
+        },
+        {
+          "id": "FT-12",
+          "text": "Admin can view recurring billing for the current cycle."
+        },
+        {
+          "id": "CT-03",
+          "text": "Payment history entries show coherent dates, amounts, and statuses."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Administrators can mark orders as \"ready to ship\" within each billing cycle and update the status to \"shipped\" after the order is actually shipped."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Admin can mark an order as prepared for the current billing cycle."
+        },
+        {
+          "id": "FT-11",
+          "text": "Admin can mark a prepared order as shipped."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Administrators can view subscription statistics dashboards, including key metrics such as the number of subscribers for each plan, monthly revenue, and delivery completion rate."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "When an order is marked as \"shipped,\" the system can record information such as the shipping time and tracking number, and customers can view this information."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Saving a plan change provides immediate visible confirmation."
+        },
+        {
+          "id": "IX-02",
+          "text": "Order status changes update instantly and visibly after clicking the status action."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,277 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "2"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "13"
+    ],
+    [
+      "FT-04",
+      null
+    ],
+    [
+      "FT-05",
+      "17"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "CS-01",
+      "8"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "9"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      "16"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can edit existing property listings."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Manage and update existing listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can create and manage property listings."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create property listing with complete details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can search for existing housing information by entering a text field."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Travelers can fill out a booking application form (selecting dates, residents, contact information, etc.)"
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Submit booking request for chosen dates"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The homeowner can refuse or approve a booking request."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Owner views and updates booking request status"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Homeowners can delete property listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users cannot perform a search without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users cannot submit listings with empty required fields (location, description, amenities, photos (image links), and nightly price)."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Required field validation on listing creation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The check-in date submitted by the traveler must be when the property is available for rent; dates that are already booked or are inappropriately dated cannot be selected."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Restrict booking request on unavailable dates"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Only one valid booking can be accepted for the same property at the same time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Homeowners can only manage the listings they create and their corresponding booking requests; they cannot manage other people's listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Travelers can only submit booking requests and do not have access to edit property listings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Page updates after users filter by price range, number of guests, and property type."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Filter listings by price range, guests, and property type"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "After submitting a simple booking request form and selecting check-in dates, users will receive visual confirmation (a success message or notification)."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Booking request submission feedback"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "In the available rental date calendar, booked dates are grayed out and cannot be selected. Selected check-in/check-out dates will automatically calculate the booking duration and estimated total amount, which will be displayed to the user in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Travelers can submit reviews after booking, including ratings and written comments. Reviews will be displayed on the property details page. Repeated reviews of the same property are not allowed."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Reviews and rating display on detail page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "After clicking on a property listing, users can view detailed information about the property (basic reviews, item details)."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Navigate to listing detail page"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Sort listings by price and rating"
+        },
+        {
+          "id": "CS-02",
+          "text": "Non-negative price validation"
+        },
+        {
+          "id": "CS-04",
+          "text": "Check-out date precedence constraint"
+        },
+        {
+          "id": "IX-02",
+          "text": "Real-time booking status update in owner view"
+        },
+        {
+          "id": "IX-03",
+          "text": "Reset applied filters"
+        },
+        {
+          "id": "CT-01",
+          "text": "Property browse card information display"
+        },
+        {
+          "id": "CT-02",
+          "text": "Listing image URL rendering"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

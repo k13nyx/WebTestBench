@@ -1,0 +1,344 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "3"
+    ],
+    [
+      "FT-02",
+      "4"
+    ],
+    [
+      "FT-03",
+      "22"
+    ],
+    [
+      "FT-04",
+      "7"
+    ],
+    [
+      "FT-05",
+      "6"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "8"
+    ],
+    [
+      "FT-08",
+      "8"
+    ],
+    [
+      "FT-09",
+      "8"
+    ],
+    [
+      "CS-01",
+      "17"
+    ],
+    [
+      "CS-02",
+      "13"
+    ],
+    [
+      "CS-03",
+      "11"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "CS-05",
+      "9"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can edit the number of users"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can add personnel"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can create new projects"
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create a new project with required skills, priority, and expected duration"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can edit created projects"
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Edit an existing project's details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can fill in the required skills, priorities, and expected duration of the project."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can filter employees by skills and available time."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Filter employees by skill"
+        },
+        {
+          "id": "FT-06",
+          "text": "Filter employees by availability"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can search for employees using keywords."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Search employees by name"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can assign or reallocate employees."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Assign an employee to a project role"
+        },
+        {
+          "id": "FT-08",
+          "text": "Reassign a role to a different employee"
+        },
+        {
+          "id": "FT-09",
+          "text": "Remove an employee from a role when project needs change"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The webpage can automatically track the project staffing status (\"Full\", \"Partially Full\", or \"Unattended\")."
+      },
+      "pred": [
+        {
+          "id": "CS-05",
+          "text": "Staffing status invariant — displayed status always matches filled roles"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "After a project is deleted, the employee assignment status needs to be updated in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Employees marked as unavailable cannot be assigned."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Cannot assign an employee who is unavailable"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "An employee's free time should not be allocated to multiple projects simultaneously."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Employees cannot be selected if their assigned job does not match their skills."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Cannot assign an employee lacking the role's required skill"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "An employee cannot hold multiple positions in the same project."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Only the team leader can edit projects; employees can only view them and cannot edit them."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The project start time cannot be a past date."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "You cannot submit a new project if you do not fill in the required information."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Cannot save a project with missing required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Users can use the filtering function to display the filtering results in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Users can use the search function to view search results in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "When adding or removing employees from a project, the current number and status of employees in the project are updated in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "When adding or deleting employees in a project, the employee status changes in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "22",
+        "text": "Fully displays employee information, including name, skills, available time, and current assigned projects."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Employee list displays each employee's skills and availability"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Search or filter with no matching results shows an empty state, not stale data"
+        },
+        {
+          "id": "IX-01",
+          "text": "Editing a project pre-fills the form with its current values"
+        },
+        {
+          "id": "IX-02",
+          "text": "Success feedback appears after an assignment is saved"
+        },
+        {
+          "id": "IX-03",
+          "text": "Clearing search text and resetting filters restores the full employee list"
+        },
+        {
+          "id": "IX-04",
+          "text": "Selecting a project from the overview opens its role and assignment detail"
+        },
+        {
+          "id": "CT-01",
+          "text": "Project cards display correct, complete project data"
+        },
+        {
+          "id": "CT-02",
+          "text": "Employee records show accurate skills and availability values"
+        },
+        {
+          "id": "CT-03",
+          "text": "Staffing terminology and counts are consistent and correctly rendered"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

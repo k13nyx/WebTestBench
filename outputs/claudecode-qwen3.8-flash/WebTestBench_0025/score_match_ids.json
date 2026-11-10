@@ -1,0 +1,334 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "4"
+    ],
+    [
+      "FT-02",
+      "19"
+    ],
+    [
+      "FT-03",
+      "5"
+    ],
+    [
+      "FT-04",
+      "6"
+    ],
+    [
+      "FT-05",
+      "7"
+    ],
+    [
+      "FT-06",
+      "9"
+    ],
+    [
+      "FT-07",
+      "10"
+    ],
+    [
+      "FT-08",
+      "11"
+    ],
+    [
+      "FT-09",
+      "1"
+    ],
+    [
+      "FT-10",
+      "2"
+    ],
+    [
+      "FT-11",
+      "3"
+    ],
+    [
+      "CS-01",
+      "15"
+    ],
+    [
+      "CS-02",
+      "12"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "IX-01",
+      "19"
+    ],
+    [
+      "IX-02",
+      "20"
+    ],
+    [
+      "IX-03",
+      "20"
+    ],
+    [
+      "IX-04",
+      "9"
+    ],
+    [
+      "CT-01",
+      "21"
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "User-added categories can also generate random inspiration."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Custom categories support generation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can edit existing categories."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "User can modify an existing category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can delete existing types"
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "User can delete a category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The webpage provides several preset categories."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "All five predefined categories are available"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can select preset categories to generate random inspiration."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Generating produces a prompt for the active category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Webpage supports continuous generation of inspiration"
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Generation is random across repeated clicks"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can collect the generated inspiration."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can favorite a generated prompt"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can view the inspiration they have saved from the collection list."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can view their browsing history of inspiration."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "History lists prompts viewed during this visit"
+        },
+        {
+          "id": "IX-04",
+          "text": "History updates automatically after each generation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can revisit the generated inspiration records"
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can revisit a prompt from History"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users can add categories themselves."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can add a new custom category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Webpages should not create duplicate categories with the same name."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Duplicate category names are rejected"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The webpage prevents users from selecting two categories simultaneously for inspiration generation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When a user deletes their inspiration log, the saved inspiration cannot be deleted."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The user was unable to successfully add a new category without entering a name."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Blank category names are rejected"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Provide visual feedback when a new hint is successfully generated."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Provide visual feedback when a user successfully adds a new category."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Provide visual feedback when users modify or delete categories."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The webpage highlights the category selected by the user."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can select a category as active"
+        },
+        {
+          "id": "IX-01",
+          "text": "Active category is visually distinguished"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "When users add or remove inspiration from their favorites, visual feedback is provided for the entries, and the information is displayed in the favorites list in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Favorite control reflects and toggles its state"
+        },
+        {
+          "id": "IX-03",
+          "text": "Confirmation feedback on favorite actions"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "The generated inspiration content must correspond to the selected category."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Prompts match the theme of their category"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Deleting the active category leaves a valid state"
+        },
+        {
+          "id": "CT-02",
+          "text": "Prompt and category content is real, non-placeholder text"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,286 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "2"
+    ],
+    [
+      "FT-05",
+      "3"
+    ],
+    [
+      "FT-06",
+      "8"
+    ],
+    [
+      "FT-07",
+      "16"
+    ],
+    [
+      "FT-08",
+      "16"
+    ],
+    [
+      "FT-09",
+      "5"
+    ],
+    [
+      "FT-10",
+      "5"
+    ],
+    [
+      "FT-11",
+      "5"
+    ],
+    [
+      "CS-01",
+      "10"
+    ],
+    [
+      "CS-02",
+      "4"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "11"
+    ],
+    [
+      "CT-01",
+      "15"
+    ],
+    [
+      "CT-02",
+      "12"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The website allows users to create and manage multiple financial goals and monthly budgets."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create a financial goal"
+        },
+        {
+          "id": "FT-02",
+          "text": "Create a monthly budget"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Each expenditure can be entered by currency and categorized accordingly."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Log an expense with amount and currency"
+        },
+        {
+          "id": "FT-04",
+          "text": "Assign an expense to a category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Supports setting a single primary currency as the unified unit of measurement for aggregated information."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Choose a primary currency"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Automatically converts multi-currency expenditures to the major currency for data aggregation."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Non-primary currency expenses converted in summaries"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Supports filtering expense lists by date range, category, and financial goals."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Filter expense list by date range"
+        },
+        {
+          "id": "FT-10",
+          "text": "Filter expense list by category"
+        },
+        {
+          "id": "FT-11",
+          "text": "Filter expense list by goal"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Real-time recording of expenditure data and synchronized updates on budget usage progress."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The expense categorization has explicit classification options and does not support custom uncategorized expenses."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "After setting the main currencies, all summary/chart data are uniformly adapted without any display errors."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "View all summaries in the primary currency"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The amount in the form cannot be negative."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users cannot save new fee forms with required fields empty."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Required fields enforced when logging an expense"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "You can quickly switch filter criteria, and the expenditure list refreshes the matching results in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Charts and summaries update on data change or filter"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The charts allow for intuitive viewing of budget comparisons across different dimensions (category/time period)."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Chart labels are relevant and accurate"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Expense entry supports quick selection of currency and category, and the operation is smooth."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The expense list clearly displays the amount, currency, category, date, and associated goal."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The aggregated data is accurately converted to major currencies with no calculation errors."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Currency labels shown correctly in summaries"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The chart fully illustrates the comparison between expenditures and budgets for each category/time period."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "View spending-vs-budget chart by category"
+        },
+        {
+          "id": "FT-08",
+          "text": "View spending-over-time chart"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Financial goals and monthly budget information are displayed completely, with no missing content."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Date range filter validity enforced"
+        },
+        {
+          "id": "IX-01",
+          "text": "Confirmation after creating goal, budget, or expense"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

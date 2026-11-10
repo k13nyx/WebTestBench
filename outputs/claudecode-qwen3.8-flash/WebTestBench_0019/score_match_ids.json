@@ -1,0 +1,286 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "5"
+    ],
+    [
+      "FT-07",
+      "6"
+    ],
+    [
+      "FT-08",
+      "7"
+    ],
+    [
+      "CS-01",
+      "14"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "5"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "8"
+    ],
+    [
+      "CT-03",
+      "10"
+    ],
+    [
+      "CT-04",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can successfully register new accounts and log in to the community forum, and their login status is maintained correctly."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "New visitor can register an account"
+        },
+        {
+          "id": "FT-02",
+          "text": "Existing user can log in"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Registered users can create or edit their profiles, including personal introductions and hobbies, and the information will display correctly after being saved."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can set a profile with a short bio and interests"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Logged-in users can create new discussion threads in different discussion categories, including titles and content, and successfully publish them."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can start a new discussion thread in a category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can post replies to any discussion thread, and the replies will be displayed in the thread's reply list in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can reply to an existing thread"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can like or vote on posts or replies made by other users, and the count of likes/votes is updated in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can upvote/like a post"
+        },
+        {
+          "id": "IX-01",
+          "text": "Upvote control gives immediate visual feedback"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can use the keyword search function to find posts, and the search results accurately match the title and body content."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can search threads by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can filter the post list by discussion category, displaying only posts from the selected category."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Thread list can be filtered by category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The forum homepage or specific sections can display a list of the most active discussions, sorted by recent interaction frequency."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Trending / most active discussions are shown"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can view their entire posting and reply history."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "When browsing posts, users can view the poster's public profile information."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Profile information is displayed on user profiles"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "After a user edits a published post or reply, the page will display an \"Edited\" mark or the last edit time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The forum supports basic rich text editing features, such as bolding, links, and lists, and renders them correctly after posting."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "When a user logs out and logs back in, their profile, posting history, and interaction status are correctly restored."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When a user attempts to post a thread with an empty title or empty body, the system will block the submission and provide a warning."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Required fields cannot be empty when creating a thread or reply"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The system can prevent duplicate submissions of the same content (such as repeatedly and rapidly posting the same reply)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The forum homepage or specific sections can display a list of recently popular discussions, sorted by the number of likes, replies, or activity levels."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Unauthenticated visitors cannot post, reply, or vote"
+        },
+        {
+          "id": "CS-03",
+          "text": "A user cannot count multiple votes on the same post"
+        },
+        {
+          "id": "CS-04",
+          "text": "Duplicate email cannot be registered"
+        },
+        {
+          "id": "IX-02",
+          "text": "Success feedback after write actions"
+        },
+        {
+          "id": "IX-03",
+          "text": "Thread detail view opens from the list"
+        },
+        {
+          "id": "CT-01",
+          "text": "Categories are present and labeled"
+        },
+        {
+          "id": "CT-04",
+          "text": "Search with no matches shows an empty-state message"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

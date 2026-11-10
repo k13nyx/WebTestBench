@@ -1,0 +1,260 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "11"
+    ],
+    [
+      "FT-05",
+      "11"
+    ],
+    [
+      "FT-06",
+      "12"
+    ],
+    [
+      "FT-07",
+      "3"
+    ],
+    [
+      "FT-08",
+      "None"
+    ],
+    [
+      "FT-09",
+      "13"
+    ],
+    [
+      "FT-10",
+      "14"
+    ],
+    [
+      "FT-11",
+      "14"
+    ],
+    [
+      "CS-01",
+      "None"
+    ],
+    [
+      "CS-02",
+      "None"
+    ],
+    [
+      "CS-03",
+      "8"
+    ],
+    [
+      "CS-04",
+      "9"
+    ],
+    [
+      "IX-01",
+      "None"
+    ],
+    [
+      "IX-02",
+      "None"
+    ],
+    [
+      "IX-03",
+      "None"
+    ],
+    [
+      "CT-01",
+      "None"
+    ],
+    [
+      "CT-02",
+      "13"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Administrators can successfully configure different subscription box plans, including setting the plan name, price, billing cycle, and maximum number of subscribers."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Admin can create a new box plan with all required configuration fields."
+        },
+        {
+          "id": "FT-02",
+          "text": "Admin can edit an existing plan's price, billing cycle, and max subscriber count."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Administrators can assign specific product components to each subscription box package and adjust the types and quantities of products."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Admin can assign specific products to a plan."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Administrators can update customers' shipping addresses and contact information. The updated data takes effect immediately and historical records are traceable."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Admin can update a customer's shipping address."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Administrators can set and adjust billing cycles (e.g., monthly, quarterly), and the adjustments should correctly apply to existing subscriptions."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The system can generate an upcoming shipping schedule, displaying orders awaiting shipment by date and product category."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "After a change in package price or product composition, the system can provide options to decide whether to apply the changes to existing subscriptions (e.g., apply immediately, apply in the next cycle)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The system can correctly handle subscription pauses, resumptions, or cancellations, and adjust billing and delivery plans accordingly."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When the number of subscribers reaches the limit set by the plan, the system should automatically stop accepting new subscriptions or provide a waitlist option."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Cannot set max subscriber count below the current number of active subscribers."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The system can prevent administrators from performing invalid operations, such as remarking shipped orders as \"ready\" or generating new bills for canceled subscriptions."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Order must be marked \"Prepared\" before it can be marked \"Shipped\"."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The system can automatically identify products with insufficient stock and provide clear warnings when configuring packages or preparing for shipment."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The system can calculate and display the inventory level and the quantity of goods to be shipped in real time based on the current active subscription status."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Admin can view current inventory levels for all products."
+        },
+        {
+          "id": "FT-05",
+          "text": "Admin can view total units needed per product for upcoming shipments."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Administrators can view detailed information about all customer subscriptions, including plan selection, billing cycle, and subscription status."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Admin can view a list of all customer subscriptions."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Administrators can view each customer's payment history, including payment time, amount, status, and associated billing cycle."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Admin can view payment history for a customer subscription."
+        },
+        {
+          "id": "CT-02",
+          "text": "Payment history entries display relevant and complete details."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Administrators can mark orders as \"ready to ship\" within each billing cycle and update the status to \"shipped\" after the order is actually shipped."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Admin can mark an order as \"Prepared\" for a billing cycle."
+        },
+        {
+          "id": "FT-11",
+          "text": "Admin can mark an order as \"Shipped\" for a billing cycle."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Administrators can view subscription statistics dashboards, including key metrics such as the number of subscribers for each plan, monthly revenue, and delivery completion rate."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "When an order is marked as \"shipped,\" the system can record information such as the shipping time and tracking number, and customers can view this information."
+      },
+      "pred": null
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,324 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "5"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "7"
+    ],
+    [
+      "FT-04",
+      "6"
+    ],
+    [
+      "FT-05",
+      "6"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "8"
+    ],
+    [
+      "FT-08",
+      "9"
+    ],
+    [
+      "FT-09",
+      "2"
+    ],
+    [
+      "FT-10",
+      "2"
+    ],
+    [
+      "CS-01",
+      "14"
+    ],
+    [
+      "CS-02",
+      "15"
+    ],
+    [
+      "CS-03",
+      "13"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "19"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "20"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Sellers can create product listings that include photos, descriptions, prices, and locations."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Logged-in user can create a complete listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Sellers can update the details of existing product information."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Seller can update their own listing"
+        },
+        {
+          "id": "FT-10",
+          "text": "Seller can remove their own listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Sellers can update the information of the products they own."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The shopping cart cannot contain items that have been removed or are no longer available."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can register new accounts"
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "New user can register and log in"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Buyers can filter and sort products by category, price range, condition, and distance."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Filters narrow results to matching items"
+        },
+        {
+          "id": "FT-05",
+          "text": "Results can be sorted by price"
+        },
+        {
+          "id": "FT-06",
+          "text": "Results can be sorted by distance"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Buyers can search for products using keywords."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Keyword search returns matching items"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Buyers can add items to their shopping cart"
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Buyer can add an item to the cart"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Buyers can send shopping requests"
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Buyer can send a purchase request"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users cannot log in if they do not have a registered account."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Accounts that have already been registered cannot be registered again."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Unable to log in when user account password is incorrect."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Sellers cannot update other people's product information."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Listing management is restricted to the owner; listing actions require login"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users need to fill in the necessary fields to create product information."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Listing creation requires all mandatory fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Prices must be non-negative numbers."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Price must be a positive number"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Creating duplicate accounts provides visual feedback."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Search results are displayed in real time when users use the search function."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The filtering results are displayed in real time when the user uses the filtering function."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Provide visual feedback when users add items to their cart."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Cart badge updates immediately when an item is added"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "All product photos displayed must be related to the used or upgraded products described in the product details."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Listing photos load and depict the listed item"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Success feedback after publishing a listing"
+        },
+        {
+          "id": "IX-03",
+          "text": "Listing removal requires explicit confirmation"
+        },
+        {
+          "id": "IX-04",
+          "text": "No-results state is handled gracefully"
+        },
+        {
+          "id": "CT-01",
+          "text": "Listing information is complete and consistent across views"
+        },
+        {
+          "id": "CT-03",
+          "text": "Site content matches the second-hand/upcycled marketplace theme"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

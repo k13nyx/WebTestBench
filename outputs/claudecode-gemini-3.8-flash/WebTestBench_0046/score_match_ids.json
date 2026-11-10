@@ -1,0 +1,292 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "10"
+    ],
+    [
+      "FT-05",
+      "11"
+    ],
+    [
+      "FT-06",
+      "10"
+    ],
+    [
+      "FT-07",
+      "10"
+    ],
+    [
+      "FT-08",
+      "10"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "6"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "13"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "8"
+    ],
+    [
+      "CT-01",
+      "16"
+    ],
+    [
+      "CT-02",
+      "16"
+    ],
+    [
+      "CT-03",
+      "9"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create new themed page content with titles and content."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create a top-level topic page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can create nested subpages under existing pages."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Create a nested subpage under an existing page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can create bidirectional links between pages."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Create a bidirectional link between pages"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can add tags to the page."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Web pages can dynamically update search and filter results."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage can implement the function of creating a circular parent-child relationship."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Prevent circular parent-child nesting"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The webpage can handle the deletion of subpages when a page containing subpages is deleted."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Web pages can maintain synchronization via bidirectional links."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Immediate update of citation backlink panel"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can browse the knowledge base through hierarchical navigation."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Visual indentation in hierarchical navigation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can filter and search by title, tags, or citations."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Add a citation relationship with a citation note"
+        },
+        {
+          "id": "FT-06",
+          "text": "Search pages by title"
+        },
+        {
+          "id": "FT-07",
+          "text": "Filter pages by tag"
+        },
+        {
+          "id": "FT-08",
+          "text": "Filter or search by citation notes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users can click the link to view the corresponding topic page."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Navigate using bidirectional links and citations"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Visual feedback is displayed after the page is successfully created."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Clicking the parent page in the hierarchical navigation bar will expand/collapse the child page."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Expand and collapse hierarchical navigation nodes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When you enter keywords in the search box, it will suggest matching page titles in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Display visual feedback when the page saves successfully or fails."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "A webpage can display the content of the current topic, its tags, and all pages it references or is referencing."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Page view structure and metadata display"
+        },
+        {
+          "id": "CT-02",
+          "text": "Citation details completeness"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The theme and homepage tags and content are correct and match."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The displayed information matches the edited content."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent page creation with an empty title"
+        },
+        {
+          "id": "CS-02",
+          "text": "Prevent self-referencing citation"
+        },
+        {
+          "id": "CS-04",
+          "text": "Empty state for non-matching search or filter queries"
+        },
+        {
+          "id": "IX-02",
+          "text": "Citation hover preview"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

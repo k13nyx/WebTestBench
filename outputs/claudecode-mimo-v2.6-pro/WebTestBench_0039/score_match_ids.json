@@ -1,0 +1,309 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "5"
+    ],
+    [
+      "FT-04",
+      "2"
+    ],
+    [
+      "FT-05",
+      "3"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "4"
+    ],
+    [
+      "FT-08",
+      "4"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "8"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      "2"
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      "6"
+    ],
+    [
+      "IX-03",
+      "12"
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "CT-01",
+      "16"
+    ],
+    [
+      "CT-02",
+      "9"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create profiles that define multiple sources of income, expense categories (such as rent, food, etc.), and specific savings goals."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can create a profile and add income sources."
+        },
+        {
+          "id": "FT-02",
+          "text": "User can add expense categories with budget amounts."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can record every income and expenditure transaction, fill in the amount and date, and categorize it into preset categories."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can log a transaction and assign it to a category."
+        },
+        {
+          "id": "CS-04",
+          "text": "Transaction can only be assigned to a predefined expense category."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The system must automatically generate monthly summary reports and compare the actual expenditures of each category with the budget limit in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Monthly summary compares actual spending to budget per category."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can filter and view transaction records based on custom date ranges or specific categories."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can filter transaction history by date range."
+        },
+        {
+          "id": "FT-07",
+          "text": "User can filter transaction history by category."
+        },
+        {
+          "id": "FT-08",
+          "text": "User can combine date range and category filters."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The system should support tracking the progress of savings targets and calculating the gap between the current accumulated amount and the target amount."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can add savings goals."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "When the actual expenditure exceeds the monthly budget for that category, the system must automatically trigger an \"overspending\" warning and highlight it visually."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Overspending is visually highlighted in the monthly summary."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "When recording a transaction, the transaction date cannot be a future date."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When entering transactions, the amount field must only allow positive numbers to be entered to prevent the statistical logic from crashing due to illegal characters or negative values."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Transaction amount must be a positive number."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "When aggregating data, the system must ensure that the month to which the transaction record belongs strictly corresponds to the entry date, and there should be no cross-month statistical errors."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Monthly summary actuals equal the sum of the month's transactions per category."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The calculation of savings targets must be consistent with the data to ensure that completed expenditures are not mistakenly included in the total savings amount."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "After a user adds a new transaction, the monthly summary and budget progress bar on the homepage should update automatically immediately without requiring a manual page refresh."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The list should respond instantly to user selection of a date or category, quickly displaying search results."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Transaction list updates when filters are applied or cleared."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "When users set the expenditure category to \"within budget\" or \"overspending\", the interface should provide clear color blocks or icons to distinguish them and guide users to review their spending habits."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Successful transaction notifications should appear as a non-intrusive toast or pop-up, ensuring users can quickly and continuously record multiple expenditures."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Saving a transaction gives success feedback."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The monthly summary report should clearly display the two core indicators: \"budgeted amount\" and \"actual amount\"."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The transaction record list must include all required elements: date, category name, amount description, and transaction status."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Transaction history entries display accurate details."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Excess spending must be visually emphasized using high-contrast colors (such as striking red) so that users can immediately recognize the unusual spending."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Savings target areas should display progress as a percentage or progress bar, rather than just showing raw numbers."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Transaction cannot be saved with missing required fields."
+        },
+        {
+          "id": "CS-03",
+          "text": "Profile entries require a name and a positive amount."
+        },
+        {
+          "id": "CS-05",
+          "text": "Invalid date range is rejected in transaction filters."
+        },
+        {
+          "id": "IX-04",
+          "text": "Invalid form input shows an error message at the point of entry."
+        },
+        {
+          "id": "CT-03",
+          "text": "Profile displays all saved entries with correct values."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

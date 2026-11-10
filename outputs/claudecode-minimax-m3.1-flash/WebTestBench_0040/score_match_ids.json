@@ -1,0 +1,370 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "1"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "FT-08",
+      "5"
+    ],
+    [
+      "FT-09",
+      "6"
+    ],
+    [
+      "FT-10",
+      "6"
+    ],
+    [
+      "FT-11",
+      null
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "8"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "CS-05",
+      "2"
+    ],
+    [
+      "CS-06",
+      "6"
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      "12"
+    ],
+    [
+      "IX-03",
+      "13"
+    ],
+    [
+      "IX-04",
+      "7"
+    ],
+    [
+      "IX-05",
+      "11"
+    ],
+    [
+      "IX-06",
+      null
+    ],
+    [
+      "CT-01",
+      "17"
+    ],
+    [
+      "CT-02",
+      "15"
+    ],
+    [
+      "CT-03",
+      "4"
+    ],
+    [
+      "CT-04",
+      "16"
+    ],
+    [
+      "CT-05",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create new tasks on the Kanban board and specify a title, detailed description, and deadline."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can create a new task on the Kanban board"
+        },
+        {
+          "id": "FT-03",
+          "text": "User can set a due date on a task"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can select a specific person from the team member list as the task leader."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can assign a task to a specific teammate"
+        },
+        {
+          "id": "CS-05",
+          "text": "Assignee selection is restricted to existing teammates"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can update task status in real time by dragging cards between different columns (such as: pending, in progress, completed)."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can move a task between columns to update its status"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can click on the task card to open the details page and view or edit all the original information of the task."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can open a task to see its full details"
+        },
+        {
+          "id": "FT-06",
+          "text": "User can edit a task's information"
+        },
+        {
+          "id": "CT-03",
+          "text": "Task detail view lists all task fields and updates without placeholders"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can add brief notes or post the latest status updates on the task details page."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can add a short note to a task"
+        },
+        {
+          "id": "FT-08",
+          "text": "User can add a status update to a task"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can use the filtering tool to quickly locate work items by responsible person or specific status."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User can filter the board by assignee"
+        },
+        {
+          "id": "FT-10",
+          "text": "User can filter the board by status"
+        },
+        {
+          "id": "CS-06",
+          "text": "Filters combine correctly (assignee + status)"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The system must synchronize the status immediately after a task moves across columns to ensure that the Kanban layout remains up-to-date after the page is refreshed."
+      },
+      "pred": [
+        {
+          "id": "IX-04",
+          "text": "Task detail view updates live after an edit"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The deadline selector should restrict invalid date inputs, and for overdue tasks, the system must provide a prominent overdue indicator on the card."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Due date must be a valid date within an acceptable range"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "When creating a project, the deadline must be in a valid date format and cannot be a past date."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "When no matching results are found, the system should display an empty status \"No matching task found\" instead of displaying an error page."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When a user drags a task card, a placeholder dashed box or a highlighted tooltip should appear at the target location to provide clear placement feedback."
+      },
+      "pred": [
+        {
+          "id": "IX-05",
+          "text": "Moving a card gives feedback that the move was registered"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After applying filters (such as \"responsible person\"), unmatched tasks should immediately disappear or become transparent, while matched tasks should have a prominent visual focus."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Card is highlighted/visually emphasized when filtered"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "When opening and closing the task details modal, there should be a smooth transition animation, and the overlay should be clickable to quickly close it."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Task detail view can be opened and closed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When a user saves an edit or submits a note, the system should display an immediate visual confirmation message saying \"Saved\"."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Creating a task gives immediate visual feedback"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The front of the task card must clearly display the title, the person in charge's photo (or initials), and the countdown to the deadline or the specific date."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Task card displays title, assignee, and due date"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The \"Remarks/Updates\" section in the task details should be arranged in reverse chronological order and clearly indicate the publisher and publication time."
+      },
+      "pred": [
+        {
+          "id": "CT-04",
+          "text": "Notes and status updates display authored content and timestamps"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The headings of each column on the Kanban board (such as To Do / In Progress / Done) and the total number of tasks they contain must be displayed accurately."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Kanban board displays the expected status columns"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "User can clear an active filter to restore the full board"
+        },
+        {
+          "id": "CS-01",
+          "text": "Task title is required when creating a task"
+        },
+        {
+          "id": "CS-03",
+          "text": "A task cannot be moved into a column that does not exist"
+        },
+        {
+          "id": "CS-04",
+          "text": "Notes cannot be submitted empty"
+        },
+        {
+          "id": "IX-06",
+          "text": "Filter controls show the currently active filter"
+        },
+        {
+          "id": "CT-05",
+          "text": "All visible content is relevant to task management"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

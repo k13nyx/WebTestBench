@@ -1,0 +1,278 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      null
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      null
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "9"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "6"
+    ],
+    [
+      "IX-02",
+      "12"
+    ],
+    [
+      "IX-03",
+      "7"
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "IX-05",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      "8"
+    ],
+    [
+      "CT-04",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can manually enter multiple contract texts."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Add a contract with text and a name, and confirm it is accepted and listed."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can name the contract"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The webpage can automatically recognize the terms in the contract text and categorize and group them according to preset types (payment terms, confidentiality clauses, termination clauses, etc.)."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Confirm clauses are auto-detected and grouped by type."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Web pages can be grouped by clause type, displaying similar clauses from different contracts side-by-side in the same view."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Confirm contracts are displayed side by side within each clause group."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can filter by terms type"
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Filter the view by a single clause type."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage can automatically detect differences in the wording of similar clauses in different contracts and highlight them using color."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Highlight wording differences between contracts."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The webpage allows users to switch between summary comparison view and full-text view with a single click for each clause group."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Switch between summarized and full-text views for a clause group."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "After the user clicks on the full-text view, the webpage displays the full text content."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Keep full-text view verbatim to the source clause."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot give two contracts the same name."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Prevent duplicate contract names from being silently created."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "After the user clicks \"Submit Contract,\" there is visual feedback indicating that the contract has been successfully added."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "After the user clicks on the corresponding terms, the webpage displays the corresponding contract."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Different content is highlighted using differentiated styles (such as different font colors, underlines, and background highlights), while content without differences maintains a unified basic style."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Show no difference markers for identical wording."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The contract must display its actual text content when viewed or edited."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Completed contracts must be displayed in their entirety when viewed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The terms and conditions must display the correct text content."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Add several contracts and confirm each appears as a separate entry."
+        },
+        {
+          "id": "FT-06",
+          "text": "Reset the filter to show all clause types."
+        },
+        {
+          "id": "CS-01",
+          "text": "Prevent analyzing a contract that has no name."
+        },
+        {
+          "id": "CS-02",
+          "text": "Prevent analyzing a contract that has no text."
+        },
+        {
+          "id": "CS-04",
+          "text": "Keep clauses in only their detected type group."
+        },
+        {
+          "id": "IX-04",
+          "text": "Preserve the active filter when switching views."
+        },
+        {
+          "id": "IX-05",
+          "text": "Indicate which filter and view mode are currently active."
+        },
+        {
+          "id": "CT-01",
+          "text": "Display clause group headings with recognizable type labels."
+        },
+        {
+          "id": "CT-02",
+          "text": "Show contract names as the column/panel headers."
+        },
+        {
+          "id": "CT-04",
+          "text": "Keep summarized view faithful to key contract terms."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

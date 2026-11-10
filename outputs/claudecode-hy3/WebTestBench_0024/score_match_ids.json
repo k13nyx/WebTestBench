@@ -1,0 +1,307 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "7"
+    ],
+    [
+      "FT-03",
+      "8"
+    ],
+    [
+      "FT-04",
+      "9"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      null
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "11"
+    ],
+    [
+      "CS-03",
+      "17"
+    ],
+    [
+      "IX-01",
+      "13"
+    ],
+    [
+      "IX-02",
+      "14"
+    ],
+    [
+      "IX-03",
+      "15"
+    ],
+    [
+      "IX-04",
+      "18"
+    ],
+    [
+      "CT-01",
+      "22"
+    ],
+    [
+      "CT-02",
+      "19"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can browse curated collections"
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Browse curated story collections on the homepage"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The detailed page provides an expandable timeline."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The detailed page provides an image library."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The detailed page provides elements such as video clips."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can save stories after filtering."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Save a story to the favorites list"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Web pages can play audio and video clips."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can open the detailed page for each theme."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Open a detailed page for an individual story"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can search by keywords"
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Search stories by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can filter stories by theme."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Filter stories by topic"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can view the collection list"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Webpages cannot be bookmarked repeatedly."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "A story cannot be saved to favorites more than once"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The content displayed on the webpage must be a true story, not a fictional story."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Users can click on the timeline to display the full timeline."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Expandable timeline expands and collapses on click"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users can click on a photo to zoom in and view it."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Image gallery navigates between images"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Users can click on audio or video to view specific content."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Embedded audio/video clip plays on activation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Users can use the search function to display relevant content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Users can use the filtering function to display corresponding content."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Selecting a topic filter restricts results to that topic only"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Visual feedback is provided when users click the favorite button."
+      },
+      "pred": [
+        {
+          "id": "IX-04",
+          "text": "Favorite button reflects saved state"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The images displayed on the webpage must correspond to the story content."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Gallery and media are relevant to the city/culture theme"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "The timeline content on the details page must match the story content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "The video content on the details page must be consistent with the story content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "22",
+        "text": "The story content is consistent with its theme."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Stories cover the required cultural themes"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Revisit saved favorites during the trip"
+        },
+        {
+          "id": "CS-01",
+          "text": "Search with no matching keyword shows an empty state"
+        },
+        {
+          "id": "CT-03",
+          "text": "Each story has a clear title, topic label, and descriptive text"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,304 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "9"
+    ],
+    [
+      "FT-06",
+      "5"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "FT-08",
+      null
+    ],
+    [
+      "FT-09",
+      null
+    ],
+    [
+      "CS-01",
+      "7"
+    ],
+    [
+      "CS-02",
+      "7"
+    ],
+    [
+      "CS-03",
+      "9"
+    ],
+    [
+      "CS-04",
+      "8"
+    ],
+    [
+      "IX-01",
+      "11"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "13"
+    ],
+    [
+      "IX-04",
+      "12"
+    ],
+    [
+      "CT-01",
+      "6"
+    ],
+    [
+      "CT-02",
+      "16"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can add new job application entries, including company name, job title, and date."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Add a new application with basic details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can edit existing job application entries to update company name, job title, date, status, or notes."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Edit an existing entry's details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can delete job application entries from the list."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Delete an entry"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can set or update the status of each application, with options including: applied, interviewed, or accepted."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Change an application's status"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can add or edit notes for each job application."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Add a brief note to an application"
+        },
+        {
+          "id": "FT-07",
+          "text": "Edit an existing note"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can view a list of all job applications and their details (company, position, date, status)."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Entry displays all core details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "New job application entries cannot be added if the required fields (company name, job title, and date) are not provided."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Company field cannot be submitted empty"
+        },
+        {
+          "id": "CS-02",
+          "text": "Role field cannot be submitted empty"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Date fields must only accept valid date formats and reject invalid date inputs."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Date field requires a valid date"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The status field can only accept predefined values: applied, interviewed, or hired."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "All three status options are selectable"
+        },
+        {
+          "id": "CS-03",
+          "text": "Status is restricted to defined values"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "If required fields are cleared or set to empty, edits to application entries cannot be saved."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "After successfully adding a new job application, a confirmation message or visual feedback will be displayed."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "New entry appears immediately after submission"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After successfully editing a job application, a confirmation message or visual feedback will be displayed."
+      },
+      "pred": [
+        {
+          "id": "IX-04",
+          "text": "Status change is reflected instantly with clear visual state"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After successfully deleting a job application, a confirmation message or visual feedback will be displayed."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Delete requires confirmation or gives clear feedback"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Provide a clear mechanism (button, icon, or menu) to trigger edit and delete operations for each application entry."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "When attempting to submit a form with missing or invalid required fields, a validation error message is displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "All displayed job application data (company, position, date, status, remarks) must accurately reflect the information entered by the user."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Saved notes content matches what was typed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The status label displayed in the list must exactly match one of the three allowed values: applied, interviewed, or offered."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Edited details persist after page reload"
+        },
+        {
+          "id": "FT-09",
+          "text": "Deleted entry does not reappear after reload"
+        },
+        {
+          "id": "IX-02",
+          "text": "Edit form pre-fills with current values"
+        },
+        {
+          "id": "CT-03",
+          "text": "Page content is relevant to job application tracking"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,304 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "2"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "13"
+    ],
+    [
+      "FT-07",
+      "7"
+    ],
+    [
+      "FT-08",
+      "8"
+    ],
+    [
+      "FT-09",
+      "5"
+    ],
+    [
+      "FT-10",
+      "3"
+    ],
+    [
+      "CS-01",
+      "12"
+    ],
+    [
+      "CS-02",
+      "10"
+    ],
+    [
+      "CS-03",
+      "9"
+    ],
+    [
+      "IX-01",
+      "13"
+    ],
+    [
+      "IX-02",
+      "6"
+    ],
+    [
+      "IX-03",
+      "6"
+    ],
+    [
+      "CT-01",
+      "17"
+    ],
+    [
+      "CT-02",
+      "16"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can log in to their accounts on the webpage."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Registered user can log in"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can register an account on the webpage."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "New user can register an account"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can participate in one or more chat rooms and can create new chat rooms."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can open a chat room and view its history"
+        },
+        {
+          "id": "FT-10",
+          "text": "User can switch between chat rooms"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The chat room supports sending text messages containing emoticons and sending and receiving group messages in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can send a text message"
+        },
+        {
+          "id": "FT-05",
+          "text": "User can send a message containing an emoji"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The website supports editing personal profiles (display name, brief personal introduction)."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User can edit profile display name and bio"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The website offers a variety of themes and font styles for users to choose from and switch between."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Theme switch applies immediately"
+        },
+        {
+          "id": "IX-03",
+          "text": "Font style switch applies immediately"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Chat history supports keyword search, which can match related messages."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Chat history is searchable by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Supports redirection to the specific message location in the search results that matches the keywords."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can jump to a matching message"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot send blank messages."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Empty message cannot be sent"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users who are not logged in cannot enter the chat room or view/send messages."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Login with wrong credentials is rejected"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Chat history search supports common keyword formats and has no input restrictions or bugs."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Users cannot register or log in if their username or password is blank."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Registration with empty required fields is rejected"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Messages are delivered instantly and can be viewed by other users in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Two users in the same room see each other's messages"
+        },
+        {
+          "id": "IX-01",
+          "text": "Incoming messages appear without a page refresh"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Clicking on the search result will quickly locate the corresponding chat message."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "After a user successfully updates their profile or sends a message, the information will be updated in real time in different display areas."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The profile page displays the full name and personal introduction, with no missing information."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Messages are labeled with the sender's display name"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Chat history is displayed in chronological order, and emoticons are displayed correctly."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Emoji render as proper emoji characters"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Search results accurately match keywords, with no missed or incorrect searches."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Chat UI media and icons load correctly"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

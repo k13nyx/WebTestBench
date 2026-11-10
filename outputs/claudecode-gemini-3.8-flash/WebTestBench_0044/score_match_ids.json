@@ -1,0 +1,246 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "4"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "CS-01",
+      "7"
+    ],
+    [
+      "CS-02",
+      "8"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "13"
+    ],
+    [
+      "IX-03",
+      "17"
+    ],
+    [
+      "CT-01",
+      "6"
+    ],
+    [
+      "CT-02",
+      "9"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can add new job application entries, including company name, job title, and date."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Add a new job application with all details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can edit existing job application entries to update company name, job title, date, status, or notes."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Edit an existing job application"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can delete job application entries from the list."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Delete a job application entry"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can set or update the status of each application, with options including: applied, interviewed, or accepted."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Update job application status"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can add or edit notes for each job application."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "View full application notes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can view a list of all job applications and their details (company, position, date, status)."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Table/list columns and field headers"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "New job application entries cannot be added if the required fields (company name, job title, and date) are not provided."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent submission with empty required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Date fields must only accept valid date formats and reject invalid date inputs."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Prevent submission with an invalid date"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The status field can only accept predefined values: applied, interviewed, or hired."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Status dropdown option values"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "If required fields are cleared or set to empty, edits to application entries cannot be saved."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "After successfully adding a new job application, a confirmation message or visual feedback will be displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After successfully editing a job application, a confirmation message or visual feedback will be displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After successfully deleting a job application, a confirmation message or visual feedback will be displayed."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Delete confirmation prompt display"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Provide a clear mechanism (button, icon, or menu) to trigger edit and delete operations for each application entry."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "When attempting to submit a form with missing or invalid required fields, a validation error message is displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "All displayed job application data (company, position, date, status, remarks) must accurately reflect the information entered by the user."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The status label displayed in the list must exactly match one of the three allowed values: applied, interviewed, or offered."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Visual status badge differentiation"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Dismiss application modal/form without saving"
+        },
+        {
+          "id": "CT-03",
+          "text": "Empty list state messaging"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

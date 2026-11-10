@@ -1,0 +1,306 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "5"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "6"
+    ],
+    [
+      "FT-05",
+      "6"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "7"
+    ],
+    [
+      "FT-08",
+      "16"
+    ],
+    [
+      "FT-09",
+      "8"
+    ],
+    [
+      "FT-10",
+      "3"
+    ],
+    [
+      "FT-11",
+      "4"
+    ],
+    [
+      "CS-01",
+      "10"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "9"
+    ],
+    [
+      "CS-04",
+      "14"
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      "13"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      "15"
+    ],
+    [
+      "CT-02",
+      "17"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Employers can create and publish job listings, fully entering core information such as name and description."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Create a job listing as an employer**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Employers can edit and delete published jobs to manage their positions."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Edit an existing job listing**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The employer dashboard allows you to view all the job listings you have posted."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "View employer job dashboard**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The employer dashboard allows you to view a list of applications submitted by job seekers for all the positions you have posted."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "View applications for a posted listing**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Job seekers can browse the platform's full list of job openings."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Browse all available job listings**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The website allows users to filter job listings by criteria such as industry, location, and job type."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Filter listings by industry**"
+        },
+        {
+          "id": "FT-05",
+          "text": "Filter listings by location**"
+        },
+        {
+          "id": "FT-06",
+          "text": "Filter listings by employment type**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The website supports keyword search, which allows users to retrieve job information."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Search listings by keyword**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Job seekers can submit an application form that includes contact information and a message on the job details page."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Submit a job application**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Job seekers must not submit job applications with missing or incorrect personal information."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Prevent incomplete applications**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Job postings with incomplete information cannot be published; there is a clear notification."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent incomplete job listings**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Job seekers are not allowed to submit multiple applications for the same position using the same contact information."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Job seekers cannot post job openings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After job seekers submit their application forms, the system receives them normally without any submission failures."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Confirm successful submissions**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "After switching the filtering and search criteria, the job list updates the matching results in real time."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Keep filters and search results accurate**"
+        },
+        {
+          "id": "IX-01",
+          "text": "Update listings after filter changes**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The job listings clearly display key information such as job title, location, and salary range."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Verify listing information is relevant and consistent**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The job details page fully displays all information, including the job description and required skills."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "View complete job details**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Employers can view a complete list of applications, clearly distinguishing between different job seekers."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Verify application records contain applicant information**"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Validate the salary range**"
+        },
+        {
+          "id": "IX-03",
+          "text": "Navigate from a listing result to its details**"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

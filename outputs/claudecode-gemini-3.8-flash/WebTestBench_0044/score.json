@@ -1,0 +1,29 @@
+{
+  "overall": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "num_pred_item": 13,
+    "coverage": 0.6471
+  },
+  "functionality": {
+    "precision": null,
+    "recall": null,
+    "f1": null
+  },
+  "constraint": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "interaction": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "content": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  }
+}

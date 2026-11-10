@@ -1,0 +1,294 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "3"
+    ],
+    [
+      "FT-03",
+      "4"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "8"
+    ],
+    [
+      "FT-06",
+      "5"
+    ],
+    [
+      "FT-07",
+      "6"
+    ],
+    [
+      "CS-01",
+      "7"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "CS-06",
+      "11"
+    ],
+    [
+      "CS-07",
+      "8"
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "CT-01",
+      "1"
+    ],
+    [
+      "CT-02",
+      "3"
+    ],
+    [
+      "CT-03",
+      "5"
+    ],
+    [
+      "CT-04",
+      "13"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can browse the restaurant list and view detailed information for each restaurant, including cuisine type and average price."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can browse the restaurant list and open a restaurant's detail page."
+        },
+        {
+          "id": "CT-01",
+          "text": "Restaurant cards and detail pages show complete, non-placeholder cuisine type and average price."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can search for restaurants by entering a text field."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can create reservations for restaurants by selecting the date, time, and number of diners, and then submitting the reservation after confirming the information."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can reserve a table with a valid date, time, and party size."
+        },
+        {
+          "id": "CT-02",
+          "text": "Reservation details match the values entered."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can view their upcoming booking list and cancel or modify their bookings within this list."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can view upcoming reservations."
+        },
+        {
+          "id": "FT-04",
+          "text": "User can cancel an upcoming reservation."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can rate and review the restaurants they have visited. The ratings and reviews will be linked to the corresponding restaurants and displayed correctly."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can submit a rating and review for a restaurant they have visited."
+        },
+        {
+          "id": "CT-03",
+          "text": "Restaurant rating and reviews are displayed accurately."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "During the booking process, users can selectively enter discount coupon codes and enjoy corresponding price reductions."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can apply a valid coupon during reservation."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "When verifying booking times, the system does not allow users to book past dates and times."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Cannot reserve a past date or time."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When a user attempts to modify their booking, the system can correctly process the modification request and update the booking information while maintaining the accuracy of the booking information."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can modify an upcoming reservation."
+        },
+        {
+          "id": "CS-07",
+          "text": "Cannot modify a reservation into a conflicting or unavailable slot."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot perform a search without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users cannot leave comments on the same order repeatedly."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Discount coupons must be used within their validity period and comply with the applicable rules. Only one basic discount coupon can be used per order; they cannot be combined."
+      },
+      "pred": [
+        {
+          "id": "CS-06",
+          "text": "Invalid or expired coupon is rejected."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Restaurant average prices, opening hours, and other information are maintained by the merchants; users can only view them, not edit them. Reservations cannot exceed the restaurant's maximum capacity per table."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After selecting the date, time, and number of people, users can select discount coupons, and the system will calculate the discounted price in real time. After clicking submit, the system will verify the validity of the information and provide the booking result."
+      },
+      "pred": [
+        {
+          "id": "CT-04",
+          "text": "Discounted total is calculated correctly."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users can click on their booking record in their personal center and choose \"Modify\" or \"Cancel\". When modifying, users need to re-select information and submit; when canceling, a confirmation pop-up will appear."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Cancel requires confirmation before the reservation is cancelled."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "When the booking status changes, the page refreshes in real time and a pop-up notification appears. You can also view historical notifications through the message center."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Users can view their comment history, applications, and completed order information in their personal center."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Cannot reserve with an invalid party size."
+        },
+        {
+          "id": "CS-03",
+          "text": "Cannot select a time slot that is unavailable."
+        },
+        {
+          "id": "CS-04",
+          "text": "Cannot submit a review without a star rating."
+        },
+        {
+          "id": "CS-05",
+          "text": "Cannot review a restaurant the user has not visited."
+        },
+        {
+          "id": "IX-02",
+          "text": "Star rating responds to hover and click."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

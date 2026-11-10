@@ -1,0 +1,104 @@
+{
+  "overall": {
+    "precision": 0.39,
+    "recall": 0.1789,
+    "f1": 0.2294,
+    "coverage": 0.599,
+    "count": 50
+  },
+  "overall_no_missing": {
+    "precision": 0.4432,
+    "recall": 0.2033,
+    "f1": 0.2607,
+    "coverage": 0.5935,
+    "count": 44
+  },
+  "avg_num_pred_item": 18.26,
+  "by_category": {
+    "Presentation": {
+      "precision": 0.5667,
+      "recall": 0.325,
+      "f1": 0.4071,
+      "coverage": 0.6214,
+      "count": 5
+    },
+    "Search": {
+      "precision": 0.1667,
+      "recall": 0.0833,
+      "f1": 0.1111,
+      "coverage": 0.6399,
+      "count": 4
+    },
+    "Tool": {
+      "precision": 0.2708,
+      "recall": 0.1333,
+      "f1": 0.1607,
+      "coverage": 0.5991,
+      "count": 8
+    },
+    "Commerce": {
+      "precision": 0.375,
+      "recall": 0.1021,
+      "f1": 0.1547,
+      "coverage": 0.6255,
+      "count": 8
+    },
+    "Data Management": {
+      "precision": 0.4545,
+      "recall": 0.2115,
+      "f1": 0.2661,
+      "coverage": 0.5587,
+      "count": 11
+    },
+    "Workflow": {
+      "precision": 0.5208,
+      "recall": 0.1888,
+      "f1": 0.2663,
+      "coverage": 0.6076,
+      "count": 8
+    },
+    "User-Generated Content": {
+      "precision": 0.2778,
+      "recall": 0.2111,
+      "f1": 0.2347,
+      "coverage": 0.5801,
+      "count": 6
+    }
+  },
+  "by_class": {
+    "functionality": {
+      "precision": 0.3254,
+      "recall": 0.2264,
+      "f1": 0.2499,
+      "coverage": 0.8153,
+      "count": 439
+    },
+    "constraint": {
+      "precision": 0.1892,
+      "recall": 0.1306,
+      "f1": 0.145,
+      "coverage": 0.412,
+      "count": 188
+    },
+    "interaction": {
+      "precision": 0.1481,
+      "recall": 0.1296,
+      "f1": 0.1358,
+      "coverage": 0.42,
+      "count": 149
+    },
+    "content": {
+      "precision": 0.0435,
+      "recall": 0.0435,
+      "f1": 0.0435,
+      "coverage": 0.449,
+      "count": 143
+    }
+  },
+  "counts": {
+    "total": 50,
+    "scored": 50,
+    "missing_result": 6,
+    "scored_no_missing": 44
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "15"
+    ],
+    [
+      "FT-06",
+      "15"
+    ],
+    [
+      "FT-07",
+      "15"
+    ],
+    [
+      "FT-08",
+      "12"
+    ],
+    [
+      "FT-09",
+      "4"
+    ],
+    [
+      "FT-10",
+      "13"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      "9"
+    ],
+    [
+      "CS-03",
+      "11"
+    ],
+    [
+      "CS-04",
+      "3"
+    ],
+    [
+      "CS-05",
+      "10"
+    ],
+    [
+      "IX-01",
+      "11"
+    ],
+    [
+      "IX-02",
+      "11"
+    ],
+    [
+      "IX-03",
+      "13"
+    ],
+    [
+      "CT-01",
+      "2"
+    ],
+    [
+      "CT-02",
+      "14"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The webpage should be able to support users in completing the core process of registering an account or logging in."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Register a new account with valid details."
+        },
+        {
+          "id": "FT-02",
+          "text": "Log in with an existing account."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The website should offer multilingual selection functionality, allowing users to choose the language they wish to learn."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Start a course by picking a language."
+        },
+        {
+          "id": "CT-01",
+          "text": "Lesson content matches the selected language."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Online courses are organized and presented in tiers according to language level."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "View lessons, exercises, and quizzes organized under each level."
+        },
+        {
+          "id": "CS-04",
+          "text": "Locked levels cannot be opened."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The webpage should allow users to start a new course or continue learning from an unfinished course."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Resume a partially completed course."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Online courses should be accompanied by practice and quiz modules at the corresponding levels."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage can record the user's learning progress through courses, exercises, and quizzes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Unregistered users cannot access the course/exercise/quiz learning sessions."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Progress data is persistently saved and will not be lost after logging in again."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users should not be able to log in or register if any required information is left blank; the page should display a corresponding message."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Registration rejects a duplicate email."
+        },
+        {
+          "id": "CS-02",
+          "text": "Registration validates required fields and formats."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The course learning page operates smoothly, allowing for normal progress through the learning process."
+      },
+      "pred": [
+        {
+          "id": "CS-05",
+          "text": "Lessons cannot be skipped within a level."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Exercises/quizzes allow you to submit your answers and receive instant feedback."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Submitting without an answer is blocked."
+        },
+        {
+          "id": "IX-01",
+          "text": "Correct answers show instant positive feedback."
+        },
+        {
+          "id": "IX-02",
+          "text": "Incorrect answers show instant negative feedback with the right answer."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After submitting your answer, a simple score/accuracy rate will be automatically calculated and displayed."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Complete a quiz and view the score."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The learning progress summary page updates data in real time, allowing for quick viewing."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Open the progress summary."
+        },
+        {
+          "id": "IX-03",
+          "text": "Progress indicator updates as questions are answered."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The learning summary page on the website should be able to fully display the progress data of all courses."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Progress summary figures match actual completion."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The exercises/tests contain different types of questions, and the question design meets the standards."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Answer a multiple-choice question."
+        },
+        {
+          "id": "FT-06",
+          "text": "Answer a fill-in-the-blank question."
+        },
+        {
+          "id": "FT-07",
+          "text": "Answer a matching or word-ordering question."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

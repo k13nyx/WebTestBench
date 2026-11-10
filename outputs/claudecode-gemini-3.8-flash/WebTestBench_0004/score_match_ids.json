@@ -1,0 +1,293 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "4"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      null
+    ],
+    [
+      "FT-07",
+      "7"
+    ],
+    [
+      "FT-08",
+      "13"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      "15"
+    ],
+    [
+      "CT-02",
+      "16"
+    ],
+    [
+      "CT-03",
+      "6"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Couples can create a personal wedding planning page and enter key information such as the wedding date."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create initial planning dashboard details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "New users can update information such as dates and budgets on the planning page."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Update existing planning dashboard details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The webpage allows users to filter venues/suppliers by location type, price range, and service type."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Filter listings by location type, price range, and service type"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Provides a keyword search function for venues/suppliers."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Search venue and vendor listings by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The website allows users to tag their preferred venues/suppliers for easy access later."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Add listing to favorites list"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The website provides wedding planning tips and checklists for users to view."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Wedding planning tips and checklist catalog content"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "New users can save planning tips/lists to their personal planning page."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Save a checklist item to the planning dashboard"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The wedding budget cannot be plural."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The number of guests cannot be negative."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Disallow negative numbers for budget and guest count"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Tagged favorite options and saved planning content are persistently stored so they are not lost when accessed again."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The wedding date cannot be an invalid date in the past."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When a user clicks the \"View Details\" button, they are smoothly redirected to the details page."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Planning Tips / The checklist can be marked as completed normally, and the status is updated in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Mark a dashboard checklist task as completed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "After switching the filter/search criteria, the venue/supplier list is updated in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The personal planning page fully displays all key wedding information, with no content missing."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Planning dashboard key metrics content"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The venue/supplier information includes key details (location, price, services offered)."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Venue and vendor listing card information"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Planning tips / The list is comprehensive and has practical reference value."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Filter/search results with precise matching criteria, displaying results without errors or omissions."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Remove listing from favorites list"
+        },
+        {
+          "id": "CS-02",
+          "text": "Prevent dashboard update with empty required fields"
+        },
+        {
+          "id": "CS-03",
+          "text": "Display empty state when search or filters return no matches"
+        },
+        {
+          "id": "CS-04",
+          "text": "Prevent duplicate entries in favorites"
+        },
+        {
+          "id": "IX-01",
+          "text": "Favorite button toggle visual state"
+        },
+        {
+          "id": "IX-02",
+          "text": "Checklist item completion visual change"
+        },
+        {
+          "id": "IX-03",
+          "text": "Dashboard update notification feedback"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

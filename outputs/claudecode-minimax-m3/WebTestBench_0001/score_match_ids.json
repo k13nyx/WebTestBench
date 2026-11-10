@@ -1,0 +1,310 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "8"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "2"
+    ],
+    [
+      "FT-06",
+      "8"
+    ],
+    [
+      "FT-07",
+      "10"
+    ],
+    [
+      "FT-08",
+      "10"
+    ],
+    [
+      "FT-09",
+      "3"
+    ],
+    [
+      "FT-10",
+      "16"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "12"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      "15"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "IX-04",
+      "2"
+    ],
+    [
+      "CT-01",
+      "2"
+    ],
+    [
+      "CT-02",
+      "18"
+    ],
+    [
+      "CT-03",
+      "17"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Supports the creation/editing of product information for technology, home furnishings, and fitness equipment."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can create a new product entry"
+        },
+        {
+          "id": "FT-02",
+          "text": "User can edit an existing product entry"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Supports marking specific products as featured on the homepage and displaying them."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can mark a product as featured and it appears on the homepage"
+        },
+        {
+          "id": "IX-04",
+          "text": "Featured products are visibly marked in listings"
+        },
+        {
+          "id": "CT-01",
+          "text": "The homepage featured section contains exactly the featured products"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "It provides a product keyword search function, covering multi-dimensional information."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Visitor can search products by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can add product tags to any existing product."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can tag a product"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can create product labels."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can edit any existing product label."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can categorize any existing product labels."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can filter products by category (such as technology products, home furnishings, fitness equipment, etc.)."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can categorize a product"
+        },
+        {
+          "id": "FT-06",
+          "text": "Visitor can browse products by category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can browse the full product list, which displays key information, brief reviews, and purchase links for each product."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can sort and filter products by price range or rating attributes."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Visitor can sort the product list by price and by rating"
+        },
+        {
+          "id": "FT-08",
+          "text": "Visitor can filter products by price range and by rating"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Product categories are limited to three vertical sectors: technology, home furnishings, and fitness equipment."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After a user applies filtering or sorting criteria, the product results displayed by the system must strictly match the selected criteria."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Filtering never returns products that fail the filter criteria"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After switching sorting/filtering criteria, the product list updates the matching results in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Clicking on a product will redirect you to its own details page without any lag."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Clicking a product card opens that product's detail page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The external retailer link button on the product details page redirects to the target page normally."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "The retailer button opens the external store link"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The product details page fully displays reviews, specifications, and retailer links."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Each product has a detail page with review, key specs, and retailer link"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Product categorization and label matching are accurate, with no mislabeling or omissions."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Category and tag labels match each product's assignments"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The core content of the same product details remains consistent across different views. The detailed view displays complete and accurate conditions and final results without any truncation or data loss."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Product detail page shows the correct, complete saved content"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "A product cannot be saved with missing required data or an invalid retailer link"
+        },
+        {
+          "id": "CS-03",
+          "text": "A search with no matching results shows an empty state and can be cleared"
+        },
+        {
+          "id": "IX-03",
+          "text": "The edit form opens pre-filled and saving confirms the update"
+        }
+      ]
+    }
+  ],
+  "source": "checklist"
+}

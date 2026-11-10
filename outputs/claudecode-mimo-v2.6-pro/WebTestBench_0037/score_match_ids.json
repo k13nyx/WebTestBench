@@ -1,0 +1,284 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      null
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "1"
+    ],
+    [
+      "FT-04",
+      "1"
+    ],
+    [
+      "FT-05",
+      "1"
+    ],
+    [
+      "FT-06",
+      "1"
+    ],
+    [
+      "FT-07",
+      "2"
+    ],
+    [
+      "FT-08",
+      "2"
+    ],
+    [
+      "FT-09",
+      "3"
+    ],
+    [
+      "FT-10",
+      "4"
+    ],
+    [
+      "FT-11",
+      null
+    ],
+    [
+      "FT-12",
+      "5"
+    ],
+    [
+      "CS-01",
+      "6"
+    ],
+    [
+      "CS-02",
+      "7"
+    ],
+    [
+      "CS-03",
+      "7"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "16"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can filter animals for adoption based on species, age range, size, and compatibility (whether they are suitable for children/other pets)."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can filter pets by species."
+        },
+        {
+          "id": "FT-03",
+          "text": "User can filter pets by age range."
+        },
+        {
+          "id": "FT-04",
+          "text": "User can filter pets by size."
+        },
+        {
+          "id": "FT-05",
+          "text": "User can filter pets by \"Good with kids\"."
+        },
+        {
+          "id": "FT-06",
+          "text": "User can filter pets by \"Good with other pets\"."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can sort the list of matched pets by relevance or publication time."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can sort results by relevance."
+        },
+        {
+          "id": "FT-08",
+          "text": "User can sort results by time listed."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can click to enter the pet's details page to view multiple photos, detailed personality descriptions, and health status of the pet."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User can open a detailed profile for a pet."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can click on pets they are interested in and save them to their personal favorites list for quick retrieval later."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "User can save a pet to favorites."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can fill out and send an adoption consultation application through the form at the bottom of the pet's details page."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "User can send an adoption inquiry from a pet's page."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "When filters combine multiple criteria (such as \"small + kitten + suitable for cats\"), the search results must strictly match the tags in the backend database."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Results must match all active filter criteria simultaneously."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Before submitting the adoption consultation form, the required fields (such as name and contact information) must be validated to prevent sending empty information or incorrectly formatted requests."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Adoption inquiry form cannot be submitted with empty required fields."
+        },
+        {
+          "id": "CS-03",
+          "text": "Adoption inquiry form rejects an invalid email address."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The system must prevent users from sending multiple inquiry forms for the same pet within a short period of time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "When a user clicks the \"Save\" button, the icon should immediately change visually (e.g., from hollow to solid)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "After filtering and sorting operations are triggered, the list area should display a loading status and provide a smooth visual transition when the results are returned."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The pet photo viewer should support swiping left and right or clicking on thumbnails to switch between them."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Automatically jump to the pet information area when viewing pet details."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Pet cards and detail pages must clearly indicate the name and approximate location of the shelter to which the pet belongs."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The \"Compatibility\" label must be displayed prominently as an icon or highlighted text."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The pet information displayed on the favorites list page must be consistent with the data on the search results page and the details page."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "All pet photos shown must be related to the specific pet shown (placeholders or generic images may not be used in place of the actual pet)."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "The pet detail page content is specific to the selected pet."
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Adoptable pets from multiple shelters are listed on the main browse page."
+        },
+        {
+          "id": "FT-11",
+          "text": "User can view the favorites list."
+        },
+        {
+          "id": "CS-04",
+          "text": "A pet cannot appear in the favorites list more than once."
+        },
+        {
+          "id": "IX-01",
+          "text": "A confirmation message is shown after an inquiry is submitted."
+        },
+        {
+          "id": "CT-01",
+          "text": "Each pet card in the results list shows complete, relevant summary information."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

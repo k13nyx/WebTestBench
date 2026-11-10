@@ -1,0 +1,388 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "6"
+    ],
+    [
+      "FT-03",
+      "7"
+    ],
+    [
+      "FT-04",
+      "24"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "10"
+    ],
+    [
+      "FT-08",
+      "11"
+    ],
+    [
+      "FT-09",
+      "9"
+    ],
+    [
+      "FT-10",
+      "8"
+    ],
+    [
+      "FT-11",
+      "3"
+    ],
+    [
+      "FT-12",
+      "12"
+    ],
+    [
+      "CS-01",
+      "14"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "17"
+    ],
+    [
+      "IX-01",
+      "16"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "18"
+    ],
+    [
+      "IX-04",
+      "19"
+    ],
+    [
+      "CT-01",
+      "23"
+    ],
+    [
+      "CT-02",
+      "22"
+    ],
+    [
+      "CT-03",
+      "12"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The website provides a directory."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Tour catalog displays available immersive tours**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "After switching in the event navigation area, the webpage's viewpoint returns from the bottom to the top."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can continue browsing from where they left off."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "User can resume an in-progress tour**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can interact with simple elements in the guide (quizzes or timelines)."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can complete an interactive quiz**"
+        },
+        {
+          "id": "FT-06",
+          "text": "User can explore an interactive timeline**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can select a tour route from the catalog."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can browse different exhibition halls or areas from the catalog."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can move between areas within a tour**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can click on the exhibits to view tiered educational content."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can open exhibit information**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can save or mark the guided tour route as \"in progress\"."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "User can mark a tour as in progress**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can view their saved tour routes in the favorites list."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User can bookmark a tour**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can search for guided routes by entering keywords."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can discover tours using search**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users can filter guided tour routes by theme, historical period, culture, and difficulty level."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can filter tours by discovery criteria**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Web pages can recommend relevant routes based on user searches or filters."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Related tours are offered at the end of a tour**"
+        },
+        {
+          "id": "CT-03",
+          "text": "Related-tour suggestions are relevant**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Search results must match the search terms."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The filtering results must correspond to the filtering content."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Combined filters do not return nonmatching tours**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Interactive quizzes provide visual feedback for correct and incorrect answers."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Provide visual annotations to distinguish completed steps from incomplete steps."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Tour navigation provides visible state feedback**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The tour progress changes in real time as the user completes steps."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Progress state remains consistent after resuming**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Provide visual feedback when users add or remove items from their favorites."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Bookmark control reflects its current state**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Provides real-time visual feedback results when users use the filtering function."
+      },
+      "pred": [
+        {
+          "id": "IX-04",
+          "text": "Catalog updates after discovery actions**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "Provides real-time visual feedback results when users use the search function."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "Images corresponding to the locations displayed on the webpage"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "22",
+        "text": "The webpage provides relevant information about the exhibition to help users understand the content."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Tour content matches its cultural or historical subject**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "23",
+        "text": "The website displays both the actual location of the exhibition and completely fictional scenes."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Catalog includes real and fully imagined places**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "24",
+        "text": "The webpage displays the educational content of the exhibits (overview, in-depth explanation, related entries)."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Exhibit panel provides layered educational content**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "25",
+        "text": "The duration of the exhibition needs to be related to the level of difficulty and the number of rooms."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "26",
+        "text": "When showcasing content on the homepage, the webpage should provide necessary exhibition information (name, tour duration, difficulty level, exhibition status)."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Search and filters can be cleared**"
+        },
+        {
+          "id": "IX-02",
+          "text": "Exhibit selection opens and closes cleanly**"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

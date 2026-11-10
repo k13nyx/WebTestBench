@@ -1,0 +1,153 @@
+{
+  "matches": [],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "User-added categories can also generate random inspiration."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can edit existing categories."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can delete existing types"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The webpage provides several preset categories."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can select preset categories to generate random inspiration."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Webpage supports continuous generation of inspiration"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can collect the generated inspiration."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can view the inspiration they have saved from the collection list."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can view their browsing history of inspiration."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can revisit the generated inspiration records"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users can add categories themselves."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Webpages should not create duplicate categories with the same name."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The webpage prevents users from selecting two categories simultaneously for inspiration generation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When a user deletes their inspiration log, the saved inspiration cannot be deleted."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The user was unable to successfully add a new category without entering a name."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Provide visual feedback when a new hint is successfully generated."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Provide visual feedback when a user successfully adds a new category."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Provide visual feedback when users modify or delete categories."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The webpage highlights the category selected by the user."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "When users add or remove inspiration from their favorites, visual feedback is provided for the entries, and the information is displayed in the favorites list in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "The generated inspiration content must correspond to the selected category."
+      },
+      "pred": null
+    }
+  ],
+  "source": "checklist"
+}

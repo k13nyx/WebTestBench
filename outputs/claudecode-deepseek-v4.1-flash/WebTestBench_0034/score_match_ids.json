@@ -1,0 +1,296 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "5"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "FT-08",
+      "14"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      "3"
+    ],
+    [
+      "CS-05",
+      "2"
+    ],
+    [
+      "IX-01",
+      "11"
+    ],
+    [
+      "IX-02",
+      "12"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "IX-04",
+      "13"
+    ],
+    [
+      "CT-01",
+      "2"
+    ],
+    [
+      "CT-02",
+      "3"
+    ],
+    [
+      "CT-03",
+      "15"
+    ],
+    [
+      "CT-04",
+      "14"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The webpage should be able to support users in completing the core process of registering an account or logging in."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "New user can register an account"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The website should offer multilingual selection functionality, allowing users to choose the language they wish to learn."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can pick a language"
+        },
+        {
+          "id": "CS-05",
+          "text": "Course content is limited to the selected language"
+        },
+        {
+          "id": "CT-01",
+          "text": "Lesson content matches the selected language"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Online courses are organized and presented in tiers according to language level."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Course is organized by level"
+        },
+        {
+          "id": "CS-04",
+          "text": "Level sequence is enforced"
+        },
+        {
+          "id": "CT-02",
+          "text": "Levels are clearly labeled and ordered"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The webpage should allow users to start a new course or continue learning from an unfinished course."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can start a course"
+        },
+        {
+          "id": "FT-05",
+          "text": "User can resume an in-progress course"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Online courses should be accompanied by practice and quiz modules at the corresponding levels."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can complete a lesson and its exercises"
+        },
+        {
+          "id": "FT-07",
+          "text": "User can take a quiz"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage can record the user's learning progress through courses, exercises, and quizzes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Unregistered users cannot access the course/exercise/quiz learning sessions."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Progress data is persistently saved and will not be lost after logging in again."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users should not be able to log in or register if any required information is left blank; the page should display a corresponding message."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Registration blocked with empty required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The course learning page operates smoothly, allowing for normal progress through the learning process."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Exercises/quizzes allow you to submit your answers and receive instant feedback."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Instant feedback is shown after answering"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After submitting your answer, a simple score/accuracy rate will be automatically calculated and displayed."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Score is displayed and updates"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The learning progress summary page updates data in real time, allowing for quick viewing."
+      },
+      "pred": [
+        {
+          "id": "IX-04",
+          "text": "Progress indicator updates after activity"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The learning summary page on the website should be able to fully display the progress data of all courses."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can view a progress summary"
+        },
+        {
+          "id": "CT-04",
+          "text": "Progress summary accurately lists lessons"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The exercises/tests contain different types of questions, and the question design meets the standards."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Multiple question types are present"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Answer cannot be submitted without a selection"
+        },
+        {
+          "id": "CS-03",
+          "text": "Duplicate account is rejected"
+        },
+        {
+          "id": "IX-03",
+          "text": "Registration shows success confirmation"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

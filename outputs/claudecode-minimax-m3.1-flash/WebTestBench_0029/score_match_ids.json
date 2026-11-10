@@ -1,0 +1,363 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "4"
+    ],
+    [
+      "FT-02",
+      "6"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "1"
+    ],
+    [
+      "FT-05",
+      "7"
+    ],
+    [
+      "FT-06",
+      "7"
+    ],
+    [
+      "FT-07",
+      "8"
+    ],
+    [
+      "FT-08",
+      "9"
+    ],
+    [
+      "FT-09",
+      "10"
+    ],
+    [
+      "FT-10",
+      null
+    ],
+    [
+      "FT-11",
+      "5"
+    ],
+    [
+      "FT-12",
+      "13"
+    ],
+    [
+      "FT-13",
+      "12"
+    ],
+    [
+      "CS-01",
+      "17"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "16"
+    ],
+    [
+      "IX-01",
+      "24"
+    ],
+    [
+      "IX-02",
+      "22"
+    ],
+    [
+      "CT-01",
+      "25"
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can set the start and end dates of the books."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Set start date and finish date"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can modify their reading progress."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Update reading progress using percentage or page count"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "To modify the page number, the number must be a non-negative integer."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can create new book content."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Add a book with title, author, and genre"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The system can update reading recommendations in real time based on reading type and rating."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Recommendations based on most-read genre and highly rated books"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can fill in detailed information such as book title, author, genre, and optional notes when creating new content."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Notes field is optional on add"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can mark books as \"To be read\", \"Currently reading\", or \"Read\"."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Move a book to \"Currently Reading\""
+        },
+        {
+          "id": "FT-06",
+          "text": "Move a book to \"Completed\""
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can rate and comment on the books they have finished reading."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Give a rating and write a review for a completed book"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can view their ratings and reviews in their reading history."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Completed books appear in reading history"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can edit the content that has already been rated and reviewed."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Edit an existing rating and review in reading history"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The webpage supports filtering by type, reading status, and rating."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The webpage supports multiple filtering combinations."
+      },
+      "pred": [
+        {
+          "id": "FT-13",
+          "text": "Combine genre, status, and rating filters"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The website supports searching for books by title, author, etc."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Search the library by title or author"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When a user clicks to finish reading a book, the reading progress on the editing page should automatically change to 100%."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "When a user modifies details, the table displays the last edited content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Users are not allowed to rate or comment on books they haven't finished reading."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Rating is limited to completed books and a valid star range"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The user was unable to successfully create a new book if they did not fill in all the necessary information (title, author, genre)."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Required fields are enforced when adding a book"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Books listed as \"to be read\" can only have their basic information and reading status modified; the reading progress cannot be changed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Books marked as \"read\" can have their basic information and ratings edited, but the reading progress is forcibly set to 100% and cannot be modified."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "When a user changes their reading type, the book category changes in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "When a user marks a book as \"read,\" a rating and review window pops up in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "22",
+        "text": "When users filter and search, the filtered/search results are displayed in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Search/filter results update live and show an empty state when nothing matches"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "23",
+        "text": "The book reading progress displayed on the homepage needs to be updated in real time as the user changes the details."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "24",
+        "text": "The number of items displayed as \"To be read,\" \"Reading,\" and \"Read\" on the webpage can change based on the user's markings."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Status lists and counts update immediately on a status change"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "25",
+        "text": "The book information displayed on the webpage must correspond to the content being edited."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Book details display the correct saved data"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Delete a rating/review from reading history"
+        },
+        {
+          "id": "CS-02",
+          "text": "Progress percentage is bounded to 0–100"
+        },
+        {
+          "id": "CT-02",
+          "text": "History and recommendation entries show relevant, meaningful content"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

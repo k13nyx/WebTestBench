@@ -1,0 +1,325 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "5"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "7"
+    ],
+    [
+      "FT-04",
+      "6"
+    ],
+    [
+      "FT-05",
+      "6"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "6"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "8"
+    ],
+    [
+      "FT-10",
+      "9"
+    ],
+    [
+      "FT-11",
+      "2"
+    ],
+    [
+      "FT-12",
+      null
+    ],
+    [
+      "CS-01",
+      "11"
+    ],
+    [
+      "CS-02",
+      "14"
+    ],
+    [
+      "CS-03",
+      "15"
+    ],
+    [
+      "CS-04",
+      "4"
+    ],
+    [
+      "IX-01",
+      "19"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "20"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Sellers can create product listings that include photos, descriptions, prices, and locations."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Seller can create a listing with all required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Sellers can update the details of existing product information."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Seller can update an existing listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Sellers can update the information of the products they own."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The shopping cart cannot contain items that have been removed or are no longer available."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Removed listings do not appear in search or filters"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can register new accounts"
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can register a new account"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Buyers can filter and sort products by category, price range, condition, and distance."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can filter items by category"
+        },
+        {
+          "id": "FT-05",
+          "text": "User can filter items by price range"
+        },
+        {
+          "id": "FT-06",
+          "text": "User can filter items by condition"
+        },
+        {
+          "id": "FT-07",
+          "text": "User can filter items by distance"
+        },
+        {
+          "id": "FT-08",
+          "text": "User can sort the displayed items"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Buyers can search for products using keywords."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can search for items by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Buyers can add items to their shopping cart"
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Buyer can add an item to the cart"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Buyers can send shopping requests"
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Buyer can send a purchase request"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users cannot log in if they do not have a registered account."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Accounts that have already been registered cannot be registered again."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Registration rejects invalid or incomplete input"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Unable to log in when user account password is incorrect."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Sellers cannot update other people's product information."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users need to fill in the necessary fields to create product information."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Listing cannot be published with missing required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Prices must be non-negative numbers."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Invalid price range is prevented"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Creating duplicate accounts provides visual feedback."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Search results are displayed in real time when users use the search function."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The filtering results are displayed in real time when the user uses the filtering function."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Provide visual feedback when users add items to their cart."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Success feedback after creating or updating a listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "All product photos displayed must be related to the used or upgraded products described in the product details."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Listing images are relevant to the item"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Seller can remove an existing listing"
+        },
+        {
+          "id": "IX-02",
+          "text": "Confirmation prompt before removing a listing"
+        },
+        {
+          "id": "CT-01",
+          "text": "Listing cards display all required information"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

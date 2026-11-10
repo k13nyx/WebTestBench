@@ -1,0 +1,304 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "5"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "2"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "6"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "7"
+    ],
+    [
+      "FT-10",
+      "16"
+    ],
+    [
+      "FT-11",
+      "8"
+    ],
+    [
+      "FT-12",
+      "3"
+    ],
+    [
+      "FT-13",
+      "4"
+    ],
+    [
+      "CS-01",
+      "10"
+    ],
+    [
+      "CS-02",
+      "9"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "13"
+    ],
+    [
+      "CT-01",
+      "15"
+    ],
+    [
+      "CT-02",
+      "16"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Employers can create and publish job listings, fully entering core information such as name and description."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Employer can create a new job listing with all required details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Employers can edit and delete published jobs to manage their positions."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Employer can edit an existing job listing"
+        },
+        {
+          "id": "FT-04",
+          "text": "Employer can delete an existing job listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The employer dashboard allows you to view all the job listings you have posted."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Employer dashboard lists all of the employer's posted jobs"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The employer dashboard allows you to view a list of applications submitted by job seekers for all the positions you have posted."
+      },
+      "pred": [
+        {
+          "id": "FT-13",
+          "text": "Dashboard shows submitted applications for each listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Job seekers can browse the platform's full list of job openings."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Newly created listing appears in the job seeker browse view"
+        },
+        {
+          "id": "FT-05",
+          "text": "Job seeker can browse all available listings"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The website allows users to filter job listings by criteria such as industry, location, and job type."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Listings can be filtered by industry"
+        },
+        {
+          "id": "FT-07",
+          "text": "Listings can be filtered by location"
+        },
+        {
+          "id": "FT-08",
+          "text": "Listings can be filtered by employment type"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The website supports keyword search, which allows users to retrieve job information."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Job seeker can search listings by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Job seekers can submit an application form that includes contact information and a message on the job details page."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Job seeker can submit an application for a listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Job seekers must not submit job applications with missing or incorrect personal information."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Application form rejects submission with empty required contact fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Job postings with incomplete information cannot be published; there is a clear notification."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Job listing form rejects submission with empty required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Job seekers are not allowed to submit multiple applications for the same position using the same contact information."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Job seekers cannot post job openings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After job seekers submit their application forms, the system receives them normally without any submission failures."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Submitting an application gives visible confirmation feedback"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "After switching the filtering and search criteria, the job list updates the matching results in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The job listings clearly display key information such as job title, location, and salary range."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Job listing cards display key summary information"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The job details page fully displays all information, including the job description and required skills."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Job detail page displays full listing details"
+        },
+        {
+          "id": "CT-02",
+          "text": "Job detail page shows the required skills for the job"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Employers can view a complete list of applications, clearly distinguishing between different job seekers."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Creating a listing gives visible confirmation feedback"
+        },
+        {
+          "id": "CT-03",
+          "text": "Application pre-loaded with default job listings"
+        }
+      ]
+    }
+  ],
+  "source": "checklist"
+}

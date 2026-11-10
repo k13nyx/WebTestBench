@@ -1,0 +1,285 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      null
+    ],
+    [
+      "FT-07",
+      "6"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "3"
+    ],
+    [
+      "CS-01",
+      "11"
+    ],
+    [
+      "CS-02",
+      "3"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "8"
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "2"
+    ],
+    [
+      "CT-03",
+      "15"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Employees can create and update detailed customer records, which include fields such as collectors' contact information, interests, and historical interactions."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create a new customer record"
+        },
+        {
+          "id": "FT-02",
+          "text": "Update an existing customer record"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Employees can associate related projects (such as specific artworks) with clients and view all associated projects on the client's details page."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Attach related items (e.g., artworks) to a customer"
+        },
+        {
+          "id": "CT-02",
+          "text": "Related items shown are actual artworks with relevant details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The system supports creating and configuring custom states (such as \"Invited\", \"Attended\", \"Purchased\", \"Following Up\") for business processes (such as exhibition invitations and purchasing processes)."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Track a business-specific workflow on a customer"
+        },
+        {
+          "id": "CS-02",
+          "text": "Custom status values must come from the defined workflow statuses"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Employees can apply and update these custom states in customer records to accurately reflect the stage of business each customer is in."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Apply a custom workflow status to a customer"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Employees can filter customers based on their behavior (such as recent interaction time, number of exhibition visits), attributes (such as interest categories, collection level), or custom tags."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Filter customers by behavior or attribute"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The system can generate configurable summary reports, allowing employees to select specific market segments, timeframes, and key metrics (such as customer engagement and revenue contribution)."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "View a summary report showing engagement and revenue patterns"
+        },
+        {
+          "id": "FT-08",
+          "text": "Configure the summary report content"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Employees can add notes or logs to customer records. All added notes are arranged in chronological order and the creator is recorded."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The system provides multiple views of the customer list (such as tables and dashboards) and allows employees to sort by different columns (such as the last interaction date)."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Opening a customer from the list shows its detail view"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Employees can export customer lists or report results to a standard format (such as CSV), ensuring the exported file is complete and correctly formatted."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The system can effectively handle concurrent operations, preventing data overwriting or loss when multiple employees edit the same customer record at the same time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When an employee creates a new customer record, if key fields (such as name) are empty, the system will prevent saving and provide a clear warning."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Cannot save a customer with empty required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When employees use filters or switch market segments, the page responds quickly with no noticeable delays or lag."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "When an employee deletes a customer interaction record (such as an incorrectly entered invitation record), the system will require secondary confirmation to prevent accidental operations."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The system can automatically mark or update customer status based on preset rules (such as customers not interacting for more than a year) and prompt employees to follow up."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The data in the summary report (such as the number of customers, number of interactions, and total purchase amount) is completely consistent with the underlying customer records and transaction data, and the calculations are accurate."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Summary report data aligns with displayed customer/workflow records"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "On the customer details page, employees can view the customer's complete interaction timeline, including all exhibition invitation records, communication history, and purchase records."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Segment customers based on a saved criteria set"
+        },
+        {
+          "id": "CS-03",
+          "text": "Filters/segments with no matching customers show an empty result state"
+        },
+        {
+          "id": "CS-04",
+          "text": "Attach the same related item to a customer only once (no duplicates)"
+        },
+        {
+          "id": "CS-05",
+          "text": "Report configuration with no selectable metrics cannot be applied"
+        },
+        {
+          "id": "IX-01",
+          "text": "Success feedback after saving a customer or change"
+        },
+        {
+          "id": "CT-01",
+          "text": "Customer records display niche-relevant attributes"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

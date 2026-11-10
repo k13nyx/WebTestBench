@@ -1,0 +1,351 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "3"
+    ],
+    [
+      "FT-02",
+      "3"
+    ],
+    [
+      "FT-03",
+      "4"
+    ],
+    [
+      "FT-04",
+      "5"
+    ],
+    [
+      "FT-05",
+      "6"
+    ],
+    [
+      "FT-06",
+      "5"
+    ],
+    [
+      "FT-07",
+      "7"
+    ],
+    [
+      "FT-08",
+      "18"
+    ],
+    [
+      "FT-09",
+      "13"
+    ],
+    [
+      "FT-10",
+      "8"
+    ],
+    [
+      "FT-11",
+      "9"
+    ],
+    [
+      "FT-12",
+      "15"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "11"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "9"
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "CT-01",
+      "16"
+    ],
+    [
+      "CT-02",
+      "17"
+    ],
+    [
+      "CT-03",
+      "19"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "There should be a clear distinction between the patient's end and the doctor's end."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Patients can browse the full list of doctors."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The website allows patients to search for doctors by both specialty and symptoms."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Patient can search for doctors by specialty."
+        },
+        {
+          "id": "FT-02",
+          "text": "Patient can search for doctors using symptoms."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The website displays the doctor's profile, clinical experience, consultation fees, and allows for comparison."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Patient can compare doctor profiles."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Patients can initiate doctor consultation appointments and cancel existing appointments online."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Patient can book an available online appointment."
+        },
+        {
+          "id": "FT-06",
+          "text": "Patient can cancel an upcoming appointment online."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The appointment process integrates payment functionality, supporting online payment of consultation fees."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Patient can pay for a consultation during booking."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Patients can view their personal medical history and doctor's consultation notes."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Patient can view appointment history and visit notes."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The patient's personal center includes a follow-up section that supports the uploading of vital signs data."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Patient can upload physical sign data."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Doctors can view the progress of patient follow-up tasks and the uploaded vital signs data."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Doctor can view a patient’s task completion progress."
+        },
+        {
+          "id": "IX-03",
+          "text": "Follow-up progress is reflected to the doctor in real time."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The cancellation function has a reasonable time limit, and a clear receipt is provided after payment."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Patients cannot make appointments within the same time slot as other patients."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Patient cannot book an unavailable appointment slot."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Patients cannot submit online appointment forms with empty symptom descriptions or card number information."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Patients can mark the task as completed or incomplete in the follow-up section."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Patient can update follow-up task completion status."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Blood pressure, blood sugar, and other vital signs data can be entered, submitted, and saved normally."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Doctors can adjust follow-up plans based on patient follow-up data."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Doctor can adjust a patient’s follow-up plan."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The doctor's information is complete and without any omissions, and information such as fees and experience is clearly marked."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Doctor profiles show complete comparison data."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Medical records/notes contain core medical information and are presented in a well-organized manner."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Appointment history content is tied to the correct visit."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "After the consultation, the system will automatically send you basic follow-up instructions provided by the doctor."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Patient can view doctor-provided follow-up instructions after a session."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The follow-up section clearly displays follow-up tasks that are yet to be completed or have already been completed."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Follow-up content clearly identifies tasks and physical sign measurements."
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Search results do not include doctors unrelated to the selected specialty or symptom."
+        },
+        {
+          "id": "CS-03",
+          "text": "Appointment is not confirmed when required payment fails."
+        },
+        {
+          "id": "CS-04",
+          "text": "Invalid physical sign values cannot be submitted."
+        },
+        {
+          "id": "CS-05",
+          "text": "Cancelled appointments cannot remain in an active booked state."
+        },
+        {
+          "id": "IX-01",
+          "text": "Search controls update the doctor results after submission."
+        },
+        {
+          "id": "IX-02",
+          "text": "Booking provides clear status feedback."
+        },
+        {
+          "id": "IX-04",
+          "text": "Updated follow-up plans refresh for the patient."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

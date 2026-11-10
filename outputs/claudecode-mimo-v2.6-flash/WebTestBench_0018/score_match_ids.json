@@ -1,0 +1,323 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "4"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "3"
+    ],
+    [
+      "FT-06",
+      "15"
+    ],
+    [
+      "FT-07",
+      "15"
+    ],
+    [
+      "FT-08",
+      null
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      "1"
+    ],
+    [
+      "CS-03",
+      "11"
+    ],
+    [
+      "CS-04",
+      "11"
+    ],
+    [
+      "CS-05",
+      "1"
+    ],
+    [
+      "IX-01",
+      "6"
+    ],
+    [
+      "IX-02",
+      "16"
+    ],
+    [
+      "IX-03",
+      "6"
+    ],
+    [
+      "IX-04",
+      "1"
+    ],
+    [
+      "CT-01",
+      "2"
+    ],
+    [
+      "CT-02",
+      "13"
+    ],
+    [
+      "CT-03",
+      "13"
+    ],
+    [
+      "CT-04",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can successfully register and log in to the fitness tracking website, and their login status is maintained correctly."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can sign in with valid credentials"
+        },
+        {
+          "id": "CS-02",
+          "text": "Invalid credentials are rejected"
+        },
+        {
+          "id": "CS-05",
+          "text": "Duplicate sign-in does not occur after session established"
+        },
+        {
+          "id": "IX-04",
+          "text": "Invalid sign-in attempt keeps the user in place with visible feedback"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Logged-in users can create and save detailed workout records, including fields such as exercise type, intensity, duration, distance, and notes."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can log a workout with all detail fields"
+        },
+        {
+          "id": "CT-01",
+          "text": "Timeline entries show workout details exactly as entered"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can view a timeline of their workout records for a recent period (e.g., the last 7 days). The timeline displays key information for each workout in reverse chronological order."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Recent workouts timeline displays logged workouts"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can set simple fitness goals, such as \"run three times a week\" or \"exercise for 150 minutes a week,\" and can edit or delete these goals."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can create a frequency-based goal"
+        },
+        {
+          "id": "FT-04",
+          "text": "User can create a duration-based goal"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can click on a workout record in the timeline or summary view to view and edit the details of that workout."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "When a user completes or exceeds a goal, the system can provide positive visual feedback or prompts (such as a goal achievement badge)."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Saving a workout shows a success confirmation"
+        },
+        {
+          "id": "IX-03",
+          "text": "Creating a goal gives immediate feedback"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can view historical goals and their completion status, even if the goals have expired or have been completed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The timeline view supports filtering by exercise type, displaying only specific types of workout records."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "When users create exercise records, all required fields (such as exercise type and duration) are effectively validated. If any field is empty, submission is blocked and a message is displayed."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Workout form cannot be submitted with empty required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users are unable to submit workout records from future times."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When setting goals, users can choose the goal type (such as a number of times or a time goal) and set reasonable values. The system can verify the reasonableness of the values ​​(such as positive numbers)."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Non-numeric or non-positive duration/distance is rejected"
+        },
+        {
+          "id": "CS-04",
+          "text": "Goal cannot be saved without a valid target value"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The system can prevent the repeated submission of the same workout record (e.g., a user clicking save multiple times in a row)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The system can accurately calculate and display the user's completed workouts (such as number of sessions, total duration, and total distance) for the week and month."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Summary displays the correct current period labels"
+        },
+        {
+          "id": "CT-03",
+          "text": "Summary totals match the workouts actually logged"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When a user attempts to set an expired goal (such as selecting a past start date), the system can provide appropriate prompts."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The summary view allows users to visually compare their actual workout data for the week and month with their set goals (such as progress bars, percentages, and remaining workouts)."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Summary view compares activity against goals for the current week"
+        },
+        {
+          "id": "FT-07",
+          "text": "Summary view compares activity against goals for the current month"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "After a user modifies or deletes a workout record, the data in the timeline and summary view updates in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Newly logged workout appears immediately in the timeline"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The system can correctly handle boundary conditions, such as recording extremely long durations or distances, and the data can be stored and displayed correctly."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "In addition to showing comparisons to goals, the summary view can also provide simple statistical charts (such as weekly exercise duration trend charts)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "After a user logs out and logs back in, all data (including exercise records and goals) is correctly restored and displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can sign out"
+        },
+        {
+          "id": "CT-04",
+          "text": "Page content is fitness-focused throughout"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

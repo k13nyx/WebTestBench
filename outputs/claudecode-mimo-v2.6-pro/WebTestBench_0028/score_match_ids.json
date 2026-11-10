@@ -1,0 +1,331 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "4"
+    ],
+    [
+      "FT-03",
+      "5"
+    ],
+    [
+      "FT-04",
+      "6"
+    ],
+    [
+      "FT-05",
+      "2"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "6"
+    ],
+    [
+      "FT-08",
+      "7"
+    ],
+    [
+      "FT-09",
+      "8"
+    ],
+    [
+      "FT-10",
+      "10"
+    ],
+    [
+      "FT-11",
+      null
+    ],
+    [
+      "CS-01",
+      "14"
+    ],
+    [
+      "CS-02",
+      "19"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      "3"
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "IX-01",
+      "17"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "CT-01",
+      "10"
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create their own accounts"
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "New user can create an account with a valid email and password."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can customize tags"
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can assign a tag to a document to build a tagged collection."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The webpage allows only one user to view or manage the files."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "A user cannot view or manage another user's documents."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can log in using their created accounts."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Registered user can log in with valid credentials."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can upload new personal documents to folders or tagged collections."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can upload a personal document."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can organize, rename, and delete uploaded documents."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can create a folder and organize a document into it."
+        },
+        {
+          "id": "FT-06",
+          "text": "User can rename a document."
+        },
+        {
+          "id": "FT-07",
+          "text": "User can delete a document."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can search for documents by document name."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can search documents by name."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can search for documents using tags."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User can search documents by tag."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Web pages can encrypt document content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can view basic information about the document."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "User can open and view an uploaded document's content."
+        },
+        {
+          "id": "CT-01",
+          "text": "Document entries show accurate, vault-relevant metadata."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users can move documents across folders."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Web page constraints prevent the creation of duplicate folders."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Web page constraints prevent the creation of duplicate documents."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users cannot submit their new accounts without filling in the necessary information (email address, password)."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Sign-up form rejects duplicate email and empty required fields."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Accounts that have already been registered cannot be re-registered."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Login is restricted when logging into an account that has not been registered."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "When a user selects to delete a document, a visual confirmation prompt is displayed."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Deleting a document requires explicit confirmation."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Provide visual feedback when registering duplicate accounts"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Provide visual feedback when the login password is incorrect."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Log-in rejects invalid credentials."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "Provide visual feedback when logging into an account that has not been registered."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "Search results are displayed in real time when users search for documents."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "User can log out of the vault."
+        },
+        {
+          "id": "CS-03",
+          "text": "Vault and document pages require authentication."
+        },
+        {
+          "id": "CS-05",
+          "text": "Upload rejects invalid or empty files."
+        },
+        {
+          "id": "IX-02",
+          "text": "The interface confirms successful state changes and updates results."
+        },
+        {
+          "id": "CT-02",
+          "text": "All UI text is relevant to the secure document vault purpose."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

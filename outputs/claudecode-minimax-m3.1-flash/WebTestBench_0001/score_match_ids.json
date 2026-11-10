@@ -1,0 +1,325 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "8"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "2"
+    ],
+    [
+      "FT-06",
+      null
+    ],
+    [
+      "FT-07",
+      "10"
+    ],
+    [
+      "FT-08",
+      "10"
+    ],
+    [
+      "FT-09",
+      "10"
+    ],
+    [
+      "FT-10",
+      "10"
+    ],
+    [
+      "FT-11",
+      "3"
+    ],
+    [
+      "FT-12",
+      "16"
+    ],
+    [
+      "FT-13",
+      "15"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "2"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "13"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      "9"
+    ],
+    [
+      "CT-02",
+      "18"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Supports the creation/editing of product information for technology, home furnishings, and fitness equipment."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Owner can create a new product entry with name, category, review, price, rating, key specs, tags, and purchase link"
+        },
+        {
+          "id": "FT-02",
+          "text": "Owner can edit an existing product entry and changes are reflected everywhere"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Supports marking specific products as featured on the homepage and displaying them."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Owner can mark an item as featured and featured items appear on the homepage"
+        },
+        {
+          "id": "CS-03",
+          "text": "Only products marked as featured appear in the homepage featured section"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "It provides a product keyword search function, covering multi-dimensional information."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Visitor can search for products by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can add product tags to any existing product."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Owner can tag products and visitors can view products by tag"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can create product labels."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can edit any existing product label."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can categorize any existing product labels."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can filter products by category (such as technology products, home furnishings, fitness equipment, etc.)."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Owner can assign a product to a category (Tech Gadgets, Home Goods, Fitness) and visitors can browse by category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can browse the full product list, which displays key information, brief reviews, and purchase links for each product."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Product cards display the core identifying and pricing information"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can sort and filter products by price range or rating attributes."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Visitor can sort products by price (ascending and descending)"
+        },
+        {
+          "id": "FT-08",
+          "text": "Visitor can sort products by rating (highest and lowest)"
+        },
+        {
+          "id": "FT-09",
+          "text": "Visitor can filter products by a price range"
+        },
+        {
+          "id": "FT-10",
+          "text": "Visitor can filter products by minimum rating"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Product categories are limited to three vertical sectors: technology, home furnishings, and fitness equipment."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After a user applies filtering or sorting criteria, the product results displayed by the system must strictly match the selected criteria."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After switching sorting/filtering criteria, the product list updates the matching results in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Changing a sort or filter immediately updates the visible result set"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Clicking on a product will redirect you to its own details page without any lag."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The external retailer link button on the product details page redirects to the target page normally."
+      },
+      "pred": [
+        {
+          "id": "FT-13",
+          "text": "The detail page has a clear button linking to the external retailer"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The product details page fully displays reviews, specifications, and retailer links."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Each product has its own detail page showing the review and key specs"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Product categorization and label matching are accurate, with no mislabeling or omissions."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The core content of the same product details remains consistent across different views. The detailed view displays complete and accurate conditions and final results without any truncation or data loss."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Detail page content matches the curator's entry and the product's category, and the purchase link is identified as external/affiliate"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Owner can un-feature an item and it is removed from the homepage featured section"
+        },
+        {
+          "id": "CS-01",
+          "text": "A product cannot be saved with required fields missing"
+        },
+        {
+          "id": "CS-02",
+          "text": "Price and rating accept only valid values"
+        },
+        {
+          "id": "CS-04",
+          "text": "Filtering and searching with no matches shows an empty result state rather than an error"
+        },
+        {
+          "id": "IX-02",
+          "text": "Active browse/filter selections are visibly indicated"
+        },
+        {
+          "id": "IX-03",
+          "text": "The system confirms saves, feature toggles, and validation failures"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

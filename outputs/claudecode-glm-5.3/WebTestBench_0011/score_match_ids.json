@@ -1,0 +1,296 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "1"
+    ],
+    [
+      "FT-04",
+      "8"
+    ],
+    [
+      "FT-05",
+      "2"
+    ],
+    [
+      "FT-06",
+      "2"
+    ],
+    [
+      "FT-07",
+      "4"
+    ],
+    [
+      "FT-08",
+      "5"
+    ],
+    [
+      "FT-09",
+      "6"
+    ],
+    [
+      "FT-10",
+      "7"
+    ],
+    [
+      "CS-01",
+      "11"
+    ],
+    [
+      "CS-02",
+      "9"
+    ],
+    [
+      "CS-03",
+      "10"
+    ],
+    [
+      "CS-04",
+      "4"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "2"
+    ],
+    [
+      "IX-03",
+      "14"
+    ],
+    [
+      "IX-04",
+      "7"
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can enter income and expenses, assign them categories, items and payment methods, and mark their status (such as paid, pending payment, expected payment)."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Record a one-off income transaction"
+        },
+        {
+          "id": "FT-02",
+          "text": "Record a one-off expense transaction"
+        },
+        {
+          "id": "FT-03",
+          "text": "Record a recurring item"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can use filtering and sorting features (such as by category, time, status, and amount) to flexibly view transaction records."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Filter transactions"
+        },
+        {
+          "id": "FT-06",
+          "text": "Sort transactions"
+        },
+        {
+          "id": "IX-02",
+          "text": "Filter updates list immediately"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can search for transactions by entering a text field."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The system can correctly generate and display historical cash flow charts, and the chart data is consistent with the entered transaction records."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "View historical cash flow chart"
+        },
+        {
+          "id": "CS-04",
+          "text": "Summary totals match underlying transactions"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The system can generate a forecast view of cash balances for a future period based on the entered expected payments and recurring items."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "View future cash balance forecast"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can create custom views for specific business areas (such as marketing, operations, or specific customers) and save the combination of filter criteria and display fields for that view."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Create a custom view"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can quickly switch between different custom views, and each view can correctly display customized transaction summary information for the corresponding business area."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Switch between custom views"
+        },
+        {
+          "id": "IX-04",
+          "text": "View switching updates summary instantly"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When a user modifies the transaction status, the system can update relevant statistics, charts, and forecast data in real time to maintain consistency."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Change a transaction's status"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "When validating transaction data, the system can prevent obviously invalid inputs (such as \"paid\" records for future dates, negative income amounts, etc.) and provide clear prompts."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Invalid amount rejected"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "When creating a custom view, the same name cannot appear twice."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Duplicate custom view name rejected"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When creating a custom view, users cannot create a view if the view name, associated business domain, or filter criteria (fixed category/project/customer) are empty."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Required fields enforced on transaction form"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Transactions that have already been paid cannot be deleted; only non-core information such as notes can be modified. Modifications to the cycle or amount of frequent transactions require re-triggering the prediction calculation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Cash balance forecasts are generated based on existing data and are for reference only. They do not assume responsibility for actual financial decisions and are subject to re-forecasting if payment status changes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Detailed information is displayed when the user hovers the mouse over the chart."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Chart tooltip on hover"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Users can delete transaction information, and a confirmation pop-up will appear."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Confirmation on saving a transaction"
+        },
+        {
+          "id": "CT-01",
+          "text": "Transaction list shows all key attributes"
+        },
+        {
+          "id": "CT-02",
+          "text": "Default data is relevant to small-business finance"
+        },
+        {
+          "id": "CT-03",
+          "text": "Chart labels and legends are clear and relevant"
+        }
+      ]
+    }
+  ],
+  "source": "checklist"
+}

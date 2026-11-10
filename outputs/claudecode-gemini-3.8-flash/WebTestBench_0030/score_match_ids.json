@@ -1,0 +1,306 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "7"
+    ],
+    [
+      "FT-05",
+      "7"
+    ],
+    [
+      "FT-06",
+      "8"
+    ],
+    [
+      "FT-07",
+      "8"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "9"
+    ],
+    [
+      "FT-10",
+      "10"
+    ],
+    [
+      "FT-11",
+      "13"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The webpage supports the creation of rich text notes."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create a new rich-text note"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The webpage supports editing rich text notes."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Edit existing rich-text note content"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The webpage supports deleting rich text notes."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Delete an existing note"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can create new folders."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can categorize and organize their notes into corresponding folders or tags."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage supports searching notes by title, content, tags, and folder."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Search notes across title, content, tags, and folder"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Folders can be renamed, allowing notes to be moved between different folders."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Rename an existing folder"
+        },
+        {
+          "id": "FT-05",
+          "text": "Move a note between folders"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "It supports adding and deleting tags for notes, and the tag management function is available."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Add a tag to a note"
+        },
+        {
+          "id": "FT-07",
+          "text": "Remove a tag from a note"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "It supports filtered views, allowing you to view all notes under a specified tag and folder."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Filter notes by combined folder and tag"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The notes data are stored locally in the browser and can be loaded normally on subsequent visits."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Persist notes across browser reload"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The webpage should support free sorting of folders."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Notes data stored locally are persistently saved, preventing accidental loss without any user interaction."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Even when the internet is offline or the network is unstable, the note-editing operation is smooth and lag-free."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Offline note editing and preservation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Multi-dimensional searches can be triggered quickly, and results are refreshed and displayed in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Once a note is moved or a tag is added or deleted, the ownership relationship is updated immediately."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Rich text formatting is fully preserved, and no content is lost or misplaced during editing."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The search results accurately match the filtering criteria, with no omissions or false positives."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The filter view fully displays the target notes, and the tag/folder associations are error-free."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The folder and tag lists are clearly displayed, and the ownership of notes is clearly defined."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent empty or duplicate folder names"
+        },
+        {
+          "id": "CS-02",
+          "text": "Prevent accidental note deletion via cancellation"
+        },
+        {
+          "id": "CS-03",
+          "text": "Empty state when search or filter yields no results"
+        },
+        {
+          "id": "IX-01",
+          "text": "Visual auto-save feedback"
+        },
+        {
+          "id": "IX-02",
+          "text": "Offline status indicator"
+        },
+        {
+          "id": "IX-03",
+          "text": "Active note list item highlighting"
+        },
+        {
+          "id": "CT-01",
+          "text": "Rich-text toolbar control visibility and tooltips"
+        },
+        {
+          "id": "CT-02",
+          "text": "Note card metadata display"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

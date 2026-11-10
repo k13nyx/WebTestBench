@@ -1,0 +1,310 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "14"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "16"
+    ],
+    [
+      "FT-06",
+      "3"
+    ],
+    [
+      "FT-07",
+      "4"
+    ],
+    [
+      "FT-08",
+      "15"
+    ],
+    [
+      "FT-09",
+      "5"
+    ],
+    [
+      "FT-10",
+      "7"
+    ],
+    [
+      "FT-11",
+      "9"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "11"
+    ],
+    [
+      "CS-03",
+      "6"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      "2"
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create events with detailed information such as title, date, time, location, and category, and save them successfully."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Organizer can create a new event with core fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "When creating an event, users can add optional sections such as schedules, dress codes, and special instructions, and these elements will be correctly displayed on the event details page."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Optional sections (schedule, dress code, special instructions) can be added to an event"
+        },
+        {
+          "id": "CT-01",
+          "text": "Event page displays all details exactly as entered"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Organizers can set simple preference questions for events (such as food choices or event preferences), which guests can then answer to make their choices."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Organizer can define preference questions for an event"
+        },
+        {
+          "id": "FT-06",
+          "text": "Guest can answer preference questions during RSVP"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Guests can vote on the various venues or activity options offered for the event on the shared event page."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Guest can vote in the event poll"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Even after an invitation has been sent out, the organizer can still modify the event details, and the guest page should be updated accordingly."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Organizer can change event details after invites are sent"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Organizers can disable the voting function at any time. Once disabled, guests will not be able to submit new votes or modify existing votes."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Closed poll rejects new votes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The system can provide a guest summary view grouped by invitation option, response status, and key preferences for organizers to view."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Organizer can view a summary grouped by invitation option, response, and preferences"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When an event is cancelled or the date has passed, the system will automatically or the organizer will manually move it to a separate \"Completed Events\" archive area."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "In the \"Completed Events\" archive area, organizers can view the final list of guest responses and the final voting results for the event."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Canceled or past events are accessible in a separate area with final results"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "When organizers modify key event information, the system should provide a confirmation prompt and be able to send notifications to guests who have already responded."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Organizers can disable the guest reply function at any time. Once disabled, guests will not be able to submit new replies or modify existing replies."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Closed RSVPs reject new responses"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The voting function should ensure that each guest can only submit one selection for each voting question."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The comment section should have basic content filtering or management functions (such as preventing spamming and supporting organizers in deleting inappropriate comments)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Organizers can set multiple invitation options for events (such as \"dinner only\", \"drinks only\", \"all night\"), and guests can choose the corresponding option when replying."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Organizer can define multiple invitation options for an event"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Guests can post short messages or questions in the concise comments section on the shared event page and see comments from other guests."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Guest can post a message in the comment thread"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "When guests submit their responses, they can choose \"Yes,\" \"No,\" or \"Pending\" as their attendance status, and their selection will be correctly recorded and reflected in the organizer's summary view."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Guest can RSVP with \"Yes\", \"No\", or \"Maybe\" and pick an invitation option"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "When guests access an event page where replies are closed or the event has ended, the page should clearly display the current status (e.g., \"Replies have closed\" or \"Event has ended\")."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The activity list or dashboard should clearly distinguish the activity statuses of \"in progress,\" \"completed,\" and \"cancelled\" to facilitate browsing and management by organizers."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Event cannot be created without required fields"
+        },
+        {
+          "id": "CS-04",
+          "text": "Empty comment cannot be posted"
+        },
+        {
+          "id": "IX-01",
+          "text": "Creating an event shows a success confirmation"
+        },
+        {
+          "id": "IX-02",
+          "text": "Poll results update immediately after a guest votes"
+        },
+        {
+          "id": "IX-03",
+          "text": "Posted comment appears in the thread immediately"
+        },
+        {
+          "id": "CT-02",
+          "text": "Guest page content matches the organizer's definitions"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,269 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "7"
+    ],
+    [
+      "FT-08",
+      "8"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "14"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "CT-01",
+      "2"
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can successfully register new accounts and log in to the community forum, and their login status is maintained correctly."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User registration with valid details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Registered users can create or edit their profiles, including personal introductions and hobbies, and the information will display correctly after being saved."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Profile creation and update with bio and interests"
+        },
+        {
+          "id": "CT-01",
+          "text": "Profile details display integrity"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Logged-in users can create new discussion threads in different discussion categories, including titles and content, and successfully publish them."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Create a new discussion thread in a category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can post replies to any discussion thread, and the replies will be displayed in the thread's reply list in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Post a reply to an existing discussion thread"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can like or vote on posts or replies made by other users, and the count of likes/votes is updated in real time."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Upvote or like a post"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can use the keyword search function to find posts, and the search results accurately match the title and body content."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Search discussion threads by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can filter the post list by discussion category, displaying only posts from the selected category."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Filter discussion threads by category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The forum homepage or specific sections can display a list of the most active discussions, sorted by recent interaction frequency."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "View trending or most active discussions"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can view their entire posting and reply history."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "When browsing posts, users can view the poster's public profile information."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "After a user edits a published post or reply, the page will display an \"Edited\" mark or the last edit time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The forum supports basic rich text editing features, such as bolding, links, and lists, and renders them correctly after posting."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "When a user logs out and logs back in, their profile, posting history, and interaction status are correctly restored."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When a user attempts to post a thread with an empty title or empty body, the system will block the submission and provide a warning."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Enforce mandatory fields when creating a thread"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The system can prevent duplicate submissions of the same content (such as repeatedly and rapidly posting the same reply)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The forum homepage or specific sections can display a list of recently popular discussions, sorted by the number of likes, replies, or activity levels."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent registration with empty required fields"
+        },
+        {
+          "id": "CS-03",
+          "text": "Prevent submission of empty replies"
+        },
+        {
+          "id": "CS-04",
+          "text": "Restrict duplicate upvotes/likes per user"
+        },
+        {
+          "id": "IX-01",
+          "text": "Visual state feedback on upvote/like button"
+        },
+        {
+          "id": "IX-02",
+          "text": "Active category filter badge and dismiss interaction"
+        },
+        {
+          "id": "CT-02",
+          "text": "Thread card metadata display"
+        },
+        {
+          "id": "CT-03",
+          "text": "Zero-results feedback for keyword search"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

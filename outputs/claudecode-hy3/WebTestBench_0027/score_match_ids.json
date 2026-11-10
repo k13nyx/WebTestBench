@@ -1,0 +1,368 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "5"
+    ],
+    [
+      "FT-02",
+      "6"
+    ],
+    [
+      "FT-03",
+      "7"
+    ],
+    [
+      "FT-04",
+      "24"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "8"
+    ],
+    [
+      "FT-08",
+      "3"
+    ],
+    [
+      "FT-09",
+      "10"
+    ],
+    [
+      "FT-10",
+      "11"
+    ],
+    [
+      "FT-11",
+      "12"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "14"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "18"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      "26"
+    ],
+    [
+      "CT-02",
+      "22"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The website provides a directory."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "After switching in the event navigation area, the webpage's viewpoint returns from the bottom to the top."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can continue browsing from where they left off."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can resume a previously started tour where they left off"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can interact with simple elements in the guide (quizzes or timelines)."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can complete an interactive quiz within a tour"
+        },
+        {
+          "id": "FT-06",
+          "text": "User can interact with a timeline within a tour"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can select a tour route from the catalog."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can browse and select a tour from the catalog"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can browse different exhibition halls or areas from the catalog."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can move through different rooms or areas within a tour"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can click on the exhibits to view tiered educational content."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can click an exhibit to open its educational content"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can save or mark the guided tour route as \"in progress\"."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can mark/bookmark a tour as \"in progress\""
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can view their saved tour routes in the favorites list."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can search for guided routes by entering keywords."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User can search for tours"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users can filter guided tour routes by theme, historical period, culture, and difficulty level."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "User can filter tours by theme, historical period, culture, and difficulty"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Web pages can recommend relevant routes based on user searches or filters."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "User can view related tour suggestions at the end of a tour"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Search results must match the search terms."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The filtering results must correspond to the filtering content."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Filters only return tours matching all selected criteria"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Interactive quizzes provide visual feedback for correct and incorrect answers."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Provide visual annotations to distinguish completed steps from incomplete steps."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The tour progress changes in real time as the user completes steps."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Provide visual feedback when users add or remove items from their favorites."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "A confirmation indicator appears when a tour is marked \"in progress\""
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Provides real-time visual feedback results when users use the filtering function."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "Provides real-time visual feedback results when users use the search function."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "Images corresponding to the locations displayed on the webpage"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "22",
+        "text": "The webpage provides relevant information about the exhibition to help users understand the content."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Exhibit educational content is present and relevant to the tour theme"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "23",
+        "text": "The website displays both the actual location of the exhibition and completely fictional scenes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "24",
+        "text": "The webpage displays the educational content of the exhibits (overview, in-depth explanation, related entries)."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can access layered content (overview, deeper dive, related items)"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "25",
+        "text": "The duration of the exhibition needs to be related to the level of difficulty and the number of rooms."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "26",
+        "text": "When showcasing content on the homepage, the webpage should provide necessary exhibition information (name, tour duration, difficulty level, exhibition status)."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Catalog cards display relevant tour metadata"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Resume is only available for tours marked \"in progress\""
+        },
+        {
+          "id": "CS-03",
+          "text": "Difficulty filter accepts only defined difficulty levels"
+        },
+        {
+          "id": "IX-01",
+          "text": "Clicking an exhibit opens a visible content panel"
+        },
+        {
+          "id": "IX-03",
+          "text": "Navigating between rooms/areas visibly updates the scene"
+        },
+        {
+          "id": "CT-03",
+          "text": "Related-tour suggestions are thematically/culturally related to the completed tour"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

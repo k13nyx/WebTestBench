@@ -1,0 +1,271 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "3"
+    ],
+    [
+      "FT-03",
+      "4"
+    ],
+    [
+      "FT-04",
+      "5"
+    ],
+    [
+      "FT-05",
+      null
+    ],
+    [
+      "FT-06",
+      "7"
+    ],
+    [
+      "FT-07",
+      "7"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "6"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "10"
+    ],
+    [
+      "CT-01",
+      "3"
+    ],
+    [
+      "CT-02",
+      "8"
+    ],
+    [
+      "CT-03",
+      null
+    ],
+    [
+      "CT-04",
+      "2"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can manually enter multiple contract texts."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can add multiple contracts, each with a name and text."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can name the contract"
+      },
+      "pred": [
+        {
+          "id": "CT-04",
+          "text": "Contract names in column headers match the names entered."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The webpage can automatically recognize the terms in the contract text and categorize and group them according to preset types (payment terms, confidentiality clauses, termination clauses, etc.)."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Clauses are auto-grouped by type."
+        },
+        {
+          "id": "CT-01",
+          "text": "Clauses under each group label belong to that group's topic."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Web pages can be grouped by clause type, displaying similar clauses from different contracts side-by-side in the same view."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Contracts are shown side by side within each clause group."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can filter by terms type"
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can filter the view to one clause type."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage can automatically detect differences in the wording of similar clauses in different contracts and highlight them using color."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Differing wording is highlighted across contracts within a group."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The webpage allows users to switch between summary comparison view and full-text view with a single click for each clause group."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can switch a clause group to full-text view."
+        },
+        {
+          "id": "FT-07",
+          "text": "User can switch a clause group back to summary view, independently of other groups."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "After the user clicks on the full-text view, the webpage displays the full text content."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Full-text view matches the original contract wording."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot give two contracts the same name."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Contract cannot be added without a name."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "After the user clicks \"Submit Contract,\" there is visual feedback indicating that the contract has been successfully added."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Adding a contract updates the comparison without leaving the page."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "After the user clicks on the corresponding terms, the webpage displays the corresponding contract."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Different content is highlighted using differentiated styles (such as different font colors, underlines, and background highlights), while content without differences maintains a unified basic style."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The contract must display its actual text content when viewed or edited."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Completed contracts must be displayed in their entirety when viewed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The terms and conditions must display the correct text content."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can clear the filter to show all clause types."
+        },
+        {
+          "id": "CS-02",
+          "text": "Contract cannot be added without text."
+        },
+        {
+          "id": "CS-03",
+          "text": "Each clause belongs to exactly one clause group."
+        },
+        {
+          "id": "CS-04",
+          "text": "A missing clause type is shown as missing, not filled with another contract's clause."
+        },
+        {
+          "id": "IX-02",
+          "text": "The selected filter and active view mode are visually distinguished."
+        },
+        {
+          "id": "CT-03",
+          "text": "Summaries contain only information from their full clause."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

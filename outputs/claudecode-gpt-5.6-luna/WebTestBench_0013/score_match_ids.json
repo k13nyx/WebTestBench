@@ -1,0 +1,279 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "8"
+    ],
+    [
+      "FT-04",
+      "8"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "7"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "4"
+    ],
+    [
+      "CS-03",
+      "4"
+    ],
+    [
+      "CS-04",
+      "4"
+    ],
+    [
+      "CS-05",
+      "8"
+    ],
+    [
+      "CS-06",
+      "12"
+    ],
+    [
+      "IX-01",
+      "7"
+    ],
+    [
+      "IX-02",
+      "5"
+    ],
+    [
+      "IX-03",
+      "6"
+    ],
+    [
+      "IX-04",
+      "7"
+    ],
+    [
+      "IX-05",
+      "7"
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "6"
+    ],
+    [
+      "CT-03",
+      "14"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can set preferred work hours, fixed rest times, and dates they will not attend meetings, and can modify and update their profiles."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Maintain the personal availability profile**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can create meetings (meeting name, description, time, date)."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Create a meeting and generate date-range suggestions**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can add participants to the meeting."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Based on the organizer's availability preferences and date range, and combined with participant profiles, a suggested meeting time slot is generated."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Exclude breaks and no-meeting days from compatible suggestions**"
+        },
+        {
+          "id": "CS-03",
+          "text": "Keep every suggestion inside the selected date range**"
+        },
+        {
+          "id": "CS-04",
+          "text": "Apply all known participant preferences**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Participants can mark time slots for a single meeting as \"preferred\" or \"alternative\" to flexibly adjust their preferred time."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Adjust availability for an individual meeting**"
+        },
+        {
+          "id": "IX-02",
+          "text": "Provide clear preferred and last-resort slot states**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The system generates a list of candidate times with conflict and partial overlap warnings and scores, sorted by suitability."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Display ranked candidates with availability details**"
+        },
+        {
+          "id": "CT-02",
+          "text": "Show complete candidate information**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The organizer confirms the final meeting time; if participants change, the meeting can be reopened to select a new time."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Confirm and change the selected meeting time**"
+        },
+        {
+          "id": "IX-01",
+          "text": "Refresh suggestions after scheduling inputs change**"
+        },
+        {
+          "id": "IX-04",
+          "text": "Show confirmation state after selecting a candidate**"
+        },
+        {
+          "id": "IX-05",
+          "text": "Make the confirmed meeting reopenable**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Organizers add meeting participants by name and email address; the system automatically identifies whether participants have personal profiles."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Add a known participant**"
+        },
+        {
+          "id": "FT-04",
+          "text": "Add an unknown participant**"
+        },
+        {
+          "id": "CS-05",
+          "text": "Apply generic business hours only to participants without profiles**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot create a meeting without any content input."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can only view and edit their own free time profiles and cannot access other users' profile details."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Time slots can only be reselected when the final meeting time is not confirmed or when there are changes in participants; meetings with confirmed times must be manually unlocked before adjustments can be made."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Participants can only adjust the current meeting's time slot; they cannot modify their personal available profile (this requires accessing the profile page separately)."
+      },
+      "pred": [
+        {
+          "id": "CS-06",
+          "text": "Keep meeting overrides separate from the personal profile**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The meeting list displays the meeting status (confirmed, talent show, etc.)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users can view meeting details (meeting time, participants, suggested time)."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Show accurate participant and confirmation details**"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent invalid personal availability hours**"
+        },
+        {
+          "id": "CT-01",
+          "text": "Label availability settings clearly**"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

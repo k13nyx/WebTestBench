@@ -1,0 +1,268 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "1"
+    ],
+    [
+      "FT-04",
+      "1"
+    ],
+    [
+      "FT-05",
+      "1"
+    ],
+    [
+      "FT-06",
+      "2"
+    ],
+    [
+      "FT-07",
+      "2"
+    ],
+    [
+      "FT-08",
+      "4"
+    ],
+    [
+      "FT-09",
+      "5"
+    ],
+    [
+      "FT-10",
+      "6"
+    ],
+    [
+      "FT-11",
+      "7"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "5"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "8"
+    ],
+    [
+      "CT-01",
+      "4"
+    ],
+    [
+      "CT-02",
+      "7"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can enter income and expenses, assign them categories, items and payment methods, and mark their status (such as paid, pending payment, expected payment)."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Record a one-off income transaction"
+        },
+        {
+          "id": "FT-02",
+          "text": "Record a one-off expense transaction"
+        },
+        {
+          "id": "FT-03",
+          "text": "Record a recurring income/expense"
+        },
+        {
+          "id": "FT-04",
+          "text": "Assign category, project, and payment method to a transaction"
+        },
+        {
+          "id": "FT-05",
+          "text": "Mark transaction status as paid, pending, or expected"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can use filtering and sorting features (such as by category, time, status, and amount) to flexibly view transaction records."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Filter transactions"
+        },
+        {
+          "id": "FT-07",
+          "text": "Sort transactions"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can search for transactions by entering a text field."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The system can correctly generate and display historical cash flow charts, and the chart data is consistent with the entered transaction records."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "View historical cash flow chart"
+        },
+        {
+          "id": "CT-01",
+          "text": "Chart data matches recorded transactions"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The system can generate a forecast view of cash balances for a future period based on the entered expected payments and recurring items."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "View cash balance forecast"
+        },
+        {
+          "id": "CS-03",
+          "text": "Forecast only includes expected and recurring items"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can create custom views for specific business areas (such as marketing, operations, or specific customers) and save the combination of filter criteria and display fields for that view."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Create a custom view for a business area"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can quickly switch between different custom views, and each view can correctly display customized transaction summary information for the corresponding business area."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Switch between custom views with tailored summaries"
+        },
+        {
+          "id": "CT-02",
+          "text": "Custom view summary reflects only its defined scope"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When a user modifies the transaction status, the system can update relevant statistics, charts, and forecast data in real time to maintain consistency."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Chart and summary update when filters/views change"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "When validating transaction data, the system can prevent obviously invalid inputs (such as \"paid\" records for future dates, negative income amounts, etc.) and provide clear prompts."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "When creating a custom view, the same name cannot appear twice."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When creating a custom view, users cannot create a view if the view name, associated business domain, or filter criteria (fixed category/project/customer) are empty."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Transactions that have already been paid cannot be deleted; only non-core information such as notes can be modified. Modifications to the cycle or amount of frequent transactions require re-triggering the prediction calculation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Cash balance forecasts are generated based on existing data and are for reference only. They do not assume responsibility for actual financial decisions and are subject to re-forecasting if payment status changes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Detailed information is displayed when the user hovers the mouse over the chart."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Users can delete transaction information, and a confirmation pop-up will appear."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Cannot save a transaction with missing required fields"
+        },
+        {
+          "id": "CS-02",
+          "text": "Recurring transaction requires an interval and start date"
+        },
+        {
+          "id": "IX-01",
+          "text": "Confirmation feedback after saving a transaction"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

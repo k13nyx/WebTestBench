@@ -1,0 +1,330 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "7"
+    ],
+    [
+      "FT-03",
+      "8"
+    ],
+    [
+      "FT-04",
+      "9"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      null
+    ],
+    [
+      "FT-07",
+      null
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "11"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "IX-01",
+      "2"
+    ],
+    [
+      "IX-02",
+      "14"
+    ],
+    [
+      "IX-03",
+      "6"
+    ],
+    [
+      "IX-04",
+      "6"
+    ],
+    [
+      "IX-05",
+      "18"
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "19"
+    ],
+    [
+      "CT-03",
+      "22"
+    ],
+    [
+      "CT-04",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can browse curated collections"
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Curated collections are browsable on the homepage"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The detailed page provides an expandable timeline."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Expandable timeline expands and collapses on click"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The detailed page provides an image library."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The detailed page provides elements such as video clips."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can save stories after filtering."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can save a story to the favorites list"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Web pages can play audio and video clips."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Embedded audio clip plays and pauses"
+        },
+        {
+          "id": "IX-04",
+          "text": "Embedded video clip plays and pauses"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can open the detailed page for each theme."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can open a detailed story page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can search by keywords"
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can search stories by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can filter stories by theme."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can filter stories by topic"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can view the collection list"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Webpages cannot be bookmarked repeatedly."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "The same story cannot be saved to favorites twice"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The content displayed on the webpage must be a true story, not a fictional story."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Users can click on the timeline to display the full timeline."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users can click on a photo to zoom in and view it."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Image gallery navigates between images"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Users can click on audio or video to view specific content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Users can use the search function to display relevant content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Users can use the filtering function to display corresponding content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Visual feedback is provided when users click the favorite button."
+      },
+      "pred": [
+        {
+          "id": "IX-05",
+          "text": "Saving a story gives immediate visual feedback"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The images displayed on the webpage must correspond to the story content."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Story images are relevant to the story topic"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "The timeline content on the details page must match the story content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "The video content on the details page must be consistent with the story content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "22",
+        "text": "The story content is consistent with its theme."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Topic filter labels match story content"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can view their favorites list"
+        },
+        {
+          "id": "FT-07",
+          "text": "User can reopen a saved story from the favorites list"
+        },
+        {
+          "id": "CS-01",
+          "text": "Search with no matches returns an empty-state message"
+        },
+        {
+          "id": "CS-03",
+          "text": "Empty favorites list shows a helpful placeholder"
+        },
+        {
+          "id": "CT-01",
+          "text": "Stories cover all four cultural themes"
+        },
+        {
+          "id": "CT-04",
+          "text": "Favorites list shows correct saved story information"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

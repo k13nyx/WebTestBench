@@ -1,0 +1,104 @@
+{
+  "overall": {
+    "precision": 0.2581,
+    "recall": 0.1889,
+    "f1": 0.2002,
+    "coverage": 0.6225,
+    "count": 33
+  },
+  "overall_no_missing": {
+    "precision": 0.3549,
+    "recall": 0.2598,
+    "f1": 0.2753,
+    "coverage": 0.6762,
+    "count": 24
+  },
+  "avg_num_pred_item": 21.8182,
+  "by_category": {
+    "Presentation": {
+      "precision": 0.625,
+      "recall": 0.3833,
+      "f1": 0.4583,
+      "coverage": 0.7051,
+      "count": 2
+    },
+    "Search": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "coverage": 0.7173,
+      "count": 2
+    },
+    "Tool": {
+      "precision": 0.25,
+      "recall": 0.1667,
+      "f1": 0.1984,
+      "coverage": 0.6325,
+      "count": 4
+    },
+    "Commerce": {
+      "precision": 0.2,
+      "recall": 0.075,
+      "f1": 0.1067,
+      "coverage": 0.6359,
+      "count": 5
+    },
+    "Data Management": {
+      "precision": 0.2208,
+      "recall": 0.2812,
+      "f1": 0.239,
+      "coverage": 0.6446,
+      "count": 8
+    },
+    "Workflow": {
+      "precision": 0.3333,
+      "recall": 0.1799,
+      "f1": 0.2075,
+      "coverage": 0.6247,
+      "count": 7
+    },
+    "User-Generated Content": {
+      "precision": 0.2333,
+      "recall": 0.1833,
+      "f1": 0.2,
+      "coverage": 0.4919,
+      "count": 5
+    }
+  },
+  "by_class": {
+    "functionality": {
+      "precision": 0.3287,
+      "recall": 0.2183,
+      "f1": 0.2332,
+      "coverage": 0.7953,
+      "count": 289
+    },
+    "constraint": {
+      "precision": 0.1736,
+      "recall": 0.1528,
+      "f1": 0.1319,
+      "coverage": 0.4139,
+      "count": 132
+    },
+    "interaction": {
+      "precision": 0.325,
+      "recall": 0.2667,
+      "f1": 0.275,
+      "coverage": 0.4901,
+      "count": 104
+    },
+    "content": {
+      "precision": 0.0357,
+      "recall": 0.0714,
+      "f1": 0.0476,
+      "coverage": 0.5753,
+      "count": 87
+    }
+  },
+  "counts": {
+    "total": 50,
+    "scored": 33,
+    "missing_result": 9,
+    "scored_no_missing": 24
+  }
+}

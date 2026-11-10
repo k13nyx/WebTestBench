@@ -1,0 +1,309 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "2"
+    ],
+    [
+      "FT-02",
+      "3"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "2"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "6"
+    ],
+    [
+      "FT-10",
+      "7"
+    ],
+    [
+      "FT-11",
+      "8"
+    ],
+    [
+      "FT-12",
+      "8"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "17"
+    ],
+    [
+      "CS-03",
+      "11"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "14"
+    ],
+    [
+      "IX-03",
+      "13"
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create blank resumes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can select preset templates to create professional resumes."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can create a new resume from a pre-designed template"
+        },
+        {
+          "id": "FT-05",
+          "text": "User can switch the resume to a different template style"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can enter and edit personal information (contact information, work experience, and other core items)."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can enter and save contact details"
+        },
+        {
+          "id": "FT-03",
+          "text": "User can add entries for work experience, education, and skills"
+        },
+        {
+          "id": "FT-04",
+          "text": "User can edit an existing entry"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Supports customizable resume layout (chapter order and title modification)."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can customize layout options (section order and headings)"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "It provides a resume preview function, allowing users to see the edited result."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can preview the resume"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Supports copying and renaming existing resume versions."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can rename a saved resume version"
+        },
+        {
+          "id": "FT-09",
+          "text": "User can duplicate a saved resume version"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "It can save multiple resume versions to suit different job search scenarios."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "User can save multiple variations for different applications"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Supports filtering and searching saved resumes by title/creation date."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "User can search saved resumes by title"
+        },
+        {
+          "id": "FT-12",
+          "text": "User can filter/sort saved resumes by date created"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "When adding past work or education experience, the time period must be a valid time frame and there should be no conflicts."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "When adding past work or education experience, you must use the correct time format; otherwise, you will not be able to add it."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The saved resume version is persistently stored and will not be lost upon re-access."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Customization state persists across sessions"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The preview function synchronizes edited content in real time, with no delay or display errors."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The changes to chapter order and titles take effect immediately, and the operation is smooth."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Reorder control responds immediately to user action"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users can save their resumes and provide feedback after successful saving."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Success feedback after save, duplicate, and rename"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The resume template is displayed in its entirety, with no layout issues."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The entered personal information was completely retained, with no fields missing."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Resume information for multiple versions is stored independently, and there is no content sharing between versions."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Duplicate is independent of the original"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The resume title should remain consistent across multiple pages."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Cannot save a resume with empty required fields"
+        },
+        {
+          "id": "IX-01",
+          "text": "Template selection gives immediate visual feedback"
+        },
+        {
+          "id": "CT-01",
+          "text": "Template gallery shows multiple relevant professional templates"
+        },
+        {
+          "id": "CT-02",
+          "text": "Default saved resumes display complete, accurate metadata"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

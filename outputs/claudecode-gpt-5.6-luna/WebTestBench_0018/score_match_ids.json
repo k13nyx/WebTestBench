@@ -1,0 +1,291 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "4"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "3"
+    ],
+    [
+      "FT-06",
+      "15"
+    ],
+    [
+      "FT-07",
+      "19"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "11"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "CS-05",
+      "13"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "16"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      "3"
+    ],
+    [
+      "CT-02",
+      "15"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can successfully register and log in to the fitness tracking website, and their login status is maintained correctly."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can sign in with a valid pre-existing account"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Logged-in users can create and save detailed workout records, including fields such as exercise type, intensity, duration, distance, and notes."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "User can log a complete workout"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can view a timeline of their workout records for a recent period (e.g., the last 7 days). The timeline displays key information for each workout in reverse chronological order."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can view recent workouts in a timeline"
+        },
+        {
+          "id": "CT-01",
+          "text": "Workout timeline presents complete and relevant workout information"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can set simple fitness goals, such as \"run three times a week\" or \"exercise for 150 minutes a week,\" and can edit or delete these goals."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can set a workout-frequency goal"
+        },
+        {
+          "id": "FT-04",
+          "text": "User can set a weekly-duration goal"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can click on a workout record in the timeline or summary view to view and edit the details of that workout."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "When a user completes or exceeds a goal, the system can provide positive visual feedback or prompts (such as a goal achievement badge)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can view historical goals and their completion status, even if the goals have expired or have been completed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The timeline view supports filtering by exercise type, displaying only specific types of workout records."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "When users create exercise records, all required fields (such as exercise type and duration) are effectively validated. If any field is empty, submission is blocked and a message is displayed."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Required workout fields prevent incomplete submissions"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users are unable to submit workout records from future times."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When setting goals, users can choose the goal type (such as a number of times or a time goal) and set reasonable values. The system can verify the reasonableness of the values ​​(such as positive numbers)."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Goal targets cannot be saved without a valid target"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The system can prevent the repeated submission of the same workout record (e.g., a user clicking save multiple times in a row)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The system can accurately calculate and display the user's completed workouts (such as number of sessions, total duration, and total distance) for the week and month."
+      },
+      "pred": [
+        {
+          "id": "CS-05",
+          "text": "Summary calculations use only workouts in the selected period"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When a user attempts to set an expired goal (such as selecting a past start date), the system can provide appropriate prompts."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The summary view allows users to visually compare their actual workout data for the week and month with their set goals (such as progress bars, percentages, and remaining workouts)."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can view activity compared with goals"
+        },
+        {
+          "id": "CT-02",
+          "text": "Goal summary uses clear labels and accurate comparison values"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "After a user modifies or deletes a workout record, the data in the timeline and summary view updates in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Goal save updates the goals and summary views"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The system can correctly handle boundary conditions, such as recording extremely long durations or distances, and the data can be stored and displayed correctly."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "In addition to showing comparisons to goals, the summary view can also provide simple statistical charts (such as weekly exercise duration trend charts)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "After a user logs out and logs back in, all data (including exercise records and goals) is correctly restored and displayed."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Logged workout data is retained when revisiting the dashboard"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Workout numeric fields accept only valid numeric values"
+        },
+        {
+          "id": "CS-04",
+          "text": "Invalid sign-in credentials do not authenticate the user"
+        },
+        {
+          "id": "IX-01",
+          "text": "Workout save provides visible completion feedback"
+        },
+        {
+          "id": "IX-03",
+          "text": "Summary period controls update displayed data"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

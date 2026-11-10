@@ -1,0 +1,326 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "6"
+    ],
+    [
+      "FT-05",
+      "7"
+    ],
+    [
+      "FT-06",
+      "7"
+    ],
+    [
+      "FT-07",
+      "8"
+    ],
+    [
+      "FT-08",
+      "18"
+    ],
+    [
+      "FT-09",
+      "9"
+    ],
+    [
+      "FT-10",
+      "4"
+    ],
+    [
+      "CS-01",
+      "12"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "15"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "17"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      "19"
+    ],
+    [
+      "CT-02",
+      "18"
+    ],
+    [
+      "CT-03",
+      "4"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Organizers can create events and enter core information such as title, category, and date."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Organizer can create a new event listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The webpage supports adding ticketing information such as event ticket type, price, and available quantity."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Organizer can add ticket types with price and quantity to an event"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Organizers can edit/update created events and their corresponding ticketing information."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Organizer can update an existing event"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Organizers can view the ticket booking list for all events (basic information)."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Organizer can view a list of ticket reservations"
+        },
+        {
+          "id": "CT-03",
+          "text": "Reservation list entries show relevant reservation data"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Organizers can browse the complete list of events."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Visitors can browse a list of all upcoming events on the platform."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Visitor can browse all upcoming events"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Visitors can filter their target events by event category and date."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Visitor can filter events by category"
+        },
+        {
+          "id": "FT-06",
+          "text": "Visitor can filter events by date"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The webpage supports keyword search, allowing users to retrieve event-related information."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Visitor can search events by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can reserve tickets by filling out a form."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Visitor can select ticket quantities and complete checkout"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can add multiple tickets (different prices/quantities) to an order."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "You cannot select past dates and times when creating an event."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Users are unable to submit reservation forms that are missing required or do not meet the specifications."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Event creation requires mandatory fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Visitors cannot view events that have already been held."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Only the organizer's account can edit the event/view the booking list; permissions are clearly defined."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "There is a limited number of tickets available for sale, and a clear notification will be given if you book more than the limit."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Reserved ticket quantity cannot exceed available quantity"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The system correctly displays the number of tickets and their prices when a user adds multiple tickets."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "After switching filter/search criteria, the activity list refreshes the matching results in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Filters and search update the event list in response to input"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The event details page displays all ticketing information and the complete event details."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Visitor can view an event detail page"
+        },
+        {
+          "id": "CT-02",
+          "text": "Ticket types show price and quantity on the detail page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The information on the event details page must be completely consistent with the information displayed on the homepage."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Event cards display accurate core details"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Category is restricted to the allowed values"
+        },
+        {
+          "id": "CS-04",
+          "text": "Ticket quantity must be a positive number"
+        },
+        {
+          "id": "CS-05",
+          "text": "Checkout form requires buyer contact details"
+        },
+        {
+          "id": "IX-01",
+          "text": "Successful reservation shows a confirmation"
+        },
+        {
+          "id": "IX-03",
+          "text": "Available ticket quantity decreases after a reservation"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

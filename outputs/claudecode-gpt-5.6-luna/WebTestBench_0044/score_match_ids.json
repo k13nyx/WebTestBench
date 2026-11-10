@@ -1,0 +1,135 @@
+{
+  "matches": [
+    [
+      "CT-02",
+      "17"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can add new job application entries, including company name, job title, and date."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can edit existing job application entries to update company name, job title, date, status, or notes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can delete job application entries from the list."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can set or update the status of each application, with options including: applied, interviewed, or accepted."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can add or edit notes for each job application."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can view a list of all job applications and their details (company, position, date, status)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "New job application entries cannot be added if the required fields (company name, job title, and date) are not provided."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Date fields must only accept valid date formats and reject invalid date inputs."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The status field can only accept predefined values: applied, interviewed, or hired."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "If required fields are cleared or set to empty, edits to application entries cannot be saved."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "After successfully adding a new job application, a confirmation message or visual feedback will be displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After successfully editing a job application, a confirmation message or visual feedback will be displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After successfully deleting a job application, a confirmation message or visual feedback will be displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Provide a clear mechanism (button, icon, or menu) to trigger edit and delete operations for each application entry."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "When attempting to submit a form with missing or invalid required fields, a validation error message is displayed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "All displayed job application data (company, position, date, status, remarks) must accurately reflect the information entered by the user."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The status label displayed in the list must exactly match one of the three allowed values: applied, interviewed, or offered."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": null
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

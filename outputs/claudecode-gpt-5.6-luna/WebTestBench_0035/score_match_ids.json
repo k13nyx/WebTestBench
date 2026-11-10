@@ -1,0 +1,272 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "7"
+    ],
+    [
+      "FT-08",
+      "11"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "14"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "CT-01",
+      "13"
+    ],
+    [
+      "CT-02",
+      "15"
+    ],
+    [
+      "CT-03",
+      "14"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The website should allow businesses to create virtual booths for their companies on the website."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Company can save a virtual booth with its basic company information."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "When setting up a virtual booth, businesses should be able to add or edit their company logo and display it on the booth page."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Company can add and display a logo."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Enterprise users can add and modify brief company introduction text."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Company can add and display a short description."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Enterprises can maintain a list of products/services (add, delete, edit)."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Company can add multiple products or services."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Enterprises can upload images/videos and embed them into the booth page."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Company can add and display booth media."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can browse all booths."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Attendee can browse the booth directory."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can click on the booth to enter the details page and learn more."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Attendee can open a booth from the directory."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When businesses upload booth information, there are basic format and size restrictions for uploaded images/videos, and clear prompts are provided."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot send messages to booths that lack required information."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "There is a basic length limit for text-based questions, and duplicate submissions are not allowed."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Attendees can submit text questions on the booth page, and the messages will be successfully sent."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Attendee can send a text message to a booth."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "It allows for smooth switching between different category booth tabs, and the list refreshes in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The booth page fully displays the logo, company introduction, product/service list, and video/image materials."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Each booth displays complete company information when configured."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Booth information (such as company name, logo, company introduction, products and services, etc.) remains consistent across different pages."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Saved booth information remains consistent after navigation."
+        },
+        {
+          "id": "CT-03",
+          "text": "Booth directory and detail content identify the same company."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The content displayed on the webpage needs to match the type of content."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Booth media is relevant to the booth’s company."
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Empty booth messages cannot be submitted."
+        },
+        {
+          "id": "CS-02",
+          "text": "A message is addressed to the booth currently being viewed."
+        },
+        {
+          "id": "IX-01",
+          "text": "Booth setup provides clear save feedback."
+        },
+        {
+          "id": "IX-02",
+          "text": "Booth media controls respond correctly."
+        },
+        {
+          "id": "IX-03",
+          "text": "Message submission provides clear completion feedback."
+        },
+        {
+          "id": "IX-04",
+          "text": "Booth directory selection provides clear navigation."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

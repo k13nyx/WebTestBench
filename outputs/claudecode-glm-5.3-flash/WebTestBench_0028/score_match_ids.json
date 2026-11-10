@@ -1,0 +1,351 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "4"
+    ],
+    [
+      "FT-03",
+      null
+    ],
+    [
+      "FT-04",
+      "5"
+    ],
+    [
+      "FT-05",
+      null
+    ],
+    [
+      "FT-06",
+      "11"
+    ],
+    [
+      "FT-07",
+      "2"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "6"
+    ],
+    [
+      "FT-10",
+      "7"
+    ],
+    [
+      "FT-11",
+      "8"
+    ],
+    [
+      "FT-12",
+      "10"
+    ],
+    [
+      "CS-01",
+      "14"
+    ],
+    [
+      "CS-02",
+      "19"
+    ],
+    [
+      "CS-03",
+      "3"
+    ],
+    [
+      "CS-04",
+      "12"
+    ],
+    [
+      "CS-05",
+      "3"
+    ],
+    [
+      "IX-01",
+      "17"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "21"
+    ],
+    [
+      "CT-01",
+      "10"
+    ],
+    [
+      "CT-02",
+      "9"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create their own accounts"
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create a new account"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can customize tags"
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Add a tag to a document"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The webpage allows only one user to view or manage the files."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Unauthenticated users cannot access the vault"
+        },
+        {
+          "id": "CS-05",
+          "text": "User data is isolated between accounts"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can log in using their created accounts."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Log in with valid credentials"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can upload new personal documents to folders or tagged collections."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Upload a document"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can organize, rename, and delete uploaded documents."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Rename a document"
+        },
+        {
+          "id": "FT-09",
+          "text": "Delete a document"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can search for documents by document name."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Search documents by name"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can search for documents using tags."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Search documents by tag"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Web pages can encrypt document content."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Encryption status is visible and truthful"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can view basic information about the document."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Download/view a stored document"
+        },
+        {
+          "id": "CT-01",
+          "text": "Document list shows meaningful details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users can move documents across folders."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Move a document into a folder"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Web page constraints prevent the creation of duplicate folders."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Duplicate folder name is rejected"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Web page constraints prevent the creation of duplicate documents."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users cannot submit their new accounts without filling in the necessary information (email address, password)."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Cannot create account with missing/invalid fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Accounts that have already been registered cannot be re-registered."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Login is restricted when logging into an account that has not been registered."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "When a user selects to delete a document, a visual confirmation prompt is displayed."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Deletion requires confirmation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Provide visual feedback when registering duplicate accounts"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Provide visual feedback when the login password is incorrect."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Cannot log in with wrong password"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "Provide visual feedback when logging into an account that has not been registered."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "Search results are displayed in real time when users search for documents."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Search results update in response to the query"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Log out"
+        },
+        {
+          "id": "FT-05",
+          "text": "Create a folder"
+        },
+        {
+          "id": "IX-02",
+          "text": "Upload progress/error feedback"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,30 @@
+{
+  "overall": null,
+  "overall_no_missing": null,
+  "avg_num_pred_item": null,
+  "by_category": {},
+  "by_class": {
+    "functionality": {
+      "count": 0,
+      "coverage": 0.0
+    },
+    "constraint": {
+      "count": 0,
+      "coverage": 0.0
+    },
+    "interaction": {
+      "count": 0,
+      "coverage": 0.0
+    },
+    "content": {
+      "count": 0,
+      "coverage": 0.0
+    }
+  },
+  "counts": {
+    "total": 50,
+    "scored": 0,
+    "missing_result": 0,
+    "scored_no_missing": 0
+  }
+}

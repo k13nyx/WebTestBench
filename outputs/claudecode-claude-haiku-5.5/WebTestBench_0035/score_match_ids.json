@@ -1,0 +1,288 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "6"
+    ],
+    [
+      "FT-02",
+      "7"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "11"
+    ],
+    [
+      "CS-01",
+      "10"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "8"
+    ],
+    [
+      "CS-04",
+      "8"
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "IX-01",
+      "11"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "13"
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "CT-01",
+      "13"
+    ],
+    [
+      "CT-02",
+      "14"
+    ],
+    [
+      "CT-03",
+      null
+    ],
+    [
+      "CT-04",
+      "15"
+    ],
+    [
+      "CT-05",
+      "15"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The website should allow businesses to create virtual booths for their companies on the website."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "When setting up a virtual booth, businesses should be able to add or edit their company logo and display it on the booth page."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Booth owner can change the booth logo."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Enterprise users can add and modify brief company introduction text."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Booth owner can edit the description and products/services list."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Enterprises can maintain a list of products/services (add, delete, edit)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Enterprises can upload images/videos and embed them into the booth page."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Booth owner can add images and videos to the booth."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can browse all booths."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Attendee can view all booths on the booth listing page."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can click on the booth to enter the details page and learn more."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Attendee can open a booth to read its details."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When businesses upload booth information, there are basic format and size restrictions for uploaded images/videos, and clear prompts are provided."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Logo upload rejects non-image files."
+        },
+        {
+          "id": "CS-04",
+          "text": "Media upload rejects unsupported file types."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot send messages to booths that lack required information."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "There is a basic length limit for text-based questions, and duplicate submissions are not allowed."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Empty messages cannot be sent."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Attendees can submit text questions on the booth page, and the messages will be successfully sent."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Attendee can send a text message to a booth, and the owner receives it."
+        },
+        {
+          "id": "IX-01",
+          "text": "Sending a message gives confirmation and clears the field."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "It allows for smooth switching between different category booth tabs, and the list refreshes in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The booth page fully displays the logo, company introduction, product/service list, and video/image materials."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Media items open and play correctly."
+        },
+        {
+          "id": "CT-01",
+          "text": "All default booth logos and media load."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Booth information (such as company name, logo, company introduction, products and services, etc.) remains consistent across different pages."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Each booth appears once in the listing with matching details."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The content displayed on the webpage needs to match the type of content."
+      },
+      "pred": [
+        {
+          "id": "CT-04",
+          "text": "Booth media is relevant to the company."
+        },
+        {
+          "id": "CT-05",
+          "text": "Booth descriptions are relevant to a trade show exhibitor."
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "A company cannot edit another company's booth."
+        },
+        {
+          "id": "CS-05",
+          "text": "Invalid booth URLs show an error page."
+        },
+        {
+          "id": "IX-02",
+          "text": "Booth cards respond to hovering."
+        },
+        {
+          "id": "IX-04",
+          "text": "Saving booth edits gives confirmation."
+        },
+        {
+          "id": "CT-03",
+          "text": "Booth pages contain no placeholder or test text."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

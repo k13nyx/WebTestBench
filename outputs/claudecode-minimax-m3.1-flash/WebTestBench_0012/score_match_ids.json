@@ -1,0 +1,363 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "5"
+    ],
+    [
+      "FT-07",
+      "4"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "6"
+    ],
+    [
+      "FT-10",
+      "6"
+    ],
+    [
+      "FT-11",
+      "7"
+    ],
+    [
+      "FT-12",
+      "7"
+    ],
+    [
+      "FT-13",
+      "7"
+    ],
+    [
+      "FT-14",
+      "8"
+    ],
+    [
+      "FT-15",
+      "8"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "CS-06",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create accounts (username, subject, current level, etc.)."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Student can create an account with a valid name, email, and password"
+        },
+        {
+          "id": "FT-02",
+          "text": "Student can set up a profile with subjects, current level, and preferred study times"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can search for study groups"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can join or create study groups (name, description, topic)."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can create a study group with a topic and description"
+        },
+        {
+          "id": "FT-04",
+          "text": "User can join an existing group"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can comment and start comments in the group discussion area."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Member can post a question and another member can reply in the discussion area"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can publish notes, outlines, and reading summaries for team sharing."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Member can create a labeled section in the group's shared space"
+        },
+        {
+          "id": "FT-06",
+          "text": "Member can add content (note, outline, or reading summary) to a labeled section"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can create group study meetings (title, description, date, time), and a selector will show which members have time."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Member can schedule an upcoming group study session using the time selector"
+        },
+        {
+          "id": "FT-09",
+          "text": "Member can mark themselves available for a scheduled session and availability is visible to the group"
+        },
+        {
+          "id": "FT-10",
+          "text": "Member can RSVP to a scheduled session and attendance is visible to the group"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can invite mentors to join their study groups."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "User can mark their profile as a mentor"
+        },
+        {
+          "id": "FT-12",
+          "text": "Group member can invite a mentor to join the group"
+        },
+        {
+          "id": "FT-13",
+          "text": "Invited mentor joins the group with a distinct mentor role"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can pin important posts."
+      },
+      "pred": [
+        {
+          "id": "FT-14",
+          "text": "Mentor can highlight a recommended resource in the group"
+        },
+        {
+          "id": "FT-15",
+          "text": "Mentor can pin an important post in the group's space"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot submit information with required fields (name, description, topic) empty when creating a study group."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Signup is rejected when required fields are missing or the email/password is invalid"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users cannot submit shared notes with required fields (title, category, content) empty."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users cannot submit information for creating a learning meeting if the required fields (title, description, date, start and end time) are empty."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Users cannot post comments without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Users cannot perform a search without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users cannot [enter] without any input."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "After the user selects a category in the filter, the page displays immediate feedback."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "All group member information is displayed accurately and up-to-date."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "After joining a group, users can see group notes, discussions, member information, etc."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Duplicate email cannot create a second account"
+        },
+        {
+          "id": "CS-03",
+          "text": "A user must select subjects, a level, and at least one preferred study time before the profile is saved"
+        },
+        {
+          "id": "CS-04",
+          "text": "Sessions cannot be scheduled in the past"
+        },
+        {
+          "id": "CS-05",
+          "text": "A user cannot RSVP to or mark availability for a session in a group they do not belong to"
+        },
+        {
+          "id": "CS-06",
+          "text": "Non-mentor members cannot pin posts or highlight recommended resources"
+        },
+        {
+          "id": "IX-01",
+          "text": "Creating a group, adding a section, and posting show a success confirmation"
+        },
+        {
+          "id": "IX-02",
+          "text": "Availability and RSVP states update immediately for the acting user"
+        },
+        {
+          "id": "IX-03",
+          "text": "Switching between Shared Space and Discussion tabs preserves and shows the group's content"
+        },
+        {
+          "id": "IX-04",
+          "text": "Empty states prompt the user to act when a group has no sections, posts, or sessions"
+        },
+        {
+          "id": "CT-01",
+          "text": "Group and profile content is directly relevant to studying and the chosen topic"
+        },
+        {
+          "id": "CT-02",
+          "text": "Session entries display complete and correct details"
+        },
+        {
+          "id": "CT-03",
+          "text": "Mentor status, role, pins, and recommended resources are labeled in clear, consistent text"
+        }
+      ]
+    }
+  ],
+  "source": "checklist"
+}

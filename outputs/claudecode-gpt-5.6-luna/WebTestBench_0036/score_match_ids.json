@@ -1,0 +1,327 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "4"
+    ],
+    [
+      "FT-03",
+      "5"
+    ],
+    [
+      "FT-04",
+      "8"
+    ],
+    [
+      "FT-05",
+      null
+    ],
+    [
+      "FT-06",
+      "2"
+    ],
+    [
+      "FT-07",
+      null
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "9"
+    ],
+    [
+      "FT-10",
+      "10"
+    ],
+    [
+      "FT-11",
+      null
+    ],
+    [
+      "CS-01",
+      "11"
+    ],
+    [
+      "CS-02",
+      "13"
+    ],
+    [
+      "CS-03",
+      "12"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "16"
+    ],
+    [
+      "IX-02",
+      "7"
+    ],
+    [
+      "IX-03",
+      "15"
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The website provides a login function."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can sign in to the meditation application.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The website offers interactive timed practice."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can start an activity session.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The system can automatically record practice content over a period of time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can view recommended meditation, breathing, and relaxation content."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Dashboard displays recommended meditation activities.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can filter activities by duration."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can filter activities by duration.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The system can automatically track the number of practice sessions."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can view completed-session history or progress over time.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The system displays the practice steps and progress."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Step-by-step guidance advances during the session.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can filter activities according to their practice goals."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can filter activities by goal.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can mark practice content as favorites."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User can save an activity as a favorite.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can view their favorite content in their personal list."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "User can access the personal favorites list.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users cannot perform activities such as practice and tagging others when they are not logged in."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Personal data and session tracking require authentication.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Users cannot save the same task multiple times."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "An activity cannot appear more than once in the favorites list.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "If a user does not complete a full exercise, that exercise will not be recorded in the number of practice sessions."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Only completed sessions increase the completion count.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Visual feedback is provided after the user clicks the \"like\" tag."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The filtering results can be displayed in real time when users filter by type."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Applying filters updates the dashboard without showing stale results.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The exercise displays real-time progress as time passes."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Session timer and progress indicator update during an active session.**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The practice duration needs to match the marked duration."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The content of the exercises needs to match the title content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The content displayed on the webpage needs to match the type of content."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can combine duration and goal filters.**"
+        },
+        {
+          "id": "FT-07",
+          "text": "User can complete a timed session.**"
+        },
+        {
+          "id": "FT-11",
+          "text": "User can remove an activity from favorites.**"
+        },
+        {
+          "id": "CS-04",
+          "text": "Clearing activity filters restores the unfiltered activity set.**"
+        },
+        {
+          "id": "IX-04",
+          "text": "Session completion provides clear completion feedback.**"
+        },
+        {
+          "id": "CT-01",
+          "text": "Each activity identifies its type, duration, and goal.**"
+        },
+        {
+          "id": "CT-02",
+          "text": "Session guidance is relevant to meditation, breathing, or relaxation.**"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,316 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      null
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "1"
+    ],
+    [
+      "FT-04",
+      "1"
+    ],
+    [
+      "FT-05",
+      null
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "2"
+    ],
+    [
+      "FT-08",
+      "2"
+    ],
+    [
+      "FT-09",
+      "12"
+    ],
+    [
+      "FT-10",
+      "3"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "10"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      "11"
+    ],
+    [
+      "CS-05",
+      "9"
+    ],
+    [
+      "IX-01",
+      "18"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "16"
+    ],
+    [
+      "IX-04",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create posts by category or keyword (security alerts, lost and found, community events)."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Resident can create a categorized safety post**"
+        },
+        {
+          "id": "FT-03",
+          "text": "Resident can create a lost-and-found post**"
+        },
+        {
+          "id": "FT-04",
+          "text": "Resident can create a community event post**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can mark important alerts as resolved or no longer relevant."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "User can mark an important alert as resolved**"
+        },
+        {
+          "id": "FT-08",
+          "text": "User can mark an alert as no longer relevant**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can search by text field."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "User can search alerts by keyword**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can enter text to comment."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can comment on a post**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can delete published comments."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can delete published posts."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can view notification information (comments, shares)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can filter the latest posts by time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "After a user applies filtering or sorting criteria, the product results displayed by the system must strictly match the selected criteria."
+      },
+      "pred": [
+        {
+          "id": "CS-05",
+          "text": "Feed filters do not show posts from other categories**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users cannot create community posts without any content input."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Posts cannot be submitted without required content**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users cannot post comments without entering any content."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Empty comments cannot be submitted**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When users filter by category or keywords (security alerts, lost and found, community activities), the page content must be consistent with the filter terms."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User can filter the feed by category**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Only registered residents can post and comment on posts; alert status can only be modified by the poster and administrators, ordinary users do not have the authority to change it."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The post view provides visual differentiation between pages for easy navigation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Click the \"Comment\" box below the post to enter your comment and submit it. Your comment will be added to the list in real time. You can also reply to comments to create a tiered interaction."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The poster or administrator clicks the status button on the alert post, selects \"Resolved\" or \"No Longer Relevant,\" and after submission, the post is marked with the corresponding status and displayed in grayscale."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Post status control updates after resolution**"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Click the \"Expand Comments\" button to display all comments for this post on the page."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Users can filter posts by category or keywords (security alerts, lost and found, community events), and the page provides timely feedback."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Category filter updates the feed state**"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Resident can sign up for an account**"
+        },
+        {
+          "id": "FT-05",
+          "text": "User can browse recent alerts**"
+        },
+        {
+          "id": "CS-01",
+          "text": "Required sign-up fields prevent incomplete registration**"
+        },
+        {
+          "id": "CS-03",
+          "text": "Posts cannot be submitted without a category**"
+        },
+        {
+          "id": "IX-02",
+          "text": "Search provides a clear no-results state**"
+        },
+        {
+          "id": "IX-04",
+          "text": "Successful submissions provide user feedback**"
+        },
+        {
+          "id": "CT-01",
+          "text": "Category labels use the required neighborhood-watch terminology**"
+        },
+        {
+          "id": "CT-02",
+          "text": "Feed content is relevant to neighborhood safety and community activity**"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

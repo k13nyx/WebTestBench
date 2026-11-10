@@ -1,0 +1,345 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "13"
+    ],
+    [
+      "FT-02",
+      "13"
+    ],
+    [
+      "FT-03",
+      "4"
+    ],
+    [
+      "FT-04",
+      "1"
+    ],
+    [
+      "FT-05",
+      "2"
+    ],
+    [
+      "FT-06",
+      "3"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "7"
+    ],
+    [
+      "FT-10",
+      "7"
+    ],
+    [
+      "FT-11",
+      "8"
+    ],
+    [
+      "FT-12",
+      "9"
+    ],
+    [
+      "CS-01",
+      "5"
+    ],
+    [
+      "CS-02",
+      "12"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      "15"
+    ],
+    [
+      "IX-01",
+      "11"
+    ],
+    [
+      "IX-02",
+      "4"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "IX-04",
+      "9"
+    ],
+    [
+      "CT-01",
+      "5"
+    ],
+    [
+      "CT-02",
+      "10"
+    ],
+    [
+      "CT-03",
+      "2"
+    ],
+    [
+      "CT-04",
+      "16"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Editors can successfully publish long review articles that include text, images, videos, and ratings."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Long-form review article is viewable in full"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Editors can create side-by-side comparison articles, clearly displaying the specifications, advantages, disadvantages, and ratings of multiple products side-by-side."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Comparison article is viewable"
+        },
+        {
+          "id": "CT-03",
+          "text": "Comparison articles state the products being compared"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Editors can create \"Best Products\" ranking lists for specific categories, which display products and their key data in ranking order."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "\"Best of\" ranked list is viewable"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "On the product details page, visitors can see a list of links to all relevant review and comparison articles; clicking on them will redirect them to the correct page."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Product detail page lists all reviews and comparisons it appears in"
+        },
+        {
+          "id": "IX-02",
+          "text": "Article links from product page navigate correctly"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Visitors can filter the product list by selecting product categories."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Filter listings by category"
+        },
+        {
+          "id": "CS-01",
+          "text": "Category and price filters combine correctly"
+        },
+        {
+          "id": "CT-01",
+          "text": "All listed products match their category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Visitors can filter the product list by setting a price range."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Filter listings by price range band"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Visitors can sort the product list by fields such as total product score and release date. The sorting results are correct."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Sort listings by overall score"
+        },
+        {
+          "id": "FT-10",
+          "text": "Sort listings by date"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Visitors can use the search function to find products or articles, and the search results accurately match keywords in the title and content."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Search across products and articles"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Visitors can access a dedicated comparison page where they can view key specifications, ratings, and summary summaries for multiple products simultaneously."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Comparison page lines up multiple products at once"
+        },
+        {
+          "id": "IX-04",
+          "text": "Comparison page is reachable via a comparison control"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Images, videos, and other media resources in articles and product pages can all be loaded and displayed normally."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Product pages contain product imagery"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When visitors browse ranking lists or product lists, they can click on a product entry to directly access the product's details page."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Product links from listings navigate to detail pages"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When a visitor's attempt to filter or search yields no results, the page should display a user-friendly empty status message."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Search with no matches shows empty state"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Each product has its own dedicated details page, which fully displays the product's multiple performance indicators, summary reviews, and media resources."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Product detail page shows multi-criteria ratings"
+        },
+        {
+          "id": "FT-02",
+          "text": "Product detail page shows a verdict summary"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "On the comparison page, visitors can easily add or remove products for comparison, and the product list and comparison table are updated in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "All rating data remains consistent across review articles, product detail pages, and comparison pages."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Score display matches rating scale"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The system can correctly calculate and display the product's \"total score,\" and the calculation logic is consistent with the description."
+      },
+      "pred": [
+        {
+          "id": "CT-04",
+          "text": "Reviews and \"best of\" lists show publish dates and scores"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "After an editor publishes or updates content, the data for the relevant display positions can be updated synchronously."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Visitors can visually compare specifications side-by-side on the comparison page, with items showing significant differences highlighted."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Filters and sort persist across the listing session"
+        },
+        {
+          "id": "IX-03",
+          "text": "Filters/sort apply immediately without page errors"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

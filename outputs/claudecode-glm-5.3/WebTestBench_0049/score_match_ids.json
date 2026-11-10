@@ -1,0 +1,304 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "2"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "7"
+    ],
+    [
+      "FT-08",
+      "8"
+    ],
+    [
+      "CS-01",
+      "15"
+    ],
+    [
+      "CS-02",
+      "9"
+    ],
+    [
+      "CS-03",
+      "11"
+    ],
+    [
+      "IX-01",
+      "16"
+    ],
+    [
+      "IX-02",
+      "18"
+    ],
+    [
+      "IX-03",
+      "17"
+    ],
+    [
+      "CT-01",
+      "20"
+    ],
+    [
+      "CT-02",
+      "20"
+    ],
+    [
+      "CT-03",
+      "21"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can subscribe to office resources"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can select resources from the list."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Resource list is visible and selectable"
+        },
+        {
+          "id": "FT-02",
+          "text": "User can select a resource for reservation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can select dates and times from the appointment list."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can choose a reservation date"
+        },
+        {
+          "id": "FT-04",
+          "text": "User can choose a reservation time"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can fill in the purpose and title in the reservation form."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can provide a short purpose/title"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The webpage can automatically check whether the selected resource is already occupied within the target time period. If there is a conflict, it will prompt that the reservation is not possible."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can submit their reservations after filling in all the required information."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can submit a reservation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can view the upcoming booking list"
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Upcoming reservations list displays existing reservations"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can cancel appointments that have not yet taken place."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can cancel a reservation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The same resource can only be booked by one employee at a time, and cannot be booked repeatedly."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Cannot double-book the same resource at the same date/time"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can only view and manage their own booking records; they cannot view or modify other employees' bookings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users cannot select past dates and times when making a reservation."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Cannot reserve a resource for a past date/time"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Users cannot cancel past dates and times when canceling a reservation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The website restricts the start time of reservations to be earlier than the end time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users can only enter correct information when filling in the date and time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Users cannot submit a reservation if they have not filled in all the required information."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Cannot submit a reservation with empty required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The website provides visual feedback indicating a successful booking when office resources are booked."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Success feedback is shown after creating a reservation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The website provides visual feedback when the reservation information is incomplete."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Validation errors are displayed inline and form input is preserved"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Provide a confirmation message or visual feedback when the user cancels their appointment."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Feedback is shown after cancelling a reservation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The webpage visually distinguishes between selected and unselected office resource time slots."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "The webpage correctly displays office resource information (name, capacity, purpose, etc.)."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Resource list contains only relevant office resources"
+        },
+        {
+          "id": "CT-02",
+          "text": "Each reservation entry shows complete and accurate details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "The webpage clearly displays the header of the appointment form (time, title, purpose, etc.)."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Page labels and headings match the reservation theme"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

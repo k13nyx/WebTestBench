@@ -1,0 +1,288 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "15"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "12"
+    ],
+    [
+      "FT-10",
+      "14"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "11"
+    ],
+    [
+      "IX-02",
+      "11"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      "13"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The webpage should be able to support users in completing the core process of registering an account or logging in."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Register a new learner account"
+        },
+        {
+          "id": "FT-02",
+          "text": "Log in with an existing account"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The website should offer multilingual selection functionality, allowing users to choose the language they wish to learn."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Choose a language to learn"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Online courses are organized and presented in tiers according to language level."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Course content is organized by level in a fixed sequence"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The webpage should allow users to start a new course or continue learning from an unfinished course."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Start a course from the beginning"
+        },
+        {
+          "id": "FT-06",
+          "text": "Resume an in-progress course where it was left off"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Online courses should be accompanied by practice and quiz modules at the corresponding levels."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage can record the user's learning progress through courses, exercises, and quizzes."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Finishing an item records it as completed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Unregistered users cannot access the course/exercise/quiz learning sessions."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Progress data is persistently saved and will not be lost after logging in again."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users should not be able to log in or register if any required information is left blank; the page should display a corresponding message."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Registration rejects invalid input"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The course learning page operates smoothly, allowing for normal progress through the learning process."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Exercises/quizzes allow you to submit your answers and receive instant feedback."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Instant feedback for a correct answer"
+        },
+        {
+          "id": "IX-02",
+          "text": "Instant feedback for an incorrect answer"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After submitting your answer, a simple score/accuracy rate will be automatically calculated and displayed."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "A simple score is shown after a quiz"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The learning progress summary page updates data in real time, allowing for quick viewing."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "The summary shows the learner's real data"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The learning summary page on the website should be able to fully display the progress data of all courses."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "View a progress summary across lessons"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The exercises/tests contain different types of questions, and the question design meets the standards."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Answer each type of question"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "A duplicate account cannot be registered"
+        },
+        {
+          "id": "CS-03",
+          "text": "Login with a wrong password is rejected"
+        },
+        {
+          "id": "CS-04",
+          "text": "The lesson sequence is enforced"
+        },
+        {
+          "id": "IX-03",
+          "text": "Continue is gated until an answer is given"
+        },
+        {
+          "id": "CT-01",
+          "text": "Content matches the selected language and lesson topic"
+        },
+        {
+          "id": "CT-02",
+          "text": "Content is complete, with no placeholders"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

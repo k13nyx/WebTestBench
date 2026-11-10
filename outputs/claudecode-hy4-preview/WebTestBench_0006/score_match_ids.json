@@ -1,0 +1,331 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "6"
+    ],
+    [
+      "FT-02",
+      "6"
+    ],
+    [
+      "FT-03",
+      "6"
+    ],
+    [
+      "FT-04",
+      "9"
+    ],
+    [
+      "FT-05",
+      "8"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "2"
+    ],
+    [
+      "FT-08",
+      "5"
+    ],
+    [
+      "FT-09",
+      "5"
+    ],
+    [
+      "FT-10",
+      "10"
+    ],
+    [
+      "FT-11",
+      "7"
+    ],
+    [
+      "FT-12",
+      "11"
+    ],
+    [
+      "CS-01",
+      "13"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "16"
+    ],
+    [
+      "IX-03",
+      "19"
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create financial records by writing text input fields."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can view the financial dashboard."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Dashboard shows financial status summary"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can search for financial information by entering keywords."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can view and print basic financial summary tables."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "View monthly profit and loss report"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can filter the product list by product category (such as expenditure, date, transaction)."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Filter records by date range"
+        },
+        {
+          "id": "FT-09",
+          "text": "Filter records by category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can create new financial records."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create an income transaction"
+        },
+        {
+          "id": "FT-02",
+          "text": "Create an expense transaction"
+        },
+        {
+          "id": "FT-03",
+          "text": "Create invoice, bill, and payment records"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can manage the financial records they have created."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Delete an existing entry"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can customize account categories or accounts."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Create a custom account and assign a transaction to it"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can categorize the financial records they create."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Create a custom category and assign a transaction to it"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can view and adjust various items."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Edit an existing entry"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users can mark projects as tax-related."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Mark items as tax-related and generate tax summary"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "After a user applies filtering or sorting criteria, the product results displayed by the system must strictly match the selected criteria."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Users cannot create financial records without any input."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Required fields block saving a transaction"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When adding a new financial record, the selected time period cannot be a future time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The start time of the filtering dates must be earlier than the end time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Dashboard information changes in real time when financial information is added, edited, or deleted."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Dashboard totals update without a page reload"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "When a user marks a project as tax-related, the corresponding page should provide feedback."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "When users create and manage financial records, custom accounts show the already assigned records."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Click \"Print Report,\" and the printed report will appear in the document selection menu."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Print the tax summary"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "Users can view their spending and expenditure details."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "The information on the financial dashboard must match the actual financial information entered."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Invalid amounts are rejected"
+        },
+        {
+          "id": "CS-03",
+          "text": "Removing the tax-related flag removes the item from the tax summary"
+        },
+        {
+          "id": "IX-01",
+          "text": "Confirmation message after saving a record"
+        },
+        {
+          "id": "CT-01",
+          "text": "Labels use correct bookkeeping terminology with no placeholder text"
+        },
+        {
+          "id": "CT-02",
+          "text": "Currency values are formatted consistently everywhere"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,299 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "6"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "FT-09",
+      "6"
+    ],
+    [
+      "FT-10",
+      "7"
+    ],
+    [
+      "FT-11",
+      "7"
+    ],
+    [
+      "FT-12",
+      "8"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "6"
+    ],
+    [
+      "IX-02",
+      "7"
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "16"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create accounts (username, subject, current level, etc.)."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "New student can create an account and sign in"
+        },
+        {
+          "id": "FT-02",
+          "text": "Student can set up a profile with subjects, current level, and preferred study times"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can search for study groups"
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can join or create study groups (name, description, topic)."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Student can create a focused study group around a topic"
+        },
+        {
+          "id": "FT-04",
+          "text": "Student can join an existing study group from the default group list"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can comment and start comments in the group discussion area."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Members can post questions and answers in the group discussion area"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can publish notes, outlines, and reading summaries for team sharing."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Members can organize notes, outlines, and reading summaries into labeled sections"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can create group study meetings (title, description, date, time), and a selector will show which members have time."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Members can schedule an upcoming study session with the time selector"
+        },
+        {
+          "id": "FT-08",
+          "text": "Members can mark themselves as available for proposed times"
+        },
+        {
+          "id": "FT-09",
+          "text": "Members can RSVP to a scheduled session and appear in the attendee list"
+        },
+        {
+          "id": "IX-01",
+          "text": "Selecting a proposed time slot reveals who marked themselves available"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users can invite mentors to join their study groups."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "A user can mark their profile as a mentor"
+        },
+        {
+          "id": "FT-11",
+          "text": "A group can invite a mentor and the mentor can accept and join with a mentor role"
+        },
+        {
+          "id": "IX-02",
+          "text": "Mentor invite shows pending status and updates to a mentor role after acceptance"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can pin important posts."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "A mentor can pin important posts and highlight recommended resources in the group space"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot submit information with required fields (name, description, topic) empty when creating a study group."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users cannot submit shared notes with required fields (title, category, content) empty."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users cannot submit information for creating a learning meeting if the required fields (title, description, date, start and end time) are empty."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Users cannot post comments without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Users cannot perform a search without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users cannot [enter] without any input."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "After the user selects a category in the filter, the page displays immediate feedback."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "All group member information is displayed accurately and up-to-date."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Profile content matches the saved profile data and reflects mentor status"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "After joining a group, users can see group notes, discussions, member information, etc."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Profile cannot be saved with required profile fields empty"
+        },
+        {
+          "id": "CS-02",
+          "text": "Only users marked as mentors are offered in the \"Invite Mentor\" list"
+        },
+        {
+          "id": "CS-03",
+          "text": "Non-mentor members cannot pin posts or highlight resources"
+        },
+        {
+          "id": "CS-04",
+          "text": "A member cannot hold duplicate RSVPs for the same session"
+        },
+        {
+          "id": "CT-01",
+          "text": "Group directory content is study-topic focused and relevant"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

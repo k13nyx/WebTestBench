@@ -1,0 +1,320 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "4"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "7"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "8"
+    ],
+    [
+      "FT-07",
+      "6"
+    ],
+    [
+      "FT-08",
+      "9"
+    ],
+    [
+      "FT-09",
+      "10"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      "12"
+    ],
+    [
+      "CS-05",
+      "13"
+    ],
+    [
+      "IX-01",
+      "16"
+    ],
+    [
+      "IX-02",
+      "16"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "IX-04",
+      "14"
+    ],
+    [
+      "CT-01",
+      "19"
+    ],
+    [
+      "CT-02",
+      "18"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The website provides a login function."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can sign in and reaches the dashboard"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The website offers interactive timed practice."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can start an interactive timed session"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The system can automatically record practice content over a period of time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can view recommended meditation, breathing, and relaxation content."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Dashboard shows recommended meditations, breathing exercises, and relaxation techniques"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can filter activities by duration."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "User can filter activities by duration"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The system can automatically track the number of practice sessions."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Completed sessions are counted over time"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The system displays the practice steps and progress."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Session displays step-by-step guidance and progress"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can filter activities according to their practice goals."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "User can filter activities by goal"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can mark practice content as favorites."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can save an activity to favorites"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can view their favorite content in their personal list."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "User can view their personal favorites list"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users cannot perform activities such as practice and tagging others when they are not logged in."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Users cannot save the same task multiple times."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "An activity is not duplicated in the favorites list"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "If a user does not complete a full exercise, that exercise will not be recorded in the number of practice sessions."
+      },
+      "pred": [
+        {
+          "id": "CS-05",
+          "text": "Session completion is only recorded when the session actually finishes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Visual feedback is provided after the user clicks the \"like\" tag."
+      },
+      "pred": [
+        {
+          "id": "IX-04",
+          "text": "Favorite control reflects saved state"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The filtering results can be displayed in real time when users filter by type."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The exercise displays real-time progress as time passes."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Session timer counts down and guidance advances interactively"
+        },
+        {
+          "id": "IX-02",
+          "text": "Progress indicator updates live during the session"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The practice duration needs to match the marked duration."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The content of the exercises needs to match the title content."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Goal labels correctly describe each activity"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The content displayed on the webpage needs to match the type of content."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Recommended items and steps content is relevant to meditation"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Sign-in is rejected with invalid credentials"
+        },
+        {
+          "id": "CS-02",
+          "text": "Sign-in cannot be submitted with empty required fields"
+        },
+        {
+          "id": "CS-03",
+          "text": "Duration and goal filters only show matching activities"
+        },
+        {
+          "id": "IX-03",
+          "text": "A completion feedback is shown when a session ends"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

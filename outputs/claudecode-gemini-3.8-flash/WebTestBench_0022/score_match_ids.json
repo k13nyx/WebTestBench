@@ -1,0 +1,294 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "1"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "2"
+    ],
+    [
+      "FT-06",
+      "17"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "FT-08",
+      "13"
+    ],
+    [
+      "FT-09",
+      "13"
+    ],
+    [
+      "FT-10",
+      "6"
+    ],
+    [
+      "CS-01",
+      "11"
+    ],
+    [
+      "CS-02",
+      "3"
+    ],
+    [
+      "CS-03",
+      "15"
+    ],
+    [
+      "IX-01",
+      "13"
+    ],
+    [
+      "IX-02",
+      "18"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      "9"
+    ],
+    [
+      "CT-02",
+      "5"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can successfully enter ingredients, including name, quantity, and optional shelf-life information, and can edit or delete these records."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Add a new ingredient to the pantry list"
+        },
+        {
+          "id": "FT-02",
+          "text": "Add an ingredient without an expiration date"
+        },
+        {
+          "id": "FT-03",
+          "text": "Remove an ingredient from the pantry"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The system can identify ingredients nearing their expiration date based on the entered expiration date and provide a clear visual prompt on the interface."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Prioritize ingredients nearing expiration"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can set their dietary preferences (such as vegetarian, high-protein, or budget-friendly), which will be accurately applied when generating meal plans."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Enforce dietary preference restriction"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The system can automatically generate a multi-day (e.g., week-long) meal plan based on current ingredient inventory, expiration date priority, and user preferences."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Generate a multi-day meal plan with dietary preferences"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "The system can automatically calculate and generate a \"missing ingredients\" shopping list based on the generated meal plan, which does not include ingredients that are in stock."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Generate grocery list for missing ingredients"
+        },
+        {
+          "id": "CT-02",
+          "text": "Grocery list item data integrity"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "After a user locks some of the meals, a new plan can be generated for the remaining unlocked portions. The new plan will be optimized based on the updated inventory (after deducting the ingredients for the locked meals)."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "Regenerate unlocked meals while preserving locked items"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "When regenerating the plan, the system will prioritize using remaining near-expiry ingredients and continue to adhere to the user's set dietary preferences."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Users can manually adjust ingredient quantities for existing recipes, and the planned ingredient consumption and shopping list will be updated in real time after the adjustment."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The meal plan overview clearly shows the breakfast, lunch, and dinner arrangements for each day, and allows for quick navigation to specific recipe details."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Day-by-day plan layout structure"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The shopping list can be displayed by category (such as vegetables, meat, and seasonings) or by store area, making it easier to make actual purchases."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When users input the quantity of ingredients or the expiration date, the system can perform basic checks (such as the quantity being a positive number and the expiration date being in the correct format)."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent adding pantry item with missing name or non-positive quantity"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When a user manually modifies the inventory (such as consuming some ingredients), the system can provide options to reassess whether the current plan needs adjustment."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Users can lock specific meals or entire dates in their plans. Once locked, these portions are visually clearly marked and will not be affected by subsequent adjustments."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Lock a specific meal"
+        },
+        {
+          "id": "FT-09",
+          "text": "Lock an entire day"
+        },
+        {
+          "id": "IX-01",
+          "text": "Toggle meal lock state icon"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When food inventory is insufficient or there are no feasible solutions, the system will provide a clear prompt (such as \"Unable to generate a dinner plan for Tuesday. Please check inventory or adjust preferences\")."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The system can prevent invalid operations, such as regenerating plans for locked meals or using expired ingredients (based on the current date) for planning."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Disable regeneration when all meals are locked"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The response time for all operations (such as adding ingredients, generating plans, and locking meals) should be within a reasonable range, without noticeable lag, and should provide corresponding loading or completion status feedback."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The generated daily plan clearly lists the recipe name for each meal and precisely displays the various ingredients required for that recipe and their quantities."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Display exact ingredient usage per recipe"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Each recipe details page should include complete cooking steps, nutritional information (if available), and a complete list of all ingredients used."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Expand recipe details card"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Check off grocery list items"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

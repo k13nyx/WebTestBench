@@ -1,0 +1,263 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "8"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "FT-08",
+      "6"
+    ],
+    [
+      "CS-01",
+      "7"
+    ],
+    [
+      "CS-02",
+      "11"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      "12"
+    ],
+    [
+      "IX-01",
+      "13"
+    ],
+    [
+      "IX-02",
+      "15"
+    ],
+    [
+      "CT-01",
+      "12"
+    ],
+    [
+      "CT-02",
+      "5"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can browse the restaurant list and view detailed information for each restaurant, including cuisine type and average price."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Browse list of restaurants"
+        },
+        {
+          "id": "FT-02",
+          "text": "View restaurant details (cuisine type and average price)"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can search for restaurants by entering a text field."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can create reservations for restaurants by selecting the date, time, and number of diners, and then submitting the reservation after confirming the information."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Reserve a table with date, time, and party size"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can view their upcoming booking list and cancel or modify their bookings within this list."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "View upcoming bookings"
+        },
+        {
+          "id": "FT-05",
+          "text": "Cancel a reservation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can rate and review the restaurants they have visited. The ratings and reviews will be linked to the corresponding restaurants and displayed correctly."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Submit a review and rating for a visited restaurant"
+        },
+        {
+          "id": "CT-02",
+          "text": "Reviews display relevant rating and text"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "During the booking process, users can selectively enter discount coupon codes and enjoy corresponding price reductions."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Apply a discount coupon during reservation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "When verifying booking times, the system does not allow users to book past dates and times."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Reservation requires valid date, time, and party size"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When a user attempts to modify their booking, the system can correctly process the modification request and update the booking information while maintaining the accuracy of the booking information."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Modify a reservation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot perform a search without entering any content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users cannot leave comments on the same order repeatedly."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Discount coupons must be used within their validity period and comply with the applicable rules. Only one basic discount coupon can be used per order; they cannot be combined."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Only valid coupons are accepted"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Restaurant average prices, opening hours, and other information are maintained by the merchants; users can only view them, not edit them. Reservations cannot exceed the restaurant's maximum capacity per table."
+      },
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "Party size must be within allowed bounds"
+        },
+        {
+          "id": "CT-01",
+          "text": "Restaurant details are accurate and relevant"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After selecting the date, time, and number of people, users can select discount coupons, and the system will calculate the discounted price in real time. After clicking submit, the system will verify the validity of the information and provide the booking result."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Show success confirmation after reservation creation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Users can click on their booking record in their personal center and choose \"Modify\" or \"Cancel\". When modifying, users need to re-select information and submit; when canceling, a confirmation pop-up will appear."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "When the booking status changes, the page refreshes in real time and a pop-up notification appears. You can also view historical notifications through the message center."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Reservation list updates immediately after changes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Users can view their comment history, applications, and completed order information in their personal center."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Review submission requires a rating"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,300 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "2"
+    ],
+    [
+      "FT-02",
+      "4"
+    ],
+    [
+      "FT-03",
+      "5"
+    ],
+    [
+      "FT-04",
+      "6"
+    ],
+    [
+      "FT-05",
+      "7"
+    ],
+    [
+      "FT-06",
+      "8"
+    ],
+    [
+      "FT-07",
+      "9"
+    ],
+    [
+      "FT-08",
+      "10"
+    ],
+    [
+      "FT-09",
+      "9"
+    ],
+    [
+      "FT-10",
+      "9"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "12"
+    ],
+    [
+      "CS-03",
+      "13"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "15"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can view the option names in the counterweight section."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can create decision-making topics independently."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Set decision topic title"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can customize the comparison criteria."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can assign weights to each criterion."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Add comparison criterion with weight"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can add multiple comparison options"
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Add comparison option"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Users can enter the score for each criterion."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Enter criterion score for an option"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The system can automatically perform weighted calculations on the scores."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Automatic weighted score calculation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The system can automatically sort the results of the weighted calculation."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "View simple ranking of options"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can rename, reorder, and delete options."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Rename criterion and option"
+        },
+        {
+          "id": "FT-09",
+          "text": "Reorder options"
+        },
+        {
+          "id": "FT-10",
+          "text": "Remove criterion and option"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can rename, reorder, and delete standards."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Reorder criteria"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The comparison criteria and options ensure their uniqueness and prevent repetition."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The sum of all standard weights is constrained to 100%; warnings will be issued if the sum exceeds or falls below 100%."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Validate criterion weight input"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The score input must be within a limited range, and non-numeric content cannot be entered."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Validate score input boundaries"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "New options and criteria will be displayed in the list in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "After changing the weights and scores, the system will display the current score and ranking in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Real-time dynamic ranking reorder"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "When the total weights are not 100, there will be a different visual feedback compared to when the total weights are 100."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The page display theme, comparison criteria, and options must conform to the edited content."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The names of the ranking options displayed on the page must match the information entered."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Page weighted score must be correct"
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Validate required name fields"
+        },
+        {
+          "id": "CS-04",
+          "text": "Preserve calculation integrity on criterion deletion"
+        },
+        {
+          "id": "IX-02",
+          "text": "Deletion confirmation prompt"
+        },
+        {
+          "id": "CT-01",
+          "text": "Single-page comparison matrix display"
+        },
+        {
+          "id": "CT-02",
+          "text": "Ranking summary clarity"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

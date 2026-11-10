@@ -1,0 +1,308 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "16"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      null
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "10"
+    ],
+    [
+      "FT-08",
+      "10"
+    ],
+    [
+      "FT-09",
+      "10"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "13"
+    ],
+    [
+      "IX-02",
+      "11"
+    ],
+    [
+      "IX-03",
+      "11"
+    ],
+    [
+      "IX-04",
+      "11"
+    ],
+    [
+      "CT-01",
+      "18"
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      "17"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create new themed page content with titles and content."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "A new top-level topic page can be created and appears in the hierarchy"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can create nested subpages under existing pages."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "A nested subpage can be created under an existing page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can create bidirectional links between pages."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Creating a link between two pages is bidirectional"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can add tags to the page."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Tags can be added to a page and are stored on that page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Web pages can dynamically update search and filter results."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage can implement the function of creating a circular parent-child relationship."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The webpage can handle the deletion of subpages when a page containing subpages is deleted."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Web pages can maintain synchronization via bidirectional links."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users can browse the knowledge base through hierarchical navigation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Users can filter and search by title, tags, or citations."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Search by title returns matching pages"
+        },
+        {
+          "id": "FT-08",
+          "text": "Pages can be filtered by tag"
+        },
+        {
+          "id": "FT-09",
+          "text": "Search matches citation note text"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Users can click the link to view the corresponding topic page."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Clicking a page in the hierarchy opens it and marks it active"
+        },
+        {
+          "id": "IX-03",
+          "text": "In-content links can be followed across a chain of pages"
+        },
+        {
+          "id": "IX-04",
+          "text": "Clicking a \"Cited By\" entry navigates to the citing page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Visual feedback is displayed after the page is successfully created."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Clicking the parent page in the hierarchical navigation bar will expand/collapse the child page."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Hierarchy nodes expand and collapse to reveal subpages"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When you enter keywords in the search box, it will suggest matching page titles in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Display visual feedback when the page saves successfully or fails."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "A webpage can display the content of the current topic, its tags, and all pages it references or is referencing."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Opening a page shows its content, tags, cited pages, and citing pages"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The theme and homepage tags and content are correct and match."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Tags shown on a page match the tags actually assigned to it"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The displayed information matches the edited content."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Opened page renders its real title and full body content"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "A citation relationship with a note can be created between two pages"
+        },
+        {
+          "id": "CS-01",
+          "text": "A page cannot be created with an empty title"
+        },
+        {
+          "id": "CS-02",
+          "text": "A page cannot link to or cite itself"
+        },
+        {
+          "id": "CS-03",
+          "text": "The same citation cannot be added twice"
+        },
+        {
+          "id": "CS-04",
+          "text": "Deleting a page leaves no dangling references"
+        },
+        {
+          "id": "CT-02",
+          "text": "Citation entries show the target title and its note, with a clear empty state"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

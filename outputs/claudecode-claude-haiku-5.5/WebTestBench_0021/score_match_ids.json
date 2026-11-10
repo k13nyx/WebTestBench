@@ -1,0 +1,285 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "5"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "16"
+    ],
+    [
+      "FT-08",
+      "16"
+    ],
+    [
+      "CS-01",
+      "11"
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "CS-05",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "12"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      "15"
+    ],
+    [
+      "CT-03",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Employees can create and update detailed customer records, which include fields such as collectors' contact information, interests, and historical interactions."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Staff can create a new customer record with details and collector interests."
+        },
+        {
+          "id": "FT-02",
+          "text": "Staff can update an existing customer's details."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Employees can associate related projects (such as specific artworks) with clients and view all associated projects on the client's details page."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Staff can attach an artwork to a customer."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The system supports creating and configuring custom states (such as \"Invited\", \"Attended\", \"Purchased\", \"Following Up\") for business processes (such as exhibition invitations and purchasing processes)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Employees can apply and update these custom states in customer records to accurately reflect the stage of business each customer is in."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Staff can apply a custom workflow status to a customer."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Employees can filter customers based on their behavior (such as recent interaction time, number of exhibition visits), attributes (such as interest categories, collection level), or custom tags."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Staff can filter customers by attributes and by behavior."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The system can generate configurable summary reports, allowing employees to select specific market segments, timeframes, and key metrics (such as customer engagement and revenue contribution)."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Staff can generate a configurable summary report."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Employees can add notes or logs to customer records. All added notes are arranged in chronological order and the creator is recorded."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "The system provides multiple views of the customer list (such as tables and dashboards) and allows employees to sort by different columns (such as the last interaction date)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Employees can export customer lists or report results to a standard format (such as CSV), ensuring the exported file is complete and correctly formatted."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The system can effectively handle concurrent operations, preventing data overwriting or loss when multiple employees edit the same customer record at the same time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When an employee creates a new customer record, if key fields (such as name) are empty, the system will prevent saving and provide a clear warning."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "A customer cannot be saved without required fields."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When employees use filters or switch market segments, the page responds quickly with no noticeable delays or lag."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Filter results update without a page reload."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "When an employee deletes a customer interaction record (such as an incorrectly entered invitation record), the system will require secondary confirmation to prevent accidental operations."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The system can automatically mark or update customer status based on preset rules (such as customers not interacting for more than a year) and prompt employees to follow up."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The data in the summary report (such as the number of customers, number of interactions, and total purchase amount) is completely consistent with the underlying customer records and transaction data, and the calculations are accurate."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Report totals match the underlying default data."
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "On the customer details page, employees can view the customer's complete interaction timeline, including all exhibition invitation records, communication history, and purchase records."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Staff can log an exhibition invitation for a customer."
+        },
+        {
+          "id": "FT-08",
+          "text": "Staff can record an artwork purchase for a customer."
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "A customer cannot be saved with a duplicate or invalid email."
+        },
+        {
+          "id": "CS-03",
+          "text": "The same artwork cannot be attached to the same customer twice."
+        },
+        {
+          "id": "CS-04",
+          "text": "A sold artwork cannot be purchased again."
+        },
+        {
+          "id": "CS-05",
+          "text": "A report cannot be generated with an end date before the start date."
+        },
+        {
+          "id": "IX-01",
+          "text": "A success toast confirms each save."
+        },
+        {
+          "id": "IX-03",
+          "text": "Leaving an edited record with unsaved changes prompts a warning."
+        },
+        {
+          "id": "CT-01",
+          "text": "Collector interest tags relate to art."
+        },
+        {
+          "id": "CT-03",
+          "text": "Workflow statuses and exhibition names are gallery-specific."
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

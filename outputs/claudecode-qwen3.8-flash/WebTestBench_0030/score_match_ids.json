@@ -1,0 +1,308 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "16"
+    ],
+    [
+      "FT-03",
+      "2"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "6"
+    ],
+    [
+      "FT-06",
+      "6"
+    ],
+    [
+      "FT-07",
+      "6"
+    ],
+    [
+      "FT-08",
+      "7"
+    ],
+    [
+      "FT-09",
+      "7"
+    ],
+    [
+      "FT-10",
+      "8"
+    ],
+    [
+      "FT-11",
+      "9"
+    ],
+    [
+      "FT-12",
+      "10"
+    ],
+    [
+      "FT-13",
+      "13"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "CT-01",
+      null
+    ],
+    [
+      "CT-02",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "The webpage supports the creation of rich text notes."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can create a rich-text note and it appears in the notes list"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The webpage supports editing rich text notes."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "User can edit an existing note"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The webpage supports deleting rich text notes."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can delete a note"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can create new folders."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can categorize and organize their notes into corresponding folders or tags."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The webpage supports searching notes by title, content, tags, and folder."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Search returns notes matching title and body content"
+        },
+        {
+          "id": "FT-06",
+          "text": "Notes can be found by tag"
+        },
+        {
+          "id": "FT-07",
+          "text": "Notes can be found by folder"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Folders can be renamed, allowing notes to be moved between different folders."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "User can rename a folder"
+        },
+        {
+          "id": "FT-09",
+          "text": "User can move a note between folders"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "It supports adding and deleting tags for notes, and the tag management function is available."
+      },
+      "pred": [
+        {
+          "id": "FT-10",
+          "text": "User can add and remove tags on a note"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "It supports filtered views, allowing you to view all notes under a specified tag and folder."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Combined filtered view (folder + specific tag) works"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The notes data are stored locally in the browser and can be loaded normally on subsequent visits."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "Notes persist in the browser across reloads"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The webpage should support free sorting of folders."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Notes data stored locally are persistently saved, preventing accidental loss without any user interaction."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Even when the internet is offline or the network is unstable, the note-editing operation is smooth and lag-free."
+      },
+      "pred": [
+        {
+          "id": "FT-13",
+          "text": "Editing is safe and instant when the connection is lost"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Multi-dimensional searches can be triggered quickly, and results are refreshed and displayed in real time."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Search results update live as the user types"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Once a note is moved or a tag is added or deleted, the ownership relationship is updated immediately."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Rich text formatting is fully preserved, and no content is lost or misplaced during editing."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Rich-text formatting (bold/italic) is applied and persists"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The search results accurately match the filtering criteria, with no omissions or false positives."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The filter view fully displays the target notes, and the tag/folder associations are error-free."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The folder and tag lists are clearly displayed, and the ownership of notes is clearly defined."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "An empty note cannot be created"
+        },
+        {
+          "id": "CS-02",
+          "text": "A deleted note leaves no trace in any view"
+        },
+        {
+          "id": "IX-02",
+          "text": "User gets feedback on create/save/delete"
+        },
+        {
+          "id": "CT-01",
+          "text": "Default seed data is present and relevant to a notes app"
+        },
+        {
+          "id": "CT-02",
+          "text": "Empty-state and no-results messages are shown"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

@@ -1,0 +1,333 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "2"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "4"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "FT-08",
+      "5"
+    ],
+    [
+      "FT-09",
+      "6"
+    ],
+    [
+      "CS-01",
+      "9"
+    ],
+    [
+      "CS-02",
+      "7"
+    ],
+    [
+      "CS-03",
+      "1"
+    ],
+    [
+      "CS-04",
+      null
+    ],
+    [
+      "IX-01",
+      "16"
+    ],
+    [
+      "IX-02",
+      "13"
+    ],
+    [
+      "IX-03",
+      "12"
+    ],
+    [
+      "IX-04",
+      "17"
+    ],
+    [
+      "CT-01",
+      "18"
+    ],
+    [
+      "CT-02",
+      null
+    ],
+    [
+      "CT-03",
+      "20"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can create and manage multiple independent projects, and each project must have its own dedicated task board."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Multiple projects are listed and each has its own independent kanban board"
+        },
+        {
+          "id": "CS-03",
+          "text": "Boards, filters, and chat are isolated per project"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can create tasks in the Kanban board, assign them responsible persons, set deadlines and priority levels."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "A task can be created with title, due date, priority, and assignee"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can switch between different status columns (such as: pending, in progress, completed) by dragging and dropping task cards."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "A task can be dragged from one column to another"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Users can quickly search and filter tasks in the dashboard by status, responsible person, or keywords."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Tasks can be filtered by status"
+        },
+        {
+          "id": "FT-05",
+          "text": "Tasks can be filtered by assignee"
+        },
+        {
+          "id": "FT-06",
+          "text": "Tasks can be searched by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Team members can update task progress in real time, and the system should automatically summarize and display a summary of the overall project completion."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Progress can be marked on a task"
+        },
+        {
+          "id": "FT-08",
+          "text": "A concise overall project status summary is displayed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Each project page must integrate a real-time chat panel to allow team members to communicate instantly about the current project."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Each project has a working real-time chat panel"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "After a task is dragged and dropped between columns, the system must immediately update the task status and ensure that all online members see the same status."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "A task exists in exactly one column after a move"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Deadline settings must have validity checks, and the system should provide a visual warning (such as red highlighting) for overdue tasks."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "To create a task, you must enter the due date, priority, and person in charge."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "A task cannot be saved without a title"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "The deadline for the task must be a valid future date or current date."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When performing filtering or search operations, the task list displayed by the system must strictly match the selected conditions, and there must be no missed or false reports."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Percentages or statistics in the project status summary must be recalculated in real time, milliseconds, based on changes in the underlying task status."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "The summary and progress indicators update live after task changes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "When a user drags and drops a task, the target column should have a highlighted or dashed box tooltip and support a smooth snapping animation."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Drag-and-drop gives visible feedback about the drop target"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "The chat panel should provide an immediate visual alert (such as a red dot indicating no messages or scrolling to the bottom) when new messages arrive."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The search box should have a debounce feature, refreshing the results immediately after the user stops typing without requiring the user to click the search button."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "After marking task progress or updating status, the Kanban board and summary area should have smooth transition animations or status update feedback."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "The app gives immediate feedback when a task is created"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "The chat window should support scrolling to view the history, ensuring that users can trace previous discussions."
+      },
+      "pred": [
+        {
+          "id": "IX-04",
+          "text": "The chat panel can be opened and closed per project without losing messages"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "Task cards must clearly display core information, including the task title, the person in charge's photo, priority indicator, and deadline."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Task cards display the required task metadata"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "The project summary area should include key metrics such as \"total number of tasks\", \"percentage of tasks completed\", and \"number of overdue tasks\"."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "Chat logs must include the sender's name and a timestamp accurate to the minute to ensure the communication context is clear."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Chat messages are attributed to their sender"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "21",
+        "text": "Priority fields should provide standardized options (e.g., urgent, high, medium, low) to avoid users entering arbitrary values."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-04",
+          "text": "An empty chat message cannot be sent"
+        },
+        {
+          "id": "CT-02",
+          "text": "Kanban columns use clear, meaningful status labels"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

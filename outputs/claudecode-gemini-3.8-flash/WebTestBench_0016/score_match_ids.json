@@ -1,0 +1,303 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "7"
+    ],
+    [
+      "FT-02",
+      "5"
+    ],
+    [
+      "FT-03",
+      "14"
+    ],
+    [
+      "FT-04",
+      "8"
+    ],
+    [
+      "FT-05",
+      "6"
+    ],
+    [
+      "FT-06",
+      "9"
+    ],
+    [
+      "FT-07",
+      "16"
+    ],
+    [
+      "FT-08",
+      "17"
+    ],
+    [
+      "FT-09",
+      "10"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "13"
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "CT-01",
+      "3"
+    ],
+    [
+      "CT-02",
+      "4"
+    ],
+    [
+      "CT-03",
+      "8"
+    ],
+    [
+      "CT-04",
+      null
+    ],
+    [
+      "CT-05",
+      "15"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Bloggers can successfully create and publish articles that include a title, body text, category, tags, and series affiliation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "The system can correctly assign a creation date and a last modification date to each article and arrange them in chronological order."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Visitors can see the \"Featured\" section on the blog homepage, and this section displays correctly."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Home page featured posts display"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Visitors can see the \"Latest Articles\" section on the blog homepage, which displays a list of articles in reverse chronological order of publication."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Home page most recent posts feed"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Visitors can browse all articles in a category by clicking on the article category (such as travel stories, recipes, self-improvement guides)."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Browse articles by category"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Visitors can browse all articles with a specific tag by clicking on that tag."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Filter articles by tag"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Visitors can use the search box to find relevant articles by entering keywords or phrases. The search results list displays the titles and previews of the matching articles."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Search articles by keyword or phrase"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Visitors can browse lists of articles archived by month and year, and click on a specific month or year to view all articles published within that time period."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "Filter articles by date archive"
+        },
+        {
+          "id": "CT-03",
+          "text": "Archive navigation by month and year"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The article previews on the homepage correctly display the article title, summary, publication date, category, and some tags. Clicking \"Read More\" will take you to the full article."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "Navigate from post preview to full article"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Each article page displays related articles recommended by the system at the bottom or sidebar; clicking on them will redirect you to the correct page."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Navigate via related-post suggestions"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Bloggers can manage comments in the backend, such as approving, replying to, or deleting inappropriate comments."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "The system can correctly handle user input at boundaries; for example, when extremely long text is entered in the search box or comment box, the page layout will not be disordered."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "When a visitor attempts to search for non-existent content, the system will display a user-friendly \"No results found\" message."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Search query with no matching articles"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "Visitors can view a list of articles organized by \"series,\" and articles within a series can be displayed in a set order or by publication date."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Browse articles by series"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "Each complete article page correctly displays the article's full content, author, publication date, category, tags, and series information."
+      },
+      "pred": [
+        {
+          "id": "CT-05",
+          "text": "Article page layout and metadata completeness"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "Visitors can submit comments at the bottom of the article page. After submission, the comments will be displayed in the comment section after being refreshed or approved."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Submit a comment on an article"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Visitors can perform simple interactions such as \"liking\" articles, and the counter will update instantly after the interaction."
+      },
+      "pred": [
+        {
+          "id": "FT-08",
+          "text": "Add a \"Like\" reaction to an article"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "When an article is updated or modified, the page should display the date \"Last updated on\" or a notification."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent empty comment submission"
+        },
+        {
+          "id": "CS-02",
+          "text": "Prevent duplicate \"Like\" reaction in the same session"
+        },
+        {
+          "id": "IX-01",
+          "text": "Post preview card hover state"
+        },
+        {
+          "id": "IX-02",
+          "text": "Visual toggle of the \"Like\" reaction button"
+        },
+        {
+          "id": "CT-04",
+          "text": "Topic coverage for default blog content"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

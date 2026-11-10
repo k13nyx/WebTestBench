@@ -1,0 +1,322 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "1"
+    ],
+    [
+      "FT-04",
+      "9"
+    ],
+    [
+      "FT-05",
+      "3"
+    ],
+    [
+      "FT-06",
+      "3"
+    ],
+    [
+      "FT-07",
+      "3"
+    ],
+    [
+      "FT-08",
+      "3"
+    ],
+    [
+      "FT-09",
+      "2"
+    ],
+    [
+      "FT-10",
+      "2"
+    ],
+    [
+      "FT-11",
+      "4"
+    ],
+    [
+      "FT-12",
+      "5"
+    ],
+    [
+      "FT-13",
+      "6"
+    ],
+    [
+      "FT-14",
+      "6"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      "12"
+    ],
+    [
+      "IX-01",
+      "20"
+    ],
+    [
+      "IX-02",
+      null
+    ],
+    [
+      "IX-03",
+      "14"
+    ],
+    [
+      "CT-01",
+      null
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Users can register an account and write, preview, and publish articles using the Markdown editor."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "User can sign up for a new account"
+        },
+        {
+          "id": "FT-02",
+          "text": "User can write a post using the Markdown editor"
+        },
+        {
+          "id": "FT-03",
+          "text": "User can publish a post to their profile page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Users can manually add \"custom tags\" to articles, and the system must be able to automatically extract \"smart tags\" based on the article content."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Author can add custom tags when publishing"
+        },
+        {
+          "id": "FT-10",
+          "text": "System auto-generates intelligent tags from content"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Visitors can browse article details, post comments, like articles, or save them to their favorites list."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "A visitor can open and read any post"
+        },
+        {
+          "id": "FT-06",
+          "text": "A visitor can leave a comment under a post"
+        },
+        {
+          "id": "FT-07",
+          "text": "A user can like a post"
+        },
+        {
+          "id": "FT-08",
+          "text": "A user can save a post to a personal list"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Visitors can use \"custom tags\" and \"smart tags\" to filter and search using a two-dimensional combination (e.g., technology + Python)."
+      },
+      "pred": [
+        {
+          "id": "FT-11",
+          "text": "Visitor can filter posts by combined custom + intelligent tags"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can save specific tag combinations as \"frequently used tag groups\" for quick access."
+      },
+      "pred": [
+        {
+          "id": "FT-12",
+          "text": "User can save frequently-used tag groups for quick access"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "Authors can view the number of views, likes, and comments for each tag dimension in their personal backend, and generate tag popularity analysis reports."
+      },
+      "pred": [
+        {
+          "id": "FT-13",
+          "text": "Author can view per-tag stats (views, likes, comments)"
+        },
+        {
+          "id": "FT-14",
+          "text": "Author can generate a tag popularity analysis report"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "A Markdown editor must be able to correctly render headings, code blocks, lists, and other syntax, and prevent cross-site scripting (XSS) injection."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Intelligent tag extraction algorithms should have basic relevance to ensure that the extracted keywords (such as Python) match the actual content of the article."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "The editing function must have permission verification to ensure that only the article author can modify the content."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "User can edit an existing published post"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Custom tags have character length/number limits to avoid tag redundancy and provide clear prompts."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "When generating popularity reports, the system must ensure the accuracy and real-time nature of data statistics such as number of views and likes."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When a user performs a multi-tag search and no matching results are found, the system should display a clear \"No related articles found\" message."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "No-match tag filter shows an empty state (not an error)"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "Markdown editors should support a real-time interactive mode of \"editing on the left and previewing on the right\"."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "When users click on tags to filter, the page should provide a smooth, refresh-free loading experience (such as partial Ajax refresh)."
+      },
+      "pred": [
+        {
+          "id": "IX-03",
+          "text": "Tag filtering updates the post list dynamically"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "After clicking the like or save button, the icon should immediately switch to the selected state and provide instant visual feedback of success."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The combined search interface should provide simple tag selection or deletion interactions, allowing users to dynamically adjust filter criteria."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Personal homepages and article lists should clearly display article titles, publication dates, custom tags, and smart tags."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The comment section should accurately display the commenter's identity, the content of the comment, and the time of publication."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "19",
+        "text": "Tag popularity reports should include intuitive data metrics (such as bar charts or line charts) to reflect audience preferences under different tags."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "20",
+        "text": "The article details page should support the display of all elements in Markdown format, maintaining neat layout."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Markdown renders as formatted content in reading view"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Publishing is blocked when required fields are empty"
+        },
+        {
+          "id": "IX-02",
+          "text": "Success toast appears after publishing a post"
+        },
+        {
+          "id": "CT-01",
+          "text": "An author's profile page shows only that author's posts"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

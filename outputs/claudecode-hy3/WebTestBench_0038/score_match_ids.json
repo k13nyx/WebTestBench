@@ -1,0 +1,283 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "1"
+    ],
+    [
+      "FT-03",
+      "3"
+    ],
+    [
+      "FT-04",
+      "3"
+    ],
+    [
+      "FT-05",
+      "4"
+    ],
+    [
+      "FT-06",
+      "4"
+    ],
+    [
+      "FT-07",
+      "5"
+    ],
+    [
+      "FT-08",
+      "5"
+    ],
+    [
+      "FT-09",
+      "2"
+    ],
+    [
+      "CS-01",
+      null
+    ],
+    [
+      "CS-02",
+      null
+    ],
+    [
+      "CS-03",
+      "6"
+    ],
+    [
+      "IX-01",
+      "14"
+    ],
+    [
+      "IX-02",
+      "14"
+    ],
+    [
+      "IX-03",
+      "14"
+    ],
+    [
+      "CT-01",
+      "15"
+    ],
+    [
+      "CT-02",
+      "16"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Visitors can browse and compare different subscription plans and view a detailed list of features included in each tier."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Compare different subscription plans side by side"
+        },
+        {
+          "id": "FT-02",
+          "text": "Read detailed feature descriptions for each plan"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Visitors can select \"annual payment\", \"quarterly payment\" or \"monthly payment\" mode by toggling the button and view the corresponding price changes."
+      },
+      "pred": [
+        {
+          "id": "FT-09",
+          "text": "Compare Annual, Quarterly, and Monthly plan outcomes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "Users can complete account registration, bind payment methods, and activate subscriptions through a unified checkout process."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Create an account"
+        },
+        {
+          "id": "FT-04",
+          "text": "Subscribe via the simple checkout flow"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "Logged-in users can view the name, status, and detailed billing information (date and amount) for their current subscription package and the next deduction in their account backend."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "View current plan as a signed-in user"
+        },
+        {
+          "id": "FT-06",
+          "text": "View upcoming billing information"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Users can perform the \"Change Package\" (upgrade/downgrade) or \"Cancel Subscription\" operations in their personal center."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "Change to a different plan"
+        },
+        {
+          "id": "FT-08",
+          "text": "Cancel subscription from the account area"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "When a user switches payment periods (annual/quarterly/monthly), the system must ensure that the displayed amount is strictly consistent with the backend billing logic (e.g., annual payments should display a discounted price)."
+      },
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Different billing periods must produce distinct outcomes"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "Users cannot subscribe to multiple plans at the same time (each account can only have one valid subscription)."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "When a user cancels their subscription, the system must clearly define the logic: whether to immediately stop the service or retain access until the end of the current billing cycle."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Users cannot change to the same plan they are currently subscribed to."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "If a required registration field is empty or invalid, account creation will fail."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "The payment cycle switching switch (year/quarter/month) should have a smooth animation, and the currently selected cycle should have a clear visual highlight."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "When a user clicks \"unsubscribe\", the system should display a secondary confirmation pop-up to prevent accidental operation."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "The currently active package cards in the account center should have prominent visual labels such as \"Currently in Use\" to distinguish them from other available packages."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "After successfully modifying the plan, the system should immediately display a success notification and refresh the latest billing information on the account page."
+      },
+      "pred": [
+        {
+          "id": "IX-01",
+          "text": "Success feedback after account creation"
+        },
+        {
+          "id": "IX-02",
+          "text": "Success confirmation after subscribing"
+        },
+        {
+          "id": "IX-03",
+          "text": "Account state updates immediately after plan change or cancellation"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The package comparison table must clearly indicate the inclusion of each function."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Plan feature descriptions are complete and on-theme"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The billing information should accurately distinguish between \"actual amount paid\" and \"original price per cycle,\" and clearly show the exact time of the next automatic renewal."
+      },
+      "pred": [
+        {
+          "id": "CT-02",
+          "text": "Billing information is accurate and complete"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Price tags must be dynamically updated according to the annual/quarterly/monthly payment option, and the unit (e.g., /month or /year) must be clearly marked."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "18",
+        "text": "The price discount amount must be dynamically updated based on the chosen payment method (annual/quarterly/monthly)."
+      },
+      "pred": null
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Subscription requires a signed-in account"
+        },
+        {
+          "id": "CS-02",
+          "text": "Plan change/cancel only allowed with an active subscription"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}

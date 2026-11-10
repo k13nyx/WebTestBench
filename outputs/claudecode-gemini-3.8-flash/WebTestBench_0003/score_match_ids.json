@@ -1,0 +1,271 @@
+{
+  "matches": [
+    [
+      "FT-01",
+      "1"
+    ],
+    [
+      "FT-02",
+      "7"
+    ],
+    [
+      "FT-03",
+      "6"
+    ],
+    [
+      "FT-04",
+      "16"
+    ],
+    [
+      "FT-05",
+      "8"
+    ],
+    [
+      "FT-06",
+      "3"
+    ],
+    [
+      "FT-07",
+      "4"
+    ],
+    [
+      "CS-01",
+      "10"
+    ],
+    [
+      "CS-02",
+      "9"
+    ],
+    [
+      "CS-03",
+      null
+    ],
+    [
+      "IX-01",
+      null
+    ],
+    [
+      "IX-02",
+      "13"
+    ],
+    [
+      "IX-03",
+      null
+    ],
+    [
+      "CT-01",
+      "15"
+    ],
+    [
+      "CT-02",
+      "3"
+    ],
+    [
+      "CT-03",
+      "17"
+    ]
+  ],
+  "detailed_matches": [
+    {
+      "gold": {
+        "id": "1",
+        "text": "Employers can create and publish job listings, fully entering core information such as name and description."
+      },
+      "pred": [
+        {
+          "id": "FT-01",
+          "text": "Create a job listing with complete details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "2",
+        "text": "Employers can edit and delete published jobs to manage their positions."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "3",
+        "text": "The employer dashboard allows you to view all the job listings you have posted."
+      },
+      "pred": [
+        {
+          "id": "FT-06",
+          "text": "View posted jobs on employer dashboard"
+        },
+        {
+          "id": "CT-02",
+          "text": "Verify employer dashboard listing overview content"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "4",
+        "text": "The employer dashboard allows you to view a list of applications submitted by job seekers for all the positions you have posted."
+      },
+      "pred": [
+        {
+          "id": "FT-07",
+          "text": "View submitted applications for a specific listing"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "5",
+        "text": "Job seekers can browse the platform's full list of job openings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "6",
+        "text": "The website allows users to filter job listings by criteria such as industry, location, and job type."
+      },
+      "pred": [
+        {
+          "id": "FT-03",
+          "text": "Filter job listings by industry, location, and employment type"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "7",
+        "text": "The website supports keyword search, which allows users to retrieve job information."
+      },
+      "pred": [
+        {
+          "id": "FT-02",
+          "text": "Search job listings by keyword"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "8",
+        "text": "Job seekers can submit an application form that includes contact information and a message on the job details page."
+      },
+      "pred": [
+        {
+          "id": "FT-05",
+          "text": "Submit an application for an open position"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "9",
+        "text": "Job seekers must not submit job applications with missing or incorrect personal information."
+      },
+      "pred": [
+        {
+          "id": "CS-02",
+          "text": "Prevent application submission with empty contact information"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "10",
+        "text": "Job postings with incomplete information cannot be published; there is a clear notification."
+      },
+      "pred": [
+        {
+          "id": "CS-01",
+          "text": "Prevent job listing creation with missing required fields"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "11",
+        "text": "Job seekers are not allowed to submit multiple applications for the same position using the same contact information."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "12",
+        "text": "Job seekers cannot post job openings."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "13",
+        "text": "After job seekers submit their application forms, the system receives them normally without any submission failures."
+      },
+      "pred": [
+        {
+          "id": "IX-02",
+          "text": "Visual feedback upon job application submission"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "14",
+        "text": "After switching the filtering and search criteria, the job list updates the matching results in real time."
+      },
+      "pred": null
+    },
+    {
+      "gold": {
+        "id": "15",
+        "text": "The job listings clearly display key information such as job title, location, and salary range."
+      },
+      "pred": [
+        {
+          "id": "CT-01",
+          "text": "Verify all required job details display on the listing page"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "16",
+        "text": "The job details page fully displays all information, including the job description and required skills."
+      },
+      "pred": [
+        {
+          "id": "FT-04",
+          "text": "View full job listing details"
+        }
+      ]
+    },
+    {
+      "gold": {
+        "id": "17",
+        "text": "Employers can view a complete list of applications, clearly distinguishing between different job seekers."
+      },
+      "pred": [
+        {
+          "id": "CT-03",
+          "text": "Verify applicant contact information and message display"
+        }
+      ]
+    },
+    {
+      "gold": null,
+      "pred": [
+        {
+          "id": "CS-03",
+          "text": "Empty state when search or filter criteria return no results"
+        },
+        {
+          "id": "IX-01",
+          "text": "Confirmation notification on successful job posting"
+        },
+        {
+          "id": "IX-03",
+          "text": "Clear or reset active filters"
+        }
+      ]
+    }
+  ],
+  "source": "result"
+}
